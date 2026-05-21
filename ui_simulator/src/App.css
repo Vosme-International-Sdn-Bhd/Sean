@@ -1,0 +1,8 @@
+/* Clean slate App.css. All premium styles are in index.css */
+.sim-app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
