@@ -1,0 +1,40 @@
+name: Build and Deploy to gh-pages
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: ./ui_simulator
+        run: npm ci
+
+      - name: Build
+        working-directory: ./ui_simulator
+        run: npm run build
+
+      - name: Deploy to gh-pages
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git checkout --orphan gh-pages
+          git rm -rf .
+          cp -r ui_simulator/dist/. .
+          git add -A
+          git commit -m "Deploy UI Simulator build"
+          git push origin gh-pages --force
