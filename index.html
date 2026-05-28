@@ -1,79 +1,1026 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Precision Salon OS — Design System</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precision Salon OS — Complete GUI Mockup</title>
 <link rel="stylesheet" href="assets/styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-.section-header{font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;color:#727782;padding:16px 0 8px;border-top:0.5px solid #E2E1DC;margin-top:16px;}
-.screen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:8px;}
-.screen-link{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:0.5px solid #E2E1DC;border-radius:8px;text-decoration:none;color:#1b1c1a;transition:border 0.15s,background 0.15s;}
-.screen-link:hover{border-color:#1a5fa8;background:#f0f5ff;}
-.screen-link .badge{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 6px;border-radius:99px;flex-shrink:0;}
-.badge-new{background:rgba(46,125,82,0.12);color:#2E7D52;}
-.badge-desktop{background:rgba(26,95,168,0.08);color:#1a5fa8;}
-.badge-tablet{background:rgba(138,82,0,0.08);color:#8A5200;}
-.badge-stitch{background:#f0f0f0;color:#555;}
-.hero{background:var(--primary);color:#fff;padding:32px;border-radius:16px;margin-bottom:32px;}
+*{box-sizing:border-box;}
+body{background:#f4f3ef;min-height:100vh;margin:0;padding:0;}
+
+/* Top bar */
+.idx-topbar{position:sticky;top:0;z-index:200;background:#1a5fa8;color:#fff;display:flex;align-items:center;padding:0 24px;height:52px;gap:20px;box-shadow:0 2px 12px rgba(0,0,0,0.18);}
+.idx-topbar-logo{font-size:15px;font-weight:700;letter-spacing:-0.02em;white-space:nowrap;}
+.idx-topbar-logo span{opacity:0.55;font-weight:400;margin-left:6px;font-size:12px;}
+.idx-topbar-links{display:flex;gap:4px;margin-left:auto;}
+.idx-topbar-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:12px;padding:6px 12px;border-radius:6px;transition:background 0.15s;}
+.idx-topbar-links a:hover,.idx-topbar-links a.active{background:rgba(255,255,255,0.15);color:#fff;}
+.idx-stat-chip{font-size:11px;font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,0.12);padding:4px 10px;border-radius:20px;}
+
+/* Layout */
+.idx-layout{display:flex;max-width:1440px;margin:0 auto;gap:0;}
+
+/* Sidebar */
+.idx-sidebar{width:220px;flex-shrink:0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;padding:20px 0;background:#faf9f5;border-right:0.5px solid #E2E1DC;}
+.idx-sidebar::-webkit-scrollbar{width:4px;}.idx-sidebar::-webkit-scrollbar-track{background:transparent;}.idx-sidebar::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px;}
+.sbnav-platform{font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:0.6px;text-transform:uppercase;color:#9b9991;padding:14px 16px 4px;}
+.sbnav-item{display:block;padding:7px 16px;font-size:13px;color:#444;text-decoration:none;border-left:2px solid transparent;line-height:1.3;}
+.sbnav-item:hover{background:#f0f5ff;color:#1a5fa8;}
+.sbnav-item.active{background:#eef3fb;color:#1a5fa8;border-left-color:#1a5fa8;font-weight:500;}
+.sbnav-sub{padding:5px 16px 5px 28px;font-size:12px;color:#727782;text-decoration:none;display:block;border-left:2px solid transparent;}
+.sbnav-sub:hover{color:#1a5fa8;background:#f5f8ff;}
+
+/* Main */
+.idx-main{flex:1;min-width:0;padding:28px 32px;}
+
+/* Hero */
+.idx-hero{background:linear-gradient(135deg,#1a5fa8,#0f3d72);color:#fff;border-radius:12px;padding:28px 32px;margin-bottom:28px;display:flex;align-items:center;gap:32px;}
+.idx-hero-title{font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;}
+.idx-hero-sub{opacity:0.8;font-size:14px;line-height:1.5;}
+.idx-hero-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+.idx-hero-btn{padding:9px 18px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;transition:opacity 0.15s;}
+.idx-hero-btn-primary{background:#fff;color:#1a5fa8;}
+.idx-hero-btn-outline{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.25);}
+.idx-hero-btn:hover{opacity:0.85;}
+.idx-hero-stats{display:flex;gap:20px;margin-left:auto;flex-shrink:0;}
+.idx-hero-stat{text-align:center;}
+.idx-hero-stat-val{font-size:28px;font-weight:700;line-height:1;}
+.idx-hero-stat-lbl{font-size:11px;opacity:0.65;margin-top:3px;}
+
+/* Platform section */
+.platform-block{margin-bottom:40px;}
+.platform-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:1.5px solid #E2E1DC;}
+.platform-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.platform-title{font-size:18px;font-weight:700;letter-spacing:-0.01em;}
+.platform-count{font-size:12px;font-family:'JetBrains Mono',monospace;background:#eee;padding:3px 8px;border-radius:20px;color:#555;}
+
+/* Feature section */
+.feature-section{margin-bottom:24px;}
+.feature-label{font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;color:#727782;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.feature-label::after{content:'';flex:1;height:0.5px;background:#E2E1DC;}
+
+/* Screen grid */
+.screen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;}
+.screen-card{display:flex;flex-direction:column;padding:12px 14px;background:#fff;border:0.5px solid #E2E1DC;border-radius:8px;text-decoration:none;color:#1b1c1a;transition:all 0.15s;gap:6px;}
+.screen-card:hover{border-color:#1a5fa8;background:#f5f8ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(26,95,168,0.08);}
+.screen-card-top{display:flex;align-items:flex-start;gap:8px;}
+.screen-card-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.screen-card-name{font-size:13px;font-weight:500;line-height:1.35;flex:1;}
+.screen-card-meta{display:flex;gap:6px;align-items:center;}
+.badge{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 7px;border-radius:20px;white-space:nowrap;}
+.badge-claude{background:rgba(26,95,168,0.1);color:#1a5fa8;}
+.badge-stitch{background:rgba(100,72,180,0.1);color:#5b3db0;}
+.badge-new{background:rgba(46,125,82,0.1);color:#2E7D52;}
+
+/* Legend */
+.legend{display:flex;gap:16px;font-size:12px;margin-bottom:24px;}
+.legend-item{display:flex;align-items:center;gap:6px;}
 </style>
-</head><body style="background:#faf9f5;padding:0;">
-<div style="max-width:1200px;margin:0 auto;padding:32px 24px;">
-  <div class="hero">
-    <div style="font-size:28px;font-weight:700;margin-bottom:6px;">Precision Salon OS</div>
-    <div style="opacity:0.85;font-size:15px;">Complete GUI Design System · Malaysian Multi-Outlet Salon SaaS</div>
-    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
-      <a href="portal/login.html" style="background:#fff;color:#1a5fa8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">🌐 Customer Portal</a>
-      <a href="admin/dashboard.html" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">⚙️ Admin Backend</a>
-      <a href="pos/pos-home.html" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">📱 Android POS</a>
-    </div>
-  </div>
+</head>
+<body>
 
-  <!-- CUSTOMER PORTAL -->
-  <div class="section-header">🌐 Customer Web Portal — Newly Designed</div>
-  <div class="screen-grid">
-    <a class="screen-link" href="portal/login.html"><span>🔐</span><span style="flex:1;">Login / WhatsApp OTP</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="portal/home.html"><span>🏠</span><span style="flex:1;">Home Dashboard</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="portal/my-bookings.html"><span>📋</span><span style="flex:1;">My Bookings</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="portal/reschedule.html"><span>🔄</span><span style="flex:1;">Reschedule Booking</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="portal/cancel-booking.html"><span>✕</span><span style="flex:1;">Cancel Booking</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="portal/notifications.html"><span>🔔</span><span style="flex:1;">Notification &amp; PDPA Settings</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="portal/account-settings.html"><span>👤</span><span style="flex:1;">Account &amp; Data Export</span><span class="badge badge-new">NEW</span></a>
+<!-- Top Navigation Bar -->
+<div class="idx-topbar">
+  <div class="idx-topbar-logo">Precision Salon OS <span>GUI Mockup</span></div>
+  <span class="idx-stat-chip">43 Claude screens</span>
+  <span class="idx-stat-chip">113 Stitch screens</span>
+  <span class="idx-stat-chip">156 total</span>
+  <div class="idx-topbar-links">
+    <a href="#portal" class="active">🌐 Portal</a>
+    <a href="#admin">⚙️ Admin</a>
+    <a href="#pos">📱 POS</a>
   </div>
-
-  <!-- ANDROID POS -->
-  <div class="section-header">📱 Android POS (Tablet) — Newly Designed</div>
-  <div class="screen-grid">
-    <a class="screen-link" href="pos/cash-calculator.html"><span>💵</span><span style="flex:1;">Cash Calculator</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="pos/new-appointment.html"><span>➕</span><span style="flex:1;">New Appointment from POS</span><span class="badge badge-new">NEW</span></a>
-  </div>
-
-  <!-- ADMIN BACKEND -->
-  <div class="section-header">⚙️ Admin Backend — Newly Designed</div>
-  <div class="screen-grid">
-    <a class="screen-link" href="admin/staff-management.html"><span>🧑‍💼</span><span style="flex:1;">Staff Management</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="admin/google-reviews.html"><span>⭐</span><span style="flex:1;">Google Reviews + AI Reply</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="admin/social-scheduler.html"><span>📱</span><span style="flex:1;">Social Media Scheduler</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="admin/outlet-management.html"><span>🗺️</span><span style="flex:1;">Outlet Management</span><span class="badge badge-new">NEW</span></a>
-    <a class="screen-link" href="admin/superadmin.html"><span>👑</span><span style="flex:1;">Superadmin Panel</span><span class="badge badge-new">NEW</span></a>
-  </div>
-
-  <!-- STITCH SCREENS -->
-  <div class="section-header">🎨 Stitch-Generated Screens (125 screens)</div>
-  <div id="stitch-list" class="screen-grid"></div>
 </div>
 
+<div class="idx-layout">
+
+  <!-- Sidebar Navigation -->
+  <aside class="idx-sidebar">
+    <div class="sbnav-platform">Customer Portal</div>
+    <a class="sbnav-item" href="#portal-auth">Authentication</a>
+    <a class="sbnav-item" href="#portal-booking">Booking Flow</a>
+    <a class="sbnav-item" href="#portal-wallet">Wallet & Payments</a>
+    <a class="sbnav-item" href="#portal-membership">Membership</a>
+    <a class="sbnav-item" href="#portal-vouchers">Vouchers</a>
+    <a class="sbnav-item" href="#portal-profile">Profile & Account</a>
+    <a class="sbnav-item" href="#portal-affiliate">Affiliate Hub</a>
+
+    <div class="sbnav-platform">Admin Backend</div>
+    <a class="sbnav-item" href="#admin-dashboard">Dashboard</a>
+    <a class="sbnav-item" href="#admin-bookings">Bookings</a>
+    <a class="sbnav-item" href="#admin-members">Members CRM</a>
+    <a class="sbnav-item" href="#admin-staff">Staff</a>
+    <a class="sbnav-item" href="#admin-revenue">Revenue & Finance</a>
+    <a class="sbnav-item" href="#admin-lhdn">LHDN MyInvois</a>
+    <a class="sbnav-item" href="#admin-marketing">Marketing</a>
+    <a class="sbnav-item" href="#admin-vouchers">Vouchers & Packages</a>
+    <a class="sbnav-item" href="#admin-inventory">Inventory</a>
+    <a class="sbnav-item" href="#admin-mlm">MLM & Commission</a>
+    <a class="sbnav-item" href="#admin-payout">Payout Queue</a>
+    <a class="sbnav-item" href="#admin-settings">Settings</a>
+    <a class="sbnav-item" href="#admin-superadmin">Superadmin</a>
+
+    <div class="sbnav-platform">POS / Android</div>
+    <a class="sbnav-item" href="#pos-home">POS Home</a>
+    <a class="sbnav-item" href="#pos-calendar">Calendar</a>
+    <a class="sbnav-item" href="#pos-onhold">On-Hold Orders</a>
+    <a class="sbnav-item" href="#pos-offline">Offline Mode</a>
+    <a class="sbnav-item" href="#pos-receipt">Receipt</a>
+    <a class="sbnav-item" href="#pos-tools">Tools</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="idx-main">
+
+    <!-- Hero -->
+    <div class="idx-hero">
+      <div>
+        <div class="idx-hero-title">Precision Salon OS</div>
+        <div class="idx-hero-sub">Complete GUI Mockup · Malaysian Multi-Outlet Salon SaaS<br>Customer Portal + Admin Backend + Android POS Tablet</div>
+        <div class="idx-hero-actions">
+          <a href="portal/login.html" class="idx-hero-btn idx-hero-btn-primary">🌐 Open Portal</a>
+          <a href="admin/dashboard.html" class="idx-hero-btn idx-hero-btn-outline">⚙️ Open Admin</a>
+          <a href="pos/pos-home.html" class="idx-hero-btn idx-hero-btn-outline">📱 Open POS</a>
+        </div>
+      </div>
+      <div class="idx-hero-stats">
+        <div class="idx-hero-stat"><div class="idx-hero-stat-val">43</div><div class="idx-hero-stat-lbl">Claude Screens</div></div>
+        <div class="idx-hero-stat"><div class="idx-hero-stat-val">113</div><div class="idx-hero-stat-lbl">Stitch Screens</div></div>
+        <div class="idx-hero-stat"><div class="idx-hero-stat-val">3</div><div class="idx-hero-stat-lbl">Platforms</div></div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <div class="legend-item"><span class="badge badge-claude">Claude</span> Custom-coded screens with full navigation</div>
+      <div class="legend-item"><span class="badge badge-stitch">Stitch</span> AI-generated detailed UI variants</div>
+    </div>
+
+    <!-- ================================================ -->
+    <!-- CUSTOMER PORTAL                                  -->
+    <!-- ================================================ -->
+    <div id="portal" class="platform-block">
+      <div class="platform-header">
+        <div class="platform-icon" style="background:#e8f0fb;">🌐</div>
+        <div>
+          <div class="platform-title">Customer Web Portal</div>
+          <div style="font-size:13px;color:#727782;margin-top:2px;">Member-facing web app · Bookings, wallet, loyalty, affiliate</div>
+        </div>
+        <span class="platform-count">18 Claude + 25 Stitch</span>
+      </div>
+
+      <!-- Auth -->
+      <div id="portal-auth" class="feature-section">
+        <div class="feature-label">Authentication</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="portal/login.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔐</span><span class="screen-card-name">Login · Email & WhatsApp OTP</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Two-tab auth flow</span></div>
+          </a>
+          <a class="screen-card" href="portal/register.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📝</span><span class="screen-card-name">Register Account</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">PDPA consent, +60 phone</span></div>
+          </a>
+          <a class="screen-card" href="portal/forgot-password.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔑</span><span class="screen-card-name">Forgot Password</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Email reset flow</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Booking Flow -->
+      <div id="portal-booking" class="feature-section">
+        <div class="feature-label">Booking Flow</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="portal/home.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🏠</span><span class="screen-card-name">Member Home Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/booking-service.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✂️</span><span class="screen-card-name">Select Service</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/booking-stylist.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👤</span><span class="screen-card-name">Select Stylist</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/booking-datetime.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📅</span><span class="screen-card-name">Select Date & Time</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/booking-confirmation.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✅</span><span class="screen-card-name">Booking Confirmation</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/my-bookings.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">My Bookings</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/reschedule.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔄</span><span class="screen-card-name">Reschedule Booking</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/cancel-booking.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✕</span><span class="screen-card-name">Cancel Booking</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/customer-booking-service-selection.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✂️</span><span class="screen-card-name">Service Selection (Detailed)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/customer-booking-stylist-selection.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👤</span><span class="screen-card-name">Stylist Selection (Detailed)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/customer-booking-date-time-selection.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📅</span><span class="screen-card-name">Date & Time (Detailed)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/customer-booking-confirmation.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✅</span><span class="screen-card-name">Confirmation (Detailed)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Wallet -->
+      <div id="portal-wallet" class="feature-section">
+        <div class="feature-label">Wallet & Payments</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="portal/wallet-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💰</span><span class="screen-card-name">Wallet Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Balance, history</span></div>
+          </a>
+          <a class="screen-card" href="portal/wallet-topup.html">
+            <div class="screen-card-top"><span class="screen-card-icon">➕</span><span class="screen-card-name">Wallet Top-Up</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">FPX, DuitNow, TnG</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/wallet-dashboard-balances-history.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💳</span><span class="screen-card-name">Wallet Balances & History</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/wallet-topup-package-selection.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📦</span><span class="screen-card-name">Top-Up Package Selection</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/payment-checkout-updated-layout-with-taxes-and-pay-button.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🏧</span><span class="screen-card-name">Payment Checkout</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span><span style="font-size:11px;color:#999;">SST + taxes</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Membership -->
+      <div id="portal-membership" class="feature-section">
+        <div class="feature-label">Membership & Loyalty</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="portal/membership-loyalty.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🏅</span><span class="screen-card-name">Membership & Loyalty</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Bronze/Silver/Gold tiers</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/customer-web-portal-membership-loyalty-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⭐</span><span class="screen-card-name">Membership Dashboard (Detailed)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/membership-tiers-loyalty-rewards.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎯</span><span class="screen-card-name">Tier Benefits & Rewards</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/vouchers-packages-active-rewards-progress.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎁</span><span class="screen-card-name">Active Rewards Progress</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Vouchers -->
+      <div id="portal-vouchers" class="feature-section">
+        <div class="feature-label">Vouchers</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="portal/vouchers-packages.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎟️</span><span class="screen-card-name">My Vouchers & Packages</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Active, expiring, expired</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Profile -->
+      <div id="portal-profile" class="feature-section">
+        <div class="feature-label">Profile & Account</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="portal/member-profile.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👤</span><span class="screen-card-name">Member Profile</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Tier progress, edit info</span></div>
+          </a>
+          <a class="screen-card" href="portal/visit-history.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📜</span><span class="screen-card-name">Visit History & Invoices</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="portal/account-settings.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚙️</span><span class="screen-card-name">Account Settings & PDPA</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Data export, deletion</span></div>
+          </a>
+          <a class="screen-card" href="portal/notifications.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔔</span><span class="screen-card-name">Notifications</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/member-profile-detailed-view.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👤</span><span class="screen-card-name">Profile Detailed View</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/visit-history-past-appointments-invoices.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">Past Appointments & Invoices</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Affiliate -->
+      <div id="portal-affiliate" class="feature-section">
+        <div class="feature-label">Affiliate Hub (Member-Facing)</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="portal/affiliate-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔗</span><span class="screen-card-name">Affiliate Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">L1/L2/L3 commissions</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-dashboard-stats.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Affiliate Dashboard Stats</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-commission-ledger.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📒</span><span class="screen-card-name">Commission Ledger</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-refined-commission-ledger.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📒</span><span class="screen-card-name">Commission Ledger (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-advanced-commission-ledger-payout-tracking.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💸</span><span class="screen-card-name">Commission + Payout Tracking</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-downline-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👥</span><span class="screen-card-name">Downline Management</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-refined-downline-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👥</span><span class="screen-card-name">Downline Management (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-advanced-downline-filters.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔍</span><span class="screen-card-name">Downline Advanced Filters</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-enhanced-downline-performance-tracking.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📈</span><span class="screen-card-name">Downline Performance Tracking</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-refined-member-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎛️</span><span class="screen-card-name">Member Dashboard (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-advanced-member-dashboard-refinement.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎛️</span><span class="screen-card-name">Member Dashboard (Advanced)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-hub-marketing-toolkit.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🛠️</span><span class="screen-card-name">Affiliate Marketing Toolkit</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+    </div><!-- /portal -->
+
+    <!-- ================================================ -->
+    <!-- ADMIN BACKEND                                    -->
+    <!-- ================================================ -->
+    <div id="admin" class="platform-block">
+      <div class="platform-header">
+        <div class="platform-icon" style="background:#e8f0fb;">⚙️</div>
+        <div>
+          <div class="platform-title">Admin Backend</div>
+          <div style="font-size:13px;color:#727782;margin-top:2px;">Merchant management · Staff, revenue, LHDN, marketing, MLM</div>
+        </div>
+        <span class="platform-count">19 Claude + 72 Stitch</span>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="admin-dashboard" class="feature-section">
+        <div class="feature-label">Dashboard & Analytics</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Admin Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Full sidebar, KPIs</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/admin-dashboard-operational-overview.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Operational Overview</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/admin-backend-operational-dashboard-overview.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Backend Dashboard Overview</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/reports-analytics-operational-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📈</span><span class="screen-card-name">Reports & Analytics Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bookings -->
+      <div id="admin-bookings" class="feature-section">
+        <div class="feature-label">Bookings & Schedule</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/bookings-schedule.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📅</span><span class="screen-card-name">Bookings Schedule</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Filterable table + calendar</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/admin-backend-bookings-schedule-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📅</span><span class="screen-card-name">Bookings Schedule Management</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/bookings-overview-multioutlet-calendar.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🗓️</span><span class="screen-card-name">Multi-Outlet Booking Calendar</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/booking-calendar-stylist-schedule.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🗓️</span><span class="screen-card-name">Stylist Schedule Calendar</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Members CRM -->
+      <div id="admin-members" class="feature-section">
+        <div class="feature-label">Members CRM</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/members-crm.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👥</span><span class="screen-card-name">Members CRM</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">1,842 members, tier badges</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/members-crm-customer-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👥</span><span class="screen-card-name">CRM Customer Management</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Staff -->
+      <div id="admin-staff" class="feature-section">
+        <div class="feature-label">Staff & Commission</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/staff-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🧑‍💼</span><span class="screen-card-name">Staff Management</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Add, edit, deactivate</span></div>
+          </a>
+          <a class="screen-card" href="admin/staff-performance.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📈</span><span class="screen-card-name">Staff Performance</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Utilisation, commissions</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/staff-performance-payouts-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📈</span><span class="screen-card-name">Performance Payouts Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/staff-performance-payouts-admin-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📈</span><span class="screen-card-name">Performance Payouts (Admin)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/staff-performance-refined-dashboard-with-analytics.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Performance + Analytics</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/staff-commission-editor-modal-stylist-configuration.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✏️</span><span class="screen-card-name">Commission Editor Modal</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/staff-commission-matrix-enterprise-configuration.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">Commission Matrix Config</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/staff-commission-matrix-enterprise-refinement.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">Commission Matrix (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/staff-commission-matrix-refined-enterprise-configuration.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">Commission Matrix (Enterprise)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/stylist-profile-performance-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👤</span><span class="screen-card-name">Stylist Profile & Performance</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Revenue -->
+      <div id="admin-revenue" class="feature-section">
+        <div class="feature-label">Revenue & Finance</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/revenue-reports.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💰</span><span class="screen-card-name">Revenue Reports</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Outlet breakdown, channels</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/revenue-reports-financial-analytics-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💹</span><span class="screen-card-name">Financial Analytics Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/revenue-reports-refined-category-breakdown.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Revenue by Category</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/revenue-reports-refined-channel-analytics.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Channel Analytics</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/revenue-reports-refined-revenue-trends-chart.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📈</span><span class="screen-card-name">Revenue Trends Chart</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/commission-payout-reports-financial-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💸</span><span class="screen-card-name">Commission Payout Reports</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- LHDN -->
+      <div id="admin-lhdn" class="feature-section">
+        <div class="feature-label">LHDN MyInvois (e-Invoice)</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/lhdn-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🧾</span><span class="screen-card-name">LHDN Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Compliance, submissions</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/lhdn-myinvois-dashboard-compliance-submission-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🧾</span><span class="screen-card-name">MyInvois Compliance Hub</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/lhdn-myinvois-advanced-rejection-queue-resolution-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚠️</span><span class="screen-card-name">Rejection Queue Resolution</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/lhdn-myinvois-advanced-rejection-resolution-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚠️</span><span class="screen-card-name">Rejection Resolution Hub</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/lhdn-myinvois-commission-compliance-settings.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚙️</span><span class="screen-card-name">Commission Compliance Settings</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/lhdn-myinvois-credit-note-tracker-audit-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">Credit Note Tracker</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/lhdn-myinvois-rejection-queue-details.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔍</span><span class="screen-card-name">Rejection Queue Details</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Marketing -->
+      <div id="admin-marketing" class="feature-section">
+        <div class="feature-label">Marketing</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/marketing-campaigns.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📣</span><span class="screen-card-name">Campaigns Overview</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">WhatsApp, email blasts</span></div>
+          </a>
+          <a class="screen-card" href="admin/google-reviews.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⭐</span><span class="screen-card-name">Google Reviews + AI Reply</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="admin/social-scheduler.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📱</span><span class="screen-card-name">Social Media Scheduler</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">FB, IG, WhatsApp</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-analytics-performance-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Campaign Analytics</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-builder-multichannel-outreach.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📡</span><span class="screen-card-name">Multi-Channel Campaign Builder</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-builder-advanced-audience-segmentation.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎯</span><span class="screen-card-name">Audience Segmentation</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-builder-refined-audience-segmentation.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎯</span><span class="screen-card-name">Audience Segmentation (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-builder-advanced-segment-filters.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔍</span><span class="screen-card-name">Segment Filters (Advanced)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-builder-eventspecific-templates-automation.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚡</span><span class="screen-card-name">Event Templates & Automation</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-builder-refined-message-templates-variables.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✉️</span><span class="screen-card-name">Message Templates</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-advanced-event-triggers.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚡</span><span class="screen-card-name">Event Triggers (Advanced)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-advanced-recurrence-logic.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔁</span><span class="screen-card-name">Recurrence Logic</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/marketing-campaign-schedule-test-blast.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🚀</span><span class="screen-card-name">Schedule & Test Blast</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Vouchers & Packages -->
+      <div id="admin-vouchers" class="feature-section">
+        <div class="feature-label">Vouchers & Service Packages</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/voucher-builder.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎟️</span><span class="screen-card-name">Voucher Builder</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Create discount vouchers</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-admin-portal.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📦</span><span class="screen-card-name">Service Package Builder</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-refined-pricing-logic.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💲</span><span class="screen-card-name">Package Pricing Logic</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-refined-pricing-logic-tiers.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💲</span><span class="screen-card-name">Pricing Logic Tiers</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-refined-validity-usage-rules.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📅</span><span class="screen-card-name">Validity & Usage Rules</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-refined-service-guardrails.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🛡️</span><span class="screen-card-name">Service Guardrails</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-autorenewal-options.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔄</span><span class="screen-card-name">Auto-Renewal Options</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-autorenewal-notifications.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔔</span><span class="screen-card-name">Auto-Renewal Notifications</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-refined-renewal-notifications.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔔</span><span class="screen-card-name">Renewal Notifications (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-refined-package-logic-details.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">Package Logic Details</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-builder-enterprise-refinement.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🏢</span><span class="screen-card-name">Enterprise Package Builder</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/service-package-redemption-stats-analytics-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Package Redemption Stats</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/voucher-package-builder-service-package-creator.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎟️</span><span class="screen-card-name">Voucher + Package Creator</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/voucher-package-builder-marketing-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📣</span><span class="screen-card-name">Voucher Marketing Hub</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/voucher-template-builder-enterprise-refinement.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✏️</span><span class="screen-card-name">Voucher Template Builder</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/voucher-template-builder-marketing-configuration.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚙️</span><span class="screen-card-name">Voucher Template Config</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/voucher-builder-advanced-applicability-logic.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎯</span><span class="screen-card-name">Voucher Applicability Logic</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/voucher-builder-advanced-validity-usage-rules.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📅</span><span class="screen-card-name">Voucher Validity Rules (Adv)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/voucher-builder-refined-validity-usage-rules.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📅</span><span class="screen-card-name">Voucher Validity Rules (Ref)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Inventory -->
+      <div id="admin-inventory" class="feature-section">
+        <div class="feature-label">Inventory Management</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="stitch-screens/inventory-management-stock-control-pos.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📦</span><span class="screen-card-name">Stock Control (POS)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/inventory-reports-stock-analytics-movement.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📊</span><span class="screen-card-name">Stock Analytics & Movement</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/stock-movement-history-inventory-audit-log.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📜</span><span class="screen-card-name">Stock Movement Audit Log</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/autoreorder-rules-procurement-automation-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🤖</span><span class="screen-card-name">Auto-Reorder Rules</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- MLM -->
+      <div id="admin-mlm" class="feature-section">
+        <div class="feature-label">MLM & Affiliate Commission Config</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="stitch-screens/mlm-configuration-merchant-admin-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🌐</span><span class="screen-card-name">MLM Config Admin Hub</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/mlm-configuration-refined-commission-matrix-calculation-modes.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🧮</span><span class="screen-card-name">Commission Matrix Calc Modes</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/mlm-configuration-refined-rank-benefits-perk-assignment.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🏅</span><span class="screen-card-name">Rank Benefits & Perks</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/mlm-configuration-refined-performance-simulation-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚡</span><span class="screen-card-name">Performance Simulation</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/mlm-configuration-advanced-performance-simulation-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚡</span><span class="screen-card-name">Performance Simulation (Adv)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/mlm-tree-visualizer-affiliate-hierarchy.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🌳</span><span class="screen-card-name">MLM Tree Visualizer</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/commission-engine-affiliate-rank-rules.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚙️</span><span class="screen-card-name">Commission Engine Rank Rules</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/commission-engine-affiliate-rank-thresholds.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📏</span><span class="screen-card-name">Commission Engine Thresholds</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-rank-thresholds-commission-engine-config.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚙️</span><span class="screen-card-name">Rank Thresholds Engine Config</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-rank-thresholds-refined-commission-matrix.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📋</span><span class="screen-card-name">Rank Commission Matrix (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/affiliate-rank-thresholds-refined-configuration-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🛠️</span><span class="screen-card-name">Rank Thresholds Config Hub</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Payout Queue -->
+      <div id="admin-payout" class="feature-section">
+        <div class="feature-label">Payout Queue & Commission Ledger</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="stitch-screens/payout-queue-affiliate-commission-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💸</span><span class="screen-card-name">Payout Queue Management</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/payout-queue-advanced-batch-approval-workflow.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✅</span><span class="screen-card-name">Batch Approval Workflow</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/payout-queue-refined-batch-approval-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✅</span><span class="screen-card-name">Batch Approval Hub (Refined)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/payout-queue-refined-enterprise-dashboard.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🏢</span><span class="screen-card-name">Enterprise Payout Dashboard</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/commission-ledger-affiliate-management-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📒</span><span class="screen-card-name">Commission Ledger (Admin)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div id="admin-settings" class="feature-section">
+        <div class="feature-label">Settings & Configuration</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/outlet-settings.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🏪</span><span class="screen-card-name">Outlet Settings</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Hours, rules, notifications</span></div>
+          </a>
+          <a class="screen-card" href="admin/outlet-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🗺️</span><span class="screen-card-name">Outlet Management</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">4 branches, KPIs</span></div>
+          </a>
+          <a class="screen-card" href="admin/merchant-branding.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎨</span><span class="screen-card-name">Merchant Branding</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Logo, colours, templates</span></div>
+          </a>
+          <a class="screen-card" href="admin/company-hardware.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🖥️</span><span class="screen-card-name">Hardware & SSM Config</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">POS devices, TIN, MSIC</span></div>
+          </a>
+          <a class="screen-card" href="admin/integrations.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔌</span><span class="screen-card-name">Integrations</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">WhatsApp, Fiuu, LHDN</span></div>
+          </a>
+          <a class="screen-card" href="admin/security-settings.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔒</span><span class="screen-card-name">Security Settings</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">2FA, sessions, IP whitelist</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/outlet-settings-configuration-operations.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⚙️</span><span class="screen-card-name">Outlet Config & Operations</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/outlet-settings-advanced-whatsapp-configuration.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💬</span><span class="screen-card-name">WhatsApp Config (Advanced)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/outlet-settings-expanded-marketing-toggles.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📣</span><span class="screen-card-name">Marketing Toggles</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/outlet-settings-refined-email-campaign-configuration.html">
+            <div class="screen-card-top"><span class="screen-card-icon">✉️</span><span class="screen-card-name">Email Campaign Config</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/merchant-branding-settings-admin-portal.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🎨</span><span class="screen-card-name">Branding Settings (Portal)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/merchant-branding-social-media-settings.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📱</span><span class="screen-card-name">Branding Social Media</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/security-settings-account-privacy-control.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔐</span><span class="screen-card-name">Security & Privacy Control</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/integrations-webhooks-system-config.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔗</span><span class="screen-card-name">Webhooks System Config</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Superadmin -->
+      <div id="admin-superadmin" class="feature-section">
+        <div class="feature-label">Superadmin</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="admin/superadmin.html">
+            <div class="screen-card-top"><span class="screen-card-icon">👑</span><span class="screen-card-name">Superadmin Panel</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">47 merchants, system health</span></div>
+          </a>
+        </div>
+      </div>
+    </div><!-- /admin -->
+
+    <!-- ================================================ -->
+    <!-- POS / ANDROID TABLET                             -->
+    <!-- ================================================ -->
+    <div id="pos" class="platform-block">
+      <div class="platform-header">
+        <div class="platform-icon" style="background:#fff3e8;">📱</div>
+        <div>
+          <div class="platform-title">POS / Android Tablet</div>
+          <div style="font-size:13px;color:#727782;margin-top:2px;">In-salon tablet app · Order builder, calendar, receipts, offline mode</div>
+        </div>
+        <span class="platform-count">4 Claude + 10 Stitch</span>
+      </div>
+
+      <!-- POS Home -->
+      <div id="pos-home" class="feature-section">
+        <div class="feature-label">POS Home & Order Builder</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="pos/pos-home.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🛒</span><span class="screen-card-name">POS Home</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Service tiles, order panel</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/pos-home-order-builder.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🛒</span><span class="screen-card-name">POS Order Builder (Stitch)</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/android-pos-home-order-builder.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📱</span><span class="screen-card-name">Android POS Home</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Calendar -->
+      <div id="pos-calendar" class="feature-section">
+        <div class="feature-label">Booking Calendar</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="pos/booking-calendar.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🗓️</span><span class="screen-card-name">Booking Calendar</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Stylist columns, time slots</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- On-Hold Orders -->
+      <div id="pos-onhold" class="feature-section">
+        <div class="feature-label">On-Hold Orders</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="stitch-screens/android-pos-refined-onhold-order-management-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⏸️</span><span class="screen-card-name">On-Hold Order Management</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/onhold-orders-pos-management.html">
+            <div class="screen-card-top"><span class="screen-card-icon">⏸️</span><span class="screen-card-name">On-Hold Orders POS</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/onhold-orders-enhanced-alert-visibility.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔔</span><span class="screen-card-name">On-Hold Alert Visibility</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Offline Mode -->
+      <div id="pos-offline" class="feature-section">
+        <div class="feature-label">Offline Mode</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="stitch-screens/android-pos-refined-offline-sync-status-hub.html">
+            <div class="screen-card-top"><span class="screen-card-icon">📡</span><span class="screen-card-name">Offline Sync Status Hub</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+          <a class="screen-card" href="stitch-screens/android-pos-offline-member-lookup-profile-view.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🔍</span><span class="screen-card-name">Offline Member Lookup</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Receipt -->
+      <div id="pos-receipt" class="feature-section">
+        <div class="feature-label">Receipt & Digital Delivery</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="stitch-screens/android-pos-receipt-preview-digital-delivery.html">
+            <div class="screen-card-top"><span class="screen-card-icon">🧾</span><span class="screen-card-name">Receipt Preview & Digital Delivery</span></div>
+            <div class="screen-card-meta"><span class="badge badge-stitch">Stitch</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div id="pos-tools" class="feature-section">
+        <div class="feature-label">Tools & Utilities</div>
+        <div class="screen-grid">
+          <a class="screen-card" href="pos/new-appointment.html">
+            <div class="screen-card-top"><span class="screen-card-icon">➕</span><span class="screen-card-name">New Appointment from POS</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span></div>
+          </a>
+          <a class="screen-card" href="pos/cash-calculator.html">
+            <div class="screen-card-top"><span class="screen-card-icon">💵</span><span class="screen-card-name">Cash Calculator</span></div>
+            <div class="screen-card-meta"><span class="badge badge-claude">Claude</span><span style="font-size:11px;color:#999;">Change calculator</span></div>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /pos -->
+
+  </main>
+</div><!-- /idx-layout -->
+
 <script>
-// Dynamically load manifest and render stitch screen links
-fetch('stitch-screens/manifest.json').then(r=>r.json()).then(screens=>{
-  const container = document.getElementById('stitch-list');
-  screens.forEach(s=>{
-    const badge = s.deviceType==='DESKTOP'?'badge-desktop':s.deviceType==='MOBILE'?'badge-tablet':'badge-stitch';
-    const dt = s.deviceType==='DESKTOP'?'🖥':'📱';
-    const a = document.createElement('a');
-    a.className = 'screen-link';
-    a.href = 'stitch-screens/'+s.filename;
-    a.innerHTML = `<span>${dt}</span><span style="flex:1;font-size:13px;">${s.title}</span><span class="badge ${badge}">${s.deviceType||'?'}</span>`;
-    container.appendChild(a);
+// Active sidebar highlighting on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.sbnav-item');
+function onScroll(){
+  let cur='';
+  sections.forEach(s=>{
+    const top = s.getBoundingClientRect().top;
+    if(top<=120) cur=s.id;
   });
-}).catch(()=>{
-  document.getElementById('stitch-list').innerHTML = '<p style="color:#727782;font-size:13px;padding:8px;">Stitch screens not loaded.</p>';
-});
+  navLinks.forEach(l=>{
+    l.classList.toggle('active', l.getAttribute('href')==='#'+cur);
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
 </script>
-</body></html>
+</body>
+</html>
