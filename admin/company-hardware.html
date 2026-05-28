@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Company &amp; Hardware — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item active" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Company &amp; Hardware</div><div class="page-subtitle">Registered POS devices, printers, and company information</div></div>
+      <button class="btn btn-primary">+ Register Device</button>
+    </div>
+
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Total Devices</div><div class="stat-value">6</div></div>
+      <div class="stat-card"><div class="stat-label">Online Now</div><div class="stat-value" style="color:var(--success);">4</div></div>
+      <div class="stat-card"><div class="stat-label">Offline</div><div class="stat-value" style="color:var(--text-muted);">2</div></div>
+      <div class="stat-card"><div class="stat-label">Pending Registration</div><div class="stat-value" style="color:var(--warning);">1</div></div>
+    </div>
+
+    <div class="card mb-24">
+      <div class="card-title mb-16">Registered POS Devices</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Device Name</th><th>Model</th><th>Outlet</th><th>OS Version</th><th>App Version</th><th>Last Seen</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="mono text-sm">POS-KLCC-001</td>
+              <td class="text-sm">Samsung Galaxy Tab A8</td>
+              <td class="text-sm">KLCC</td>
+              <td class="mono text-xs">Android 13</td>
+              <td class="mono text-xs">v2.4.1</td>
+              <td class="mono text-xs">28 May 14:30</td>
+              <td><span class="pill pill-success">Online</span></td>
+              <td><button class="btn btn-secondary btn-sm">Details</button></td>
+            </tr>
+            <tr>
+              <td class="mono text-sm">POS-KLCC-002</td>
+              <td class="text-sm">Sunmi T2</td>
+              <td class="text-sm">KLCC</td>
+              <td class="mono text-xs">Android 11</td>
+              <td class="mono text-xs">v2.4.1</td>
+              <td class="mono text-xs">28 May 13:55</td>
+              <td><span class="pill pill-success">Online</span></td>
+              <td><button class="btn btn-secondary btn-sm">Details</button></td>
+            </tr>
+            <tr>
+              <td class="mono text-sm">POS-BGS-001</td>
+              <td class="text-sm">Samsung Galaxy Tab A8</td>
+              <td class="text-sm">Bangsar</td>
+              <td class="mono text-xs">Android 13</td>
+              <td class="mono text-xs">v2.4.1</td>
+              <td class="mono text-xs">28 May 14:10</td>
+              <td><span class="pill pill-success">Online</span></td>
+              <td><button class="btn btn-secondary btn-sm">Details</button></td>
+            </tr>
+            <tr>
+              <td class="mono text-sm">POS-BGS-002</td>
+              <td class="text-sm">Sunmi T2</td>
+              <td class="text-sm">Bangsar</td>
+              <td class="mono text-xs">Android 11</td>
+              <td class="mono text-xs">v2.3.9</td>
+              <td class="mono text-xs" style="color:var(--warning);">27 May 18:00</td>
+              <td><span class="pill pill-warning">Update Needed</span></td>
+              <td><button class="btn btn-secondary btn-sm">Details</button></td>
+            </tr>
+            <tr>
+              <td class="mono text-sm">POS-MK-001</td>
+              <td class="text-sm">Samsung Galaxy Tab A8</td>
+              <td class="text-sm">Mont Kiara</td>
+              <td class="mono text-xs">Android 13</td>
+              <td class="mono text-xs">v2.4.1</td>
+              <td class="mono text-xs" style="color:var(--text-muted);">25 May 10:30</td>
+              <td><span class="pill pill-neutral">Offline</span></td>
+              <td><button class="btn btn-secondary btn-sm">Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title mb-16">Company Information (SSM)</div>
+      <div class="grid grid-2" style="gap:16px;">
+        <div><label class="field-label">Company Name</label><input type="text" class="input" value="Precision Salon Sdn Bhd"></div>
+        <div><label class="field-label">SSM Registration No.</label><input type="text" class="input" value="202301012345 (KL)"></div>
+        <div><label class="field-label">Registered Address</label><input type="text" class="input" value="Level 2, Suria KLCC, Jalan Ampang, KL"></div>
+        <div><label class="field-label">SST Registration</label><input type="text" class="input" value="W10-1803-32000051"></div>
+        <div><label class="field-label">TIN (LHDN)</label><input type="text" class="input" value="C-1234567-A"></div>
+        <div><label class="field-label">MSIC Code</label><input type="text" class="input" value="96020 — Hairdressing Services"></div>
+      </div>
+      <button class="btn btn-primary mt-16">Save Company Info</button>
+    </div>
+  </main>
+</div>
+</body></html>

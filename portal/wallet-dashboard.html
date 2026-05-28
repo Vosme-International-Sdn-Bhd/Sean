@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Wallet — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item active" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">My Wallet</div><div class="page-subtitle">Balance, top-ups and transaction history</div></div>
+      <a href="wallet-topup.html" class="btn btn-primary">+ Top Up Wallet</a>
+    </div>
+
+    <!-- Wallet Cards -->
+    <div class="grid grid-3 mb-24">
+      <div class="card" style="background:var(--primary);color:#fff;">
+        <div style="font-size:13px;opacity:0.85;margin-bottom:8px;">Main Balance</div>
+        <div style="font-size:32px;font-weight:700;font-family:var(--font-mono);">RM 150.00</div>
+        <div style="font-size:12px;opacity:0.7;margin-top:4px;">Available to spend</div>
+        <a href="wallet-topup.html" class="btn btn-sm mt-16" style="background:rgba(255,255,255,0.2);color:#fff;border:0.5px solid rgba(255,255,255,0.4);">Top Up →</a>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Bonus Balance</div>
+        <div class="stat-value">RM 20.00</div>
+        <div class="stat-sub">Expires 31 Dec 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Spent (MTD)</div>
+        <div class="stat-value">RM 260.00</div>
+        <div class="stat-sub">3 transactions</div>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;">
+      <!-- Top Up History -->
+      <div class="card">
+        <div class="card-title mb-16">Top-Up History</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Amount</th><th>Method</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="mono text-xs">20 May 2026</td><td class="mono font-600">RM 100.00</td><td class="text-sm">DuitNow QR</td><td><span class="pill pill-success">Completed</span></td></tr>
+              <tr><td class="mono text-xs">5 May 2026</td><td class="mono font-600">RM 50.00</td><td class="text-sm">FPX Online</td><td><span class="pill pill-success">Completed</span></td></tr>
+              <tr><td class="mono text-xs">12 Apr 2026</td><td class="mono font-600">RM 100.00</td><td class="text-sm">DuitNow QR</td><td><span class="pill pill-success">Completed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Spending History -->
+      <div class="card">
+        <div class="card-title mb-16">Spending History</div>
+        <div class="flex flex-col" style="gap:1px;">
+          <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
+            <div class="flex justify-between items-center">
+              <div><div class="text-sm font-600">Hair Colour + Trim</div><div class="mono text-xs text-muted">ORD-20260525-0042 · KLCC</div></div>
+              <span class="mono font-600 text-sm" style="color:var(--danger);">− RM 85.00</span>
+            </div>
+          </div>
+          <div style="padding:12px 0;border-bottom:0.5px solid var(--border);">
+            <div class="flex justify-between items-center">
+              <div><div class="text-sm font-600">Manicure + Pedicure</div><div class="mono text-xs text-muted">ORD-20260518-0031 · Bangsar</div></div>
+              <span class="mono font-600 text-sm" style="color:var(--danger);">− RM 120.00</span>
+            </div>
+          </div>
+          <div style="padding:12px 0;">
+            <div class="flex justify-between items-center">
+              <div><div class="text-sm font-600">Bonus Credit Applied</div><div class="mono text-xs text-muted">May Top-Up Promo</div></div>
+              <span class="mono font-600 text-sm" style="color:var(--success);">+ RM 20.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

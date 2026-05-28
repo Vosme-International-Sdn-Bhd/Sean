@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Register — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:24px;}
+.auth-card{width:100%;max-width:460px;background:#fff;border:0.5px solid var(--border);border-radius:16px;padding:40px 36px;}
+.auth-logo{font-size:20px;font-weight:700;color:var(--primary);text-align:center;margin-bottom:4px;}
+.auth-sub{text-align:center;font-size:13px;color:var(--text-muted);margin-bottom:28px;}
+</style>
+</head><body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">Precision Salon OS</div>
+    <div class="auth-sub">Create your member account</div>
+
+    <div class="grid grid-2 mb-16" style="gap:12px;">
+      <div>
+        <label class="field-label">First Name</label>
+        <input type="text" class="input" placeholder="Sarah">
+      </div>
+      <div>
+        <label class="field-label">Last Name</label>
+        <input type="text" class="input" placeholder="Lim">
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <label class="field-label">WhatsApp Number</label>
+      <div class="flex gap-8">
+        <input type="text" class="input" value="+60" style="width:72px;flex-shrink:0;">
+        <input type="tel" class="input" placeholder="12-345 6789" style="flex:1;">
+      </div>
+      <div class="text-xs text-muted mt-4">Used for booking notifications &amp; OTP login</div>
+    </div>
+
+    <div class="mb-16">
+      <label class="field-label">Email Address</label>
+      <input type="email" class="input" placeholder="you@example.com">
+    </div>
+
+    <div class="mb-16">
+      <label class="field-label">Password</label>
+      <input type="password" class="input" placeholder="Min. 8 characters">
+    </div>
+
+    <div class="mb-20">
+      <label class="field-label">Confirm Password</label>
+      <input type="password" class="input" placeholder="Re-enter password">
+    </div>
+
+    <div class="mb-16" style="background:var(--surface-low);border:0.5px solid var(--border);border-radius:8px;padding:14px;">
+      <div class="text-sm font-600 mb-8">📋 PDPA 2010 Data Consent</div>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:8px;">
+        <input type="checkbox" style="margin-top:2px;flex-shrink:0;">
+        <span class="text-sm">I consent to Precision Salon OS collecting and processing my personal data for appointment management, marketing, and service delivery as described in the <a href="#" style="color:var(--primary);">Privacy Policy</a>.</span>
+      </label>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
+        <input type="checkbox" style="margin-top:2px;flex-shrink:0;">
+        <span class="text-sm">I agree to receive promotional messages via WhatsApp &amp; email (optional)</span>
+      </label>
+    </div>
+
+    <a href="home.html" class="btn btn-primary btn-full mb-12">Create Account</a>
+    <div class="text-center text-sm text-muted">
+      Already have an account? <a href="login.html" style="color:var(--primary);">Sign In</a>
+    </div>
+
+    <div class="text-center mt-16 text-xs text-muted">
+      By registering you agree to our <a href="#" style="color:var(--primary);">Terms of Service</a>
+    </div>
+  </div>
+</div>
+</body></html>

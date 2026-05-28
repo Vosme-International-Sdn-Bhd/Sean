@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Marketing Campaigns — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item active" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Marketing Campaigns</div><div class="page-subtitle">Automated WhatsApp &amp; email outreach</div></div>
+      <button class="btn btn-primary">+ Create Campaign</button>
+    </div>
+
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Active Campaigns</div><div class="stat-value">4</div></div>
+      <div class="stat-card"><div class="stat-label">Messages Sent (MTD)</div><div class="stat-value">2,840</div></div>
+      <div class="stat-card"><div class="stat-label">Avg Open Rate</div><div class="stat-value">68%</div></div>
+      <div class="stat-card"><div class="stat-label">Conversions</div><div class="stat-value">142</div><div class="stat-sub">5% of recipients booked</div></div>
+    </div>
+
+    <div class="tabs mb-20">
+      <a class="tab active">All Campaigns</a>
+      <a class="tab">Active</a>
+      <a class="tab">Scheduled</a>
+      <a class="tab">Completed</a>
+    </div>
+
+    <div class="flex flex-col gap-16">
+      <div class="card">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="flex items-center gap-10 mb-4">
+              <div class="font-600">Weekend Hair Promo — 10% Off</div>
+              <span class="pill pill-success">Active</span>
+            </div>
+            <div class="text-sm text-muted mb-8">Segment: All Bronze members · WhatsApp blast</div>
+            <div class="flex gap-16 text-xs text-muted">
+              <span>📨 Sent: 840</span>
+              <span>👁️ Opened: 612 (73%)</span>
+              <span>📅 Booked: 48 (5.7%)</span>
+              <span>📅 Runs: Every Friday 10:00 AM</span>
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <button class="btn btn-secondary btn-sm">Edit</button>
+            <button class="btn btn-secondary btn-sm">Pause</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="flex items-center gap-10 mb-4">
+              <div class="font-600">Birthday Voucher Auto-Send</div>
+              <span class="pill pill-success">Active</span>
+            </div>
+            <div class="text-sm text-muted mb-8">Segment: Members with birthday this week · WhatsApp + Email</div>
+            <div class="flex gap-16 text-xs text-muted">
+              <span>📨 Sent: 42</span>
+              <span>👁️ Opened: 38 (90%)</span>
+              <span>📅 Booked: 18 (43%)</span>
+              <span>📅 Runs: Daily (birthday trigger)</span>
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <button class="btn btn-secondary btn-sm">Edit</button>
+            <button class="btn btn-secondary btn-sm">Pause</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="flex items-center gap-10 mb-4">
+              <div class="font-600">Win-Back: 90-Day No Visit</div>
+              <span class="pill pill-warning">Scheduled</span>
+            </div>
+            <div class="text-sm text-muted mb-8">Segment: At-risk members · WhatsApp blast with RM10 voucher</div>
+            <div class="flex gap-16 text-xs text-muted">
+              <span>📨 Target: 142 members</span>
+              <span>📅 Scheduled: 1 Jun 2026 10:00 AM</span>
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <button class="btn btn-secondary btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Integrations — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item active" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Integrations</div><div class="page-subtitle">Connected services and API configuration</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:16px;">
+      <!-- WhatsApp Cloud API -->
+      <div class="card">
+        <div class="flex justify-between items-start mb-12">
+          <div class="flex items-center gap-12">
+            <span style="font-size:32px;">💬</span>
+            <div><div class="font-600">WhatsApp Cloud API</div><div class="text-xs text-muted">Meta Business Platform</div></div>
+          </div>
+          <span class="pill pill-success">Connected</span>
+        </div>
+        <div class="mono text-xs text-muted mb-12">Phone ID: 123456789012345 · Business Account: Precision Salon KL</div>
+        <div class="flex justify-between text-xs mb-8"><span>Messages sent (MTD)</span><span class="mono font-600">3,240</span></div>
+        <div class="flex justify-between text-xs"><span>Template approval status</span><span class="mono" style="color:var(--success);">All approved</span></div>
+        <button class="btn btn-secondary btn-sm mt-12">Configure Templates</button>
+      </div>
+
+      <!-- Fiuu Payment Gateway -->
+      <div class="card">
+        <div class="flex justify-between items-start mb-12">
+          <div class="flex items-center gap-12">
+            <span style="font-size:32px;">💳</span>
+            <div><div class="font-600">Fiuu Payment Gateway</div><div class="text-xs text-muted">Formerly Razer Merchant Services</div></div>
+          </div>
+          <span class="pill pill-success">Connected</span>
+        </div>
+        <div class="mono text-xs text-muted mb-12">Merchant ID: precision_salon_001 · Mode: Live</div>
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-between text-xs"><span>FPX Online Banking</span><span class="mono" style="color:var(--success);">✓ Enabled</span></div>
+          <div class="flex justify-between text-xs"><span>DuitNow QR</span><span class="mono" style="color:var(--success);">✓ Enabled</span></div>
+          <div class="flex justify-between text-xs"><span>Credit/Debit Card</span><span class="mono" style="color:var(--success);">✓ Enabled</span></div>
+          <div class="flex justify-between text-xs"><span>Touch 'n Go eWallet</span><span class="mono" style="color:var(--success);">✓ Enabled</span></div>
+        </div>
+        <button class="btn btn-secondary btn-sm mt-12">Edit Settings</button>
+      </div>
+
+      <!-- LHDN MyInvois -->
+      <div class="card">
+        <div class="flex justify-between items-start mb-12">
+          <div class="flex items-center gap-12">
+            <span style="font-size:32px;">🧾</span>
+            <div><div class="font-600">LHDN MyInvois</div><div class="text-xs text-muted">Malaysia e-Invoice API</div></div>
+          </div>
+          <span class="pill pill-success">Connected</span>
+        </div>
+        <div class="mono text-xs text-muted mb-12">TIN: C-1234567-A · Environment: Production</div>
+        <div class="flex justify-between text-xs mb-8"><span>Last sync</span><span class="mono">28 May 14:32</span></div>
+        <div class="flex justify-between text-xs"><span>Auto-submission</span><span class="mono" style="color:var(--success);">Enabled</span></div>
+        <a href="lhdn-dashboard.html" class="btn btn-secondary btn-sm mt-12" style="display:inline-block;">View Dashboard</a>
+      </div>
+
+      <!-- Google Reviews -->
+      <div class="card">
+        <div class="flex justify-between items-start mb-12">
+          <div class="flex items-center gap-12">
+            <span style="font-size:32px;">⭐</span>
+            <div><div class="font-600">Google Business Profile</div><div class="text-xs text-muted">Reviews &amp; Ratings API</div></div>
+          </div>
+          <span class="pill pill-success">Connected</span>
+        </div>
+        <div class="mono text-xs text-muted mb-12">Account: precisionsalondemo@gmail.com</div>
+        <div class="flex justify-between text-xs mb-8"><span>Locations synced</span><span class="mono">3</span></div>
+        <div class="flex justify-between text-xs"><span>Auto AI reply</span><span class="mono" style="color:var(--success);">Enabled</span></div>
+        <a href="google-reviews.html" class="btn btn-secondary btn-sm mt-12" style="display:inline-block;">Manage Reviews</a>
+      </div>
+
+      <!-- Resend Email -->
+      <div class="card">
+        <div class="flex justify-between items-start mb-12">
+          <div class="flex items-center gap-12">
+            <span style="font-size:32px;">📧</span>
+            <div><div class="font-600">Resend (Transactional Email)</div><div class="text-xs text-muted">Email delivery service</div></div>
+          </div>
+          <span class="pill pill-warning">Degraded</span>
+        </div>
+        <div class="mono text-xs text-muted mb-12">From: noreply@precisionsalon.my</div>
+        <div class="alert" style="background:rgba(138,82,0,0.08);border-color:rgba(138,82,0,0.2);color:var(--warning);font-size:12px;padding:8px 12px;border-radius:6px;">⚠️ Delivery delays reported — investigating</div>
+        <button class="btn btn-secondary btn-sm mt-12">Check Status</button>
+      </div>
+
+      <!-- Webhooks -->
+      <div class="card">
+        <div class="flex justify-between items-start mb-12">
+          <div class="flex items-center gap-12">
+            <span style="font-size:32px;">🔗</span>
+            <div><div class="font-600">Webhooks</div><div class="text-xs text-muted">Custom event notifications</div></div>
+          </div>
+          <button class="btn btn-secondary btn-sm">+ Add Webhook</button>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div style="padding:8px;border:0.5px solid var(--border);border-radius:6px;"><div class="mono text-xs">booking.confirmed → https://crm.example.com/hook</div></div>
+          <div style="padding:8px;border:0.5px solid var(--border);border-radius:6px;"><div class="mono text-xs">payment.completed → https://erp.example.com/hook</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

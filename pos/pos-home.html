@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>POS Home — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.pos-layout{display:grid;grid-template-columns:1fr 360px;height:100vh;overflow:hidden;}
+.pos-left{overflow-y:auto;padding:20px;background:var(--bg);}
+.pos-right{background:#fff;border-left:0.5px solid var(--border);display:flex;flex-direction:column;}
+.pos-header{background:var(--primary);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;}
+.service-tile{padding:14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;background:#fff;transition:all .15s;text-align:left;}
+.service-tile:hover,.service-tile.selected{border-color:var(--primary);background:rgba(26,95,168,0.06);}
+.service-tile .price{font-family:var(--font-mono);color:var(--primary);font-weight:600;font-size:14px;}
+.order-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid var(--border);}
+.category-chip{padding:6px 14px;border:0.5px solid var(--border);border-radius:99px;font-size:13px;cursor:pointer;background:#fff;white-space:nowrap;}
+.category-chip.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+</style>
+</head><body style="margin:0;padding:0;overflow:hidden;">
+<div class="pos-layout">
+  <!-- Left: Service Selection -->
+  <div class="pos-left">
+    <div class="flex justify-between items-center mb-16">
+      <div>
+        <div style="font-size:16px;font-weight:700;">Order Builder</div>
+        <div class="text-sm text-muted">KLCC Branch · POS-KLCC-001</div>
+      </div>
+      <div class="flex gap-8">
+        <a href="new-appointment.html" class="btn btn-secondary btn-sm">📅 Book</a>
+        <a href="booking-calendar.html" class="btn btn-secondary btn-sm">📋 Calendar</a>
+      </div>
+    </div>
+
+    <!-- Member Lookup -->
+    <div class="card mb-16" style="padding:14px;">
+      <div class="flex gap-8">
+        <input type="tel" class="input" placeholder="Search member by phone or scan card..." style="flex:1;height:40px;">
+        <button class="btn btn-secondary btn-sm" style="height:40px;">🔍</button>
+        <button class="btn btn-ghost btn-sm" style="height:40px;">👤 Walk-in</button>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="flex gap-8 mb-16" style="overflow-x:auto;padding-bottom:4px;">
+      <div class="category-chip active">All</div>
+      <div class="category-chip">✂️ Hair</div>
+      <div class="category-chip">💅 Nails</div>
+      <div class="category-chip">✨ Facial</div>
+      <div class="category-chip">💆 Body</div>
+      <div class="category-chip">📦 Packages</div>
+    </div>
+
+    <!-- Service Grid -->
+    <div class="grid grid-3" style="gap:8px;">
+      <button class="service-tile selected">
+        <div class="text-sm font-600">Hair Colour Full</div>
+        <div class="text-xs text-muted mb-6">90 min · Aishah</div>
+        <div class="price">RM 180</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Hair Wash + Blowdry</div>
+        <div class="text-xs text-muted mb-6">45 min</div>
+        <div class="price">RM 45</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Hair Trim</div>
+        <div class="text-xs text-muted mb-6">30 min</div>
+        <div class="price">RM 35</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Manicure</div>
+        <div class="text-xs text-muted mb-6">45 min</div>
+        <div class="price">RM 55</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Pedicure</div>
+        <div class="text-xs text-muted mb-6">60 min</div>
+        <div class="price">RM 65</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Facial Basic</div>
+        <div class="text-xs text-muted mb-6">60 min</div>
+        <div class="price">RM 120</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Rebonding</div>
+        <div class="text-xs text-muted mb-6">180 min</div>
+        <div class="price">RM 280</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Keratin Treatment</div>
+        <div class="text-xs text-muted mb-6">120 min</div>
+        <div class="price">RM 320</div>
+      </button>
+      <button class="service-tile">
+        <div class="text-sm font-600">Head Spa</div>
+        <div class="text-xs text-muted mb-6">60 min</div>
+        <div class="price">RM 95</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Right: Order Summary -->
+  <div class="pos-right">
+    <div class="pos-header">
+      <div>
+        <div style="font-weight:600;">Order Summary</div>
+        <div style="font-size:12px;opacity:0.8;">Walk-in Customer</div>
+      </div>
+      <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:#fff;border:0.5px solid rgba(255,255,255,0.3);">Clear</button>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;padding:16px;">
+      <!-- Member Info -->
+      <div style="background:var(--surface-low);border-radius:8px;padding:10px;margin-bottom:16px;">
+        <div class="text-xs text-muted">Walk-in Customer</div>
+        <div class="text-sm font-600 mt-2">No member found</div>
+      </div>
+
+      <!-- Order Items -->
+      <div class="order-item">
+        <div>
+          <div class="text-sm font-600">Hair Colour Full</div>
+          <div class="text-xs text-muted">Aishah · 90 min</div>
+        </div>
+        <div class="flex items-center gap-8">
+          <span class="mono text-sm">RM 180</span>
+          <button style="color:var(--danger);background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+        </div>
+      </div>
+
+      <!-- Voucher -->
+      <div style="margin:16px 0;">
+        <div class="text-xs font-600 mb-6">Apply Voucher / Package</div>
+        <div class="flex gap-6">
+          <input type="text" class="input" placeholder="Enter code..." style="flex:1;height:36px;font-size:13px;">
+          <button class="btn btn-secondary btn-sm" style="height:36px;">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total + Checkout -->
+    <div style="padding:16px;border-top:0.5px solid var(--border);">
+      <div class="flex justify-between text-sm mb-6"><span>Subtotal</span><span class="mono">RM 180.00</span></div>
+      <div class="flex justify-between text-sm mb-6"><span>SST (8%)</span><span class="mono">RM 14.40</span></div>
+      <div class="flex justify-between text-sm mb-6"><span>Voucher Discount</span><span class="mono" style="color:var(--success);">− RM 0.00</span></div>
+      <hr class="divider">
+      <div class="flex justify-between font-600 mb-16"><span>Total</span><span class="mono" style="font-size:18px;color:var(--primary);">RM 194.40</span></div>
+      <a href="cash-calculator.html" class="btn btn-primary btn-full mb-8">💵 Cash Payment</a>
+      <button class="btn btn-secondary btn-full">📱 QR / eWallet</button>
+    </div>
+  </div>
+</div>
+</body></html>

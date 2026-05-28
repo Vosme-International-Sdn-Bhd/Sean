@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>LHDN MyInvois — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item active" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">LHDN MyInvois Compliance</div><div class="page-subtitle">Malaysian e-invoice submission dashboard</div></div>
+      <div class="flex gap-8">
+        <button class="btn btn-secondary btn-sm">🔄 Sync Now</button>
+        <button class="btn btn-primary btn-sm">Submit Pending</button>
+      </div>
+    </div>
+
+    <div class="alert alert-success mb-24">✅ LHDN API Connected · Last sync: 28 May 2026 14:32 MYT · Sandbox mode: OFF</div>
+
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Submitted (MTD)</div><div class="stat-value" style="color:var(--success);">342</div></div>
+      <div class="stat-card"><div class="stat-label">Pending Submission</div><div class="stat-value" style="color:var(--warning);">8</div></div>
+      <div class="stat-card"><div class="stat-label">Rejected</div><div class="stat-value" style="color:var(--danger);">2</div><div class="stat-sub">Needs action</div></div>
+      <div class="stat-card"><div class="stat-label">Compliance Rate</div><div class="stat-value">98.3%</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;margin-bottom:24px;">
+      <div class="card" style="border-color:rgba(138,82,0,0.3);">
+        <div class="card-title mb-4">⚠️ Pending Submissions</div>
+        <div class="card-subtitle mb-16">Must be submitted within 72 hours of payment</div>
+        <div class="flex flex-col gap-8">
+          <div style="padding:10px;border:0.5px solid var(--border);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div class="mono text-sm font-600">ORD-20260527-0049</div><div class="text-xs text-muted">RM 220.00 · Tan Mei Ling</div></div>
+            <button class="btn btn-primary btn-sm">Submit</button>
+          </div>
+          <div style="padding:10px;border:0.5px solid var(--border);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div class="mono text-sm font-600">ORD-20260527-0048</div><div class="text-xs text-muted">RM 85.00 · Nurul Huda</div></div>
+            <button class="btn btn-primary btn-sm">Submit</button>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm mt-12">Submit All Pending (8)</button>
+      </div>
+      <div class="card" style="border-color:rgba(138,31,31,0.3);">
+        <div class="card-title mb-4">❌ Rejected Invoices</div>
+        <div class="card-subtitle mb-16">Resolve errors and resubmit</div>
+        <div style="padding:12px;border:0.5px solid rgba(138,31,31,0.2);border-radius:8px;background:rgba(138,31,31,0.03);margin-bottom:8px;">
+          <div class="mono text-sm font-600">ORD-20260520-0021</div>
+          <div class="text-xs text-muted mb-4">RM 320.00 · TIN number mismatch</div>
+          <div class="text-xs" style="color:var(--danger);">Error: Buyer TIN does not match LHDN records</div>
+          <div class="flex gap-8 mt-8">
+            <button class="btn btn-secondary btn-sm">Edit &amp; Resubmit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title mb-16">Recent Submissions</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Invoice ID</th><th>LHDN UUID</th><th>Customer</th><th>Amount</th><th>Submitted</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="mono text-xs">ORD-20260528-0055</td><td class="mono text-xs">INV-20260528-ABCD</td><td class="text-sm">Amirah Latiff</td><td class="mono">RM 68</td><td class="mono text-xs">28 May 14:30</td><td><span class="pill pill-success">Valid</span></td></tr>
+            <tr><td class="mono text-xs">ORD-20260528-0054</td><td class="mono text-xs">INV-20260528-EFGH</td><td class="text-sm">Priya Menon</td><td class="mono">RM 95</td><td class="mono text-xs">28 May 14:30</td><td><span class="pill pill-success">Valid</span></td></tr>
+            <tr><td class="mono text-xs">ORD-20260526-0043</td><td class="mono text-xs">INV-20260526-IJKL</td><td class="text-sm">Sarah Lim</td><td class="mono">RM 85</td><td class="mono text-xs">26 May 10:15</td><td><span class="pill pill-success">Valid</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

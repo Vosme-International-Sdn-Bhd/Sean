@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Branding — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item active" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Merchant Branding</div><div class="page-subtitle">Customize your logo, colours, and customer-facing appearance</div></div>
+      <button class="btn btn-primary">Save &amp; Publish</button>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;">
+      <div class="card">
+        <div class="card-title mb-16">Brand Identity</div>
+        <div class="mb-20">
+          <label class="field-label">Logo</label>
+          <div style="border:1px dashed var(--border);border-radius:8px;padding:24px;text-align:center;background:var(--surface-low);">
+            <div style="font-size:40px;margin-bottom:8px;">🖼️</div>
+            <div class="text-sm text-muted">Upload logo (PNG/SVG, recommended 200×200px)</div>
+            <button class="btn btn-secondary btn-sm mt-12">Browse</button>
+          </div>
+        </div>
+        <div class="mb-16"><label class="field-label">Merchant Name (displayed to customers)</label><input type="text" class="input" value="Precision Salon KL"></div>
+        <div class="mb-16"><label class="field-label">Tagline</label><input type="text" class="input" value="Where precision meets beauty"></div>
+        <div>
+          <label class="field-label">Primary Brand Colour</label>
+          <div class="flex gap-8 items-center">
+            <input type="color" value="#1A5FA8" style="width:48px;height:40px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;">
+            <input type="text" class="input" value="#1A5FA8" style="width:120px;font-family:var(--font-mono);">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-16">Customer Portal Preview</div>
+        <div style="border:0.5px solid var(--border);border-radius:12px;overflow:hidden;">
+          <div style="background:#1A5FA8;padding:16px;color:#fff;">
+            <div style="font-weight:700;font-size:18px;">Precision Salon KL</div>
+            <div style="font-size:13px;opacity:0.85;">Where precision meets beauty</div>
+          </div>
+          <div style="padding:16px;background:#faf9f5;">
+            <div class="text-sm font-600 mb-8">Good morning, Sarah 👋</div>
+            <div style="background:#fff;border:0.5px solid #E2E1DC;border-radius:8px;padding:12px;font-size:13px;">
+              <div style="color:#1A5FA8;font-weight:600;">📅 Book Appointment</div>
+              <div style="color:#727782;font-size:12px;margin-top:4px;">Schedule your next visit</div>
+            </div>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="card-title mb-12">WhatsApp Notification Template</div>
+        <div style="background:#e8f5e9;border-radius:8px;padding:12px;font-size:13px;border-left:3px solid #4CAF50;">
+          <div class="font-600 mb-4">Precision Salon KL</div>
+          Hi Sarah! Your appointment for Hair Colour + Trim is confirmed for Thu 29 May at 2:00 PM at our KLCC Branch. See you soon! 💙
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-16">Social Media Handles</div>
+        <div class="mb-12"><label class="field-label">Facebook Page URL</label><input type="url" class="input" placeholder="https://facebook.com/precisionsalonkl"></div>
+        <div class="mb-12"><label class="field-label">Instagram Handle</label><input type="text" class="input" placeholder="@precisionsalonkl"></div>
+        <div><label class="field-label">WhatsApp Business Number</label><input type="tel" class="input" value="+60 18-888 9999"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-16">Receipt &amp; Invoice Footer</div>
+        <div class="mb-12"><label class="field-label">Company Registration No. (SSM)</label><input type="text" class="input" placeholder="202301012345 (KL)"></div>
+        <div class="mb-12"><label class="field-label">SST Registration No.</label><input type="text" class="input" placeholder="W10-1803-32000051"></div>
+        <div><label class="field-label">Footer Message on Receipt</label><textarea class="textarea" rows="2" placeholder="Thank you for visiting Precision Salon. We hope to see you again!"></textarea></div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

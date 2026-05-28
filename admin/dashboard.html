@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Dashboard — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item active" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Dashboard</div><div class="page-subtitle">Thu 28 May 2026 · KLCC Branch</div></div>
+      <div class="flex gap-8">
+        <select class="input select" style="width:160px;height:40px;font-size:13px;"><option>All Outlets</option><option selected>KLCC Branch</option><option>Bangsar</option><option>Mont Kiara</option></select>
+        <button class="btn btn-secondary btn-sm">📥 Export</button>
+      </div>
+    </div>
+
+    <div class="alert alert-success mb-24">✅ 8 appointments today · 2 stylists on leave · LHDN sync up-to-date</div>
+
+    <!-- KPIs -->
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Revenue Today</div><div class="stat-value">RM 3,240</div><div class="stat-sub">↑ 12% vs last week</div></div>
+      <div class="stat-card"><div class="stat-label">Revenue MTD</div><div class="stat-value">RM 24,500</div><div class="stat-sub">On track for RM 28k</div></div>
+      <div class="stat-card"><div class="stat-label">Appointments Today</div><div class="stat-value">8</div><div class="stat-sub">3 remaining</div></div>
+      <div class="stat-card"><div class="stat-label">New Members</div><div class="stat-value">5</div><div class="stat-sub">This month: +42</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;margin-bottom:24px;">
+      <!-- Today's Schedule -->
+      <div class="card">
+        <div class="flex justify-between items-center mb-16">
+          <div class="card-title">Today's Appointments</div>
+          <a href="bookings-schedule.html" class="btn btn-ghost btn-sm">View all →</a>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div style="padding:10px;border:0.5px solid var(--border);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div class="text-sm font-600">Sarah Lim — Hair Colour</div><div class="mono text-xs text-muted">2:00 PM · Aishah</div></div>
+            <span class="pill pill-success">Confirmed</span>
+          </div>
+          <div style="padding:10px;border:0.5px solid var(--border);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div class="text-sm font-600">Priya Menon — Manicure</div><div class="mono text-xs text-muted">3:30 PM · Nurul</div></div>
+            <span class="pill pill-warning">Pending</span>
+          </div>
+          <div style="padding:10px;border:0.5px solid var(--border);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div class="text-sm font-600">Tan Wei — Hair Wash</div><div class="mono text-xs text-muted">4:00 PM · Siti</div></div>
+            <span class="pill pill-success">Confirmed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revenue Breakdown -->
+      <div class="card">
+        <div class="card-title mb-16">Revenue by Service (MTD)</div>
+        <div class="flex flex-col gap-12">
+          <div>
+            <div class="flex justify-between text-sm mb-4"><span>Hair Services</span><span class="mono font-600">RM 14,200 · 58%</span></div>
+            <div class="progress-wrap"><div class="progress-bar" style="width:58%;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-4"><span>Nail Services</span><span class="mono font-600">RM 5,400 · 22%</span></div>
+            <div class="progress-wrap"><div class="progress-bar" style="width:22%;background:var(--warning);"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-4"><span>Facial / Skin</span><span class="mono font-600">RM 3,600 · 15%</span></div>
+            <div class="progress-wrap"><div class="progress-bar" style="width:15%;background:var(--success);"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-4"><span>Packages &amp; Vouchers</span><span class="mono font-600">RM 1,300 · 5%</span></div>
+            <div class="progress-wrap"><div class="progress-bar" style="width:5%;background:#9E9E9E;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="grid grid-4" style="gap:12px;">
+      <a href="members-crm.html" class="card" style="text-decoration:none;text-align:center;padding:20px;">
+        <div style="font-size:28px;margin-bottom:8px;">👥</div><div class="font-600 text-sm">Members CRM</div>
+      </a>
+      <a href="staff-management.html" class="card" style="text-decoration:none;text-align:center;padding:20px;">
+        <div style="font-size:28px;margin-bottom:8px;">🧑‍💼</div><div class="font-600 text-sm">Staff</div>
+      </a>
+      <a href="revenue-reports.html" class="card" style="text-decoration:none;text-align:center;padding:20px;">
+        <div style="font-size:28px;margin-bottom:8px;">💰</div><div class="font-600 text-sm">Revenue Reports</div>
+      </a>
+      <a href="lhdn-dashboard.html" class="card" style="text-decoration:none;text-align:center;padding:20px;">
+        <div style="font-size:28px;margin-bottom:8px;">🧾</div><div class="font-600 text-sm">LHDN MyInvois</div>
+      </a>
+    </div>
+  </main>
+</div>
+</body></html>

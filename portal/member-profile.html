@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>My Profile — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item active" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">My Profile</div><div class="page-subtitle">Manage your personal information and settings</div></div>
+      <button class="btn btn-primary">Save Changes</button>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;">
+      <!-- Profile Info -->
+      <div class="card">
+        <div class="card-title mb-16">Personal Information</div>
+        <div class="flex items-center gap-16 mb-20">
+          <div class="avatar" style="width:64px;height:64px;font-size:24px;background:var(--primary);color:#fff;">SL</div>
+          <div>
+            <div class="font-600">Sarah Lim</div>
+            <div class="text-sm text-muted">Member since Jan 2025</div>
+            <div class="mono text-xs text-muted mt-4">ID: MBR-001-20250115</div>
+          </div>
+        </div>
+        <div class="mb-16">
+          <label class="field-label">Full Name</label>
+          <input type="text" class="input" value="Sarah Lim">
+        </div>
+        <div class="mb-16">
+          <label class="field-label">WhatsApp Number</label>
+          <input type="tel" class="input" value="+60 12-345 6789">
+        </div>
+        <div class="mb-16">
+          <label class="field-label">Email Address</label>
+          <input type="email" class="input" value="sarah.lim@email.com">
+        </div>
+        <div class="mb-16">
+          <label class="field-label">Date of Birth</label>
+          <input type="date" class="input" value="1992-06-15">
+        </div>
+        <div>
+          <label class="field-label">Preferred Outlet</label>
+          <select class="input select">
+            <option selected>KLCC Branch</option>
+            <option>Bangsar Branch</option>
+            <option>Mont Kiara Branch</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <!-- Tier Status -->
+        <div class="card mb-16">
+          <div class="card-title mb-12">Loyalty Tier</div>
+          <div class="flex items-center gap-12 mb-12">
+            <span class="tier-badge tier-bronze" style="font-size:16px;padding:6px 14px;">🥉 Bronze</span>
+            <span class="text-sm text-muted">→ Silver at RM 500</span>
+          </div>
+          <div class="flex justify-between text-xs text-muted mb-4"><span>RM 340 spent</span><span>RM 500 target</span></div>
+          <div class="progress-wrap mb-8"><div class="progress-bar" style="width:68%;"></div></div>
+          <div class="text-sm">Spend <strong>RM 160 more</strong> to unlock Silver benefits</div>
+          <a href="membership-loyalty.html" class="btn btn-secondary btn-sm mt-12" style="display:inline-block;">View All Benefits</a>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="card mb-16">
+          <div class="card-title mb-12">Account Settings</div>
+          <div class="flex flex-col gap-8">
+            <a href="account-settings.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">⚙️ Account &amp; Data Export</a>
+            <a href="notifications.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">🔔 Notification Preferences</a>
+            <a href="affiliate-dashboard.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">🤝 Affiliate Dashboard</a>
+            <a href="visit-history.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">📋 Visit History &amp; Invoices</a>
+          </div>
+        </div>
+
+        <!-- Change Password -->
+        <div class="card">
+          <div class="card-title mb-16">Change Password</div>
+          <div class="mb-12">
+            <label class="field-label">Current Password</label>
+            <input type="password" class="input" placeholder="Enter current password">
+          </div>
+          <div class="mb-12">
+            <label class="field-label">New Password</label>
+            <input type="password" class="input" placeholder="Min. 8 characters">
+          </div>
+          <div class="mb-16">
+            <label class="field-label">Confirm New Password</label>
+            <input type="password" class="input" placeholder="Re-enter new password">
+          </div>
+          <button class="btn btn-secondary btn-sm">Update Password</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

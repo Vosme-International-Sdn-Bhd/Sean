@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Security Settings — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item active" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Security Settings</div><div class="page-subtitle">Access control, 2FA, audit logs, and session management</div></div>
+      <button class="btn btn-primary">Save Changes</button>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;">
+      <div class="card">
+        <div class="card-title mb-16">Authentication</div>
+        <div class="flex flex-col gap-12">
+          <label class="flex justify-between items-center"><div><div class="text-sm font-600">Require 2FA for admin accounts</div><div class="text-xs text-muted">WhatsApp OTP on every login</div></div><input type="checkbox" checked></label>
+          <label class="flex justify-between items-center"><div><div class="text-sm font-600">Session timeout</div><div class="text-xs text-muted">Auto-logout after inactivity</div></div><select class="input select" style="width:120px;height:32px;font-size:12px;"><option>30 min</option><option selected>60 min</option><option>4 hours</option></select></label>
+          <label class="flex justify-between items-center"><div><div class="text-sm font-600">Force password change</div><div class="text-xs text-muted">Every 90 days for staff accounts</div></div><input type="checkbox" checked></label>
+          <label class="flex justify-between items-center"><div><div class="text-sm font-600">Minimum password length</div></div><input type="number" class="input" value="8" style="width:70px;height:32px;font-size:13px;"></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-16">IP &amp; Device Restrictions</div>
+        <div class="flex flex-col gap-12">
+          <label class="flex justify-between items-center"><div><div class="text-sm font-600">IP whitelist (admin access)</div><div class="text-xs text-muted">Restrict admin to specific IPs</div></div><input type="checkbox"></label>
+          <div><label class="field-label">Allowed IPs (one per line)</label><textarea class="textarea" rows="3" placeholder="203.115.xxx.xxx&#10;210.48.xxx.xxx"></textarea></div>
+          <label class="flex justify-between items-center"><div><div class="text-sm font-600">Device registration required</div><div class="text-xs text-muted">Only trusted POS devices can login</div></div><input type="checkbox" checked></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-16">Role Permissions</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Role</th><th>View Reports</th><th>Edit Members</th><th>Manage Staff</th><th>Settings</th></tr></thead>
+            <tbody>
+              <tr><td class="font-600 text-sm">Owner</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+              <tr><td class="font-600 text-sm">Manager</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td></tr>
+              <tr><td class="font-600 text-sm">Receptionist</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td></tr>
+              <tr><td class="font-600 text-sm">Stylist</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title mb-16">Recent Security Events</div>
+        <div class="flex flex-col" style="gap:1px;">
+          <div style="padding:10px 0;border-bottom:0.5px solid var(--border);"><div class="flex justify-between"><span class="text-sm">Admin login — manager@precision.my</span><span class="mono text-xs text-muted">28 May 14:20</span></div><div class="text-xs text-muted">IP: 203.115.12.34 · Chrome/Windows</div></div>
+          <div style="padding:10px 0;border-bottom:0.5px solid var(--border);"><div class="flex justify-between"><span class="text-sm text-success">New device registered — POS-003</span><span class="mono text-xs text-muted">28 May 10:05</span></div><div class="text-xs text-muted">Samsung Galaxy Tab A8 · KLCC</div></div>
+          <div style="padding:10px 0;"><div class="flex justify-between"><span class="text-sm" style="color:var(--warning);">Failed login attempt</span><span class="mono text-xs text-muted">27 May 22:41</span></div><div class="text-xs text-muted">IP: 182.xx.xx.xx · Blocked</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

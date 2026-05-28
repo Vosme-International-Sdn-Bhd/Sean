@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Members CRM — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item active" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Members CRM</div><div class="page-subtitle">Customer database and loyalty management</div></div>
+      <div class="flex gap-8">
+        <input type="search" class="input" placeholder="Search name, phone, email..." style="width:260px;height:40px;">
+        <button class="btn btn-primary">+ Add Member</button>
+      </div>
+    </div>
+
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Total Members</div><div class="stat-value">1,842</div><div class="stat-sub">+42 this month</div></div>
+      <div class="stat-card"><div class="stat-label">Active (30 days)</div><div class="stat-value">623</div></div>
+      <div class="stat-card"><div class="stat-label">Silver+</div><div class="stat-value">284</div><div class="stat-sub">15% of base</div></div>
+      <div class="stat-card"><div class="stat-label">At-Risk (90d no visit)</div><div class="stat-value" style="color:var(--warning);">142</div></div>
+    </div>
+
+    <div class="flex gap-8 mb-16">
+      <select class="input select" style="width:140px;height:36px;font-size:13px;"><option>All Tiers</option><option>Bronze</option><option>Silver</option><option>Gold</option><option>Diamond</option></select>
+      <select class="input select" style="width:140px;height:36px;font-size:13px;"><option>All Outlets</option><option>KLCC</option><option>Bangsar</option><option>Mont Kiara</option></select>
+      <select class="input select" style="width:160px;height:36px;font-size:13px;"><option>Sort: Last Visit</option><option>Sort: Total Spent</option><option>Sort: Join Date</option></select>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Member</th><th>Contact</th><th>Tier</th><th>Total Spent</th><th>Visits</th><th>Last Visit</th><th>Outlet</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="flex items-center gap-10"><div class="avatar" style="background:#ffd184;color:#5e4100;">SL</div><div><div class="font-600 text-sm">Sarah Lim</div><div class="mono text-xs text-muted">MBR-001-0001</div></div></div></td>
+              <td><div class="text-sm">+60 12-345 6789</div><div class="mono text-xs text-muted">sarah.lim@email.com</div></td>
+              <td><span class="tier-badge tier-bronze">Bronze</span></td>
+              <td class="mono font-600">RM 1,240</td>
+              <td class="mono">18</td>
+              <td class="mono text-xs">25 May 2026</td>
+              <td class="text-sm">KLCC</td>
+              <td><button class="btn btn-secondary btn-sm">View</button></td>
+            </tr>
+            <tr>
+              <td><div class="flex items-center gap-10"><div class="avatar" style="background:#e8e8e8;color:#666;">AL</div><div><div class="font-600 text-sm">Amirah Latiff</div><div class="mono text-xs text-muted">MBR-001-0002</div></div></div></td>
+              <td><div class="text-sm">+60 12-111 2222</div><div class="mono text-xs text-muted">amirah@email.com</div></td>
+              <td><span class="tier-badge tier-silver">Silver</span></td>
+              <td class="mono font-600">RM 4,800</td>
+              <td class="mono">34</td>
+              <td class="mono text-xs">28 May 2026</td>
+              <td class="text-sm">KLCC</td>
+              <td><button class="btn btn-secondary btn-sm">View</button></td>
+            </tr>
+            <tr>
+              <td><div class="flex items-center gap-10"><div class="avatar" style="background:#ffd700;color:#5e4100;">PM</div><div><div class="font-600 text-sm">Priya Menon</div><div class="mono text-xs text-muted">MBR-001-0003</div></div></div></td>
+              <td><div class="text-sm">+60 16-333 4444</div><div class="mono text-xs text-muted">priya@email.com</div></td>
+              <td><span class="tier-badge tier-gold">Gold</span></td>
+              <td class="mono font-600">RM 12,400</td>
+              <td class="mono">62</td>
+              <td class="mono text-xs">22 May 2026</td>
+              <td class="text-sm">Bangsar</td>
+              <td><button class="btn btn-secondary btn-sm">View</button></td>
+            </tr>
+            <tr>
+              <td><div class="flex items-center gap-10"><div class="avatar">TC</div><div><div class="font-600 text-sm">Tan Chin Wei</div><div class="mono text-xs text-muted">MBR-001-0004</div></div></div></td>
+              <td><div class="text-sm">+60 11-777 8888</div><div class="mono text-xs text-muted">tanwei@email.com</div></td>
+              <td><span class="tier-badge tier-bronze">Bronze</span></td>
+              <td class="mono font-600">RM 340</td>
+              <td class="mono">5</td>
+              <td class="mono text-xs" style="color:var(--warning);">28 Feb 2026</td>
+              <td class="text-sm">Bangsar</td>
+              <td><button class="btn btn-secondary btn-sm">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

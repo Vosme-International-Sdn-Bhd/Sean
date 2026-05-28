@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Vouchers &amp; Packages — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.voucher-card{border:0.5px solid var(--border);border-radius:12px;padding:20px;background:#fff;position:relative;overflow:hidden;}
+.voucher-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--primary);}
+.voucher-card.expired::before{background:var(--text-muted);}
+.voucher-card.expiring::before{background:var(--warning);}
+.pkg-card{border:0.5px solid var(--border);border-radius:12px;padding:20px;background:#fff;}
+.pkg-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:8px 0;}
+.pkg-bar-fill{height:100%;background:var(--primary);border-radius:4px;}
+</style>
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item active" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Vouchers &amp; Packages</div><div class="page-subtitle">Your active rewards and prepaid service bundles</div></div>
+    </div>
+
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Active Vouchers</div><div class="stat-value">3</div></div>
+      <div class="stat-card"><div class="stat-label">Active Packages</div><div class="stat-value">1</div></div>
+      <div class="stat-card"><div class="stat-label">Expiring Soon</div><div class="stat-value" style="color:var(--warning);">1</div><div class="stat-sub">Within 30 days</div></div>
+      <div class="stat-card"><div class="stat-label">Total Value</div><div class="stat-value">RM 145</div></div>
+    </div>
+
+    <div class="tabs mb-20">
+      <a class="tab active">Vouchers (3)</a>
+      <a class="tab">Packages (1)</a>
+      <a class="tab">Redeemed</a>
+    </div>
+
+    <div class="grid grid-2" style="gap:16px;margin-bottom:24px;">
+      <!-- Voucher 1 -->
+      <div class="voucher-card">
+        <div class="flex justify-between items-start mb-8">
+          <div class="font-600">10% Off Hair Services</div>
+          <span class="pill pill-success">Active</span>
+        </div>
+        <div class="mono text-sm" style="color:var(--primary);">Save up to RM 30</div>
+        <div class="text-xs text-muted mt-4">Valid for any hair service · Min. spend RM 80</div>
+        <hr class="divider">
+        <div class="flex justify-between text-xs text-muted">
+          <span>PREC-VC-2025-0042</span>
+          <span>Expires 30 Jun 2026</span>
+        </div>
+        <a href="booking-service.html" class="btn btn-primary btn-sm mt-12" style="display:inline-block;">Use Now</a>
+      </div>
+
+      <!-- Voucher 2 — expiring -->
+      <div class="voucher-card expiring">
+        <div class="flex justify-between items-start mb-8">
+          <div class="font-600">RM 20 Birthday Voucher</div>
+          <span class="pill pill-warning">Expiring Soon</span>
+        </div>
+        <div class="mono text-sm" style="color:var(--warning);">RM 20 off any service</div>
+        <div class="text-xs text-muted mt-4">Any service, no minimum spend</div>
+        <hr class="divider">
+        <div class="flex justify-between text-xs text-muted">
+          <span>PREC-BD-2026-0018</span>
+          <span style="color:var(--warning);">Expires 15 Jun 2026</span>
+        </div>
+        <a href="booking-service.html" class="btn btn-sm mt-12" style="display:inline-block;color:var(--warning);border:0.5px solid var(--warning);background:transparent;">Use Before Expiry</a>
+      </div>
+
+      <!-- Voucher 3 -->
+      <div class="voucher-card">
+        <div class="flex justify-between items-start mb-8">
+          <div class="font-600">Free Nail Polish Upgrade</div>
+          <span class="pill pill-success">Active</span>
+        </div>
+        <div class="mono text-sm" style="color:var(--primary);">Complimentary upgrade</div>
+        <div class="text-xs text-muted mt-4">With any manicure or pedicure booking</div>
+        <hr class="divider">
+        <div class="flex justify-between text-xs text-muted">
+          <span>PREC-VC-2026-0061</span>
+          <span>Expires 31 Aug 2026</span>
+        </div>
+        <a href="booking-service.html" class="btn btn-primary btn-sm mt-12" style="display:inline-block;">Use Now</a>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

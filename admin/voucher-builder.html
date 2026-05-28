@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Voucher Builder — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item active" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Voucher &amp; Package Builder</div><div class="page-subtitle">Create and manage customer vouchers and service packages</div></div>
+      <button class="btn btn-primary">+ Create Voucher</button>
+    </div>
+
+    <div class="grid" style="grid-template-columns:1fr 340px;gap:24px;">
+      <!-- Builder Form -->
+      <div class="card">
+        <div class="card-title mb-4">Create New Voucher</div>
+        <div class="card-subtitle mb-20">Configure discount, validity, and applicability rules</div>
+
+        <div class="grid grid-2 mb-16" style="gap:12px;">
+          <div><label class="field-label">Voucher Name</label><input type="text" class="input" placeholder="e.g. Weekend 10% Off"></div>
+          <div><label class="field-label">Voucher Code (optional)</label><input type="text" class="input" placeholder="Auto-generated if blank"></div>
+        </div>
+
+        <div class="grid grid-2 mb-16" style="gap:12px;">
+          <div>
+            <label class="field-label">Discount Type</label>
+            <select class="input select"><option>Percentage (%)</option><option>Fixed Amount (RM)</option><option>Free Service</option></select>
+          </div>
+          <div><label class="field-label">Discount Value</label><input type="number" class="input" placeholder="10" min="0"></div>
+        </div>
+
+        <div class="grid grid-2 mb-16" style="gap:12px;">
+          <div><label class="field-label">Valid From</label><input type="date" class="input" value="2026-06-01"></div>
+          <div><label class="field-label">Valid Until</label><input type="date" class="input" value="2026-08-31"></div>
+        </div>
+
+        <div class="mb-16">
+          <label class="field-label">Minimum Spend (RM, 0 = none)</label>
+          <input type="number" class="input" value="80" min="0">
+        </div>
+
+        <div class="mb-16">
+          <label class="field-label">Applicable Services</label>
+          <select class="input select"><option>All Services</option><option>Hair Services Only</option><option>Nail Services Only</option><option>Facial/Skin Only</option></select>
+        </div>
+
+        <div class="mb-16">
+          <label class="field-label">Eligible Tiers</label>
+          <div class="flex gap-8 flex-wrap">
+            <label class="flex items-center gap-6 text-sm"><input type="checkbox" checked> Bronze</label>
+            <label class="flex items-center gap-6 text-sm"><input type="checkbox" checked> Silver</label>
+            <label class="flex items-center gap-6 text-sm"><input type="checkbox" checked> Gold</label>
+            <label class="flex items-center gap-6 text-sm"><input type="checkbox" checked> Diamond</label>
+          </div>
+        </div>
+
+        <div class="mb-20">
+          <label class="field-label">Issue Limit (total vouchers, 0 = unlimited)</label>
+          <input type="number" class="input" value="500" min="0">
+        </div>
+
+        <div class="flex gap-8">
+          <button class="btn btn-primary">Create &amp; Publish</button>
+          <button class="btn btn-secondary">Save as Draft</button>
+          <button class="btn btn-ghost">Preview</button>
+        </div>
+      </div>
+
+      <!-- Active Vouchers -->
+      <div>
+        <div class="card">
+          <div class="card-title mb-16">Active Vouchers</div>
+          <div class="flex flex-col gap-10">
+            <div style="border:0.5px solid var(--border);border-radius:8px;padding:12px;">
+              <div class="font-600 text-sm mb-4">Weekend Hair 10% Off</div>
+              <div class="mono text-xs text-muted mb-4">PREC-VC-2025-0042</div>
+              <div class="flex justify-between text-xs"><span>Issued: 182 / 500</span><span>Redeemed: 94</span></div>
+              <div class="progress-wrap mt-6"><div class="progress-bar" style="width:36%;"></div></div>
+              <div class="flex gap-6 mt-8">
+                <button class="btn btn-secondary btn-sm">Edit</button>
+                <button class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Disable</button>
+              </div>
+            </div>
+            <div style="border:0.5px solid var(--border);border-radius:8px;padding:12px;">
+              <div class="font-600 text-sm mb-4">Birthday RM20 Voucher</div>
+              <div class="mono text-xs text-muted mb-4">Auto-issued on birthday</div>
+              <div class="flex justify-between text-xs"><span>Issued: 42</span><span>Redeemed: 28</span></div>
+              <div class="progress-wrap mt-6"><div class="progress-bar" style="width:67%;background:var(--success);"></div></div>
+              <div class="flex gap-6 mt-8">
+                <button class="btn btn-secondary btn-sm">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Outlet Settings — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item active" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Outlet Settings</div><div class="page-subtitle">Configure operating hours, services, and booking rules</div></div>
+      <div class="flex gap-8">
+        <select class="input select" style="width:160px;height:40px;font-size:13px;"><option>KLCC Branch</option><option>Bangsar Branch</option><option>Mont Kiara</option></select>
+        <button class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;">
+      <!-- Basic Info -->
+      <div class="card">
+        <div class="card-title mb-16">Basic Information</div>
+        <div class="mb-16"><label class="field-label">Outlet Name</label><input type="text" class="input" value="Precision Salon KLCC"></div>
+        <div class="mb-16"><label class="field-label">Address</label><textarea class="textarea" rows="2">Level 2, Suria KLCC, Jalan Ampang, Kuala Lumpur 50088</textarea></div>
+        <div class="mb-16"><label class="field-label">Phone Number</label><input type="tel" class="input" value="+603 2166 8899"></div>
+        <div class="mb-16"><label class="field-label">Email</label><input type="email" class="input" value="klcc@precisionsalon.my"></div>
+        <div><label class="field-label">Google Maps Link</label><input type="url" class="input" placeholder="https://maps.google.com/..."></div>
+      </div>
+
+      <!-- Operating Hours -->
+      <div class="card">
+        <div class="card-title mb-16">Operating Hours</div>
+        <div class="flex flex-col gap-10">
+          <div class="flex justify-between items-center">
+            <span class="text-sm font-600" style="width:80px;">Mon – Fri</span>
+            <div class="flex gap-8 items-center">
+              <input type="time" class="input" style="width:120px;height:36px;font-size:13px;" value="10:00">
+              <span class="text-sm text-muted">–</span>
+              <input type="time" class="input" style="width:120px;height:36px;font-size:13px;" value="20:00">
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm font-600" style="width:80px;">Saturday</span>
+            <div class="flex gap-8 items-center">
+              <input type="time" class="input" style="width:120px;height:36px;font-size:13px;" value="10:00">
+              <span class="text-sm text-muted">–</span>
+              <input type="time" class="input" style="width:120px;height:36px;font-size:13px;" value="21:00">
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm font-600" style="width:80px;">Sunday</span>
+            <div class="flex gap-8 items-center">
+              <input type="time" class="input" style="width:120px;height:36px;font-size:13px;" value="11:00">
+              <span class="text-sm text-muted">–</span>
+              <input type="time" class="input" style="width:120px;height:36px;font-size:13px;" value="19:00">
+            </div>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="card-title mb-12">Booking Rules</div>
+        <div class="mb-12"><label class="field-label">Advance booking (max days)</label><input type="number" class="input" value="60"></div>
+        <div class="mb-12"><label class="field-label">Buffer time between appointments (min)</label><input type="number" class="input" value="15"></div>
+        <div><label class="field-label">Cancellation notice required (hours)</label><input type="number" class="input" value="24"></div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="card">
+        <div class="card-title mb-16">Customer Notifications (WhatsApp)</div>
+        <div class="flex flex-col gap-12">
+          <label class="flex justify-between items-center"><span class="text-sm">Booking confirmation</span><input type="checkbox" checked></label>
+          <label class="flex justify-between items-center"><span class="text-sm">24h reminder</span><input type="checkbox" checked></label>
+          <label class="flex justify-between items-center"><span class="text-sm">1h before reminder</span><input type="checkbox" checked></label>
+          <label class="flex justify-between items-center"><span class="text-sm">Post-visit receipt &amp; review request</span><input type="checkbox" checked></label>
+          <label class="flex justify-between items-center"><span class="text-sm">Cancellation notice</span><input type="checkbox" checked></label>
+          <label class="flex justify-between items-center"><span class="text-sm">Marketing &amp; promotions</span><input type="checkbox"></label>
+        </div>
+      </div>
+
+      <!-- Service Config -->
+      <div class="card">
+        <div class="card-title mb-4">Service Tax &amp; SST</div>
+        <div class="card-subtitle mb-16">Configure tax rates applied to invoices</div>
+        <div class="mb-12"><label class="field-label">Service Tax (SST)</label><input type="number" class="input" value="8" min="0" max="100"></div>
+        <div class="mb-12"><label class="field-label">Tourism Tax (if applicable)</label><input type="number" class="input" value="0" min="0"></div>
+        <label class="flex items-center gap-10"><input type="checkbox" checked><span class="text-sm">Apply SST to all services</span></label>
+        <hr class="divider">
+        <label class="flex items-center gap-10"><input type="checkbox" checked><span class="text-sm">Enable LHDN MyInvois auto-submission</span></label>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

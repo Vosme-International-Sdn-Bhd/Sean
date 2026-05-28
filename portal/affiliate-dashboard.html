@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Affiliate Hub — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item active" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Affiliate Hub</div><div class="page-subtitle">Earn commissions by referring friends &amp; family</div></div>
+      <span class="pill" style="background:rgba(74,58,176,0.1);color:#4A3AB0;border:0.5px solid #4A3AB0;">L1 · Bronze Affiliate</span>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Total Earned</div><div class="stat-value">RM 48.00</div><div class="stat-sub">All time</div></div>
+      <div class="stat-card"><div class="stat-label">Pending Payout</div><div class="stat-value" style="color:var(--warning);">RM 12.00</div><div class="stat-sub">Processing</div></div>
+      <div class="stat-card"><div class="stat-label">Direct Referrals</div><div class="stat-value">6</div><div class="stat-sub">L1 downline</div></div>
+      <div class="stat-card"><div class="stat-label">L2 Downline</div><div class="stat-value">14</div><div class="stat-sub">Indirect</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;margin-bottom:24px;">
+      <!-- Referral Link -->
+      <div class="card">
+        <div class="card-title mb-4">Your Referral Link</div>
+        <div class="card-subtitle mb-16">Share to earn 8% commission on their first purchase</div>
+        <div style="background:var(--surface-low);border:0.5px solid var(--border);border-radius:8px;padding:12px;font-family:var(--font-mono);font-size:13px;word-break:break-all;margin-bottom:12px;">
+          https://salon.precision.my/ref/SARAH001
+        </div>
+        <div class="flex gap-8">
+          <button class="btn btn-primary btn-sm">📋 Copy Link</button>
+          <button class="btn btn-secondary btn-sm">💬 Share via WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- Commission Tiers -->
+      <div class="card">
+        <div class="card-title mb-16">Commission Structure</div>
+        <div class="flex flex-col gap-12">
+          <div class="flex justify-between items-center">
+            <div><div class="text-sm font-600">L1 (Direct referrals)</div><div class="text-xs text-muted">8% on each purchase</div></div>
+            <span class="mono font-600" style="color:var(--primary);">8%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <div><div class="text-sm font-600">L2 (Their referrals)</div><div class="text-xs text-muted">3% on each purchase</div></div>
+            <span class="mono font-600" style="color:var(--primary);">3%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <div><div class="text-sm font-600">L3 (3rd generation)</div><div class="text-xs text-muted">1% on each purchase</div></div>
+            <span class="mono font-600" style="color:var(--primary);">1%</span>
+          </div>
+          <hr class="divider">
+          <div class="text-xs text-muted">Upgrade to Silver tier to unlock boosted rates (L1: 10%)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Downline Table -->
+    <div class="card">
+      <div class="card-title mb-16">My Direct Referrals (L1)</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Joined</th><th>Last Purchase</th><th>Total Spent</th><th>Commission Earned</th></tr></thead>
+          <tbody>
+            <tr><td class="font-600 text-sm">Amirah Latiff</td><td class="mono text-xs">12 Jan 2026</td><td class="mono text-xs">22 May 2026</td><td class="mono">RM 340</td><td class="mono" style="color:var(--success);">RM 27.20</td></tr>
+            <tr><td class="font-600 text-sm">Priya Menon</td><td class="mono text-xs">3 Feb 2026</td><td class="mono text-xs">18 May 2026</td><td class="mono">RM 180</td><td class="mono" style="color:var(--success);">RM 14.40</td></tr>
+            <tr><td class="font-600 text-sm">Nurul Huda</td><td class="mono text-xs">20 Mar 2026</td><td class="mono text-xs">10 Apr 2026</td><td class="mono">RM 80</td><td class="mono" style="color:var(--success);">RM 6.40</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

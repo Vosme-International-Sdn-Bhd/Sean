@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Booking Calendar — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.pos-header-bar{background:var(--primary);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;}
+.time-col{width:60px;text-align:right;padding-right:12px;font-family:var(--font-mono);font-size:12px;color:var(--text-muted);padding-top:10px;vertical-align:top;}
+.appt-block{border-radius:6px;padding:8px;font-size:12px;margin-bottom:2px;cursor:pointer;}
+.appt-confirmed{background:rgba(26,95,168,0.1);border-left:3px solid var(--primary);color:var(--primary);}
+.appt-pending{background:rgba(138,82,0,0.1);border-left:3px solid var(--warning);color:var(--warning);}
+.appt-completed{background:rgba(46,125,82,0.1);border-left:3px solid var(--success);color:var(--success);}
+.stylist-col{flex:1;min-width:140px;border-left:0.5px solid var(--border);padding:8px;}
+.stylist-header{font-size:12px;font-weight:600;text-align:center;padding:8px;background:var(--surface-low);border-radius:6px;margin-bottom:8px;}
+</style>
+</head><body style="margin:0;padding:0;">
+<div class="pos-header-bar">
+  <div>
+    <div style="font-weight:600;font-size:16px;">Booking Calendar</div>
+    <div style="font-size:12px;opacity:0.85;">Thu 28 May 2026 · KLCC Branch</div>
+  </div>
+  <div class="flex gap-8">
+    <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:#fff;border:0.5px solid rgba(255,255,255,0.3);">‹ Yesterday</button>
+    <button class="btn btn-sm" style="background:rgba(255,255,255,0.3);color:#fff;border:0.5px solid rgba(255,255,255,0.5);">Today</button>
+    <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:#fff;border:0.5px solid rgba(255,255,255,0.3);">Tomorrow ›</button>
+    <a href="new-appointment.html" class="btn btn-sm" style="background:#fff;color:var(--primary);font-weight:600;">+ New</a>
+    <a href="pos-home.html" class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:#fff;border:0.5px solid rgba(255,255,255,0.3);">🛒 POS</a>
+  </div>
+</div>
+
+<div style="padding:16px;background:var(--bg);border-bottom:0.5px solid var(--border);display:flex;gap:12px;align-items:center;">
+  <select class="input select" style="width:140px;height:36px;font-size:13px;"><option>KLCC Branch</option><option>Bangsar</option><option>Mont Kiara</option></select>
+  <div class="flex gap-8">
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;"><span style="width:12px;height:12px;background:rgba(26,95,168,0.3);border-radius:2px;display:inline-block;"></span>Confirmed</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;"><span style="width:12px;height:12px;background:rgba(138,82,0,0.3);border-radius:2px;display:inline-block;"></span>Pending</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;"><span style="width:12px;height:12px;background:rgba(46,125,82,0.3);border-radius:2px;display:inline-block;"></span>Completed</span>
+  </div>
+  <div style="margin-left:auto;" class="mono text-xs text-muted">5 appointments today · 2 pending</div>
+</div>
+
+<!-- Calendar Grid -->
+<div style="overflow-x:auto;overflow-y:auto;height:calc(100vh - 130px);">
+  <div style="display:flex;min-width:700px;">
+    <!-- Time column -->
+    <div style="width:64px;flex-shrink:0;">
+      <div style="height:56px;"></div>
+      <div class="time-col">9 AM</div>
+      <div class="time-col" style="margin-top:40px;">10 AM</div>
+      <div class="time-col" style="margin-top:40px;">11 AM</div>
+      <div class="time-col" style="margin-top:40px;">12 PM</div>
+      <div class="time-col" style="margin-top:40px;">1 PM</div>
+      <div class="time-col" style="margin-top:40px;">2 PM</div>
+      <div class="time-col" style="margin-top:40px;">3 PM</div>
+      <div class="time-col" style="margin-top:40px;">4 PM</div>
+      <div class="time-col" style="margin-top:40px;">5 PM</div>
+    </div>
+
+    <!-- Stylist columns -->
+    <div class="stylist-col">
+      <div class="stylist-header">Aishah · Senior Stylist</div>
+      <div class="appt-block appt-completed">
+        <div style="font-weight:600;">Amirah Latiff</div>
+        <div>Hair Wash + Blowdry</div>
+        <div>10:00 – 11:00 AM</div>
+      </div>
+      <div class="appt-block appt-confirmed" style="margin-top:56px;">
+        <div style="font-weight:600;">Sarah Lim</div>
+        <div>Hair Colour + Trim</div>
+        <div>2:00 – 4:00 PM</div>
+      </div>
+    </div>
+
+    <div class="stylist-col">
+      <div class="stylist-header">Nurul Aisyah · Nails</div>
+      <div class="appt-block appt-completed" style="margin-top:28px;">
+        <div style="font-weight:600;">Priya Menon</div>
+        <div>Manicure + Art</div>
+        <div>11:30 AM – 1:00 PM</div>
+      </div>
+      <div class="appt-block appt-pending" style="margin-top:48px;">
+        <div style="font-weight:600;">Tan Mei Ling</div>
+        <div>Pedicure</div>
+        <div>3:30 – 4:30 PM</div>
+      </div>
+    </div>
+
+    <div class="stylist-col">
+      <div class="stylist-header">Siti Rahimah · Junior</div>
+      <div style="height:80px;"></div>
+      <div class="appt-block appt-confirmed">
+        <div style="font-weight:600;">Nurul Huda</div>
+        <div>Hair Trim</div>
+        <div>12:00 – 12:30 PM</div>
+      </div>
+      <div class="appt-block appt-confirmed" style="margin-top:84px;">
+        <div style="font-weight:600;">Zulaikha Ahmad</div>
+        <div>Hair Wash</div>
+        <div>5:00 – 5:45 PM</div>
+      </div>
+    </div>
+
+    <div class="stylist-col">
+      <div class="stylist-header">Laila · Beautician</div>
+      <div style="text-align:center;padding:20px;color:var(--text-muted);font-size:12px;">On Leave</div>
+    </div>
+  </div>
+</div>
+</body></html>

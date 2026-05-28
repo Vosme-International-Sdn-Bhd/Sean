@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Bookings Schedule — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item active" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members</a>
+      <a class="nav-item" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Bookings &amp; Schedule</div><div class="page-subtitle">28 May 2026 — All outlets</div></div>
+      <div class="flex gap-8">
+        <button class="btn btn-secondary btn-sm">← Previous</button>
+        <button class="btn btn-secondary btn-sm">Today</button>
+        <button class="btn btn-secondary btn-sm">Next →</button>
+        <button class="btn btn-primary btn-sm">+ New Booking</button>
+      </div>
+    </div>
+
+    <div class="flex gap-12 mb-20">
+      <div class="tabs" style="flex:1;">
+        <a class="tab active">Day View</a>
+        <a class="tab">Week View</a>
+        <a class="tab">List View</a>
+      </div>
+      <select class="input select" style="width:160px;height:40px;font-size:13px;"><option>All Outlets</option><option>KLCC</option><option>Bangsar</option><option>Mont Kiara</option></select>
+      <select class="input select" style="width:160px;height:40px;font-size:13px;"><option>All Stylists</option><option>Aishah</option><option>Nurul</option><option>Siti</option></select>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Time</th><th>Customer</th><th>Service</th><th>Stylist</th><th>Outlet</th><th>Duration</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono text-sm font-600">10:00 AM</td>
+              <td><div class="font-600 text-sm">Amirah Latiff</div><div class="mono text-xs text-muted">+60 12-111 2222</div></td>
+              <td class="text-sm">Hair Wash + Blowdry</td>
+              <td class="text-sm">Aishah</td>
+              <td class="text-sm">KLCC</td>
+              <td class="mono text-sm">60 min</td>
+              <td><span class="pill pill-success">Completed</span></td>
+              <td><button class="btn btn-secondary btn-sm">View</button></td>
+            </tr>
+            <tr>
+              <td class="mono text-sm font-600">11:30 AM</td>
+              <td><div class="font-600 text-sm">Priya Menon</div><div class="mono text-xs text-muted">+60 16-333 4444</div></td>
+              <td class="text-sm">Manicure + Nail Art</td>
+              <td class="text-sm">Nurul</td>
+              <td class="text-sm">KLCC</td>
+              <td class="mono text-sm">90 min</td>
+              <td><span class="pill pill-success">Completed</span></td>
+              <td><button class="btn btn-secondary btn-sm">View</button></td>
+            </tr>
+            <tr style="background:rgba(26,95,168,0.04);">
+              <td class="mono text-sm font-600">2:00 PM</td>
+              <td><div class="font-600 text-sm">Sarah Lim</div><div class="mono text-xs text-muted">+60 12-345 6789</div></td>
+              <td class="text-sm">Hair Colour + Trim</td>
+              <td class="text-sm">Aishah</td>
+              <td class="text-sm">KLCC</td>
+              <td class="mono text-sm">120 min</td>
+              <td><span class="pill pill-success">Confirmed</span></td>
+              <td><div class="flex gap-4"><button class="btn btn-secondary btn-sm">Check In</button><button class="btn btn-secondary btn-sm">Edit</button></div></td>
+            </tr>
+            <tr>
+              <td class="mono text-sm font-600">3:30 PM</td>
+              <td><div class="font-600 text-sm">Tan Mei Ling</div><div class="mono text-xs text-muted">+60 17-555 6666</div></td>
+              <td class="text-sm">Facial Treatment</td>
+              <td class="text-sm">Laila</td>
+              <td class="text-sm">KLCC</td>
+              <td class="mono text-sm">75 min</td>
+              <td><span class="pill pill-warning">Pending</span></td>
+              <td><div class="flex gap-4"><button class="btn btn-secondary btn-sm">Confirm</button><button class="btn btn-secondary btn-sm">Edit</button></div></td>
+            </tr>
+            <tr>
+              <td class="mono text-sm font-600">5:00 PM</td>
+              <td><div class="font-600 text-sm">Nurul Huda</div><div class="mono text-xs text-muted">+60 11-777 8888</div></td>
+              <td class="text-sm">Pedicure + Massage</td>
+              <td class="text-sm">Siti</td>
+              <td class="text-sm">KLCC</td>
+              <td class="mono text-sm">60 min</td>
+              <td><span class="pill pill-success">Confirmed</span></td>
+              <td><div class="flex gap-4"><button class="btn btn-secondary btn-sm">Check In</button><button class="btn btn-secondary btn-sm">Edit</button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

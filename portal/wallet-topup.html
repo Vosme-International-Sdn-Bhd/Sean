@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Top Up Wallet — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.amount-chip{padding:12px 20px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;text-align:center;font-weight:600;font-family:var(--font-mono);background:#fff;transition:all .15s;}
+.amount-chip.selected,.amount-chip:hover{border-color:var(--primary);background:rgba(26,95,168,0.06);color:var(--primary);}
+.payment-opt{display:flex;align-items:center;gap:12px;padding:14px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;background:#fff;transition:all .15s;}
+.payment-opt.selected,.payment-opt:hover{border-color:var(--primary);background:rgba(26,95,168,0.05);}
+</style>
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item active" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content" style="max-width:640px;">
+    <div class="page-header">
+      <div>
+        <a href="wallet-dashboard.html" class="text-sm text-primary" style="text-decoration:none;">← Wallet</a>
+        <div class="page-title mt-4">Top Up Wallet</div>
+        <div class="page-subtitle">Current balance: <strong class="mono">RM 150.00</strong></div>
+      </div>
+    </div>
+
+    <div class="card mb-20">
+      <div class="card-title mb-16">Select Amount</div>
+      <div class="grid grid-4 mb-12" style="gap:10px;">
+        <div class="amount-chip" onclick="selectAmt(this,'50')">RM 50</div>
+        <div class="amount-chip selected" onclick="selectAmt(this,'100')">RM 100</div>
+        <div class="amount-chip" onclick="selectAmt(this,'200')">RM 200</div>
+        <div class="amount-chip" onclick="selectAmt(this,'500')">RM 500</div>
+      </div>
+      <div>
+        <label class="field-label">Or enter custom amount (RM)</label>
+        <input type="number" class="input" id="custom-amt" placeholder="e.g. 150" min="10" max="2000">
+      </div>
+      <div class="alert alert-success mt-12" style="font-size:13px;">🎁 Top up RM 200+ and get <strong>RM 10 bonus</strong> added to your wallet!</div>
+    </div>
+
+    <div class="card mb-20">
+      <div class="card-title mb-16">Payment Method</div>
+      <div class="flex flex-col gap-10">
+        <div class="payment-opt selected" onclick="selectPay(this)">
+          <span style="font-size:24px;">📱</span>
+          <div><div class="font-600 text-sm">DuitNow QR</div><div class="text-xs text-muted">Scan with any Malaysian banking app</div></div>
+        </div>
+        <div class="payment-opt" onclick="selectPay(this)">
+          <span style="font-size:24px;">🏦</span>
+          <div><div class="font-600 text-sm">FPX Online Banking</div><div class="text-xs text-muted">Maybank, CIMB, Public Bank &amp; more</div></div>
+        </div>
+        <div class="payment-opt" onclick="selectPay(this)">
+          <span style="font-size:24px;">💳</span>
+          <div><div class="font-600 text-sm">Credit / Debit Card</div><div class="text-xs text-muted">Visa, Mastercard</div></div>
+        </div>
+        <div class="payment-opt" onclick="selectPay(this)">
+          <span style="font-size:24px;">🟣</span>
+          <div><div class="font-600 text-sm">Touch 'n Go eWallet</div><div class="text-xs text-muted">Via Fiuu payment gateway</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-24">
+      <div class="flex justify-between text-sm mb-8"><span>Top-up amount</span><span class="mono font-600">RM 100.00</span></div>
+      <div class="flex justify-between text-sm mb-8"><span>Processing fee</span><span class="mono text-muted">FREE</span></div>
+      <hr class="divider">
+      <div class="flex justify-between font-600"><span>Total charged</span><span class="mono" style="color:var(--primary);">RM 100.00</span></div>
+    </div>
+
+    <a href="wallet-dashboard.html" class="btn btn-primary btn-full mb-12">Proceed to Payment</a>
+    <a href="wallet-dashboard.html" class="btn btn-ghost btn-full">Cancel</a>
+  </main>
+</div>
+<script>
+function selectAmt(el,val){document.querySelectorAll('.amount-chip').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');document.getElementById('custom-amt').value='';}
+function selectPay(el){document.querySelectorAll('.payment-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');}
+</script>
+</body></html>
