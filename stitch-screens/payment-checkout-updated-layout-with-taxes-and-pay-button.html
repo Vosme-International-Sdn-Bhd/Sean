@@ -1,0 +1,476 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Checkout - GLOSS POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .numpad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E2E1DC;
+            border-radius: 10px;
+        }
+        .card-border {
+            border-width: 0.5px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#ffd184",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#424751",
+                      "on-surface": "#1b1c1a",
+                      "bronze": "#CD7F32",
+                      "surface-tint": "#1a5fa8",
+                      "primary-container": "#1a5fa8",
+                      "tertiary-fixed-dim": "#f3be5e",
+                      "primary-fixed": "#d4e3ff",
+                      "platinum": "#E5E4E2",
+                      "inverse-primary": "#a6c8ff",
+                      "on-tertiary-fixed": "#271900",
+                      "secondary-fixed": "#e4e2dd",
+                      "warning": "#8A5200",
+                      "on-primary-fixed-variant": "#004786",
+                      "surface-variant": "#e3e2df",
+                      "ink-primary": "#1A1A18",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "danger": "#8A1F1F",
+                      "purple-mlm": "#4A3AB0",
+                      "surface-container-low": "#f5f4f0",
+                      "background": "#faf9f5",
+                      "secondary": "#5f5f5a",
+                      "silver": "#C0C0C0",
+                      "on-primary-container": "#c4daff",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#5e4100",
+                      "secondary-fixed-dim": "#c8c6c1",
+                      "primary": "#004786",
+                      "surface-container-lowest": "#ffffff",
+                      "border": "#E2E1DC",
+                      "surface-container-high": "#e9e8e4",
+                      "on-primary-fixed": "#001c3a",
+                      "outline": "#727782",
+                      "inverse-surface": "#30312e",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#c2c6d3",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "surface": "#FFFFFF",
+                      "secondary-container": "#dcdad5",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#faf9f5",
+                      "on-background": "#1b1c1a",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e3e2df",
+                      "success": "#2E7D52",
+                      "on-secondary-fixed-variant": "#474743",
+                      "tertiary-fixed": "#ffdeaa",
+                      "tertiary-container": "#7d5700",
+                      "surface-dim": "#dbdad6",
+                      "inverse-on-surface": "#f2f1ed",
+                      "on-secondary-fixed": "#1b1c19",
+                      "surface-container": "#efeeea",
+                      "on-secondary-container": "#5f5f5b",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "12px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target-min": "48px",
+                      "margin-page": "20px",
+                      "stack-md": "12px",
+                      "tile-height-min": "72px",
+                      "gutter": "12px",
+                      "stack-sm": "6px",
+                      "stack-lg": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Libre Franklin"],
+                      "display-lg": ["Libre Franklin"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-lg": ["Libre Franklin"],
+                      "headline-md": ["Libre Franklin"],
+                      "body-md": ["Libre Franklin"],
+                      "body-sm": ["Libre Franklin"],
+                      "label-md": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["36px", {"lineHeight": "44px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "13px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["20px", {"lineHeight": "26px", "fontWeight": "600"}],
+                      "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "label-md": ["13px", {"lineHeight": "15px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface overflow-hidden">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-danger flex justify-between items-center px-margin-page h-10">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold text-on-primary tracking-tighter">GLOSS POS</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary text-[20px]" data-icon="wifi_off">wifi_off</span>
+<span class="font-label-md text-label-md text-on-primary">OFFLINE</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-red-700 p-1 transition-colors duration-200 rounded">
+<span class="material-symbols-outlined text-on-primary" data-icon="sync">sync</span>
+</button>
+<button class="hover:bg-red-700 p-1 transition-colors duration-200 rounded">
+<span class="material-symbols-outlined text-on-primary" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<nav class="fixed left-0 top-10 h-[calc(100%-2.5rem)] w-56 bg-surface-container border-r border-border flex flex-col py-stack-md px-stack-sm">
+<div class="mb-stack-md px-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container scale-90">
+<span class="material-symbols-outlined text-sm" data-icon="store">store</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-primary leading-tight text-lg">Artisan Salon</p>
+<p class="font-body-sm text-body-sm text-secondary text-xs">Station 04</p>
+</div>
+</div>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 font-body-md text-body-md bg-primary-container text-on-primary-container font-bold rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="">POS Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 font-body-md text-body-md text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 font-body-md text-body-md text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="">Members</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 font-body-md text-body-md text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="">Sync Status</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 font-body-md text-body-md text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Checkout Content Canvas -->
+<main class="ml-56 mt-10 h-[calc(100vh-2.5rem)] flex overflow-hidden"><!-- Left Panel: Order Summary (50%) -->
+<section class="w-1/2 h-full border-r border-border flex flex-col">
+<div class="p-margin-page border-b border-border flex justify-between items-end">
+<h1 class="font-headline-lg text-headline-lg text-ink-primary">Order Summary</h1>
+<span class="font-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded text-[9px] uppercase tracking-wider">REF: #ART-20231024-04</span>
+</div>
+<div class="flex-grow overflow-y-auto custom-scrollbar p-margin-page space-y-4">
+<div class="space-y-3">
+<div class="flex justify-between items-start pb-3 border-b border-surface-container-high">
+<div class="space-y-1">
+<p class="font-body-md font-semibold text-ink-primary">Signature Haircut &amp; Style</p>
+<p class="font-body-sm text-secondary text-xs">Stylist: Marcus Chen</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-ink-primary font-bold">RM 120.00</p>
+<p class="font-label-sm text-secondary">Qty: 01</p>
+</div>
+</div>
+<div class="flex justify-between items-start pb-3 border-b border-surface-container-high">
+<div class="space-y-1">
+<p class="font-body-md font-semibold text-ink-primary">Moisture Recovery Treatment</p>
+<p class="font-body-sm text-primary text-xs italic">Add-on service</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-ink-primary font-bold">RM 85.00</p>
+<p class="font-label-sm text-secondary">Qty: 01</p>
+</div>
+</div>
+<div class="flex justify-between items-start pb-3 border-b border-surface-container-high">
+<div class="space-y-1">
+<p class="font-body-md font-semibold text-ink-primary">Argan Smoothing Serum (100ml)</p>
+<p class="font-body-sm text-secondary text-xs">Retail Product</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-ink-primary font-bold">RM 144.00</p>
+<p class="font-label-sm text-secondary">Qty: 02</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Payment Method & Calculator (50%) -->
+<section class="w-1/2 h-full bg-background p-4 flex flex-col gap-2 overflow-y-auto custom-scrollbar">
+<h2 class="font-headline-lg text-headline-lg text-ink-primary">Payment Method</h2>
+<!-- Method Grid -->
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-1 p-2 h-[64px] card-border border-primary bg-surface rounded-xl transition-all" id="pay-cash" onclick="selectPayment('cash')">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="payments">payments</span>
+<span class="font-label-md text-[11px] font-bold text-primary">CASH</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 p-2 h-[64px] card-border border-border bg-surface rounded-xl transition-all hover:bg-surface-container-low" id="pay-wallet" onclick="selectPayment('wallet')">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+<div class="text-center">
+<span class="font-label-md text-[11px] text-ink-primary block">WALLET</span>
+</div>
+</button>
+<div class="relative group">
+<button class="w-full flex flex-col items-center justify-center gap-1 p-2 h-[64px] card-border border-border bg-surface-variant opacity-60 rounded-xl cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="contactless">contactless</span>
+<span class="font-label-md text-[11px] text-secondary">FIUU (FPX)</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center gap-1 p-2 h-[64px] card-border border-border bg-surface rounded-xl transition-all hover:bg-surface-container-low" id="pay-hold" onclick="selectPayment('hold')">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="pause_circle">pause_circle</span>
+<span class="font-label-md text-[11px] text-ink-primary">ON-HOLD</span>
+</button>
+</div>
+<!-- Numpad Area -->
+<div class="flex-grow flex flex-col gap-3" id="cash-payment-area">
+<div class="bg-surface card-border border-border rounded-xl p-2">
+<div class="mb-4 border-b border-dashed border-outline-variant pb-3">
+<label class="font-label-sm text-[10px] text-secondary uppercase block mb-1.5">Voucher Code</label>
+<div class="flex items-center gap-2">
+<input class="flex-grow h-8 p-1 border-b border-dashed border-outline text-left font-label-md text-sm bg-transparent focus:ring-0 placeholder:text-secondary/50" placeholder="Enter code" type="text">
+<button class="h-8 px-4 bg-primary text-on-primary rounded font-bold text-[11px] uppercase active:scale-95 transition-transform">
+                        Claim
+                    </button>
+</div>
+</div>
+<div class="flex justify-between items-end mb-2">
+<div class="flex flex-col">
+<label class="font-label-sm text-[10px] text-secondary uppercase">Amount Tendered</label>
+<span class="font-headline-md text-headline-md text-ink-primary" id="tendered-display">RM 0.00</span>
+</div>
+<div class="flex flex-col items-end">
+<label class="font-label-sm text-[10px] text-secondary uppercase">Change</label>
+<span class="font-body-lg font-bold text-danger" id="change-display">RM -406.93</span>
+</div>
+</div>
+<div class="numpad-grid">
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('1')">1</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('2')">2</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('3')">3</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('4')">4</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('5')">5</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('6')">6</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('7')">7</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('8')">8</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('9')">9</button>
+<button class="h-10 bg-error-container text-on-error-container border border-error rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="clearNumpad()">C</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('0')">0</button>
+<button class="h-10 bg-surface-container hover:bg-surface-container-high border border-border rounded-lg font-headline-md text-lg active:scale-95 transition-all" onclick="appendNum('00')">00</button>
+</div>
+<div class="grid grid-cols-3 gap-2 mt-3">
+<button class="py-1.5 border border-primary text-primary rounded-lg font-label-sm text-[11px] hover:bg-primary hover:text-white transition-colors" onclick="setQuickCash(410)">RM 410</button>
+<button class="py-1.5 border border-primary text-primary rounded-lg font-label-sm text-[11px] hover:bg-primary hover:text-white transition-colors" onclick="setQuickCash(450)">RM 450</button>
+<button class="py-1.5 border border-primary text-primary rounded-lg font-label-sm text-[11px] hover:bg-primary hover:text-white transition-colors" onclick="setQuickCash(500)">RM 500</button>
+</div><div class="mt-4 space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+</label>
+</div>
+<!-- Admin Adjustments Section -->
+<div class="mt-4 border-t border-dashed border-outline-variant pt-3">
+<p class="font-label-sm text-[10px] text-secondary uppercase mb-2">Admin Adjustments</p>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="font-body-sm font-semibold">Discount</span>
+<div class="flex bg-surface-container-highest p-0.5 rounded border border-outline-variant">
+<button class="px-1.5 py-0 text-[9px] font-bold bg-primary text-on-primary rounded shadow-sm">%</button>
+<button class="px-1.5 py-0 text-[9px] font-bold text-secondary rounded">RM</button>
+</div>
+</div>
+<input class="w-14 h-7 p-1 border-b border-dashed border-outline text-right font-label-md text-sm bg-transparent focus:ring-0" type="text" value="0.00">
+</div><div class="flex justify-between items-center">
+<span class="font-body-sm font-semibold text-secondary">SST (6%)</span>
+<span class="font-label-md text-sm text-ink-primary">RM 24.42</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm font-semibold text-secondary">Svc (10%)</span>
+<span class="font-label-md text-sm text-ink-primary">RM 40.69</span>
+</div>
+<div class="bg-primary/5 p-2 rounded-lg border border-primary/10 flex justify-between items-center mt-2">
+<span class="font-label-sm text-[10px] text-primary uppercase font-bold">Final Price</span>
+<span class="font-headline-md text-primary text-lg font-extrabold">RM 406.93</span>
+</div><div class="flex justify-between items-center">
+
+
+</div>
+<div class="flex justify-between items-center">
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="mb-4 flex items-center gap-3 px-1">
+    <div class="relative flex items-center">
+        <input type="checkbox" id="digital-receipt" class="w-5 h-5 rounded border-border text-primary focus:ring-primary/20 cursor-pointer">
+    </div>
+    <label for="digital-receipt" class="font-body-md text-on-surface cursor-pointer select-none">
+        Send Digital Receipt
+    </label>
+</div><div class="mt-4">
+<button class="w-full h-touch-target-min bg-success text-on-primary rounded-xl font-headline-md text-lg font-extrabold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="">PAY RM 406.93</span>
+</button>
+</div></section></main>
+<!-- Member Profile Drawer -->
+<div class="fixed right-0 top-10 h-[calc(100%-2.5rem)] w-72 bg-surface border-l border-border shadow-lg translate-x-full transition-transform duration-300 ease-in-out z-40" id="member-drawer">
+<div class="flex flex-col p-4 h-full">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="font-headline-md text-lg text-ink-primary">Member Profile</h3>
+<p class="font-body-sm text-xs text-primary font-bold">Platinum Tier</p>
+</div>
+<button class="p-1 hover:bg-surface-container-low rounded-full" onclick="toggleDrawer()">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex-grow">
+<div class="aspect-square w-24 mx-auto rounded-full overflow-hidden border-4 border-primary-fixed mb-3">
+<img alt="Member Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT26-y-pajYhudNjBFCk-mFNlP3bKepeXYeWj51HWuj9pnPcyzTLrC99SlQUTEXozREvMl6rojqsSKkOILP6sie2WXXTl3KJVuBxIFhlS1M1nq4Z0PIwz02zZjhry9ELN-InAcwHK7ggTBhZLclkVJ5v1iv4N2dWoxpX9z2ksrjj7sS0T-J7agt6jZnRXq_uqwQlDTahc32neJrT3yph9dF883u0wauWphI447ANc7CFqYN5_jWXultMq8pi9XrLSiEFMMS-n_sS_8">
+</div>
+<div class="text-center mb-4">
+<p class="font-headline-md text-lg">Sarah Jenkins</p>
+<p class="font-label-md text-xs text-secondary">+60 12-345-6789</p>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-surface-container-low rounded-lg border border-border">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-[10px] uppercase text-secondary">Wallet</span>
+</div>
+<p class="font-headline-md text-base text-ink-primary">RM 150.00</p>
+</div>
+<div class="p-3 bg-error-container/10 rounded-lg border border-error/20">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="material-symbols-outlined text-error text-sm" data-icon="warning">warning</span>
+<span class="font-label-sm text-[10px] uppercase text-error">Allergy</span>
+</div>
+<p class="font-body-sm text-xs text-on-error-container">Latex, Peppermint Oil</p>
+</div>
+</div>
+</div>
+<button class="w-full py-2 bg-surface border border-primary text-primary rounded-lg font-label-md text-xs hover:bg-primary hover:text-white transition-colors">
+                Edit Profile
+            </button>
+</div>
+</div>
+<!-- Floating Trigger -->
+<button class="fixed bottom-4 right-4 w-12 h-12 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center z-30 active:scale-90 transition-transform" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<script>
+        let tenderedAmount = "";
+        const totalAmount = 406.93;
+
+        function appendNum(num) {
+            tenderedAmount += num;
+            updateDisplay();
+        }
+
+        function clearNumpad() {
+            tenderedAmount = "";
+            updateDisplay();
+        }
+
+        function setQuickCash(val) {
+            tenderedAmount = val.toString();
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const display = document.getElementById('tendered-display');
+            const changeDisplay = document.getElementById('change-display');
+            const val = parseFloat(tenderedAmount) || 0;
+            
+            display.innerText = `RM ${val.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            
+            const change = val - totalAmount;
+            changeDisplay.innerText = `RM ${change.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            
+            if (change >= 0) {
+                changeDisplay.classList.remove('text-danger');
+                changeDisplay.classList.add('text-success');
+            } else {
+                changeDisplay.classList.remove('text-success');
+                changeDisplay.classList.add('text-danger');
+            }
+        }
+
+        function selectPayment(type) {
+            const buttons = ['pay-cash', 'pay-wallet', 'pay-hold'];
+            buttons.forEach(id => {
+                const btn = document.getElementById(id);
+                btn.classList.remove('border-primary', 'bg-primary-container');
+                btn.classList.add('border-border', 'bg-surface');
+                btn.querySelector('.material-symbols-outlined').classList.replace('text-primary', 'text-secondary');
+                btn.querySelector('span:last-child').classList.replace('text-primary', 'text-ink-primary');
+            });
+
+            const selectedBtn = document.getElementById(`pay-${type}`);
+            selectedBtn.classList.add('border-primary');
+            selectedBtn.classList.remove('border-border');
+            selectedBtn.querySelector('.material-symbols-outlined').classList.replace('text-secondary', 'text-primary');
+            
+            const cashArea = document.getElementById('cash-payment-area');
+            if(type === 'cash') {
+                cashArea.style.opacity = '1';
+                cashArea.style.pointerEvents = 'auto';
+            } else {
+                cashArea.style.opacity = '0.3';
+                cashArea.style.pointerEvents = 'none';
+            }
+        }
+
+        function toggleDrawer() {
+            const drawer = document.getElementById('member-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        // Initialize display
+        updateDisplay();
+    </script>
+
+
+</body></html>

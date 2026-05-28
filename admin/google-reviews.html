@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Google Reviews — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item active" href="google-reviews.html"><span class="icon">⭐</span>Google Reviews</a>
+      <a class="nav-item" href="social-scheduler.html"><span class="icon">📱</span>Social Scheduler</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Google Reviews Management</div>
+        <div class="page-subtitle">Monitor and respond with AI-assisted replies</div>
+      </div>
+      <div class="flex gap-8">
+        <button class="btn btn-secondary btn-sm">🔄 Sync Reviews</button>
+        <select class="input select" style="width:160px;height:40px;font-size:13px;">
+          <option>All Outlets</option><option>KLCC Branch</option><option>Bangsar</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Average Rating</div><div class="stat-value">4.7 ⭐</div><div class="stat-sub">+0.2 this month</div></div>
+      <div class="stat-card"><div class="stat-label">Total Reviews</div><div class="stat-value">284</div><div class="stat-sub">12 this week</div></div>
+      <div class="stat-card"><div class="stat-label">Replied</div><div class="stat-value" style="color:var(--success);">261</div><div class="stat-sub">92% reply rate</div></div>
+      <div class="stat-card"><div class="stat-label">Pending Reply</div><div class="stat-value" style="color:var(--warning);">23</div><div class="stat-sub">Action needed</div></div>
+    </div>
+
+    <div class="tabs">
+      <a class="tab active">All Reviews</a>
+      <a class="tab">Pending Reply</a>
+      <a class="tab">5 ⭐</a>
+      <a class="tab">4 ⭐ &amp; below</a>
+    </div>
+
+    <div class="flex flex-col gap-16">
+      <!-- Review 1 — with AI reply draft -->
+      <div class="review-card">
+        <div class="flex justify-between items-start mb-8">
+          <div class="flex items-center gap-10">
+            <div class="avatar" style="background:#ffd184;color:#5e4100;">AL</div>
+            <div><div class="font-600 text-sm">Amirah Latiff</div><div class="review-meta">KLCC Branch · 2 days ago</div></div>
+          </div>
+          <div class="flex items-center gap-8">
+            <div class="stars">★★★★★</div>
+            <span class="pill pill-warning">Pending Reply</span>
+          </div>
+        </div>
+        <p class="review-text">"Amazing experience! Aishah did a wonderful job with my hair colour. The salon is clean and the staff are very professional. Will definitely come back!"</p>
+        <hr class="divider">
+        <div style="background:rgba(26,95,168,0.05);border-radius:var(--radius);padding:12px;border:0.5px solid rgba(26,95,168,0.15);">
+          <div class="flex justify-between items-center mb-8">
+            <div class="text-sm font-600 text-primary">🤖 AI-Generated Reply</div>
+            <div class="flex gap-8">
+              <button class="btn btn-secondary btn-sm">Edit</button>
+              <button class="btn btn-primary btn-sm">Post Reply</button>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--on-surface);line-height:1.6;">Thank you so much for your kind words, Amirah! We're thrilled to hear you had a wonderful experience with Aishah. Your satisfaction means the world to us, and we look forward to welcoming you back soon at Precision Salon! 💙</p>
+        </div>
+      </div>
+
+      <!-- Review 2 — negative, needs response -->
+      <div class="review-card" style="border-color:rgba(138,31,31,0.25);">
+        <div class="flex justify-between items-start mb-8">
+          <div class="flex items-center gap-10">
+            <div class="avatar" style="background:var(--danger-bg);color:var(--danger);">TC</div>
+            <div><div class="font-600 text-sm">Tan Chin Wei</div><div class="review-meta">Bangsar Branch · 5 days ago</div></div>
+          </div>
+          <div class="flex items-center gap-8">
+            <div class="stars" style="color:#E5E4E2;">★★<span style="color:#F59E0B;">★</span>☆☆</div>
+            <span class="pill pill-danger">Urgent — Low Rating</span>
+          </div>
+        </div>
+        <p class="review-text">"Waited 45 minutes past my appointment time with no explanation. The service itself was okay but the time management needs major improvement."</p>
+        <hr class="divider">
+        <div style="background:rgba(138,31,31,0.04);border-radius:var(--radius);padding:12px;border:0.5px solid rgba(138,31,31,0.15);">
+          <div class="flex justify-between items-center mb-8">
+            <div class="text-sm font-600" style="color:var(--danger);">🤖 AI-Generated Reply (Concern Handling)</div>
+            <div class="flex gap-8">
+              <button class="btn btn-secondary btn-sm">Edit</button>
+              <button class="btn btn-danger btn-sm">Post Reply</button>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--on-surface);line-height:1.6;">Dear Chin Wei, we sincerely apologise for the wait and the inconvenience caused. This is not the standard we uphold, and we take your feedback seriously. Please DM us your contact details so we can make this right with a complimentary visit. Thank you for bringing this to our attention.</p>
+        </div>
+      </div>
+
+      <!-- Review 3 — already replied -->
+      <div class="review-card" style="opacity:0.8;">
+        <div class="flex justify-between items-start mb-8">
+          <div class="flex items-center gap-10">
+            <div class="avatar">ZA</div>
+            <div><div class="font-600 text-sm">Zulaikha Ahmad</div><div class="review-meta">KLCC Branch · 1 week ago</div></div>
+          </div>
+          <div class="flex items-center gap-8">
+            <div class="stars">★★★★★</div>
+            <span class="pill pill-success">Replied ✓</span>
+          </div>
+        </div>
+        <p class="review-text">"Love this place! The membership perks are great and the app makes booking super easy."</p>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

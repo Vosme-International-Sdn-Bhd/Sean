@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Home — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Good morning, Sarah 👋</div><div class="page-subtitle">Welcome back to Precision Salon OS</div></div>
+      <div class="flex items-center gap-12">
+        <span class="tier-badge tier-bronze">Bronze Member</span>
+        <a href="notifications.html" class="btn btn-secondary btn-sm">🔔 Notifications</a>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-3 mb-24">
+      <a href="booking-service.html" class="card" style="background:var(--primary);color:#fff;text-decoration:none;cursor:pointer;">
+        <div style="font-size:28px;margin-bottom:8px;">📅</div>
+        <div class="font-600" style="font-size:16px;">Book Appointment</div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">Schedule your next visit</div>
+      </a>
+      <a href="wallet-dashboard.html" class="stat-card" style="text-decoration:none;">
+        <div class="stat-label">My Wallet</div>
+        <div class="stat-value">RM 150.00</div>
+        <div class="stat-sub">+ RM 20.00 bonus balance</div>
+        <div class="mt-8"><a href="wallet-topup.html" class="btn btn-secondary btn-sm">Top Up</a></div>
+      </a>
+      <div class="stat-card">
+        <div class="stat-label">Loyalty Points</div>
+        <div class="stat-value">1,240</div>
+        <div class="stat-sub">Expires Dec 2026</div>
+      </div>
+    </div>
+
+    <!-- Upcoming Appointments -->
+    <div class="card mb-24">
+      <div class="flex justify-between items-center mb-16">
+        <div class="card-title">Upcoming Appointments</div>
+        <a href="my-bookings.html" class="btn btn-ghost btn-sm">View all →</a>
+      </div>
+      <div class="flex flex-col gap-12">
+        <!-- Booking 1 -->
+        <div style="border:0.5px solid var(--border);border-radius:var(--radius);padding:16px;">
+          <div class="flex justify-between items-center">
+            <div>
+              <div class="font-600" style="font-size:15px;">Hair Colour + Trim</div>
+              <div class="text-sm text-muted mt-4">Aishah Binti Rahmat · KLCC Branch</div>
+              <div class="mono text-sm mt-4" style="color:var(--primary);">Thu 29 May 2026 · 2:00 PM</div>
+            </div>
+            <div class="flex flex-col items-center gap-8">
+              <span class="pill pill-success">Confirmed</span>
+              <div class="flex gap-8">
+                <a href="reschedule.html" class="btn btn-secondary btn-sm">Reschedule</a>
+                <a href="cancel-booking.html" class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Booking 2 -->
+        <div style="border:0.5px solid var(--border);border-radius:var(--radius);padding:16px;">
+          <div class="flex justify-between items-center">
+            <div>
+              <div class="font-600" style="font-size:15px;">Manicure + Pedicure</div>
+              <div class="text-sm text-muted mt-4">Nurul Aisyah · Bangsar Branch</div>
+              <div class="mono text-sm mt-4" style="color:var(--primary);">Sat 1 Jun 2026 · 11:00 AM</div>
+            </div>
+            <div class="flex flex-col items-center gap-8">
+              <span class="pill pill-warning">Pending</span>
+              <div class="flex gap-8">
+                <a href="reschedule.html" class="btn btn-secondary btn-sm">Reschedule</a>
+                <a href="cancel-booking.html" class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier Progress -->
+    <div class="grid grid-2 mb-24">
+      <div class="card">
+        <div class="card-title mb-8">Your Rewards Status</div>
+        <div class="flex justify-between text-sm text-muted mb-8">
+          <span>Bronze</span><span>Silver (RM 500)</span>
+        </div>
+        <div class="progress-wrap mb-8"><div class="progress-bar" style="width:68%;"></div></div>
+        <div class="text-sm">Spend <strong>RM 160 more</strong> to reach Silver &amp; unlock 3% discount</div>
+        <div class="mt-16 flex gap-8">
+          <a href="vouchers-packages.html" class="btn btn-secondary btn-sm">🎟️ 3 Active Vouchers</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title mb-16">Recent Transactions</div>
+        <div style="display:flex;flex-direction:column;gap:1px;">
+          <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:0.5px solid var(--border);">
+            <div><div class="text-sm font-600">ORD-20260525-0042</div><div class="text-xs text-muted">25 May 2026</div></div>
+            <span class="pill pill-success">RM 85.00</span>
+          </div>
+          <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:0.5px solid var(--border);">
+            <div><div class="text-sm font-600">ORD-20260518-0031</div><div class="text-xs text-muted">18 May 2026</div></div>
+            <span class="pill pill-success">RM 120.00</span>
+          </div>
+          <div class="flex justify-between items-center" style="padding:10px 0;">
+            <div><div class="text-sm font-600">ORD-20260510-0019</div><div class="text-xs text-muted">10 May 2026</div></div>
+            <span class="pill pill-success">RM 55.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

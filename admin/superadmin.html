@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Superadmin Panel — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span style="color:var(--gold);">SUPERADMIN</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Platform</div>
+      <a class="nav-item active" href="superadmin.html"><span class="icon">👑</span>System Overview</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>All Merchants</a>
+      <a class="nav-item" href="#"><span class="icon">💰</span>Billing &amp; Plans</a>
+      <a class="nav-item" href="#"><span class="icon">📊</span>Platform Analytics</a>
+      <div class="nav-section-label">Operations</div>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN Compliance</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="#"><span class="icon">📋</span>Audit Logs</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Superadmin — System Overview</div>
+        <div class="page-subtitle">Full platform access · All merchants · All data</div>
+      </div>
+      <div class="flex items-center gap-12">
+        <span class="pill" style="background:rgba(184,137,46,0.15);color:var(--gold);border:0.5px solid var(--gold);">👑 SUPERADMIN</span>
+        <button class="btn btn-secondary btn-sm">📋 Audit Log</button>
+      </div>
+    </div>
+
+    <!-- System Health -->
+    <div class="alert alert-success mb-24">✅ All systems operational · Last checked: 2026-05-28 14:32 MYT</div>
+
+    <!-- Platform Stats -->
+    <div class="grid grid-4 mb-24">
+      <div class="system-metric"><div class="stat-label">Active Merchants</div><div class="stat-value">47</div><div class="stat-sub">+3 this month</div></div>
+      <div class="system-metric"><div class="stat-label">Total Outlets</div><div class="stat-value">134</div><div class="stat-sub">Across 5 states</div></div>
+      <div class="system-metric"><div class="stat-label">Registered Members</div><div class="stat-value">28,491</div><div class="stat-sub">+1,240 this month</div></div>
+      <div class="system-metric warn"><div class="stat-label">LHDN Pending</div><div class="stat-value" style="color:var(--warning);">12</div><div class="stat-sub">Need attention</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;">
+      <!-- Merchant List -->
+      <div class="card">
+        <div class="flex justify-between items-center mb-16">
+          <div class="card-title">Merchant Accounts</div>
+          <button class="btn btn-primary btn-sm">+ Add Merchant</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Merchant</th><th>Plan</th><th>Outlets</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div class="font-600 text-sm">Precision Salon KL</div><div class="text-xs text-muted mono">merchant_001</div></td><td><span class="pill" style="background:rgba(184,137,46,0.1);color:var(--gold);">Enterprise</span></td><td class="mono">4</td><td><span class="pill pill-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Manage</button></td></tr>
+              <tr><td><div class="font-600 text-sm">Glam Studio PJ</div><div class="text-xs text-muted mono">merchant_002</div></td><td><span class="pill pill-info">Pro</span></td><td class="mono">2</td><td><span class="pill pill-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Manage</button></td></tr>
+              <tr><td><div class="font-600 text-sm">Beauty Hub Penang</div><div class="text-xs text-muted mono">merchant_003</div></td><td><span class="pill pill-neutral">Starter</span></td><td class="mono">1</td><td><span class="pill pill-warning">Trial</span></td><td><button class="btn btn-secondary btn-sm">Manage</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- System Metrics -->
+      <div class="card">
+        <div class="card-title mb-16">System Health</div>
+        <div class="flex flex-col gap-12">
+          <div class="flex justify-between items-center"><span class="text-sm">API Response Time</span><span class="mono text-sm text-success">142ms avg</span></div>
+          <div class="progress-wrap"><div class="progress-bar" style="width:14%;background:var(--success);"></div></div>
+          <div class="flex justify-between items-center"><span class="text-sm">Database Load</span><span class="mono text-sm">28%</span></div>
+          <div class="progress-wrap"><div class="progress-bar" style="width:28%;"></div></div>
+          <div class="flex justify-between items-center"><span class="text-sm">Storage Used</span><span class="mono text-sm">47%</span></div>
+          <div class="progress-wrap"><div class="progress-bar" style="width:47%;"></div></div>
+          <hr class="divider">
+          <div class="flex justify-between items-center"><span class="text-sm">LHDN API</span><span class="pill pill-success">Operational</span></div>
+          <div class="flex justify-between items-center"><span class="text-sm">Fiuu Payment Gateway</span><span class="pill pill-success">Operational</span></div>
+          <div class="flex justify-between items-center"><span class="text-sm">WhatsApp Cloud API</span><span class="pill pill-success">Operational</span></div>
+          <div class="flex justify-between items-center"><span class="text-sm">Resend (Email)</span><span class="pill pill-warning">Degraded</span></div>
+        </div>
+      </div>
+
+      <!-- Admin Override Actions -->
+      <div class="card" style="border-color:rgba(138,31,31,0.3);">
+        <div class="card-title mb-4">⚠️ Admin Override Actions</div>
+        <div class="card-subtitle mb-16">Destructive actions require reason + manager password confirmation</div>
+        <div class="flex flex-col gap-8">
+          <button class="btn btn-secondary btn-sm" style="justify-content:flex-start;">🔄 Force Sync All Merchants</button>
+          <button class="btn btn-secondary btn-sm" style="justify-content:flex-start;">✏️ Tier Override — Manual Member Adjustment</button>
+          <button class="btn btn-secondary btn-sm" style="justify-content:flex-start;">💸 Wallet Write-Off — Credit Correction</button>
+          <button class="btn btn-sm" style="justify-content:flex-start;color:var(--danger);border:0.5px solid var(--danger);background:transparent;">🗑️ Purge Merchant Data</button>
+        </div>
+      </div>
+
+      <!-- Audit Trail -->
+      <div class="card">
+        <div class="card-title mb-16">Recent Audit Trail</div>
+        <div class="flex flex-col" style="gap:1px;">
+          <div style="padding:10px 0;border-bottom:0.5px solid var(--border);">
+            <div class="flex justify-between"><span class="text-sm font-600">Tier Override</span><span class="mono text-xs text-muted">14:22 MYT</span></div>
+            <div class="text-xs text-muted">admin@precision.my → Member ID 10042 Bronze→Gold</div>
+          </div>
+          <div style="padding:10px 0;border-bottom:0.5px solid var(--border);">
+            <div class="flex justify-between"><span class="text-sm font-600">Commission Config Update</span><span class="mono text-xs text-muted">11:05 MYT</span></div>
+            <div class="text-xs text-muted">merchant_001 → L1 rate changed 8% → 10%</div>
+          </div>
+          <div style="padding:10px 0;">
+            <div class="flex justify-between"><span class="text-sm font-600">New Merchant Onboarded</span><span class="mono text-xs text-muted">09:30 MYT</span></div>
+            <div class="text-xs text-muted">Beauty Hub Penang → merchant_003 created</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

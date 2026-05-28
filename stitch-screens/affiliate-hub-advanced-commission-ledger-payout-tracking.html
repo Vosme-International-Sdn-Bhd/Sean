@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Affiliate Commission Ledger - SalonPortal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #faf9f5; /* background from config */
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c2c6d3;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "platinum": "#E5E4E2",
+                      "on-primary-fixed": "#001c3a",
+                      "on-secondary-container": "#5f5f5b",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "on-surface-variant": "#424751",
+                      "on-surface": "#1b1c1a",
+                      "outline-variant": "#c2c6d3",
+                      "on-primary-container": "#c4daff",
+                      "background": "#faf9f5",
+                      "surface-container-low": "#f5f4f0",
+                      "on-background": "#1b1c1a",
+                      "inverse-primary": "#a6c8ff",
+                      "on-error-container": "#93000a",
+                      "bronze": "#CD7F32",
+                      "surface-tint": "#1a5fa8",
+                      "success": "#2E7D52",
+                      "secondary-container": "#dcdad5",
+                      "inverse-on-surface": "#f2f1ed",
+                      "tertiary-fixed": "#ffdeaa",
+                      "silver": "#C0C0C0",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#1b1c19",
+                      "surface-container-high": "#e9e8e4",
+                      "ink-primary": "#1A1A18",
+                      "surface-bright": "#faf9f5",
+                      "secondary-fixed": "#e4e2dd",
+                      "danger": "#8A1F1F",
+                      "on-tertiary-fixed": "#271900",
+                      "surface-container": "#efeeea",
+                      "secondary": "#5f5f5a",
+                      "outline": "#727782",
+                      "tertiary-container": "#7d5700",
+                      "surface": "#FFFFFF",
+                      "on-tertiary-container": "#ffd184",
+                      "primary-fixed": "#d4e3ff",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#1a5fa8",
+                      "on-secondary-fixed-variant": "#474743",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "tertiary": "#5e4100",
+                      "secondary-fixed-dim": "#c8c6c1",
+                      "primary": "#004786",
+                      "border": "#E2E1DC",
+                      "surface-dim": "#dbdad6",
+                      "warning": "#8A5200",
+                      "surface-container-highest": "#e3e2df",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#004786",
+                      "tertiary-fixed-dim": "#f3be5e",
+                      "surface-variant": "#e3e2df",
+                      "purple-mlm": "#4A3AB0",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#30312e",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target-min": "56px",
+                      "stack-md": "16px",
+                      "gutter": "16px",
+                      "stack-lg": "24px",
+                      "tile-height-min": "80px",
+                      "stack-sm": "8px",
+                      "margin-page": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Libre Franklin"],
+                      "display-lg": ["Libre Franklin"],
+                      "body-sm": ["Libre Franklin"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-md": ["Libre Franklin"],
+                      "headline-md": ["Libre Franklin"],
+                      "headline-lg": ["Libre Franklin"],
+                      "label-md": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="flex min-h-screen overflow-hidden">
+<!-- SideNavBar (The Anchor) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-stack-md h-screen w-64 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline z-40">
+<div class="flex items-center gap-stack-sm mb-stack-lg px-2">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary leading-none">SalonPortal</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Main Branch</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 h-12 text-on-surface-variant font-label-md text-label-md hover:bg-secondary-container transition-all rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 h-12 text-on-surface-variant font-label-md text-label-md hover:bg-secondary-container transition-all rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                Book
+            </a>
+<a class="flex items-center gap-3 px-4 h-12 text-on-surface-variant font-label-md text-label-md hover:bg-secondary-container transition-all rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                Wallet
+            </a>
+<a class="flex items-center gap-3 px-4 h-12 bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary font-label-md text-label-md transition-all rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+                Affiliate Hub
+            </a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 pt-stack-md border-t border-outline-variant">
+<a class="flex items-center gap-3 px-4 h-12 text-on-surface-variant font-label-md text-label-md hover:bg-secondary-container transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 h-12 text-on-surface-variant font-label-md text-label-md hover:bg-secondary-container transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col h-screen relative bg-background overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-gutter w-full sticky top-0 z-30 h-16 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 h-10 w-64 bg-surface-container-low border-none rounded-lg font-body-sm text-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="Search orders..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer">
+<img alt="User Profile" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a modern salon owner with a confident smile, captured in a brightly lit studio environment. The background is a soft, blurred beige interior that complements the warm light-mode aesthetic of the application. The individual is wearing a smart-casual blazer, projecting an image of business expertise and professional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsNtR5Pjrppxv1sF3s52s_skGkqTgn0NONkxdACR0YNbCPYeNrulDHF6sRUISzYBWOtqusz4rMS7iYysDXNGJ0d9eesgRyawyTgr8PqOpbWSKEC3aiIqXD4O1q5luHXB1F8ohwHZ0n-UpUhCTx36bah3TEfYRo1S-hXrjpTSS7EtDt6bNAHK_7A4G3i8aghZGiPtoJ5pa214v8pvj2RX0sovMI8Q-xb4oHyVGYlSdolOnFS9bDXUi1hltopZNf07BVTDsZyLxV7Z4L"/>
+<div class="hidden lg:block text-right">
+<p class="font-label-md text-label-md text-on-surface leading-none">Sarah Chen</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Master Affiliate</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Ledger Content -->
+<div class="flex-1 p-margin-page overflow-y-auto custom-scrollbar">
+<!-- Summary Header Bento Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-stack-lg">
+<!-- Detailed Balance & Progress -->
+<div class="lg:col-span-5 p-stack-lg rounded-xl border border-outline-variant bg-surface-container-lowest flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Available for Payout</p>
+<h2 class="font-display-lg text-display-lg text-primary">RM 1,248.50</h2>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Total Earned</p>
+<p class="font-headline-md text-headline-md text-on-surface">RM 15,420.00</p>
+</div>
+</div>
+<!-- Progress Tracker -->
+<div class="space-y-2 mb-6">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Payout Threshold Progress</span>
+<span class="font-label-md text-label-md text-primary font-bold">100%</span>
+</div>
+<div class="h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-success w-full"></div>
+</div>
+<p class="text-[11px] text-on-surface-variant">Minimum RM 50.00 required. You have reached the limit.</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex-1 bg-primary text-on-primary h-12 rounded-lg font-label-md text-label-md font-bold transition-all active:scale-95 hover:brightness-110">
+        Request Payout Now
+      </button>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Next Cycle</p>
+<p class="font-label-md text-label-md text-on-surface">01 Oct 2024</p>
+</div>
+</div>
+</div>
+<!-- Quick Stats Grid -->
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface p-stack-lg rounded-xl border border-outline-variant">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Pending Approval</p>
+<p class="font-headline-md text-headline-md text-tertiary">RM 342.10</p>
+</div>
+<div class="bg-surface p-stack-lg rounded-xl border border-outline-variant">
+<div class="w-10 h-10 rounded-lg bg-error-container text-on-error-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Tax Withheld (5%)</p>
+<p class="font-headline-md text-headline-md text-error">RM 771.00</p>
+</div>
+<div class="bg-surface p-stack-lg rounded-xl border border-outline-variant">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">history</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Paid to Date</p>
+<p class="font-headline-md text-headline-md text-on-surface">RM 14,171.50</p>
+</div>
+</div>
+</div>
+<!-- Ledger Table Container -->
+<div class="bg-surface rounded-xl border border-outline-variant overflow-hidden">
+<div class="p-gutter border-b border-outline-variant flex justify-between items-center bg-surface-container-low"><div class="flex border-b border-outline-variant mb-[-16px] mr-8"><button class="px-6 py-2 border-b-2 border-primary text-primary font-label-md">Commission Ledger</button><button class="px-6 py-2 text-on-surface-variant font-label-md hover:bg-surface-container-low">Payout History</button></div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Transaction Details</h3>
+<div class="flex gap-2">
+<button class="px-4 h-10 border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                            Filter
+                        </button>
+<button class="px-4 h-10 border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                            Export
+                        </button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest"><th class="px-gutter py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">Date / ID</th>
+<th class="px-gutter py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">Type</th>
+<th class="px-gutter py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">Customer / Downline</th>
+<th class="px-gutter py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant text-right">Order Amt</th>
+<th class="px-gutter py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant text-right">Earnings</th>
+<th class="px-gutter py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant text-center">Status</th></tr>
+</thead>
+<tbody class="divide-y divide-outline-variant"><!-- Row 1: Paid -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-gutter py-4">
+<p class="font-body-md text-body-md text-on-surface">24 Sep 2024</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">#SP-98231</p>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">person</span>
+<span class="font-label-sm text-label-sm text-on-surface">Direct Sale</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<p class="font-body-md text-body-md text-on-surface">Amirul Wahid</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">New Member</p>
+</td>
+<td class="px-gutter py-4 text-right font-label-md text-label-md text-on-surface">RM 450.00</td>
+<td class="px-gutter py-4 text-right">
+<p class="font-label-md text-label-md text-success">RM 45.00</p>
+<p class="text-[10px] text-on-surface-variant">Level 1 (10%)</p>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success">Paid</span>
+</td>
+</tr>
+<!-- Row 2: Pending -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-gutter py-4">
+<p class="font-body-md text-body-md text-on-surface">23 Sep 2024</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">#SP-98115</p>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">groups</span>
+<span class="font-label-sm text-label-sm text-on-surface">L2 Override</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary font-bold text-[12px]">LC</div>
+<p class="font-body-md text-body-md text-on-surface">Lim Chow</p>
+</div>
+</td>
+<td class="px-gutter py-4 text-right font-label-md text-label-md text-on-surface">RM 1,200.00</td>
+<td class="px-gutter py-4 text-right">
+<p class="font-label-md text-label-md text-on-surface">RM 60.00</p>
+<p class="text-[10px] text-on-surface-variant">Level 2 (5%)</p>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning">Pending</span>
+</td>
+</tr>
+<!-- Row 3: Reversed -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer bg-error/5 group">
+<td class="px-gutter py-4">
+<p class="font-body-md text-body-md text-error">20 Sep 2024</p>
+<p class="font-label-sm text-label-sm text-error/60">#SP-97500</p>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[18px]">person</span>
+<span class="font-label-sm text-label-sm text-error">Direct Sale</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center text-error font-bold text-[12px]">JR</div>
+<p class="font-body-md text-body-md text-on-surface">Jason Roy</p>
+</div>
+</td>
+<td class="px-gutter py-4 text-right font-label-md text-label-md text-on-surface-variant line-through">RM 200.00</td>
+<td class="px-gutter py-4 text-right">
+<p class="font-label-md text-label-md text-error line-through">RM 20.00</p>
+<p class="text-[10px] text-error">Order Refunded</p>
+</td>
+<td class="px-gutter py-4 text-center">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-error text-on-error shadow-sm" title="Order was fully refunded on 21 Sep">
+<span class="material-symbols-outlined text-[14px] mr-1">info</span>
+      Reversed
+    </span>
+</td>
+</tr></tbody>
+</table>
+</div>
+<!-- Footer Pagination -->
+<div class="p-4 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Showing 1 to 10 of 254 transactions</p>
+<div class="flex gap-2">
+<button class="w-10 h-10 border border-outline-variant rounded-lg flex items-center justify-center text-on-surface-variant disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 border border-outline-variant rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Sync Banner (as per style guidance) -->
+<div class="w-full bg-primary text-white h-8 flex items-center justify-center font-label-sm text-label-sm transition-transform duration-500 translate-y-0" id="sync-banner">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+                Syncing your latest commissions...
+            </span>
+</div>
+<!-- Footer -->
+<footer class="flex flex-col md:flex-row justify-between items-center px-margin-page w-full mt-auto py-stack-lg bg-surface-container-high dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 SalonPortal Malaysia. All rights reserved.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity" href="#">Refund Policy</a>
+</div>
+</footer>
+</main>
+<script>
+        // Simulate sync completion
+        setTimeout(() => {
+            const banner = document.getElementById('sync-banner');
+            banner.classList.add('-translate-y-full');
+            setTimeout(() => banner.remove(), 500);
+        }, 3000);
+
+        // Micro-interaction for table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Future implementation: show order details drawer
+                console.log('Row clicked');
+            });
+        });
+    </script>
+</body></html>

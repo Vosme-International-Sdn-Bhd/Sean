@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f5f4f0",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#5f5f5b",
+                        "secondary": "#5f5f5a",
+                        "danger": "#8A1F1F",
+                        "surface-bright": "#faf9f5",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1b1c1a",
+                        "tertiary": "#5e4100",
+                        "surface-container-highest": "#e3e2df",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-primary-fixed-variant": "#004786",
+                        "platinum": "#E5E4E2",
+                        "tertiary-container": "#7d5700",
+                        "purple-mlm": "#4A3AB0",
+                        "on-background": "#1b1c1a",
+                        "inverse-surface": "#30312e",
+                        "error": "#ba1a1a",
+                        "background": "#faf9f5",
+                        "inverse-primary": "#a6c8ff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-tint": "#1a5fa8",
+                        "surface-dim": "#dbdad6",
+                        "surface-variant": "#e3e2df",
+                        "primary-fixed": "#d4e3ff",
+                        "primary": "#004786",
+                        "secondary-container": "#dcdad5",
+                        "warning": "#8A5200",
+                        "surface-container-high": "#e9e8e4",
+                        "surface-container": "#efeeea",
+                        "on-tertiary": "#ffffff",
+                        "silver": "#C0C0C0",
+                        "outline": "#727782",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#c4daff",
+                        "on-surface-variant": "#424751",
+                        "bronze": "#CD7F32",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#1a5fa8",
+                        "on-secondary-fixed": "#1b1c19",
+                        "on-tertiary-fixed": "#271900",
+                        "ink-primary": "#1A1A18",
+                        "secondary-fixed": "#e4e2dd",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "success": "#2E7D52",
+                        "border": "#E2E1DC",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-primary-fixed": "#001c3a",
+                        "on-tertiary-container": "#ffd184",
+                        "surface": "#FFFFFF",
+                        "outline-variant": "#c2c6d3",
+                        "on-secondary-fixed-variant": "#474743"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "tile-height-min": "80px",
+                        "stack-sm": "8px",
+                        "touch-target-min": "56px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "margin-page": "24px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "body-sm": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Libre Franklin"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #faf9f5;
+            color: #1b1c1a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .order-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 16px;
+        }
+        .safe-area-inset-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-border dark:border-outline-variant docked full-width top-0 z-40">
+<div class="flex justify-between items-center w-full px-margin-page h-touch-target-min">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Precision Salon OS</span>
+<div class="h-6 w-px bg-border mx-2"></div>
+<h1 class="font-headline-md text-headline-md text-on-surface">On-Hold Orders</h1>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container transition-colors rounded-full cursor-pointer">sync</span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container transition-colors rounded-full cursor-pointer">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-danger rounded-full border-2 border-surface"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container transition-colors rounded-full cursor-pointer">settings</span>
+<img alt="Manager Profile" class="w-8 h-8 rounded-full border border-border ml-2" data-alt="A professional headshot of a salon manager with a clean, modern aesthetic. The lighting is bright and high-key, matching a professional business environment. The background is a soft, out-of-focus salon interior with neutral tones and blue accents, maintaining a corporate and clean visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_sUi7pxILn1NCLVO3OV-rmETpdR4hLPeoP9r92Qix-jcxBMs2mhHzS2MwsXuyJs4PbAHFqIguu8VsmLJSXScZ8KWLp6Pn4Sx07BoZBWPuNOKFAhov9lQFDsv8N0_xnTqAbqkaup4tZyZHdynSHdMRwpvEgCs1eQ1NE9hFx-h1u_e5AqCN7ECyF9mdtsgjfksBCaC2wmLanzDvJWcLOo-yjpjmM3zDClNg8Df5hpyCMULWpDd_Nf7GiahoIkzeYe1DvqJHqsR2FHuv"/>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-56px)] overflow-hidden">
+<!-- SideNavBar (Hidden on Mobile, Visible on Tablet Landscape) -->
+<aside class="hidden md:flex flex-col h-full py-stack-lg bg-surface-container-low dark:bg-surface-dim border-r border-border dark:border-outline-variant w-64 shrink-0">
+<div class="px-gutter mb-stack-lg">
+<div class="flex items-center gap-stack-sm p-stack-sm bg-surface rounded-lg border border-border">
+<img alt="Salon Logo" class="w-10 h-10 rounded-md" data-alt="A minimalist logo for a high-end hair salon named Precision Salon. The logo features a sharp, geometric design in deep primary blue and white. It is displayed on a small square tile with rounded corners, appearing modern and professional within a corporate POS interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZCY9hHS-nvGlz8-JBwJW3MwKP7uUAYsE1HOZwhnpEkLAHmqHCo0aiUufO0EHf9_RwzFCr-jG9w0UJASK_orfSi84EJiy9SDKf1KCo7KCXnqIYohdPcJlRR0_dE9nFtTbbFy0PkoWtZD4kxCBGilUdPhy82s6QPsSBKTeNSHiS6XJiBOlYncOWkkkCNzJ1VEC6pi4rZWvGEZEUvJvWf5AhDg7R0yFScwrGheKTET00A2EKsmuz8Zo_4Z-ftLS0GPDeI4cDYGg3meQT"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-primary">Main Branch</p>
+<p class="text-[10px] uppercase tracking-wider text-secondary font-bold">Enterprise Admin</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-high transition-all rounded-lg active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Active Tab: Appointments/Bookings context for On-Hold -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container border-r-2 border-primary rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<div class="mt-auto px-gutter border-t border-border pt-stack-md space-y-1">
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-lg mb-4 hover:opacity-90 active:scale-95 transition-all">
+                    Quick Checkout
+                </button>
+<a class="flex items-center gap-3 px-4 py-2 text-on-secondary-container hover:bg-surface-container-high rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-secondary-container hover:bg-surface-container-high rounded-lg text-danger" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-margin-page pb-32 md:pb-margin-page">
+<!-- Filters & Search Bar -->
+<div class="flex flex-col md:flex-row gap-stack-md justify-between items-center mb-stack-lg">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 h-12 bg-surface border border-border rounded-lg focus:border-primary focus:ring-0 font-body-md" placeholder="Search by member or order ID..." type="text"/>
+</div>
+<div class="flex items-center gap-stack-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 h-12 px-6 border border-border bg-surface rounded-lg font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                        All Status
+                    </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 h-12 px-6 border border-border bg-surface rounded-lg font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-lg">sort</span>
+                        Due Date
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg">
+<div class="bg-surface p-stack-md rounded-xl border border-border flex items-center gap-stack-md">
+<div class="w-12 h-12 bg-primary-container/10 text-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">pause_circle</span>
+</div>
+<div>
+<p class="text-on-secondary-container font-label-sm">Total On-Hold</p>
+<p class="font-headline-md text-headline-md font-bold">12 Orders</p>
+</div>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border flex items-center gap-stack-md">
+<div class="w-12 h-12 bg-warning/10 text-warning rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="font-label-sm text-warning font-bold">Near Credit Limit</p>
+<p class="font-headline-md text-headline-md font-bold text-warning">4 Members</p>
+</div>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border flex items-center gap-stack-md">
+<div class="w-12 h-12 bg-danger/10 text-danger rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">priority_high</span>
+</div>
+<div>
+<p class="text-on-secondary-container font-label-sm">Overdue Payment</p>
+<p class="font-headline-md text-headline-md font-bold text-danger">RM 4,250.00</p>
+</div>
+</div>
+</div>
+<!-- On-Hold Orders List -->
+<div class="order-grid">
+<!-- Card 1: Urgent Credit Warning -->
+<div class="bg-surface border-2 border-danger rounded-xl overflow-hidden shadow-sm flex flex-col group transition-all hover:shadow-md active:scale-[0.98]">
+<div class="p-stack-md border-b border-border bg-error-container/20">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-danger text-white px-3 py-1 rounded-full font-label-sm text-[10px]">CREDIT ALERT</span>
+<span class="font-label-md text-label-md text-danger font-bold">ID: 99283</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Wong Wei Han</h3>
+<p class="font-label-sm text-danger flex items-center gap-1 mt-1"><div class="bg-danger text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-2 mt-2 w-fit">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">warning</span>
+    Exceeded RM 5,000.00 limit
+</div></p>
+</div>
+<div class="p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Services</span>
+<span class="font-body-md font-bold">Balayage + Treatment</span>
+</div>
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Due Date</span>
+<span class="font-label-md text-label-md text-danger">Today, 4:30 PM</span>
+</div>
+<div class="mt-4 pt-4 border-t border-border">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-secondary font-bold">Balance Due</p>
+<p class="font-headline-md text-headline-md font-bold text-primary">RM 1,240.00</p>
+</div>
+<button class="h-14 px-6 bg-primary text-on-primary rounded-lg font-bold flex items-center gap-2 active:bg-primary-container">
+<span class="material-symbols-outlined">payments</span>
+                                    PAY
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Regular On-Hold -->
+<div class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col group transition-all hover:border-primary active:scale-[0.98]">
+<div class="p-stack-md border-b border-border">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-[10px]">PENDING SYNC</span>
+<span class="font-label-md text-label-md text-on-secondary-container">ID: 99275</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Sarah Jenkins</h3>
+<p class="font-label-sm text-secondary mt-1">Tier: Platinum Member</p>
+</div>
+<div class="p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Services</span>
+<span class="font-body-md font-bold">Hair Cut + Styling</span>
+</div>
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Due Date</span>
+<span class="font-label-md text-label-md">Oct 24, 2:00 PM</span>
+</div>
+<div class="mt-4 pt-4 border-t border-border">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-secondary font-bold">Balance Due</p>
+<p class="font-headline-md text-headline-md font-bold text-primary">RM 280.00</p>
+</div>
+<button class="h-14 px-6 bg-primary text-on-primary rounded-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                                    PAY
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: New Member / High Limit -->
+<div class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col transition-all hover:border-primary active:scale-[0.98]">
+<div class="p-stack-md border-b border-border">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-success/10 text-success px-3 py-1 rounded-full font-label-sm text-[10px]">NEW ORDER</span>
+<span class="font-label-md text-label-md text-on-secondary-container">ID: 99301</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Ahmad Rizal</h3>
+<p class="font-label-sm text-secondary mt-1">Limit: RM 2,000.00 (Remaining: RM 1,850)</p>
+</div>
+<div class="p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Services</span>
+<span class="font-body-md font-bold">Men's Deluxe Spa</span>
+</div>
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Due Date</span>
+<span class="font-label-md text-label-md">Today, 5:45 PM</span>
+</div>
+<div class="mt-4 pt-4 border-t border-border">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-secondary font-bold">Balance Due</p>
+<p class="font-headline-md text-headline-md font-bold text-primary">RM 150.00</p>
+</div>
+<button class="h-14 px-6 bg-primary text-on-primary rounded-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                                    PAY
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: Overdue -->
+<div class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col transition-all hover:border-danger active:scale-[0.98]">
+<div class="p-stack-md border-b border-border bg-surface-container">
+<div class="flex justify-between items-start mb-2">
+<span class="text-white px-3 py-1 rounded-full font-label-sm text-[10px]">OVERDUE</span>
+<span class="font-label-md text-label-md text-on-secondary-container">ID: 99102</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Chen Mei Ling</h3>
+<p class="font-label-sm text-danger mt-1 font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">error</span>
+Last payment attempt failed</p>
+</div>
+<div class="p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Services</span>
+<span class="font-body-md font-bold">Keratin Treatment</span>
+</div>
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Due Date</span>
+<span class="font-label-md text-label-md text-danger">2 Days Ago</span>
+</div>
+<div class="mt-4 pt-4 border-t border-border">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-secondary font-bold">Balance Due</p>
+<p class="font-headline-md text-headline-md font-bold text-primary">RM 850.00</p>
+</div>
+<button class="h-14 px-6 bg-primary text-on-primary rounded-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                                    PAY
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface border border-border rounded-xl overflow-hidden flex flex-col transition-all hover:border-primary active:scale-[0.98]">
+<div class="p-stack-md border-b border-border">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-[10px]">PAUSED</span>
+<span class="font-label-md text-label-md text-on-secondary-container">ID: 99299</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">Kevin O'Brian</h3>
+<p class="font-label-sm text-secondary mt-1">Tier: Gold Member</p>
+</div>
+<div class="p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Services</span>
+<span class="font-body-md font-bold">Full Coloring</span>
+</div>
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="text-on-secondary-container font-label-sm">Due Date</span>
+<span class="font-label-md text-label-md">Oct 25, 11:00 AM</span>
+</div>
+<div class="mt-4 pt-4 border-t border-border">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase text-secondary font-bold">Balance Due</p>
+<p class="font-headline-md text-headline-md font-bold text-primary">RM 450.00</p>
+</div>
+<button class="h-14 px-6 bg-primary text-on-primary rounded-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                                    PAY
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Placeholder (Ghost Card) -->
+<div class="bg-surface-container-low border border-dashed border-border rounded-xl flex flex-col items-center justify-center min-h-[300px] p-stack-md">
+<span class="material-symbols-outlined text-4xl text-outline mb-4">add_circle</span>
+<p class="font-label-md text-label-md text-on-secondary-container text-center">Place new order on hold</p>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Visible only on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 h-touch-target-min border-t border-border dark:border-outline-variant bg-surface dark:bg-inverse-surface shadow-lg flex justify-around items-center px-gutter pb-2 safe-area-inset-bottom">
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed-variant transition-colors py-2 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-colors py-2 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">event</span>
+<span class="font-label-sm text-label-sm">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed-variant transition-colors py-2 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined">stars</span>
+<span class="font-label-sm text-label-sm">Rewards</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed-variant transition-colors py-2 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</nav>
+<!-- Floating Action Button (Only on Home/Dashboard screens) -->
+<!-- Suppressed on On-Hold screen per UX goal to prioritize list management -->
+<script>
+        // Micro-interactions for button clicks
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

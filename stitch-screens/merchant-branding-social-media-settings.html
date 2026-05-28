@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Branding Settings | Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f5f4f0;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dcdad5;
+            border-radius: 10px;
+        }
+        .glass-preview {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 0.5px solid #E2E1DC;
+        }
+        .phone-mockup {
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#a6c8ff",
+                      "on-surface": "#1b1c1a",
+                      "surface-variant": "#e3e2df",
+                      "silver": "#C0C0C0",
+                      "on-secondary-fixed-variant": "#474743",
+                      "border": "#E2E1DC",
+                      "on-tertiary": "#ffffff",
+                      "background": "#faf9f5",
+                      "surface-container-low": "#f5f4f0",
+                      "on-background": "#1b1c1a",
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#7d5700",
+                      "on-primary-fixed-variant": "#004786",
+                      "tertiary-fixed-dim": "#f3be5e",
+                      "inverse-on-surface": "#f2f1ed",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#dcdad5",
+                      "ink-primary": "#1A1A18",
+                      "secondary-fixed-dim": "#c8c6c1",
+                      "on-secondary-fixed": "#1b1c19",
+                      "surface-container-highest": "#e3e2df",
+                      "surface-tint": "#1a5fa8",
+                      "primary-fixed": "#d4e3ff",
+                      "danger": "#8A1F1F",
+                      "surface": "#FFFFFF",
+                      "tertiary": "#5e4100",
+                      "secondary-fixed": "#e4e2dd",
+                      "purple-mlm": "#4A3AB0",
+                      "warning": "#8A5200",
+                      "platinum": "#E5E4E2",
+                      "on-secondary-container": "#5f5f5b",
+                      "on-primary-container": "#c4daff",
+                      "inverse-surface": "#30312e",
+                      "on-surface-variant": "#424751",
+                      "bronze": "#CD7F32",
+                      "secondary": "#5f5f5a",
+                      "tertiary-fixed": "#ffdeaa",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "outline": "#727782",
+                      "surface-container": "#efeeea",
+                      "primary": "#004786",
+                      "outline-variant": "#c2c6d3",
+                      "on-error": "#ffffff",
+                      "primary-container": "#1a5fa8",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "on-tertiary-container": "#ffd184",
+                      "on-primary-fixed": "#001c3a",
+                      "success": "#2E7D52",
+                      "surface-container-high": "#e9e8e4",
+                      "surface-dim": "#dbdad6",
+                      "on-tertiary-fixed": "#271900",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "surface-bright": "#faf9f5",
+                      "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "gutter": "16px",
+                      "tile-height-min": "80px",
+                      "touch-target-min": "56px",
+                      "stack-lg": "24px",
+                      "margin-page": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Libre Franklin"],
+                      "headline-lg": ["Libre Franklin"],
+                      "body-lg": ["Libre Franklin"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-md": ["Libre Franklin"],
+                      "display-lg": ["Libre Franklin"],
+                      "body-sm": ["Libre Franklin"],
+                      "label-md": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-surface min-h-screen flex">
+<!-- SIDEBAR ANCHOR -->
+<aside class="fixed h-full w-64 left-0 bg-surface dark:bg-surface-container-low border-r border-border flex flex-col py-stack-md gap-stack-sm z-50">
+<div class="px-gutter mb-stack-lg">
+<h1 class="font-headline-md text-headline-md font-semibold text-primary">Precision Salon</h1>
+<p class="font-body-sm text-body-sm text-secondary">Admin Portal</p>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-sm">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body-sm">Bookings</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-sm">Orders</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-sm">Members</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-body-sm">MLM/Affiliate</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-body-sm">Marketing</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-sm">Inventory</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-body-sm">Staff</span>
+</a>
+<a class="flex items-center px-4 py-3 gap-3 rounded-lg bg-primary-container text-on-primary-container border-r-4 border-primary font-semibold" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-sm">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="ml-64 flex-1 flex flex-col h-screen relative overflow-hidden">
+<!-- TOP NAV ANCHOR -->
+<header class="flex justify-between items-center h-touch-target-min px-gutter w-full bg-surface border-b border-border z-40 sticky top-0">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-body-md">Settings</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="font-bold text-primary">Merchant Branding</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-secondary font-label-md">Main Outlet</span>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- SCROLLABLE CANVAS -->
+<div class="flex-1 overflow-y-auto custom-scrollbar bg-background p-margin-page pb-32">
+<div class="max-w-7xl mx-auto grid grid-cols-12 gap-gutter">
+<!-- LEFT COLUMN: SETTINGS -->
+<div class="col-span-12 lg:col-span-7 space-y-gutter">
+<!-- BRAND IDENTITY -->
+<section class="bg-surface rounded-xl border border-border p-stack-lg">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-primary">id_card</span>
+<h2 class="font-headline-md text-headline-md">Brand Identity</h2>
+</div>
+<div class="space-y-stack-lg">
+<div>
+<label class="block font-label-md mb-2">Main Brand Logo</label>
+<div class="flex items-center gap-gutter">
+<div class="w-32 h-32 bg-surface-container rounded-lg border border-dashed border-outline-variant flex items-center justify-center relative group overflow-hidden">
+<img alt="Current Logo" class="w-full h-full object-contain p-4" data-alt="A clean, minimalist logo for a premium hair salon, featuring elegant gold abstract lines on a soft white background. The style is modern and sophisticated, presented as a professional brand mark for a high-end beauty business. The lighting is bright and crisp, emphasizing the precision and premium quality of the service brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWnjHnP4QjhAILLI_D--EPeTL9Kgc4PFMa8ZQhmr-BQtrcldhx4sBdqd3BXxbvK_OHhQPc-owyvyq5T2LakNZ2PiEXm5VGlLxb05zGXNN0Gdrrt3VszxqI8-eiQOzJ1bPCf_tHpKeQyBEZUSHhq7KRsw8QZjgIE5vZwecH5nx89oQRb5_Gt_EogzjYNPIXE7b0adUPDJfO0XkMSGwQNNiAkF0UROIMOiO_fqBM9k-8cAlIjsoXlZUr6c4DJdJCGtixh1pw5n1e7Ke7"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-white">upload</span>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<p class="font-body-sm text-on-surface">Recommended: SVG or PNG (Transparent)</p>
+<p class="font-label-sm text-outline">Maximum size: 5MB. Min 512x512px.</p>
+<button class="mt-2 text-primary font-label-md border border-primary px-4 py-2 rounded-lg hover:bg-primary/5 transition-colors">Replace Image</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-md mb-2">Favicon</label>
+<div class="flex items-center gap-stack-md bg-surface-container-low p-3 rounded-lg border border-border">
+<div class="w-10 h-10 bg-white rounded border border-border flex items-center justify-center">
+<span class="material-symbols-outlined text-lg text-primary">face</span>
+</div>
+<button class="font-label-md text-primary">Change</button>
+</div>
+</div>
+<div>
+<label class="block font-label-md mb-2">App Icon</label>
+<div class="flex items-center gap-stack-md bg-surface-container-low p-3 rounded-lg border border-border">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">content_cut</span>
+</div>
+<button class="font-label-md text-primary">Change</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- COLOR PALETTE -->
+<section class="bg-surface rounded-xl border border-border p-stack-lg">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-primary">palette</span>
+<h2 class="font-headline-md text-headline-md">Color Palette</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-md mb-2">Primary Brand Color</label>
+<div class="flex items-center gap-2">
+<input class="w-12 h-12 rounded border-none bg-transparent cursor-pointer" type="color" value="#1a5fa8"/>
+<input class="flex-1 bg-surface-container-low border border-border rounded-lg px-4 py-2 font-label-md focus:ring-2 focus:ring-primary outline-none" type="text" value="#1A5FA8"/>
+</div>
+<p class="mt-1 font-label-sm text-outline">Used for buttons, active tabs, and links.</p>
+</div>
+<div>
+<label class="block font-label-md mb-2">Secondary Color</label>
+<div class="flex items-center gap-2">
+<input class="w-12 h-12 rounded border-none bg-transparent cursor-pointer" type="color" value="#5f5f5a"/>
+<input class="flex-1 bg-surface-container-low border border-border rounded-lg px-4 py-2 font-label-md focus:ring-2 focus:ring-primary outline-none" type="text" value="#5F5F5A"/>
+</div>
+<p class="mt-1 font-label-sm text-outline">Used for accents and badges.</p>
+</div>
+</div>
+<div class="mt-stack-lg">
+<label class="block font-label-md mb-3">Surface Style</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl border-2 border-primary bg-surface transition-all">
+<div class="w-full h-12 bg-white rounded border border-border"></div>
+<span class="font-label-md">Clean White</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl border border-border bg-surface-container-low hover:border-outline transition-all">
+<div class="w-full h-12 bg-[#FAF9F5] rounded border border-border"></div>
+<span class="font-label-md">Soft Cream</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl border border-border bg-surface-container-highest hover:border-outline transition-all">
+<div class="w-full h-12 bg-[#E3E2DF] rounded border border-border"></div>
+<span class="font-label-md">Modern Grey</span>
+</button>
+</div>
+</div>
+</section>
+<!-- TYPOGRAPHY & VOICE -->
+<section class="bg-surface rounded-xl border border-border p-stack-lg">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-primary">font_download</span>
+<h2 class="font-headline-md text-headline-md">Typography &amp; Voice</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg">
+<div>
+<label class="block font-label-md mb-2">Heading Font</label>
+<select class="w-full bg-surface-container-low border border-border rounded-lg px-4 py-3 font-body-sm focus:ring-2 focus:ring-primary outline-none">
+<option>Libre Franklin</option>
+<option>Inter</option>
+<option>Playfair Display</option>
+<option>Montserrat</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md mb-2">Body Font</label>
+<select class="w-full bg-surface-container-low border border-border rounded-lg px-4 py-3 font-body-sm focus:ring-2 focus:ring-primary outline-none">
+<option>Libre Franklin</option>
+<option>Inter</option>
+<option>Roboto</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-md mb-2">Brand Tone (AI Assistant)</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-primary bg-primary text-white font-label-md">Professional</button>
+<button class="px-4 py-2 rounded-full border border-border hover:bg-surface-container-low font-label-md transition-colors">Friendly</button>
+<button class="px-4 py-2 rounded-full border border-border hover:bg-surface-container-low font-label-md transition-colors">Luxury</button>
+<button class="px-4 py-2 rounded-full border border-border hover:bg-surface-container-low font-label-md transition-colors">Playful</button>
+</div>
+<textarea class="mt-4 w-full bg-surface-container-low border border-border rounded-lg px-4 py-3 font-body-sm focus:ring-2 focus:ring-primary outline-none h-24" placeholder="Describe your brand voice in more detail..."></textarea>
+</div>
+</section>
+<!-- SOCIAL MEDIA PROFILES -->
+<section class="bg-surface rounded-xl border border-border p-stack-lg">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-primary">public</span>
+<h2 class="font-headline-md text-headline-md">Social Media Profiles</h2>
+</div>
+<div class="space-y-stack-md">
+<!-- Instagram -->
+<div>
+<label class="block font-label-md mb-2">Instagram</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">photo_camera</span>
+<input class="w-full bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2.5 font-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="instagram.com/yourbrand" type="text"/>
+</div>
+<button class="px-4 py-2 border border-border rounded-lg font-label-md hover:bg-surface-container-low transition-colors shrink-0">Test Link</button>
+</div>
+</div>
+<!-- Facebook -->
+<div>
+<label class="block font-label-md mb-2">Facebook</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">public</span>
+<input class="w-full bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2.5 font-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="facebook.com/yourbrand" type="text"/>
+</div>
+<button class="px-4 py-2 border border-border rounded-lg font-label-md hover:bg-surface-container-low transition-colors shrink-0">Test Link</button>
+</div>
+</div>
+<!-- TikTok -->
+<div>
+<label class="block font-label-md mb-2">TikTok</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">music_note</span>
+<input class="w-full bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2.5 font-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="tiktok.com/@yourbrand" type="text"/>
+</div>
+<button class="px-4 py-2 border border-border rounded-lg font-label-md hover:bg-surface-container-low transition-colors shrink-0">Test Link</button>
+</div>
+</div>
+<!-- YouTube -->
+<div>
+<label class="block font-label-md mb-2">YouTube</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">smart_display</span>
+<input class="w-full bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2.5 font-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="youtube.com/c/yourbrand" type="text"/>
+</div>
+<button class="px-4 py-2 border border-border rounded-lg font-label-md hover:bg-surface-container-low transition-colors shrink-0">Test Link</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN: PREVIEW -->
+<div class="col-span-12 lg:col-span-5 relative">
+<div class="sticky top-stack-lg flex flex-col items-center">
+<h3 class="font-label-md text-secondary mb-4 uppercase tracking-wider">Customer Portal Preview</h3>
+<!-- PHONE MOCKUP -->
+<div class="phone-mockup w-[320px] h-[640px] bg-black rounded-[3rem] border-8 border-neutral-900 p-3 overflow-hidden relative">
+<!-- Mobile Content Wrapper -->
+<div class="w-full h-full bg-background rounded-[2.2rem] overflow-hidden flex flex-col">
+<!-- Status Bar -->
+<div class="h-6 flex justify-between px-6 items-center text-[10px] font-bold">
+<span>9:41</span>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-xs">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-xs">wifi</span>
+<span class="material-symbols-outlined text-xs">battery_full</span>
+</div>
+</div>
+<!-- Preview Screen Content -->
+<div class="flex-1 flex flex-col p-4 bg-white">
+<div class="flex justify-center mb-6">
+<img class="h-12 w-auto object-contain" data-alt="The salon logo integrated into a mobile app interface. The logo is minimalist and gold, positioned at the top of a clean white booking screen. The background is pristine, reflecting a luxury beauty boutique vibe. The layout is optimized for a high-end user experience on a modern smartphone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC68wY11kbJURRuOTh791kADcFZwqyjQvX0W7qFlvR1qm7cYwmFW94jfy7U2fPrq9TpXeR9TgrnX8SK59x8FRK7V1QDD2_uCAY7T3V7veXbRQNyJDOJ9Dej4IJZen8j5CoWNMsVlIhOe0KLjrqLnScyQO2WZWOtjIMYRZ7xWAtMmXI1OO9oO_KyjZoVtTl0yVuGZ09G3zPlDHk-wySFUpF73NyV_JfBxzkGL4wy-2S5pG1Usy64_mTcNqo4O-7IAY8DaT3JHMuHQSQt"/>
+</div>
+<h4 class="text-xl font-bold mb-1">Book an Appointment</h4>
+<p class="text-xs text-secondary mb-6">Select a service to get started</p>
+<div class="space-y-3">
+<div class="p-3 border border-primary rounded-xl bg-primary/5 flex justify-between items-center">
+<div>
+<p class="font-bold text-sm">Precision Haircut</p>
+<p class="text-[10px] text-secondary">60 mins • $85</p>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="p-3 border border-border rounded-xl flex justify-between items-center opacity-60">
+<div>
+<p class="font-bold text-sm">Signature Color</p>
+<p class="text-[10px] text-secondary">120 mins • $150</p>
+</div>
+</div>
+<div class="p-3 border border-border rounded-xl flex justify-between items-center opacity-60">
+<div>
+<p class="font-bold text-sm">Deep Conditioning</p>
+<p class="text-[10px] text-secondary">30 mins • $45</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-sm">Continue to Booking</button>
+<p class="text-center text-[10px] mt-4 text-outline underline">Powered by Precision Salon OS</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex gap-4">
+<button class="flex items-center gap-2 text-primary font-label-md px-4 py-2 rounded-lg bg-primary/5 border border-primary">
+<span class="material-symbols-outlined text-lg">smartphone</span>
+                            Mobile
+                        </button>
+<button class="flex items-center gap-2 text-secondary font-label-md px-4 py-2 rounded-lg border border-border hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-lg">desktop_windows</span>
+                            Desktop
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STICKY FOOTER ACTION BAR -->
+<footer class="fixed bottom-0 left-64 right-0 bg-surface/80 backdrop-blur-md border-t border-border p-stack-md flex justify-between items-center z-50">
+<div class="flex items-center gap-4 text-secondary">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success">cloud_done</span>
+<span class="font-label-sm">All changes auto-saved to draft</span>
+</div>
+<div class="h-4 w-px bg-border"></div>
+<button class="font-label-md hover:text-on-surface">Discard Draft</button>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-touch-target-min flex items-center justify-center rounded-lg border border-border font-label-md hover:bg-surface-container-low transition-colors">
+                Preview Portal
+            </button>
+<button class="px-8 py-touch-target-min flex items-center justify-center rounded-lg bg-primary text-white font-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+                Save Branding Changes
+            </button>
+</div>
+</footer>
+</main>
+<!-- SYNC BANNER -->
+<div class="fixed top-0 left-0 right-0 h-1 bg-primary z-[100] hidden" id="sync-banner"></div>
+<script>
+    // Micro-interactions for Color Pickers
+    const colorPickers = document.querySelectorAll('input[type="color"]');
+    colorPickers.forEach(picker => {
+        picker.addEventListener('input', (e) => {
+            const hexInput = e.target.nextElementSibling;
+            hexInput.value = e.target.value.toUpperCase();
+            
+            // Live update primary color if it's the primary picker
+            if (hexInput.value === e.target.value.toUpperCase() && hexInput.previousElementSibling === colorPickers[0]) {
+                document.documentElement.style.setProperty('--primary-preview', e.target.value);
+                // Update preview button & active states in the phone mockup
+                const previewBtn = document.querySelector('.phone-mockup button');
+                if (previewBtn) previewBtn.style.backgroundColor = e.target.value;
+                const previewActive = document.querySelector('.phone-mockup .border-primary');
+                if (previewActive) {
+                    previewActive.style.borderColor = e.target.value;
+                    previewActive.style.backgroundColor = e.target.value + '0D';
+                }
+                const previewIcon = document.querySelector('.phone-mockup .text-primary');
+                if (previewIcon) previewIcon.style.color = e.target.value;
+            }
+        });
+    });
+
+    // Surface Style Selection Logic
+    const surfaceButtons = document.querySelectorAll('.grid-cols-3 button');
+    surfaceButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            surfaceButtons.forEach(b => b.classList.replace('border-primary', 'border-border'));
+            btn.classList.replace('border-border', 'border-primary');
+        });
+    });
+
+    // Simulate Syncing
+    function showSync() {
+        const banner = document.getElementById('sync-banner');
+        banner.classList.remove('hidden');
+        setTimeout(() => {
+            banner.classList.add('hidden');
+        }, 2000);
+    }
+
+    // Add sync visual to buttons
+    document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if(btn.textContent.trim() === "Save Branding Changes") {
+                showSync();
+            }
+        });
+    });
+</script>
+</body></html>

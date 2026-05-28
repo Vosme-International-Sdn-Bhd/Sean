@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Outlet Management — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item active" href="outlet-management.html"><span class="icon">🗺️</span>Outlet Management</a>
+      <a class="nav-item" href="company-hardware.html"><span class="icon">🖥️</span>Company &amp; Hardware</a>
+      <a class="nav-item" href="integrations.html"><span class="icon">🔌</span>Integrations</a>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Outlet Management</div><div class="page-subtitle">Manage all branches under this merchant account</div></div>
+      <button class="btn btn-primary">+ Add Outlet</button>
+    </div>
+
+    <!-- Summary -->
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Total Outlets</div><div class="stat-value">4</div></div>
+      <div class="stat-card"><div class="stat-label">Active</div><div class="stat-value" style="color:var(--success);">3</div></div>
+      <div class="stat-card"><div class="stat-label">Total Staff</div><div class="stat-value">18</div></div>
+      <div class="stat-card"><div class="stat-label">POS Devices</div><div class="stat-value">6</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:16px;">
+      <!-- Outlet 1 -->
+      <div class="outlet-card">
+        <div class="outlet-badge"><span class="pill pill-success">Active</span></div>
+        <div class="outlet-name">KLCC Branch</div>
+        <div class="outlet-meta">
+          <span>📍 Level 2, Suria KLCC, Jalan Ampang, KL</span>
+          <span>📞 +603 2166 8899</span>
+          <span>👥 8 staff &nbsp;·&nbsp; 🖥️ 2 POS devices</span>
+        </div>
+        <hr class="divider">
+        <div class="grid grid-3" style="gap:8px;font-size:13px;">
+          <div style="text-align:center;"><div class="mono font-600 text-primary">RM 24,500</div><div class="text-xs text-muted">Revenue (MTD)</div></div>
+          <div style="text-align:center;"><div class="mono font-600">142</div><div class="text-xs text-muted">Bookings (MTD)</div></div>
+          <div style="text-align:center;"><div class="mono font-600" style="color:var(--success);">4.8 ⭐</div><div class="text-xs text-muted">Rating</div></div>
+        </div>
+        <hr class="divider">
+        <div class="flex gap-8">
+          <a href="outlet-settings.html" class="btn btn-secondary btn-sm">⚙️ Settings</a>
+          <a href="staff-management.html" class="btn btn-secondary btn-sm">👥 Staff</a>
+          <a href="bookings-schedule.html" class="btn btn-secondary btn-sm">📅 Calendar</a>
+        </div>
+      </div>
+
+      <!-- Outlet 2 -->
+      <div class="outlet-card">
+        <div class="outlet-badge"><span class="pill pill-success">Active</span></div>
+        <div class="outlet-name">Bangsar Branch</div>
+        <div class="outlet-meta">
+          <span>📍 No.12, Jalan Telawi 3, Bangsar, KL</span>
+          <span>📞 +603 2288 7766</span>
+          <span>👥 5 staff &nbsp;·&nbsp; 🖥️ 2 POS devices</span>
+        </div>
+        <hr class="divider">
+        <div class="grid grid-3" style="gap:8px;font-size:13px;">
+          <div style="text-align:center;"><div class="mono font-600 text-primary">RM 16,200</div><div class="text-xs text-muted">Revenue (MTD)</div></div>
+          <div style="text-align:center;"><div class="mono font-600">98</div><div class="text-xs text-muted">Bookings (MTD)</div></div>
+          <div style="text-align:center;"><div class="mono font-600" style="color:var(--success);">4.6 ⭐</div><div class="text-xs text-muted">Rating</div></div>
+        </div>
+        <hr class="divider">
+        <div class="flex gap-8">
+          <a href="outlet-settings.html" class="btn btn-secondary btn-sm">⚙️ Settings</a>
+          <a href="staff-management.html" class="btn btn-secondary btn-sm">👥 Staff</a>
+          <a href="bookings-schedule.html" class="btn btn-secondary btn-sm">📅 Calendar</a>
+        </div>
+      </div>
+
+      <!-- Outlet 3 -->
+      <div class="outlet-card">
+        <div class="outlet-badge"><span class="pill pill-success">Active</span></div>
+        <div class="outlet-name">Mont Kiara Branch</div>
+        <div class="outlet-meta">
+          <span>📍 Solaris Mont Kiara, Kuala Lumpur</span>
+          <span>📞 +603 6211 5533</span>
+          <span>👥 5 staff &nbsp;·&nbsp; 🖥️ 1 POS device</span>
+        </div>
+        <hr class="divider">
+        <div class="grid grid-3" style="gap:8px;font-size:13px;">
+          <div style="text-align:center;"><div class="mono font-600 text-primary">RM 9,800</div><div class="text-xs text-muted">Revenue (MTD)</div></div>
+          <div style="text-align:center;"><div class="mono font-600">67</div><div class="text-xs text-muted">Bookings (MTD)</div></div>
+          <div style="text-align:center;"><div class="mono font-600" style="color:var(--success);">4.5 ⭐</div><div class="text-xs text-muted">Rating</div></div>
+        </div>
+        <hr class="divider">
+        <div class="flex gap-8">
+          <a href="outlet-settings.html" class="btn btn-secondary btn-sm">⚙️ Settings</a>
+          <a href="staff-management.html" class="btn btn-secondary btn-sm">👥 Staff</a>
+          <a href="bookings-schedule.html" class="btn btn-secondary btn-sm">📅 Calendar</a>
+        </div>
+      </div>
+
+      <!-- Outlet 4 — Inactive -->
+      <div class="outlet-card" style="opacity:0.7;">
+        <div class="outlet-badge"><span class="pill pill-neutral">Inactive</span></div>
+        <div class="outlet-name">Petaling Jaya (Coming Soon)</div>
+        <div class="outlet-meta">
+          <span>📍 Jaya One, Petaling Jaya, Selangor</span>
+          <span>📞 Not assigned</span>
+          <span>👥 0 staff &nbsp;·&nbsp; 🖥️ 1 POS (pending)</span>
+        </div>
+        <hr class="divider">
+        <div class="flex gap-8">
+          <a href="outlet-settings.html" class="btn btn-primary btn-sm">⚙️ Setup Outlet</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

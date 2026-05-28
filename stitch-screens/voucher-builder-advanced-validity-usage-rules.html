@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Voucher Template Builder | Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#1a5fa8",
+                        "success": "#2E7D52",
+                        "surface": "#FFFFFF",
+                        "secondary-container": "#dcdad5",
+                        "warning": "#8A5200",
+                        "surface-container-high": "#e9e8e4",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "danger": "#8A1F1F",
+                        "surface-bright": "#faf9f5",
+                        "on-secondary-fixed": "#1b1c19",
+                        "ink-primary": "#1A1A18",
+                        "tertiary": "#5e4100",
+                        "silver": "#C0C0C0",
+                        "border": "#E2E1DC",
+                        "on-primary-fixed-variant": "#004786",
+                        "surface-dim": "#dbdad6",
+                        "on-tertiary-fixed": "#271900",
+                        "background": "#faf9f5",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "outline": "#727782",
+                        "purple-mlm": "#4A3AB0",
+                        "on-background": "#1b1c1a",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "on-tertiary-container": "#ffd184",
+                        "secondary-fixed": "#e4e2dd",
+                        "bronze": "#CD7F32",
+                        "on-secondary-container": "#5f5f5b",
+                        "inverse-surface": "#30312e",
+                        "outline-variant": "#c2c6d3",
+                        "on-surface": "#1b1c1a",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-container-low": "#f5f4f0",
+                        "platinum": "#E5E4E2",
+                        "on-surface-variant": "#424751",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "surface-container-highest": "#e3e2df",
+                        "surface-container": "#efeeea",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#7d5700",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "on-primary-fixed": "#001c3a",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-primary-container": "#c4daff",
+                        "surface-variant": "#e3e2df",
+                        "on-secondary-fixed-variant": "#474743",
+                        "primary-container": "#1a5fa8",
+                        "secondary": "#5f5f5a",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-secondary": "#ffffff",
+                        "primary": "#004786",
+                        "on-tertiary-fixed-variant": "#5f4100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "tile-height-min": "80px",
+                        "margin-page": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "touch-target-min": "56px",
+                        "stack-lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Libre Franklin"],
+                        "headline-md": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-lg": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Libre Franklin', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .voucher-preview-dash { background-image: radial-gradient(circle, #E2E1DC 1.5px, transparent 1.5px); background-size: 8px 8px; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-40 bg-surface dark:bg-surface-dim border-b border-border dark:border-outline-variant flex justify-between items-center h-16 px-gutter ml-64">
+<div class="flex items-center gap-gutter">
+<h1 class="text-headline-md font-headline-md text-primary dark:text-primary-fixed">Voucher Template Builder</h1>
+<div class="h-6 w-px bg-border"></div>
+<nav class="flex gap-stack-md">
+<span class="text-on-surface-variant font-body-md">Marketing</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-semibold font-body-md">New Voucher Template</span>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex items-center bg-surface-container-low px-stack-md py-2 rounded-lg border border-border">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48" placeholder="Search templates..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full" data-icon="storefront">storefront</button>
+<div class="flex items-center gap-stack-sm ml-2 cursor-pointer active:opacity-80">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">JD</div>
+<span class="font-body-md font-medium">John Doe</span>
+</div>
+</div>
+</header>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 bg-surface-container-low dark:bg-surface-dim border-r border-border dark:border-outline-variant flex flex-col p-stack-md gap-stack-sm">
+<div class="px-2 py-4 mb-4">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Precision Salon OS</h2>
+<p class="text-body-sm text-outline">Admin Portal</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-body-md">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-body-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Members</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-body-md">MLM/Affiliate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary font-semibold rounded-lg transition-all scale-95 duration-150 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-body-md">Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-body-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-border pt-4 px-2 flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant text-body-sm">
+<span>System Syncing...</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-primary"></div>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-64 pt-16 h-screen flex overflow-hidden">
+<!-- Configuration Canvas (Left) -->
+<section class="flex-1 h-full overflow-y-auto p-stack-lg no-scrollbar">
+<div class="max-w-3xl mx-auto flex flex-col gap-stack-lg pb-32">
+<!-- Basic Info -->
+<div class="bg-surface p-stack-lg rounded-lg border border-border shadow-sm">
+<h3 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+                        Basic Information
+                    </h3>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="col-span-2">
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Voucher Name</label>
+<input class="w-full px-4 h-12 border border-border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-md" id="input-name" placeholder="e.g., Anniversary Promo 2024" type="text" value="Welcome Back 20"/>
+</div>
+<div class="col-span-2">
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Description</label>
+<textarea class="w-full p-4 border border-border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-md h-24" id="input-desc" placeholder="Briefly describe the purpose of this voucher..."></textarea>
+</div>
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Voucher Code Type</label>
+<select class="w-full px-4 h-12 border border-border rounded-lg bg-white outline-none font-body-md">
+<option>System Generated</option>
+<option>Custom Code</option>
+</select>
+</div>
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Initial Status</label>
+<div class="flex h-12 border border-border rounded-lg p-1 bg-surface-container-low">
+<button class="flex-1 rounded-md text-body-sm font-medium bg-white shadow-sm border border-border">Draft</button>
+<button class="flex-1 rounded-md text-body-sm font-medium text-outline">Active</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Discount Logic -->
+<div class="bg-surface p-stack-lg rounded-lg border border-border shadow-sm">
+<div class="flex justify-between items-start mb-stack-md">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="sell">sell</span>
+                            Discount Logic
+                        </h3>
+<div class="flex border border-border rounded-lg overflow-hidden">
+<button class="px-4 py-2 bg-primary-container text-on-primary-container font-medium text-body-sm active:opacity-90" id="btn-perc">Percentage</button>
+<button class="px-4 py-2 text-on-surface-variant font-medium text-body-sm hover:bg-surface-container-low" id="btn-fixed">Fixed Amount</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Discount Value</label>
+<div class="relative">
+<input class="w-full pl-4 pr-12 h-12 border border-border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none font-label-md" id="input-val" type="number" value="20"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-outline font-label-md" id="symbol-val">%</span>
+</div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Max Discount Cap</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-outline font-label-md">RM</span>
+<input class="w-full pl-12 pr-4 h-12 border border-border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none font-label-md" type="number" value="50"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage & Limits -->
+<div class="bg-surface p-stack-lg rounded-lg border border-border shadow-sm">
+<h3 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="settings_applications">settings_applications</span>
+                        Validity &amp; Usage Rules
+                    </h3>
+<div class="space-y-6">
+<!-- Campaign Schedule -->
+<div>
+<h4 class="text-body-md font-semibold mb-3">Campaign Schedule</h4>
+<div class="grid grid-cols-2 gap-stack-md">
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Start Date</label>
+<input class="w-full px-4 h-12 border border-border rounded-lg font-body-md" type="date" value="2024-06-01"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="font-label-md text-label-md text-outline uppercase">End Date</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-border text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-label-sm text-outline">No End Date</span>
+</label>
+</div>
+<input class="w-full px-4 h-12 border border-border rounded-lg font-body-md" type="date" value="2024-12-31"/>
+</div>
+</div>
+</div>
+<!-- Validity Period -->
+<div class="pt-4 border-t border-border">
+<h4 class="text-body-md font-semibold mb-3">Validity Period</h4>
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Voucher expires after issuance</label>
+<div class="flex items-center gap-3">
+<input class="w-32 px-4 h-12 border border-border rounded-lg font-body-md" placeholder="e.g. 30" type="number"/>
+<span class="text-body-md text-on-surface-variant">days from the date of claim</span>
+</div>
+</div>
+</div>
+<!-- Day & Time Restrictions -->
+<div class="pt-4 border-t border-border">
+<h4 class="text-body-md font-semibold mb-3">Day &amp; Time Restrictions</h4>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between">
+<button class="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-xs bg-primary text-on-primary">M</button>
+<button class="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-xs bg-primary text-on-primary">T</button>
+<button class="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-xs bg-primary text-on-primary">W</button>
+<button class="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-xs hover:bg-surface-container-low">T</button>
+<button class="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-xs hover:bg-surface-container-low">F</button>
+<button class="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-xs hover:bg-surface-container-low">S</button>
+<button class="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-xs hover:bg-surface-container-low">S</button>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">Start Time</label>
+<input class="w-full px-4 h-12 border border-border rounded-lg font-body-md" type="time" value="10:00"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block">End Time</label>
+<input class="w-full px-4 h-12 border border-border rounded-lg font-body-md" type="time" value="16:00"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Redemption Limits -->
+<div class="pt-4 border-t border-border">
+<h4 class="text-body-md font-semibold mb-3">Redemption Limits</h4>
+<div class="grid grid-cols-3 gap-stack-md">
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block text-[10px]">Total Limit</label>
+<input class="w-full px-4 h-12 border border-border rounded-lg font-label-md" type="number" value="500"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block text-[10px]">Per Customer</label>
+<input class="w-full px-4 h-12 border border-border rounded-lg font-label-md" type="number" value="1"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-outline uppercase mb-1 block text-[10px]">Min. Spend</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-outline font-label-md">RM</span>
+<input class="w-full pl-10 pr-2 h-12 border border-border rounded-lg font-label-md" type="number" value="100"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Applicability -->
+<div class="bg-surface p-stack-lg rounded-lg border border-border shadow-sm">
+<h3 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="category">category</span>
+                        Applicability
+                    </h3>
+<p class="text-body-sm text-outline mb-4">Choose which services or categories this voucher can be applied to.</p>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 px-4 py-2 bg-primary-container text-on-primary-container rounded-full border border-primary/20 cursor-pointer">
+<span class="font-body-md text-sm">All Services</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 border border-border rounded-full hover:bg-surface-container-low cursor-pointer transition-colors">
+<span class="font-body-md text-sm">Haircut</span>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="add">add</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 border border-border rounded-full hover:bg-surface-container-low cursor-pointer transition-colors">
+<span class="font-body-md text-sm">Coloring</span>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="add">add</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 border border-border rounded-full hover:bg-surface-container-low cursor-pointer transition-colors">
+<span class="font-body-md text-sm" id="label-treat">Treatments</span>
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="add">add</span>
+</div>
+</div>
+</div>
+<!-- Validity -->
+</div>
+</section>
+<!-- Live Preview Panel (Right) -->
+<section class="w-[400px] h-full bg-surface-container-low border-l border-border flex flex-col">
+<div class="p-stack-md border-b border-border bg-surface flex justify-between items-center">
+<span class="font-headline-md text-headline-md">Live Preview</span>
+<span class="bg-success/10 text-success text-[10px] px-2 py-1 rounded font-bold uppercase tracking-wider">Mobile View</span>
+</div>
+<div class="flex-1 p-stack-lg flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Abstract BG patterns -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
+<!-- Phone Frame Simulation -->
+<div class="w-[320px] h-[580px] bg-white rounded-[40px] shadow-2xl border-[8px] border-ink-primary overflow-hidden flex flex-col relative z-10">
+<!-- Status Bar -->
+<div class="h-6 w-full px-6 flex justify-between items-center pt-2">
+<span class="text-[10px] font-bold">9:41</span>
+<div class="flex gap-1 items-center">
+<span class="material-symbols-outlined text-[12px]" data-icon="signal_cellular_4_bar">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 p-6 flex flex-col">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="chevron_left">chevron_left</span>
+<span class="font-bold text-sm">Voucher Wallet</span>
+</div>
+<!-- The Actual Voucher Card -->
+<div class="relative w-full rounded-2xl overflow-hidden flex flex-col shadow-lg border border-border">
+<!-- Top Part -->
+<div class="h-32 bg-primary p-5 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="content_cut">content_cut</span>
+</div>
+<span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded backdrop-blur-md uppercase font-bold">Precision Salon</span>
+</div>
+<h4 class="text-white font-headline-md leading-tight" id="preview-title">Welcome Back 20</h4>
+</div>
+<!-- Serrated Edge / Perforation -->
+<div class="h-4 bg-white relative flex items-center px-4 overflow-hidden">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-surface-container-low border border-border rounded-full"></div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-surface-container-low border border-border rounded-full"></div>
+<div class="w-full border-b border-dashed border-border"></div>
+</div>
+<!-- Bottom Part -->
+<div class="bg-white p-5 flex flex-col gap-3">
+<div class="flex flex-col">
+<span class="text-primary font-bold text-lg" id="preview-summary">20% OFF all Hair Treatments</span>
+<span class="text-outline text-xs" id="preview-spend">Min Spend RM100 • Mon-Wed (10AM-4PM)</span>
+</div>
+<div class="p-3 bg-surface-container-low border border-border border-dashed rounded-lg flex flex-col items-center">
+<span class="text-[10px] text-outline uppercase font-bold mb-1">Redeem Code</span>
+<span class="font-label-md text-lg tracking-[4px] text-on-surface">WB24JUL500</span>
+</div>
+<div class="flex justify-center">
+<div class="w-12 h-12 border border-border rounded p-1 opacity-50">
+<div class="w-full h-full bg-on-surface/5 voucher-preview-dash"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tips/Info -->
+<div class="mt-8 p-4 bg-primary/5 rounded-xl flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="help">help</span>
+<p class="text-[10px] text-on-surface-variant leading-normal">This voucher will be visible in the "Rewards" section of the customer mobile application.</p>
+</div>
+</div>
+</div>
+<!-- Floating Footer for Preview -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-full px-6 flex flex-col gap-2 pointer-events-none">
+<div class="bg-white/80 backdrop-blur-lg border border-border p-3 rounded-xl shadow-xl flex items-center justify-between pointer-events-auto">
+<div class="flex flex-col">
+<span class="text-[10px] text-outline uppercase font-bold">Estimated Reach</span>
+<span class="text-sm font-bold">~500 Customers</span>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Global Actions -->
+<div class="p-stack-md bg-surface border-t border-border flex gap-stack-sm">
+<button class="flex-1 px-4 py-3 border border-border text-on-surface font-semibold rounded-lg hover:bg-surface-container-low transition-colors">Save Draft</button>
+<button class="flex-1 px-4 py-3 bg-primary text-on-primary font-semibold rounded-lg hover:bg-primary-container transition-shadow active:scale-[0.98]">Publish Voucher</button>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interactions for live preview update
+        const inputName = document.getElementById('input-name');
+        const inputVal = document.getElementById('input-val');
+        const inputMin = document.getElementById('input-min');
+        const previewTitle = document.getElementById('preview-title');
+        const previewSummary = document.getElementById('preview-summary');
+        const previewSpend = document.getElementById('preview-spend');
+
+        const btnPerc = document.getElementById('btn-perc');
+        const btnFixed = document.getElementById('btn-fixed');
+        const symbolVal = document.getElementById('symbol-val');
+
+        let discountType = 'Percentage';
+
+        function updatePreview() {
+            previewTitle.innerText = inputName.value || 'New Voucher';
+            const suffix = discountType === 'Percentage' ? '% OFF' : ' RM OFF';
+            previewSummary.innerText = `${inputVal.value}${suffix} All Services`;
+            previewSpend.innerText = `Min Spend RM${inputMin.value} • Mon-Wed`;
+        }
+
+        inputName.addEventListener('input', updatePreview);
+        inputVal.addEventListener('input', updatePreview);
+        inputMin.addEventListener('input', updatePreview);
+
+        btnPerc.addEventListener('click', () => {
+            discountType = 'Percentage';
+            btnPerc.classList.add('bg-primary-container', 'text-on-primary-container');
+            btnPerc.classList.remove('text-on-surface-variant');
+            btnFixed.classList.remove('bg-primary-container', 'text-on-primary-container');
+            btnFixed.classList.add('text-on-surface-variant');
+            symbolVal.innerText = '%';
+            updatePreview();
+        });
+
+        btnFixed.addEventListener('click', () => {
+            discountType = 'Fixed';
+            btnFixed.classList.add('bg-primary-container', 'text-on-primary-container');
+            btnFixed.classList.remove('text-on-surface-variant');
+            btnPerc.classList.remove('bg-primary-container', 'text-on-primary-container');
+            btnPerc.classList.add('text-on-surface-variant');
+            symbolVal.innerText = 'RM';
+            updatePreview();
+        });
+
+        // Add some fancy interactions for the form sections on scroll/focus
+        const sections = document.querySelectorAll('section > div > div');
+        sections.forEach(section => {
+            section.addEventListener('mouseenter', () => {
+                section.classList.add('border-primary/30');
+                section.style.transition = 'all 0.3s ease';
+            });
+            section.addEventListener('mouseleave', () => {
+                section.classList.remove('border-primary/30');
+            });
+        });
+    </script>
+</body></html>

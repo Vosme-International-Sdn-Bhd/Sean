@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory Reports - SalonPro Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "inverse-primary": "#a6c8ff",
+                "on-secondary": "#ffffff",
+                "surface-container-highest": "#e3e2df",
+                "surface-container": "#efeeea",
+                "bronze": "#CD7F32",
+                "purple-mlm": "#4A3AB0",
+                "background": "#faf9f5",
+                "on-error": "#ffffff",
+                "primary-container": "#1a5fa8",
+                "tertiary-fixed": "#ffdeaa",
+                "secondary-container": "#dcdad5",
+                "primary": "#004786",
+                "error": "#ba1a1a",
+                "primary-fixed-dim": "#a6c8ff",
+                "secondary-fixed-dim": "#c8c6c1",
+                "secondary-fixed": "#e4e2dd",
+                "surface-variant": "#e3e2df",
+                "surface-container-high": "#e9e8e4",
+                "on-primary-fixed-variant": "#004786",
+                "on-secondary-fixed": "#1b1c19",
+                "on-primary-fixed": "#001c3a",
+                "on-tertiary-fixed": "#271900",
+                "secondary": "#5f5f5a",
+                "platinum": "#E5E4E2",
+                "tertiary": "#5e4100",
+                "primary-fixed": "#d4e3ff",
+                "ink-primary": "#1A1A18",
+                "on-secondary-fixed-variant": "#474743",
+                "outline": "#727782",
+                "outline-variant": "#c2c6d3",
+                "surface-dim": "#dbdad6",
+                "tertiary-container": "#7d5700",
+                "on-tertiary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed-variant": "#5f4100",
+                "on-primary-container": "#c4daff",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#ffd184",
+                "inverse-on-surface": "#f2f1ed",
+                "tertiary-fixed-dim": "#f3be5e",
+                "on-secondary-container": "#5f5f5b",
+                "surface-tint": "#1a5fa8",
+                "on-error-container": "#93000a",
+                "on-surface": "#1b1c1a",
+                "danger": "#8A1F1F",
+                "surface-container-low": "#f5f4f0",
+                "surface-bright": "#faf9f5",
+                "on-primary": "#ffffff",
+                "on-background": "#1b1c1a",
+                "success": "#2E7D52",
+                "silver": "#C0C0C0",
+                "border": "#E2E1DC",
+                "on-surface-variant": "#424751",
+                "inverse-surface": "#30312e",
+                "warning": "#8A5200",
+                "surface": "#FFFFFF"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "tile-height-min": "80px",
+                "touch-target-min": "56px",
+                "gutter": "16px",
+                "stack-sm": "8px",
+                "stack-lg": "24px",
+                "stack-md": "16px",
+                "margin-page": "24px"
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-bar { transition: height 1s ease-out; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b border-border dark:border-outline-variant flex justify-between items-center px-gutter h-touch-target-min">
+<div class="flex items-center gap-4 md:ml-64">
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed-dim">SalonPro Manager</span>
+<div class="hidden md:flex bg-surface-container-low rounded-lg px-3 py-1 border border-border items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">location_on</span>
+<span class="text-label-md font-label-md text-on-surface">Bangsar HQ</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-high border-none rounded-full px-4 py-2 text-body-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Search inventory..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2 text-secondary">search</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">sync</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">settings</span>
+</button>
+</div>
+<img alt="Manager Profile" class="w-8 h-8 rounded-full border border-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcLsGozAk6i2v3XgLB418bju8wrwpH8A00apV37JLxs3rsOdtnE8YiofIuGIdcHhxg04c95gIelO3uhRjjW13ZKOex-k6awlb2kVJJYxrbCwMp47lzrFvHeSeHyzgg2y1rn7_Ewt59a8wIMY9-auU6TvtndlQETRVf3YUykLx2y0yS9LeAccFIkfki3BCXxthPZI-G2tnrfrzQPR8mSECgnfleKKIeiWfu7IOkwOTeZqzlBrA5gKptx__SBL6m3u41KACVNU2n-GJM"/>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="flex flex-col h-full py-stack-md px-4 fixed left-0 top-0 z-40 bg-surface-container-low dark:bg-inverse-surface border-r border-border dark:border-outline-variant w-64 hidden md:flex">
+<div class="mb-stack-lg px-2">
+<h2 class="text-headline-sm font-headline-lg text-primary dark:text-primary-fixed-dim">Luxe Salon</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">HQ Branch</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-secondary-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-secondary-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="font-body-md text-body-md">Services</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-secondary-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-secondary-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person_search</span>
+<span class="font-body-md text-body-md">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-secondary-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-border pt-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-secondary-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-secondary-container rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 pt-20 p-6 min-h-screen">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-ink-primary">Inventory Reports</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Comprehensive stock analysis for Bangsar HQ (Jul 1 - Jul 31)</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface border border-border px-4 py-2 rounded-lg text-body-sm font-medium flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                        Last 30 Days
+                    </button>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-body-sm font-medium flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+<!-- KPI Header -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface border-[0.5px] border-border rounded-xl p-5 hover:border-primary transition-colors cursor-default">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Inventory Value</p>
+<div class="flex items-end gap-2">
+<h3 class="text-headline-md font-headline-md text-ink-primary">RM 45,200</h3>
+<span class="text-success text-label-sm font-label-sm mb-1 flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> 2.4%
+                        </span>
+</div>
+</div>
+<div class="bg-surface border-[0.5px] border-border rounded-xl p-5 hover:border-warning transition-colors cursor-default">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Low Stock Items</p>
+<div class="flex items-end gap-2">
+<h3 class="text-headline-md font-headline-md text-ink-primary">12 items</h3>
+<span class="text-warning text-label-sm font-label-sm mb-1">Critical Priority</span>
+</div>
+</div>
+<div class="bg-surface border-[0.5px] border-border rounded-xl p-5 hover:border-danger transition-colors cursor-default">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Monthly Wastage</p>
+<div class="flex items-end gap-2">
+<h3 class="text-headline-md font-headline-md text-ink-primary">RM 1,200</h3>
+<span class="text-danger text-label-sm font-label-sm mb-1 flex items-center">
+<span class="material-symbols-outlined text-[14px]">error</span> +12%
+                        </span>
+</div>
+</div>
+<div class="bg-surface border-[0.5px] border-border rounded-xl p-5 hover:border-primary transition-colors cursor-default">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Turnover Rate</p>
+<div class="flex items-end gap-2">
+<h3 class="text-headline-md font-headline-md text-ink-primary">4.2x</h3>
+<span class="text-success text-label-sm font-label-sm mb-1">Above Average</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Main -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Stock Movement Chart -->
+<div class="col-span-12 lg:col-span-8 bg-surface border-[0.5px] border-border rounded-xl p-6">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h4 class="font-headline-md text-body-lg font-bold">Stock Movement</h4>
+<p class="text-body-sm text-on-surface-variant">Incoming vs Outgoing products</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary rounded-full"></span>
+<span class="text-label-sm font-label-sm">Stock In</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-outline rounded-full"></span>
+<span class="text-label-sm font-label-sm">Stock Out</span>
+</div>
+</div>
+</div>
+<!-- Simplified Visual Chart Container -->
+<div class="h-64 flex items-end justify-between gap-2 px-2 border-b border-border pb-2">
+<!-- Chart Bars (Repeated) -->
+<div class="flex-1 flex flex-col items-center justify-end gap-1">
+<div class="w-full bg-primary rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-outline-variant rounded-t-sm" style="height: 40%"></div>
+<span class="text-[10px] text-secondary mt-2">W1</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-end gap-1">
+<div class="w-full bg-primary rounded-t-sm" style="height: 80%"></div>
+<div class="w-full bg-outline-variant rounded-t-sm" style="height: 30%"></div>
+<span class="text-[10px] text-secondary mt-2">W2</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-end gap-1">
+<div class="w-full bg-primary rounded-t-sm" style="height: 45%"></div>
+<div class="w-full bg-outline-variant rounded-t-sm" style="height: 55%"></div>
+<span class="text-[10px] text-secondary mt-2">W3</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-end gap-1">
+<div class="w-full bg-primary rounded-t-sm" style="height: 90%"></div>
+<div class="w-full bg-outline-variant rounded-t-sm" style="height: 25%"></div>
+<span class="text-[10px] text-secondary mt-2">W4</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-end gap-1">
+<div class="w-full bg-primary rounded-t-sm" style="height: 70%"></div>
+<div class="w-full bg-outline-variant rounded-t-sm" style="height: 50%"></div>
+<span class="text-[10px] text-secondary mt-2">W5</span>
+</div>
+</div>
+</div>
+<!-- Category Breakdown -->
+<div class="col-span-12 lg:col-span-4 bg-surface border-[0.5px] border-border rounded-xl p-6">
+<h4 class="font-headline-md text-body-lg font-bold mb-4">Stock Distribution</h4>
+<div class="relative w-48 h-48 mx-auto mb-6">
+<!-- Custom CSS Donut Visual -->
+<div class="absolute inset-0 rounded-full border-[16px] border-primary" style="clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0 100%);"></div>
+<div class="absolute inset-0 rounded-full border-[16px] border-secondary" style="clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%); opacity: 0.3;"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="text-center">
+<span class="text-headline-md font-bold text-ink-primary">100%</span>
+<p class="text-label-sm text-secondary">Total Stock</p>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-body-sm font-medium">Hair Care</span>
+</div>
+<span class="text-label-md font-label-md">45%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-bronze"></span>
+<span class="text-body-sm font-medium">Nail Care</span>
+</div>
+<span class="text-label-md font-label-md">25%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-purple-mlm"></span>
+<span class="text-body-sm font-medium">Skin Care</span>
+</div>
+<span class="text-label-md font-label-md">20%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="text-body-sm font-medium">Tools</span>
+</div>
+<span class="text-label-md font-label-md">10%</span>
+</div>
+</div>
+</div>
+<!-- Top Moving Products Table -->
+<div class="col-span-12 lg:col-span-9 bg-surface border-[0.5px] border-border rounded-xl overflow-hidden">
+<div class="p-6 border-b border-border flex justify-between items-center">
+<h4 class="font-headline-md text-body-lg font-bold">Top Moving Products</h4>
+<button class="text-primary text-label-md font-medium hover:underline">View All Products</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low border-b border-border">
+<tr>
+<th class="px-6 py-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Product Name</th>
+<th class="px-6 py-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="px-6 py-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Stock Level</th>
+<th class="px-6 py-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">flare</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-ink-primary">L'Oreal Professional Serioxyl</p>
+<p class="text-label-sm text-secondary">SKU: LP-992-B</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Hair Care</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-high rounded-full h-1.5 w-24">
+<div class="bg-success h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+<span class="text-label-sm text-secondary mt-1 block">85 Units</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-success">In-Stock</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">water_drop</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-ink-primary">OPI Nail Lacquer Red</p>
+<p class="text-label-sm text-secondary">SKU: OPI-RR-01</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Nail Care</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-high rounded-full h-1.5 w-24">
+<div class="bg-warning h-1.5 rounded-full" style="width: 20%"></div>
+</div>
+<span class="text-label-sm text-secondary mt-1 block">5 Units</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-warning">Low Stock</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">brush</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-ink-primary">Dyson Supersonic Filter</p>
+<p class="text-label-sm text-secondary">SKU: DY-SUP-F</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Tools</td>
+<td class="px-6 py-4">
+<div class="w-full bg-surface-container-high rounded-full h-1.5 w-24">
+<div class="bg-danger h-1.5 rounded-full" style="width: 5%"></div>
+</div>
+<span class="text-label-sm text-secondary mt-1 block">1 Units</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-danger">Out of Stock</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Procurement Efficiency Card -->
+<div class="col-span-12 lg:col-span-3 space-y-6">
+<div class="bg-surface border-[0.5px] border-border rounded-xl p-6">
+<h4 class="font-headline-md text-body-lg font-bold mb-4">Procurement Efficiency</h4>
+<div class="space-y-6">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Average Lead Time</p>
+<div class="flex items-baseline gap-2">
+<h5 class="text-display-lg font-display-lg text-primary">3.2</h5>
+<span class="text-body-md text-secondary">Days</span>
+</div>
+<p class="text-body-sm text-success flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span> 0.5 days since last month
+                                </p>
+</div>
+<div class="pt-6 border-t border-border">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-4">Supplier Reliability</p>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<p class="text-body-sm font-bold">L'Oreal Dist.</p>
+<p class="text-label-sm text-secondary">98% On-time</p>
+</div>
+<span class="text-success material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex items-center gap-4 mt-4">
+<div class="flex-1">
+<p class="text-body-sm font-bold">Global Tools Co.</p>
+<p class="text-label-sm text-secondary">82% On-time</p>
+</div>
+<span class="text-warning material-symbols-outlined">priority_high</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary-container text-on-primary-container rounded-xl p-6 relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline-md text-body-lg font-bold mb-2">Auto-Reorder Active</h4>
+<p class="text-body-sm opacity-90 mb-4">Your low stock items will be automatically restocked once they hit critical threshold.</p>
+<button class="bg-white text-primary px-4 py-2 rounded-lg text-body-sm font-bold hover:bg-surface-container transition-colors">Manage Rules</button>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] opacity-10">smart_toy</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Sync Banner (Visible during sync) -->
+<div class="fixed top-0 left-0 w-full z-[100] h-1 bg-primary transform origin-left transition-transform duration-1000 scale-x-0" id="sync-banner"></div>
+<script>
+        // Simple Micro-interaction for the chart
+        window.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('sync-banner');
+            
+            // Simulation of periodic syncing
+            setInterval(() => {
+                banner.classList.remove('duration-1000');
+                banner.classList.add('scale-x-0');
+                setTimeout(() => {
+                    banner.classList.add('duration-1000');
+                    banner.classList.add('scale-x-100');
+                }, 100);
+                
+                setTimeout(() => {
+                    banner.classList.remove('duration-1000');
+                    banner.classList.remove('scale-x-100');
+                    banner.classList.add('scale-x-0');
+                }, 1100);
+            }, 10000);
+        });
+    </script>
+</body></html>

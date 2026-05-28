@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Package Builder - Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            background-color: #faf9f5;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c2c6d3;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "platinum": "#E5E4E2",
+                      "outline-variant": "#c2c6d3",
+                      "on-primary-fixed-variant": "#004786",
+                      "border": "#E2E1DC",
+                      "surface": "#FFFFFF",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "surface-dim": "#dbdad6",
+                      "on-tertiary-container": "#ffd184",
+                      "on-secondary-fixed-variant": "#474743",
+                      "primary": "#004786",
+                      "surface-container-highest": "#e3e2df",
+                      "on-primary-container": "#c4daff",
+                      "primary-fixed": "#d4e3ff",
+                      "inverse-on-surface": "#f2f1ed",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#e9e8e4",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "surface-container-low": "#f5f4f0",
+                      "on-primary-fixed": "#001c3a",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#c8c6c1",
+                      "surface-bright": "#faf9f5",
+                      "inverse-surface": "#30312e",
+                      "danger": "#8A1F1F",
+                      "on-surface-variant": "#424751",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#efeeea",
+                      "on-secondary-container": "#5f5f5b",
+                      "surface-variant": "#e3e2df",
+                      "secondary-fixed": "#e4e2dd",
+                      "on-primary": "#ffffff",
+                      "bronze": "#CD7F32",
+                      "tertiary-fixed-dim": "#f3be5e",
+                      "outline": "#727782",
+                      "on-surface": "#1b1c1a",
+                      "on-background": "#1b1c1a",
+                      "inverse-primary": "#a6c8ff",
+                      "secondary": "#5f5f5a",
+                      "tertiary-fixed": "#ffdeaa",
+                      "success": "#2E7D52",
+                      "secondary-container": "#dcdad5",
+                      "ink-primary": "#1A1A18",
+                      "surface-tint": "#1a5fa8",
+                      "on-tertiary-fixed": "#271900",
+                      "on-secondary-fixed": "#1b1c19",
+                      "warning": "#8A5200",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#5e4100",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "background": "#faf9f5",
+                      "silver": "#C0C0C0",
+                      "tertiary-container": "#7d5700",
+                      "primary-container": "#1a5fa8",
+                      "purple-mlm": "#4A3AB0",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "stack-lg": "24px",
+                      "touch-target-min": "56px",
+                      "margin-page": "24px",
+                      "gutter": "16px",
+                      "stack-md": "16px",
+                      "tile-height-min": "80px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Libre Franklin"],
+                      "body-md": ["Libre Franklin"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-sm": ["Libre Franklin"],
+                      "display-lg": ["Libre Franklin"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg": ["Libre Franklin"],
+                      "body-lg": ["Libre Franklin"]
+              },
+              "fontSize": {
+                      "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-border dark:border-outline-variant docked full-width top-0 z-50 flat no shadows flex justify-between items-center w-full px-6 h-16 fixed">
+<div class="flex items-center gap-8">
+<span class="text-headline-lg font-headline-lg text-primary dark:text-primary-fixed-dim">Precision Salon OS</span>
+<div class="hidden md:flex items-center bg-surface-container border border-border px-3 py-1.5 rounded-lg w-80">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-full" placeholder="Search features or members..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors relative">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">help</span>
+</button>
+<div class="h-8 w-[1px] bg-border mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-label-md font-bold text-primary">Admin</span>
+<img alt="Admin Profile" class="w-8 h-8 rounded-full border border-primary object-cover" data-alt="A professional headshot of a modern salon manager with a friendly expression. He is wearing a minimalist dark shirt, and the background is a blurred, high-end salon interior with soft, warm lighting. The image style is clean, corporate, and trustworthy, matching the Precision Salon OS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY-ew8_KqGXfV79oz0PI3_0duJ0aYIm3qUO3YsW-zmjwzvLm-W6FlCTsZvCYDiaCk0rlAjpcTASKhNrylMPXYVsiRHNnbsnW-agYrA_qYnjHf5ye4-xs8H8-exS0Ef9-TaEB3yOZGT1Kbs97McLqw7dsKio6lGMDSgT7dfrE6I4m6_aFbG4kAiBRJo8Jd0ydLy_XmfzxdVEEE9dDzRstBWpmyxZL2Y9ld6Kn7dTmfPy1uK4fsS8mJ0nHW05CpN7uLjqFfSlnNDUx0h"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-inverse-surface border-r border-border dark:border-outline-variant docked left-0 h-full w-64 flex flex-col h-screen fixed left-0 top-0 pt-16">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">content_cut</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim leading-none">Precision Salon</h2>
+<p class="text-body-sm text-on-surface-variant opacity-70">Management Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">calendar_today</span> Bookings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">receipt_long</span> Orders
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span> Members
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_tree</span> MLM
+            </a>
+<!-- Active Navigation -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span> Marketing
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">badge</span> Staff
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="p-4 border-t border-border">
+<button class="flex items-center gap-3 px-4 py-3 w-full text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150 font-label-md text-label-md">
+<span class="material-symbols-outlined">logout</span> Logout
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 h-screen overflow-y-auto custom-scrollbar bg-background">
+<div class="max-w-6xl mx-auto p-margin-page">
+<!-- Breadcrumbs & Header -->
+<div class="mb-stack-lg flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-2">
+<span>Marketing</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Package Builder</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Service Package Builder</h1>
+<p class="text-body-md text-on-surface-variant">Create strategic service bundles to drive customer loyalty and upfront revenue.</p>
+</div>
+<div class="flex gap-stack-md">
+<button class="px-6 py-2.5 border border-border text-primary font-bold rounded-lg hover:bg-surface-container transition-colors">Discard</button>
+<button class="px-6 py-2.5 bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all">Save Package</button>
+</div>
+</div>
+<!-- Builder Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Form Sections -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<!-- Section 1: General Info -->
+<section class="bg-surface border border-border rounded-xl p-stack-lg shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md border-b border-border pb-stack-sm">
+<span class="material-symbols-outlined text-primary">info</span>
+<h2 class="font-headline-md text-headline-md">General Information</h2>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Package Name</label>
+<input class="w-full border-border border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary font-body-md outline-none" placeholder="e.g. 10x Haircut Bundle" type="text"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Internal SKU / Code</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[18px]">barcode</span>
+<input class="w-full border-border border rounded-lg p-3 pl-10 focus:ring-2 focus:ring-primary focus:border-primary font-label-md outline-none" placeholder="PKG-HR-001" type="text"/>
+</div>
+</div>
+<div class="col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Internal Description</label>
+<textarea class="w-full border-border border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary font-body-md outline-none" placeholder="Describe the purpose of this package for internal records..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- Section 2: Package Logic -->
+<section class="bg-surface border border-border rounded-xl p-stack-lg shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md border-b border-border pb-stack-sm">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h2 class="font-headline-md text-headline-md">Package Logic</h2>
+</div>
+<div class="space-y-stack-md"><label class="block font-label-md text-label-md text-on-surface-variant mb-2">Type of Logic</label>
+<div class="grid grid-cols-3 gap-stack-md">
+<button class="flex flex-col items-center justify-center p-stack-md border-2 border-primary bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined mb-1">add_box</span>
+<span class="font-label-md">Buy-X-Free-Y</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-md border border-border hover:bg-surface-container-low rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined mb-1">inventory</span>
+<span class="font-label-md">Fixed Bundle</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-md border border-border hover:bg-surface-container-low rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined mb-1">local_activity</span>
+<span class="font-label-md">Discounted Pass</span>
+</button>
+</div>
+<div class="pt-4 space-y-4" id="logic-config-container">
+<div class="grid grid-cols-2 gap-stack-md" id="logic-buy-x-free-y">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Quantity Purchased</label>
+<input class="w-full border-border border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary font-label-md outline-none" type="number" value="10"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Free / Bonus Quantity</label>
+<input class="w-full border-border border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary font-label-md outline-none" type="number" value="1"/>
+</div>
+<p class="col-span-2 text-body-sm text-on-surface-variant italic">Customer buys 10 items and receives 1 additional item for free.</p>
+</div>
+</div></div>
+</section>
+<!-- Section 4: Validity & Usage -->
+<section class="bg-surface border border-border rounded-xl p-stack-lg shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md border-b border-border pb-stack-sm">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<h2 class="font-headline-md text-headline-md">Validity &amp; Usage</h2>
+</div>
+<div class="grid grid-cols-2 gap-stack-md"><div class="col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-3">Expiration Logic</label>
+<div class="flex flex-wrap items-center gap-6">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-5 h-5 text-primary border-border focus:ring-primary" name="exp_logic" type="radio" value="fixed"/>
+<span class="font-body-sm text-on-surface">Fixed Date</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-5 h-5 text-primary border-border focus:ring-primary" name="exp_logic" type="radio" value="rolling"/>
+<span class="font-body-sm text-on-surface">Rolling (Days after purchase)</span>
+</label>
+<div class="flex items-center gap-2 ml-auto">
+<span class="text-label-sm text-on-surface-variant">Rolling Period</span>
+<input class="w-32 border-border border rounded-lg p-2 focus:ring-2 focus:ring-primary focus:border-primary font-label-md outline-none text-center" placeholder="Days" type="number" value="365"/>
+<span class="text-body-sm">days</span>
+</div>
+</div>
+</div>
+<div class="col-span-2 space-y-4 pt-4 border-t border-border">
+<h3 class="font-label-md text-label-md text-primary flex items-center gap-2 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px]">timer_off</span>
+        Usage Restrictions
+    </h3>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="col-span-2 md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Usage Window (Daily Hours)</label>
+<div class="flex items-center gap-2">
+<input class="flex-1 border-border border rounded-lg p-2.5 focus:ring-2 focus:ring-primary focus:border-primary font-body-sm" type="time" value="10:00"/>
+<span class="text-on-surface-variant">to</span>
+<input class="flex-1 border-border border rounded-lg p-2.5 focus:ring-2 focus:ring-primary focus:border-primary font-body-sm" type="time" value="20:00"/>
+</div>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Available Days</label>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded font-label-sm cursor-pointer">M</span>
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded font-label-sm cursor-pointer">T</span>
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded font-label-sm cursor-pointer">W</span>
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded font-label-sm cursor-pointer">T</span>
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded font-label-sm cursor-pointer">F</span>
+<span class="px-2 py-1 border border-border text-on-surface-variant rounded font-label-sm cursor-pointer">S</span>
+<span class="px-2 py-1 border border-border text-on-surface-variant rounded font-label-sm cursor-pointer">S</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Outlet Restriction</label>
+<select class="w-full border-border border rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none font-body-md bg-white">
+<option>All Outlets</option>
+<option>Main Branch</option>
+<option>City Center</option>
+<option>North Plaza</option>
+</select>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Auto-renewal Settings</label>
+<div class="flex items-center justify-between p-3 border border-border rounded-lg bg-surface-container-low">
+<span class="font-label-md text-on-surface">Enable Auto-renewal</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+</div>
+<div class="col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Applicable Services</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full text-label-sm font-bold flex items-center gap-1">
+            Haircut <span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full text-label-sm font-bold flex items-center gap-1">
+            Shampoo &amp; Blow <span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<button class="px-4 py-2 border border-border text-on-surface-variant rounded-full text-label-sm font-bold hover:bg-surface-container-high transition-colors">
+            + Add Service
+        </button>
+</div>
+</div></div>
+</section><!-- Section 5: Service Guardrails -->
+<section class="bg-surface border border-border rounded-xl p-stack-lg shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md border-b border-border pb-stack-sm">
+<span class="material-symbols-outlined text-primary">security</span>
+<h2 class="font-headline-md text-headline-md">Service Guardrails</h2>
+</div>
+<div class="space-y-6">
+<!-- Service Categories -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Applicable Service Categories</label>
+<div class="flex flex-wrap gap-2 p-3 border border-border rounded-lg bg-surface-container-low min-h-[48px]">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm flex items-center gap-1">
+          Haircut <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm flex items-center gap-1">
+          Treatment <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm flex-1 min-w-[120px]" placeholder="Search categories..." type="text"/>
+</div>
+</div>
+<!-- Restrict to Specific Services Toggle & List -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-label-md text-on-surface">Restrict to Specific Services</p>
+<p class="text-body-sm text-on-surface-variant">Limit package usage to specific service items</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+<div class="pl-4 border-l-2 border-primary/20 space-y-3">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Individual Service Items</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 border border-primary text-primary rounded-lg text-label-sm flex items-center gap-1 bg-primary/5">
+            Signature Haircut <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="px-3 py-1 border border-primary text-primary rounded-lg text-label-sm flex items-center gap-1 bg-primary/5">
+            Argan Smoothing Serum <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<button class="px-3 py-1 border border-border border-dashed text-on-surface-variant rounded-lg text-label-sm hover:bg-surface-container-high transition-colors">+ Add Service</button>
+</div>
+</div>
+</div>
+<!-- Retail Product Eligibility -->
+<div class="pt-4 border-t border-border flex items-center justify-between">
+<div>
+<p class="font-label-md text-on-surface">Retail Product Eligibility</p>
+<p class="text-body-sm text-on-surface-variant">Allow this package to be used for physical retail products</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Pricing & Notification Panels -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter sticky top-20 h-fit">
+<!-- Section 3: Pricing -->
+<section class="bg-primary text-on-primary rounded-xl p-stack-lg shadow-lg"><div class="flex items-center gap-2 mb-stack-md border-b border-white/20 pb-stack-sm"><span class="material-symbols-outlined">payments</span><h2 class="font-headline-md text-headline-md">Pricing &amp; Financials</h2></div><div class="space-y-4"><div class="grid grid-cols-2 gap-4"><div><label class="block font-label-sm text-label-sm opacity-80 mb-1">Original Value</label><p class="font-headline-md text-[18px]">RM 825.00</p></div><div><label class="block font-label-sm text-label-sm opacity-80 mb-1">Package Price</label><div class="relative text-on-surface"><span class="absolute left-2 top-1/2 -translate-y-1/2 font-bold text-label-sm">RM</span><input class="w-full bg-white border-none rounded p-1.5 pl-8 text-label-md focus:ring-0" type="text" value="750.00"/></div></div></div><div class="space-y-3 pt-2"><div class="flex items-center justify-between"><span class="font-label-md">Member-Only Price</span><label class="relative inline-flex items-center cursor-pointer"><input checked="" class="sr-only peer" type="checkbox"/><div class="w-9 h-5 bg-white/20 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-white/40"></div></label></div><div class="grid grid-cols-1 gap-2"><div class="flex items-center justify-between gap-2"><span class="text-label-sm opacity-80">Silver</span><div class="relative text-on-surface w-32"><span class="absolute left-2 top-1/2 -translate-y-1/2 font-bold text-label-xs text-[10px]">RM</span><input class="w-full bg-white border-none rounded p-1 text-label-sm pl-7 focus:ring-0" type="text" value="720.00"/></div></div><div class="flex items-center justify-between gap-2"><span class="text-label-sm opacity-80">Gold</span><div class="relative text-on-surface w-32"><span class="absolute left-2 top-1/2 -translate-y-1/2 font-bold text-label-xs text-[10px]">RM</span><input class="w-full bg-white border-none rounded p-1 text-label-sm pl-7 focus:ring-0" type="text" value="680.00"/></div></div><div class="flex items-center justify-between gap-2"><span class="text-label-sm opacity-80">Platinum</span><div class="relative text-on-surface w-32"><span class="absolute left-2 top-1/2 -translate-y-1/2 font-bold text-label-xs text-[10px]">RM</span><input class="w-full bg-white border-none rounded p-1 text-label-sm pl-7 focus:ring-0" type="text" value="600.00"/></div></div></div></div><div class="pt-3 border-t border-white/20"><label class="block font-label-sm text-label-sm opacity-80 mb-2">Tax Configuration</label><select class="w-full bg-white/10 border border-white/20 rounded p-2 text-label-sm outline-none appearance-none"><option class="text-on-surface">Inclusive Tax</option><option class="text-on-surface">Exclusive Tax</option></select></div><div class="pt-4 border-t border-white/20 space-y-2"><div class="flex justify-between text-label-sm opacity-80"><span>Standard Savings:</span><span>RM 75.00 (9.1%)</span></div><div class="flex justify-between text-label-sm opacity-80 font-bold"><span>Max Member Savings:</span><span>RM 225.00 (27.2%)</span></div><div class="flex justify-between items-end mt-2"><span class="text-label-md">Final Sales Price</span><span class="font-display-lg text-[28px] leading-none">RM 750.00</span></div></div></div></section>
+<!-- Section 5: Renewal Notifications -->
+<section class="bg-surface border border-border rounded-xl p-stack-lg shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md border-b border-border pb-stack-sm">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<h2 class="font-headline-md text-headline-md">Reminders</h2>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-success">chat</span>
+<div>
+<p class="font-label-md text-on-surface">WhatsApp Alert</p>
+<p class="text-[12px] text-on-surface-variant">Recommended for high engagement</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<p class="font-label-md text-on-surface">Email Alert</p>
+<p class="text-[12px] text-on-surface-variant">Official record notification</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+<div class="pt-4 space-y-3">
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Frequency</p>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-border text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm">3 Days before expiry</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="w-5 h-5 rounded border-border text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm">7 Days before expiry</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Preview Card -->
+<div class="bg-surface-container-high rounded-xl p-stack-md border border-outline-variant/30">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="font-label-sm uppercase tracking-widest text-on-surface-variant">Customer View Preview</span>
+</div>
+<div class="bg-white rounded-lg p-4 shadow-sm">
+<div class="w-full h-32 bg-surface-container-low rounded-md mb-3 flex items-center justify-center overflow-hidden">
+<img alt="Service Package Promo" class="w-full h-full object-cover" data-alt="A luxurious promotional image for a hair salon service package. It features high-end hair care products on a clean marble surface, surrounded by soft white orchids and warm, ambient lighting. The aesthetic is extremely polished, professional, and inviting, suggesting a premium pampering experience for the customer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0SNcMK8uqmV78AK8OgrKLk_Jit0ERyjyR5piOFngwIPesGcOuepL_fgvdt_5bWOSdyvD2fC1iiFiCbUi-PrelLcrkbevEyvraS-A-NiQW3zVhaJOb97gh_OomTROmSbd_an9mByUPFgoW3byGy3Kx7Hc_csx18QfLUN7cKV9toBE_qcM5xR_VOpJeqGan6oN9dhMj_PgODjD9tWVTB1fRFGnmFETfxMAx8DqDzAUfcH0s2NUCvdIawsNejJ0fbzDglfxhFr3fuSnO"/>
+</div>
+<h3 class="font-headline-md text-headline-md mb-1">10x Haircut Bundle</h3>
+<p class="text-body-sm text-on-surface-variant mb-4">Pay for 10, get 1 FREE. Valid for 12 months at any branch.</p>
+<div class="flex items-center justify-between">
+<span class="font-headline-lg text-primary">RM 750.00</span>
+<button class="px-4 py-2 bg-primary text-on-primary rounded text-label-sm font-bold">PURCHASE</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions and UI Logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('mouseup', function() {
+                this.classList.remove('scale-95');
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+
+        // Simple mock for "Type selector" interaction
+        const logicButtons = document.querySelectorAll('section:nth-of-type(2) .grid button');
+        logicButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                logicButtons.forEach(b => {
+                    b.classList.remove('border-primary', 'bg-primary-container/10', 'text-primary');
+                    b.classList.add('border-border', 'text-on-surface-variant');
+                });
+                button.classList.add('border-primary', 'bg-primary-container/10', 'text-primary');
+                button.classList.remove('border-border', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

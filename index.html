@@ -1,14 +1,79 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ui_simulator</title>
-    <script type="module" crossorigin src="/assets/index-DsrDT8ac.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BNTv_mLk.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Precision Salon OS — Design System</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.section-header{font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;color:#727782;padding:16px 0 8px;border-top:0.5px solid #E2E1DC;margin-top:16px;}
+.screen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:8px;}
+.screen-link{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:0.5px solid #E2E1DC;border-radius:8px;text-decoration:none;color:#1b1c1a;transition:border 0.15s,background 0.15s;}
+.screen-link:hover{border-color:#1a5fa8;background:#f0f5ff;}
+.screen-link .badge{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 6px;border-radius:99px;flex-shrink:0;}
+.badge-new{background:rgba(46,125,82,0.12);color:#2E7D52;}
+.badge-desktop{background:rgba(26,95,168,0.08);color:#1a5fa8;}
+.badge-tablet{background:rgba(138,82,0,0.08);color:#8A5200;}
+.badge-stitch{background:#f0f0f0;color:#555;}
+.hero{background:var(--primary);color:#fff;padding:32px;border-radius:16px;margin-bottom:32px;}
+</style>
+</head><body style="background:#faf9f5;padding:0;">
+<div style="max-width:1200px;margin:0 auto;padding:32px 24px;">
+  <div class="hero">
+    <div style="font-size:28px;font-weight:700;margin-bottom:6px;">Precision Salon OS</div>
+    <div style="opacity:0.85;font-size:15px;">Complete GUI Design System · Malaysian Multi-Outlet Salon SaaS</div>
+    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="portal/login.html" style="background:#fff;color:#1a5fa8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">🌐 Customer Portal</a>
+      <a href="admin/dashboard.html" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">⚙️ Admin Backend</a>
+      <a href="pos/pos-home.html" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">📱 Android POS</a>
+    </div>
+  </div>
+
+  <!-- CUSTOMER PORTAL -->
+  <div class="section-header">🌐 Customer Web Portal — Newly Designed</div>
+  <div class="screen-grid">
+    <a class="screen-link" href="portal/login.html"><span>🔐</span><span style="flex:1;">Login / WhatsApp OTP</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="portal/home.html"><span>🏠</span><span style="flex:1;">Home Dashboard</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="portal/my-bookings.html"><span>📋</span><span style="flex:1;">My Bookings</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="portal/reschedule.html"><span>🔄</span><span style="flex:1;">Reschedule Booking</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="portal/cancel-booking.html"><span>✕</span><span style="flex:1;">Cancel Booking</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="portal/notifications.html"><span>🔔</span><span style="flex:1;">Notification &amp; PDPA Settings</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="portal/account-settings.html"><span>👤</span><span style="flex:1;">Account &amp; Data Export</span><span class="badge badge-new">NEW</span></a>
+  </div>
+
+  <!-- ANDROID POS -->
+  <div class="section-header">📱 Android POS (Tablet) — Newly Designed</div>
+  <div class="screen-grid">
+    <a class="screen-link" href="pos/cash-calculator.html"><span>💵</span><span style="flex:1;">Cash Calculator</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="pos/new-appointment.html"><span>➕</span><span style="flex:1;">New Appointment from POS</span><span class="badge badge-new">NEW</span></a>
+  </div>
+
+  <!-- ADMIN BACKEND -->
+  <div class="section-header">⚙️ Admin Backend — Newly Designed</div>
+  <div class="screen-grid">
+    <a class="screen-link" href="admin/staff-management.html"><span>🧑‍💼</span><span style="flex:1;">Staff Management</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="admin/google-reviews.html"><span>⭐</span><span style="flex:1;">Google Reviews + AI Reply</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="admin/social-scheduler.html"><span>📱</span><span style="flex:1;">Social Media Scheduler</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="admin/outlet-management.html"><span>🗺️</span><span style="flex:1;">Outlet Management</span><span class="badge badge-new">NEW</span></a>
+    <a class="screen-link" href="admin/superadmin.html"><span>👑</span><span style="flex:1;">Superadmin Panel</span><span class="badge badge-new">NEW</span></a>
+  </div>
+
+  <!-- STITCH SCREENS -->
+  <div class="section-header">🎨 Stitch-Generated Screens (125 screens)</div>
+  <div id="stitch-list" class="screen-grid"></div>
+</div>
+
+<script>
+// Dynamically load manifest and render stitch screen links
+fetch('stitch-screens/manifest.json').then(r=>r.json()).then(screens=>{
+  const container = document.getElementById('stitch-list');
+  screens.forEach(s=>{
+    const badge = s.deviceType==='DESKTOP'?'badge-desktop':s.deviceType==='MOBILE'?'badge-tablet':'badge-stitch';
+    const dt = s.deviceType==='DESKTOP'?'🖥':'📱';
+    const a = document.createElement('a');
+    a.className = 'screen-link';
+    a.href = 'stitch-screens/'+s.filename;
+    a.innerHTML = `<span>${dt}</span><span style="flex:1;font-size:13px;">${s.title}</span><span class="badge ${badge}">${s.deviceType||'?'}</span>`;
+    container.appendChild(a);
+  });
+}).catch(()=>{
+  document.getElementById('stitch-list').innerHTML = '<p style="color:#727782;font-size:13px;padding:8px;">Stitch screens not loaded.</p>';
+});
+</script>
+</body></html>

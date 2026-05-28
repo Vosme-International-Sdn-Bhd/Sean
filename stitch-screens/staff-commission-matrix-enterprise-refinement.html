@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Commission Matrix - Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "silver": "#C0C0C0",
+            "tertiary": "#5e4100",
+            "on-surface": "#1b1c1a",
+            "tertiary-container": "#7d5700",
+            "surface-bright": "#faf9f5",
+            "purple-mlm": "#4A3AB0",
+            "surface-tint": "#1a5fa8",
+            "surface-container-low": "#f5f4f0",
+            "inverse-on-surface": "#f2f1ed",
+            "tertiary-fixed-dim": "#f3be5e",
+            "primary-container": "#1a5fa8",
+            "secondary": "#5f5f5a",
+            "on-primary-fixed-variant": "#004786",
+            "surface-container": "#efeeea",
+            "inverse-primary": "#a6c8ff",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "danger": "#8A1F1F",
+            "on-secondary": "#ffffff",
+            "primary": "#004786",
+            "on-tertiary-fixed": "#271900",
+            "on-secondary-fixed": "#1b1c19",
+            "surface-container-high": "#e9e8e4",
+            "on-tertiary": "#ffffff",
+            "bronze": "#CD7F32",
+            "on-surface-variant": "#424751",
+            "on-tertiary-fixed-variant": "#5f4100",
+            "outline": "#727782",
+            "secondary-fixed-dim": "#c8c6c1",
+            "primary-fixed-dim": "#a6c8ff",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#ffdeaa",
+            "warning": "#8A5200",
+            "border": "#E2E1DC",
+            "background": "#faf9f5",
+            "surface-dim": "#dbdad6",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#e4e2dd",
+            "platinum": "#E5E4E2",
+            "surface-container-highest": "#e3e2df",
+            "surface-variant": "#e3e2df",
+            "on-background": "#1b1c1a",
+            "ink-primary": "#1A1A18",
+            "primary-fixed": "#d4e3ff",
+            "on-secondary-fixed-variant": "#474743",
+            "success": "#2E7D52",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#001c3a",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#30312e",
+            "on-secondary-container": "#5f5f5b",
+            "secondary-container": "#dcdad5",
+            "outline-variant": "#c2c6d3",
+            "on-tertiary-container": "#ffd184",
+            "surface": "#FFFFFF",
+            "on-primary-container": "#c4daff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-md": "16px",
+            "tile-height-min": "80px",
+            "gutter": "16px",
+            "touch-target-min": "56px",
+            "stack-sm": "8px",
+            "stack-lg": "24px",
+            "margin-page": "24px"
+          },
+          "fontFamily": {
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Libre Franklin"],
+            "headline-lg": ["Libre Franklin"],
+            "display-lg": ["Libre Franklin"],
+            "body-sm": ["Libre Franklin"],
+            "label-sm": ["JetBrains Mono"],
+            "body-lg": ["Libre Franklin"],
+            "body-md": ["Libre Franklin"]
+          },
+          "fontSize": {
+            "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+            "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+            "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .matrix-input:focus { outline: none; border-color: #1a5fa8; box-shadow: 0 0 0 2px rgba(26, 95, 168, 0.1); }
+    .thin-border { border-width: 0.5px; }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container dark:bg-surface-container-high border-r border-border dark:border-outline-variant flex flex-col p-4 gap-2 z-50">
+<div class="mb-8 px-2">
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">Precision Salon OS</h1>
+<p class="text-label-sm text-secondary">Multi-Outlet Admin</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Members</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-md text-label-md">MLM/Affiliate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-md text-label-md">Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 h-16 flex items-center justify-between px-margin-page z-40 bg-surface dark:bg-surface-dim border-b border-border dark:border-outline-variant">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2 text-body-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search matrix..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="sync">sync</span>
+<div class="h-8 w-8 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 h-screen overflow-y-auto no-scrollbar relative">
+<div class="p-margin-page max-w-7xl mx-auto space-y-stack-lg pb-40">
+<!-- Contextual Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-gutter">
+<div class="space-y-1">
+<nav class="flex items-center gap-2 text-label-sm text-secondary mb-1">
+<span>Configuration</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span>Staff Management</span>
+</nav>
+<h2 class="text-headline-lg font-headline-lg text-ink-primary">Staff Commission Matrix</h2>
+<p class="text-body-md text-on-surface-variant">Manage tiered commission structures by service category and staff rank.</p>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative inline-block text-left">
+<select class="appearance-none bg-surface border border-border text-on-surface font-label-md px-4 py-2.5 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer min-w-[200px] thin-border shadow-sm">
+<option>Kuala Lumpur Central</option>
+<option>Bangsar South Elite</option>
+<option>Mont Kiara Studio</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-secondary" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Configuration Grid Section -->
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view">grid_view</span>
+<h3 class="font-headline-md text-headline-md text-ink-primary">Commission Rates</h3>
+<span class="text-label-sm text-secondary ml-2">Define base payouts for services and retail.</span>
+</div>
+<section class="bg-surface border border-border rounded-xl overflow-hidden shadow-sm thin-border">
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border"><th class="px-4 py-3 text-left font-label-md text-on-surface-variant min-w-[240px]">Service Category</th><th class="px-4 py-3 text-center font-label-md text-on-surface-variant w-[100px]">L1: Junior</th><th class="px-4 py-3 text-center font-label-md text-on-surface-variant w-[100px]">L2: Senior</th><th class="px-4 py-3 text-center font-label-md text-on-surface-variant w-[100px]">L3: Master</th><th class="px-4 py-3 text-center font-label-md text-on-surface-variant w-[100px]">Creative Dir.</th></tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Haircut & Styling -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-2.5"><div class="flex items-center gap-3"><div class="p-1.5 bg-primary-fixed rounded-lg"><span class="material-symbols-outlined text-primary text-[18px]">content_cut</span></div><div><span class="font-body-sm font-bold block text-ink-primary">Haircut &amp; Styling</span><span class="text-[11px] text-secondary">Wash, Cut, Blow, Set</span></div></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="10.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="15.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="20.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="25.00%"/></div></td>
+</tr>
+<!-- Coloring & Treatments -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-2.5">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-tertiary-fixed rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="palette">palette</span>
+</div>
+<div>
+<span class="font-body-md font-bold block text-ink-primary">Coloring &amp; Treatments</span>
+<span class="text-label-sm text-secondary">Dye, Perm, Scalp Care</span>
+</div>
+</div>
+</td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="12.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="18.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="22.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="30.00%"/></div></td>
+</tr>
+<!-- Manicure & Spa -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-2.5">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-secondary-fixed rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="spa">spa</span>
+</div>
+<div>
+<span class="font-body-md font-bold block text-ink-primary">Manicure &amp; Spa</span>
+<span class="text-label-sm text-secondary">Nail Art, Reflexology</span>
+</div>
+</div>
+</td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="8.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="12.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="15.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="18.00%"/></div></td>
+</tr>
+<!-- Retail Products -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-2.5">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary-fixed-dim rounded-lg">
+<span class="material-symbols-outlined text-on-primary-fixed-variant text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div>
+<span class="font-body-md font-bold block text-ink-primary">Retail Products</span>
+<span class="text-label-sm text-secondary">Shampoo, Wax, Serum</span>
+</div>
+</div>
+</td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="5.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="5.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="7.00%"/></div></td>
+<td class="py-2.5"><div class="flex justify-center"><input class="matrix-input w-24 p-2 bg-surface-container-lowest thin-border border border-border rounded-lg text-center font-label-md h-9" type="text" value="10.00%"/></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Rule Management & MLM -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-start">
+<!-- Additional Rules Panel -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="tune">tune</span>
+<h3 class="font-headline-md text-headline-md text-ink-primary">Calculation Rules</h3>
+<span class="text-label-sm text-secondary ml-2">Override logic and conditional bonuses.</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Rule 1: Upsell -->
+<div class="bg-surface thin-border border border-border rounded-xl p-5 space-y-4 shadow-sm"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]">add_circle</span><span class="font-bold text-body-md text-ink-primary">Product Upsell Bonus</span></div><label class="relative inline-flex items-center cursor-pointer"><input checked="" class="sr-only peer" type="checkbox"/><div class="w-10 h-5 bg-outline-variant rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div></label></div><p class="text-body-sm text-secondary mb-4">Flat or percentage bonus per product sold over RM 50.</p><div class="space-y-3"><div class="flex items-center justify-between"><span class="text-label-sm text-on-surface-variant">Bonus Type</span><div class="flex bg-surface-container-low border border-border rounded-lg p-0.5"><button class="px-3 py-1 text-label-sm bg-white shadow-sm rounded-md text-primary font-bold">RM</button><button class="px-3 py-1 text-label-sm text-secondary">%</button></div></div><div class="flex items-center justify-between"><span class="text-label-sm text-on-surface-variant">Bonus Amount</span><div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-label-sm text-secondary">RM</span><input class="w-24 pl-9 pr-2 py-1.5 bg-surface-container-lowest border border-border rounded-lg font-label-md text-right focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="5.00"/></div></div></div></div>
+<!-- Rule 2: Surcharge -->
+<div class="bg-surface thin-border border border-border rounded-xl p-5 space-y-4 shadow-sm"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]">star</span><span class="font-bold text-body-md text-ink-primary">Request Surcharge</span></div><label class="relative inline-flex items-center cursor-pointer"><input checked="" class="sr-only peer" type="checkbox"/><div class="w-10 h-5 bg-outline-variant rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div></label></div><p class="text-body-sm text-secondary mb-4">Bonus for specifically requested staff members.</p><div class="space-y-3"><div class="flex items-center justify-between"><span class="text-label-sm text-on-surface-variant">Surcharge Boost</span><input class="w-24 p-1.5 bg-surface-container-lowest border border-border rounded-lg font-label-md text-right focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="+5.00%"/></div><div class="flex items-center justify-between"><span class="text-label-sm text-on-surface-variant">Payout Model</span><select class="bg-surface-container-lowest border border-border text-label-sm px-2 py-1.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer w-[140px]"><option>Staff Only (100%)</option><option>Split 70/30 (Salon)</option></select></div></div></div>
+<!-- Rule 3: Duration -->
+<div class="bg-surface thin-border border border-border rounded-xl p-5 space-y-4 shadow-sm md:col-span-2"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]">timer</span><span class="font-bold text-body-md text-ink-primary">Duration Adjustment Logic</span></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"/><div class="w-10 h-5 bg-outline-variant rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div></label></div><div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><p class="text-body-sm text-secondary">Penalty or bonus applied if actual service time varies from allocated duration.</p><div class="flex items-center gap-6"><div class="flex items-center gap-2"><span class="text-label-sm text-on-surface-variant">Threshold</span><input class="w-16 p-1.5 bg-surface-container-lowest border border-border rounded-lg font-label-md text-center" value="15%"/><span class="text-label-sm text-secondary">+/-</span></div><div class="flex items-center gap-2"><span class="text-label-sm text-on-surface-variant">Impact</span><input class="w-16 p-1.5 bg-surface-container-lowest border border-border rounded-lg font-label-md text-right" value="2.0"/><span class="text-label-sm text-secondary">% / 10m</span></div></div></div></div>
+</div>
+</div>
+<!-- MLM Alignment Card -->
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-mlm" data-icon="account_tree">account_tree</span>
+<h3 class="font-headline-md text-headline-md text-ink-primary">MLM Hierarchy</h3>
+</div>
+<div class="bg-purple-mlm text-white rounded-xl p-6 relative overflow-hidden flex flex-col justify-between shadow-lg h-full min-h-[400px]">
+<div class="absolute -right-12 -top-12 opacity-10">
+<span class="material-symbols-outlined text-[200px]" data-icon="account_tree">account_tree</span>
+</div>
+<div class="relative z-10 space-y-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-bold text-headline-md">Reward Logic</span>
+</div>
+<p class="text-body-sm opacity-90 leading-relaxed">
+                Base commission rates defined here serve as the <span class="font-bold">Tier-1 Payout</span>. 
+              </p>
+</div>
+<div class="space-y-3 bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
+<div class="flex justify-between items-center pb-2 border-b border-white/20">
+<span class="text-label-sm font-bold opacity-100 uppercase tracking-wider">Upline Overrides</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-label-md opacity-80">L1 Override (Direct)</span>
+<span class="font-label-md">5.0%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-label-md opacity-80">L2 Override</span>
+<span class="font-label-md">3.0%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-label-md opacity-80">L3 Override</span>
+<span class="font-label-md">1.0%</span>
+</div>
+</div>
+</div>
+<p class="text-label-sm opacity-70 italic leading-snug">
+              Overrides are calculated as a percentage of the total service value, deducted after base staff payout.
+            </p>
+</div>
+<button class="relative z-10 mt-6 w-full py-3 bg-white text-purple-mlm font-bold rounded-lg text-label-md hover:bg-opacity-90 transition-all active:scale-[0.98] shadow-sm">
+            Manage Reward Rules
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Controls -->
+<div class="fixed bottom-0 left-64 right-0 bg-surface/80 backdrop-blur-md border-t border-border px-margin-page py-4 z-50 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="flex h-2 w-2 rounded-full bg-success"></span>
+<p class="text-label-md text-secondary">Last synchronized 2 minutes ago</p>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="px-6 py-2.5 rounded-lg border border-outline text-secondary font-label-md hover:bg-surface-container transition-colors">
+        Discard Changes
+      </button>
+<button class="bg-primary text-on-primary font-label-md px-8 py-2.5 rounded-lg flex items-center gap-2 hover:opacity-95 transition-all active:scale-[0.98] shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+        Save Changes
+      </button>
+</div>
+</div>
+<!-- Floating Quick Stats -->
+<div class="fixed bottom-24 right-8 flex flex-col gap-3 items-end z-40">
+<button class="group flex items-center gap-2 bg-surface border border-border shadow-xl p-4 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+<span class="font-label-md max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap">Preview Monthly Payouts</span>
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+</button>
+</div>
+</main>
+<script>
+    // Visual feedback for input changes
+    const inputs = document.querySelectorAll('.matrix-input');
+    inputs.forEach(input => {
+      input.addEventListener('change', () => {
+        input.classList.add('bg-primary/10', 'border-primary');
+        setTimeout(() => {
+          input.classList.remove('bg-primary/10', 'border-primary');
+        }, 1200);
+      });
+    });
+
+    // Toggle logic for rules
+    const toggles = document.querySelectorAll('input[type="checkbox"]');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('change', (e) => {
+        const parentCard = e.target.closest('.bg-surface');
+        if (!e.target.checked) {
+          parentCard.classList.add('opacity-60', 'grayscale-[0.5]');
+        } else {
+          parentCard.classList.remove('opacity-60', 'grayscale-[0.5]');
+        }
+      });
+    });
+  </script>
+</body></html>

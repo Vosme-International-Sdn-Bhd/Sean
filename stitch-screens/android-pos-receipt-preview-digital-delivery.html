@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Receipt Preview - Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1a5fa8",
+                    "surface-container-highest": "#e3e2df",
+                    "surface-bright": "#faf9f5",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#7d5700",
+                    "tertiary-fixed": "#ffdeaa",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#dcdad5",
+                    "on-secondary-container": "#5f5f5b",
+                    "danger": "#8A1F1F",
+                    "tertiary": "#5e4100",
+                    "warning": "#8A5200",
+                    "on-primary-container": "#c4daff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#efeeea",
+                    "on-secondary-fixed-variant": "#474743",
+                    "inverse-primary": "#a6c8ff",
+                    "primary": "#004786",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "platinum": "#E5E4E2",
+                    "primary-fixed": "#d4e3ff",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "surface-variant": "#e3e2df",
+                    "on-primary-fixed": "#001c3a",
+                    "surface-tint": "#1a5fa8",
+                    "purple-mlm": "#4A3AB0",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#424751",
+                    "bronze": "#CD7F32",
+                    "border": "#E2E1DC",
+                    "surface-container-high": "#e9e8e4",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "outline-variant": "#c2c6d3",
+                    "on-tertiary-container": "#ffd184",
+                    "on-secondary-fixed": "#1b1c19",
+                    "secondary-fixed": "#e4e2dd",
+                    "success": "#2E7D52",
+                    "outline": "#727782",
+                    "inverse-surface": "#30312e",
+                    "on-surface": "#1b1c1a",
+                    "silver": "#C0C0C0",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "secondary": "#5f5f5a",
+                    "surface-container-low": "#f5f4f0",
+                    "on-primary-fixed-variant": "#004786",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#271900",
+                    "ink-primary": "#1A1A18",
+                    "inverse-on-surface": "#f2f1ed",
+                    "background": "#faf9f5",
+                    "surface-dim": "#dbdad6",
+                    "on-background": "#1b1c1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-page": "24px",
+                    "stack-md": "16px",
+                    "tile-height-min": "80px",
+                    "touch-target-min": "56px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Libre Franklin"],
+                    "body-sm": ["Libre Franklin"],
+                    "body-md": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Libre Franklin"],
+                    "body-lg": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Libre Franklin"]
+            },
+            "fontSize": {
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .thermal-receipt {
+            background-image: 
+                linear-gradient(to bottom, #ffffff 0%, #ffffff 100%),
+                repeating-linear-gradient(45deg, #f0f0f0 0, #f0f0f0 1px, transparent 0, transparent 50%);
+            background-size: 100% 100%, 4px 4px;
+        }
+        .receipt-tear {
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+            clip-path: polygon(0% 0%, 100% 0%, 100% 98%, 98% 100%, 96% 98%, 94% 100%, 92% 98%, 90% 100%, 88% 98%, 86% 100%, 84% 98%, 82% 100%, 80% 98%, 78% 100%, 76% 98%, 74% 100%, 72% 98%, 70% 100%, 68% 98%, 66% 100%, 64% 98%, 62% 100%, 60% 98%, 58% 100%, 56% 98%, 54% 100%, 52% 98%, 50% 100%, 48% 98%, 46% 100%, 44% 98%, 42% 100%, 40% 98%, 38% 100%, 36% 98%, 34% 100%, 32% 98%, 30% 100%, 28% 98%, 26% 100%, 24% 98%, 22% 100%, 20% 98%, 18% 100%, 16% 98%, 14% 100%, 12% 98%, 10% 100%, 8% 98%, 6% 100%, 4% 98%, 2% 100%, 0% 98%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-hidden">
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-danger text-on-primary font-label-md text-label-md flex justify-between items-center px-margin-page h-10 w-full">
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined" data-icon="wifi_off">wifi_off</span>
+<span class="font-headline-md text-headline-md font-bold text-on-primary">GLOSS POS</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex items-center gap-stack-sm bg-red-900/40 px-3 py-1 rounded text-white font-bold">
+<span class="material-symbols-outlined text-[18px]" data-icon="error_outline">error_outline</span>
+                OFFLINE MODE
+            </div>
+<div class="flex gap-stack-md">
+<span class="material-symbols-outlined cursor-pointer hover:bg-red-700 p-1 transition-colors duration-200" data-icon="sync">sync</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-red-700 p-1 transition-colors duration-200" data-icon="settings">settings</span>
+</div>
+</div>
+</header>
+<main class="flex-1 mt-10 flex h-[calc(100vh-2.5rem)] overflow-hidden">
+<!-- Shared Component: SideNavBar -->
+<nav class="hidden md:flex flex-col py-stack-lg px-stack-md bg-surface-container dark:bg-surface-container fixed left-0 top-10 h-[calc(100%-2.5rem)] w-64 border-r border-border">
+<div class="mb-stack-lg px-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">
+                        AS
+                    </div>
+<div>
+<p class="font-headline-md text-headline-md text-primary font-bold">Artisan Salon</p>
+<p class="font-body-sm text-secondary">Station 04</p>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span>POS Home</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Members</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span>Sync</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<div class="flex-1 ml-64 p-stack-lg flex flex-col gap-6 items-center justify-center overflow-auto">
+<!-- Payment Success Header -->
+<div class="w-full max-w-4xl flex items-center justify-between mb-2">
+<div class="flex items-center gap-4 animate-in fade-in slide-in-from-top duration-500">
+<div class="w-12 h-12 bg-success/10 text-success rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-ink-primary">Payment Successful</h1>
+<p class="font-body-md text-secondary">Transaction completed for ORD-20231024-001</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full border border-border">
+<span class="material-symbols-outlined text-success text-[16px]" data-icon="database">database</span>
+<span class="font-label-sm text-label-sm">LOCAL STORAGE OK</span>
+</div>
+</div>
+<div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8">
+<!-- Receipt Preview Panel -->
+<div class="flex justify-center items-start">
+<div class="thermal-receipt receipt-tear w-full max-w-[380px] p-8 border-x border-t border-border shadow-2xl relative">
+<!-- Salon Logo/Header -->
+<div class="text-center mb-6">
+<h2 class="font-headline-md text-headline-md tracking-tight font-bold text-ink-primary mb-1">ARTISAN SALON</h2>
+<p class="text-[12px] font-label-sm uppercase opacity-70">Lot G-23, Central Plaza Mall</p>
+<p class="text-[12px] font-label-sm uppercase opacity-70">Kuala Lumpur, Malaysia</p>
+<p class="text-[12px] font-label-sm mt-1">Tel: +60 3-1234 5678</p>
+</div>
+<!-- Metadata -->
+<div class="border-y border-dashed border-ink-primary/20 py-3 mb-4 space-y-1">
+<div class="flex justify-between font-label-sm">
+<span>REF: ORD-20231024-001</span>
+<span>S04 / ALEX</span>
+</div>
+<div class="flex justify-between font-label-sm">
+<span>DATE: 24 OCT 2023</span>
+<span>TIME: 14:45:02</span>
+</div>
+</div>
+<!-- Line Items -->
+<div class="space-y-4 mb-6">
+<div class="flex justify-between font-label-md items-start">
+<div class="flex-1 pr-4">
+<p class="font-bold">Signature Haircut</p>
+<p class="text-[12px] opacity-70">Master Stylist - Senior</p>
+</div>
+<span class="font-bold">120.00</span>
+</div>
+<div class="flex justify-between font-label-md items-start">
+<div class="flex-1 pr-4">
+<p class="font-bold">Keratin Treatment</p>
+<p class="text-[12px] opacity-70">Deep Repair Protocol</p>
+</div>
+<span class="font-bold">350.00</span>
+</div>
+<div class="flex justify-between font-label-md items-start">
+<div class="flex-1 pr-4">
+<p class="font-bold">Anti-Frizz Serum</p>
+<p class="text-[12px] opacity-70">Product Sale</p>
+</div>
+<span class="font-bold">85.00</span>
+</div>
+</div>
+<!-- Calculations -->
+<div class="border-t border-dashed border-ink-primary py-4 space-y-1">
+<div class="flex justify-between font-label-md">
+<span>Subtotal</span>
+<span>555.00</span>
+</div>
+<div class="flex justify-between font-label-md">
+<span>Service Charge (10%)</span>
+<span>55.50</span>
+</div>
+<div class="flex justify-between font-label-md">
+<span>SST (6%)</span>
+<span>33.30</span>
+</div>
+<div class="flex justify-between font-headline-md text-ink-primary pt-2 border-t border-ink-primary">
+<span class="font-bold">TOTAL (MYR)</span>
+<span class="font-bold">643.80</span>
+</div>
+</div>
+<!-- Compliance QR -->
+<div class="mt-8 flex flex-col items-center gap-2">
+<div class="w-32 h-32 bg-white p-2 border border-border">
+<img alt="LHDN MyInvois QR Code" class="w-full h-full grayscale opacity-90" data-alt="A clean, minimalist QR code displayed on a high-contrast digital thermal receipt background. The QR code is perfectly centered and sharp, surrounded by a delicate border. The lighting is neutral and even, emphasizing clarity for scanning purposes within a modern, professional business application environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiGhLdvmzC2jSL75GQIdX3_dXXs3V5kYJe1qmEkiGtOqNOuZQj9T-9q5wzXhtN10K-LxLyclhd3I2nXvP-r3JSe6JSusUBmY5WtUGqD-vglIegE6P_b-g0CtphykakjOQk63x1Yxe5BxaeftVGE_o3ee-99EXA85AGmJQuHpJIvfKjZ6H-_bH0VUGNJjhaxVTLXA-mLni00r0IHR35iscEqlGrVBcuauaRQzqaA7Hh3bjHpYaPA6e4Fkw2FdL37OuFBdBmRXgKbVIC"/>
+</div>
+<p class="font-label-sm text-[10px] text-center opacity-70">LHDN MyInvois Compliant<br/>Scan for e-Invoice</p>
+</div>
+<!-- Footer Msg -->
+<div class="mt-8 text-center border-t border-dashed border-ink-primary/20 pt-4">
+<p class="font-label-sm italic">Thank you for choosing Artisan.</p>
+<p class="font-label-sm italic text-[10px] mt-1">PRECISION SALON OS • v2.4.1</p>
+</div>
+</div>
+</div>
+<!-- Action Sidebar -->
+<div class="flex flex-col gap-4">
+<button class="w-full h-[80px] bg-primary-container text-white rounded-lg flex items-center justify-between px-6 shadow-sm active:scale-[0.98] transition-all group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[32px]" data-icon="print">print</span>
+<div class="text-left">
+<p class="font-body-lg font-bold">Print Receipt</p>
+<p class="text-on-primary-container/70 text-body-sm">Bluetooth Printer Connected</p>
+</div>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full h-[80px] bg-success text-white rounded-lg flex items-center justify-between px-6 shadow-sm active:scale-[0.98] transition-all group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[32px]" data-icon="share">share</span>
+<div class="text-left">
+<p class="font-body-lg font-bold">Send via WhatsApp</p>
+<p class="text-white/70 text-body-sm">+60 12-*** 9088</p>
+</div>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chat">chat</span>
+</button>
+<button class="w-full h-touch-target-min border border-border bg-surface hover:bg-surface-container-high text-secondary rounded-lg flex items-center gap-4 px-6 transition-colors">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-body-md font-bold">Email Digital Copy</span>
+</button>
+<div class="mt-auto border-t border-border pt-6">
+<button class="w-full h-[72px] border-2 border-primary text-primary hover:bg-primary/5 rounded-lg flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="add_shopping_cart">add_shopping_cart</span>
+<span class="font-body-lg font-bold">New Order</span>
+</button>
+<p class="text-center font-label-sm text-secondary mt-3 uppercase tracking-wider">Shift Ends in 3h 15m</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Shared Component: NavigationDrawer (Member Info) -->
+<aside class="fixed right-0 top-10 h-[calc(100%-2.5rem)] w-80 bg-surface border-l border-border shadow-lg transition-transform duration-300 ease-in-out p-stack-lg flex flex-col">
+<div class="mb-stack-lg">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md">Sarah Jenkins</h3>
+<p class="font-body-sm text-secondary">Platinum Tier Member</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+</div>
+<button class="w-full h-10 border border-primary text-primary rounded-lg font-body-sm hover:bg-primary-fixed transition-colors">
+                    Edit Profile
+                </button>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container-low rounded-lg border border-border">
+<p class="font-label-sm text-secondary mb-1">VISIT FREQUENCY</p>
+<p class="font-body-md font-bold">Every 4.2 Weeks</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-border">
+<p class="font-label-sm text-secondary mb-1">LAST SERVICE</p>
+<p class="font-body-md font-bold">Color Touch-up (Sep 12)</p>
+</div>
+</div>
+<div class="mt-auto border-t border-border pt-4">
+<div class="flex items-center gap-3 p-3 text-primary font-bold transition-colors hover:bg-surface-container-low cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<div class="flex-1">
+<p class="text-body-sm">Wallet Balance</p>
+<p class="text-headline-md">RM 420.50</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 text-danger font-bold transition-colors hover:bg-surface-container-low cursor-pointer">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<div class="flex-1">
+<p class="text-body-sm">Allergy Flags</p>
+<p class="text-label-md">Ammonia Sensitive</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Simulating the offline/online toggle for visual demo
+        const offlineBanner = document.querySelector('.bg-danger');
+        let isOffline = true;
+        
+        setInterval(() => {
+            // Optional: Toggle visual states to demonstrate UI flexibility
+        }, 5000);
+    </script>
+</body></html>

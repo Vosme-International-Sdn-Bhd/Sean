@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Appointment - GlowPOS Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-background": "#1b1c1a",
+                "surface": "#FFFFFF",
+                "inverse-surface": "#30312e",
+                "platinum": "#E5E4E2",
+                "on-error-container": "#93000a",
+                "silver": "#C0C0C0",
+                "on-secondary": "#ffffff",
+                "surface-bright": "#faf9f5",
+                "inverse-on-surface": "#f2f1ed",
+                "on-secondary-container": "#5f5f5b",
+                "inverse-primary": "#a6c8ff",
+                "danger": "#8A1F1F",
+                "surface-container-highest": "#e3e2df",
+                "on-error": "#ffffff",
+                "tertiary": "#5e4100",
+                "on-tertiary-fixed": "#271900",
+                "on-surface-variant": "#424751",
+                "background": "#faf9f5",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#ffdeaa",
+                "warning": "#8A5200",
+                "tertiary-container": "#7d5700",
+                "on-tertiary-container": "#ffd184",
+                "outline": "#727782",
+                "success": "#2E7D52",
+                "tertiary-fixed-dim": "#f3be5e",
+                "secondary-fixed": "#e4e2dd",
+                "primary-fixed": "#d4e3ff",
+                "secondary": "#5f5f5a",
+                "surface-container-high": "#e9e8e4",
+                "surface-container-low": "#f5f4f0",
+                "outline-variant": "#c2c6d3",
+                "surface-tint": "#1a5fa8",
+                "ink-primary": "#1A1A18",
+                "error-container": "#ffdad6",
+                "on-primary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "purple-mlm": "#4A3AB0",
+                "on-secondary-fixed": "#1b1c19",
+                "primary": "#004786",
+                "on-primary-fixed": "#001c3a",
+                "on-primary-fixed-variant": "#004786",
+                "error": "#ba1a1a",
+                "secondary-container": "#dcdad5",
+                "secondary-fixed-dim": "#c8c6c1",
+                "border": "#E2E1DC",
+                "primary-container": "#1a5fa8",
+                "on-secondary-fixed-variant": "#474743",
+                "surface-dim": "#dbdad6",
+                "on-primary-container": "#c4daff",
+                "on-tertiary-fixed-variant": "#5f4100",
+                "bronze": "#CD7F32",
+                "primary-fixed-dim": "#a6c8ff",
+                "surface-variant": "#e3e2df",
+                "on-surface": "#1b1c1a",
+                "surface-container": "#efeeea"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "touch-target-min": "56px",
+                "stack-md": "16px",
+                "stack-lg": "24px",
+                "gutter": "16px",
+                "tile-height-min": "80px",
+                "stack-sm": "8px",
+                "margin-page": "24px"
+            },
+            "fontFamily": {
+                "body-sm": ["Libre Franklin"],
+                "body-md": ["Libre Franklin"],
+                "label-md": ["JetBrains Mono"],
+                "headline-lg": ["Libre Franklin"],
+                "headline-md": ["Libre Franklin"],
+                "display-lg": ["Libre Franklin"],
+                "body-lg": ["Libre Franklin"],
+                "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Libre Franklin', sans-serif; }
+        .active-category { border: 2px solid #004786; background: #d4e3ff; }
+        .selection-check { display: none; }
+        .active-category .selection-check { display: block; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #F5F4F0; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #C2C6D3; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- Sync Banner (Conditional Logic from Style Guidance) -->
+<div class="w-full h-8 bg-primary flex items-center justify-center text-on-primary font-label-md text-label-sm" id="sync-banner">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+            ESTABLISHED CONNECTION: MAIN BRANCH SECURE
+        </span>
+</div>
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-border sticky top-0 z-50 flex justify-between items-center w-full px-gutter h-touch-target-min">
+<div class="flex items-center gap-8">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">GlowPOS Salon</h1>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-secondary hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-primary font-bold hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-label-md text-label-md" href="#">Book</a>
+<a class="text-secondary hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-label-md text-label-md" href="#">Wallet</a>
+<a class="text-secondary hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-label-md text-label-md" href="#">Profile</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="sync">sync</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="settings">settings</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center border border-border">
+<span class="material-symbols-outlined text-secondary">person</span>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-margin-page py-stack-lg grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Panel (65% width equivalent) -->
+<div class="md:col-span-8 space-y-stack-lg">
+<!-- Progress Stepper -->
+<div class="bg-surface p-stack-md rounded-lg border border-border flex justify-between items-center relative">
+<div class="flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold mb-1">1</div>
+<span class="text-label-sm font-label-sm text-primary">Service</span>
+</div>
+<div class="absolute top-[36px] left-[10%] right-[10%] h-[2px] bg-outline-variant -z-0"></div>
+<div class="flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-bold mb-1">2</div>
+<span class="text-label-sm font-label-sm text-secondary">Stylist</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-bold mb-1">3</div>
+<span class="text-label-sm font-label-sm text-secondary">Time</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-bold mb-1">4</div>
+<span class="text-label-sm font-label-sm text-secondary">Confirm</span>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-touch-target-min pl-12 pr-4 bg-surface border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none font-body-md text-body-md" placeholder="Search for hair coloring, scalp treatment..." type="text"/>
+</div>
+<!-- Category Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-stack-sm">
+<button class="bg-surface p-4 rounded-lg border border-border flex flex-col items-center gap-2 hover:bg-surface-container-high transition-all active:scale-95 text-center group" onclick="selectCategory(this, 'Haircut')">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="content_cut">content_cut</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Haircut</p>
+<p class="text-label-sm font-label-sm text-secondary">From RM 45</p>
+</div>
+</button>
+<button class="bg-surface p-4 rounded-lg border border-border flex flex-col items-center gap-2 hover:bg-surface-container-high transition-all active:scale-95 text-center group" onclick="selectCategory(this, 'Coloring')">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="palette">palette</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Coloring</p>
+<p class="text-label-sm font-label-sm text-secondary">From RM 120</p>
+</div>
+</button>
+<button class="bg-surface p-4 rounded-lg border border-border flex flex-col items-center gap-2 hover:bg-surface-container-high transition-all active:scale-95 text-center group" onclick="selectCategory(this, 'Treatment')">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="spa">spa</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Treatment</p>
+<p class="text-label-sm font-label-sm text-secondary">From RM 85</p>
+</div>
+</button>
+<button class="active-category p-4 rounded-lg border border-border flex flex-col items-center gap-2 transition-all active:scale-95 text-center relative" id="nails-category" onclick="selectCategory(this, 'Nails')">
+<span class="material-symbols-outlined absolute top-2 right-2 text-primary selection-check" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="back_hand">back_hand</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Nails</p>
+<p class="text-label-sm font-label-sm text-secondary">From RM 35</p>
+</div>
+</button>
+<button class="bg-surface p-4 rounded-lg border border-border flex flex-col items-center gap-2 hover:bg-surface-container-high transition-all active:scale-95 text-center group" onclick="selectCategory(this, 'Facial')">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="face">face</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Facial</p>
+<p class="text-label-sm font-label-sm text-secondary">From RM 150</p>
+</div>
+</button>
+</div>
+<!-- Sub-services List -->
+<div class="bg-surface rounded-lg border border-border overflow-hidden">
+<div class="px-6 py-4 border-b border-border bg-surface-container-low flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-md font-bold text-on-surface" id="sub-service-title">Nail Services</h3>
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-widest">Select One</span>
+</div>
+<div class="divide-y divide-border">
+<!-- Service Row -->
+<div class="p-6 hover:bg-surface-container-lowest transition-colors group flex items-center justify-between">
+<div class="flex-1">
+<h4 class="text-body-lg font-bold text-on-surface">Classic Gel Manicure</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-label-md font-label-md text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span> 45 MIN
+                                </span>
+<span class="text-label-md font-label-md text-primary font-bold">RM 65.00</span>
+</div>
+</div>
+<button class="h-10 px-6 bg-surface border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95" onclick="toggleService('Classic Gel Manicure', 65)">Select</button>
+</div>
+<!-- Service Row -->
+<div class="p-6 hover:bg-surface-container-lowest transition-colors group flex items-center justify-between">
+<div class="flex-1">
+<h4 class="text-body-lg font-bold text-on-surface">Deluxe Spa Pedicure</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-label-md font-label-md text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span> 60 MIN
+                                </span>
+<span class="text-label-md font-label-md text-primary font-bold">RM 85.00</span>
+</div>
+</div>
+<button class="h-10 px-6 bg-surface border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95" onclick="toggleService('Deluxe Spa Pedicure', 85)">Select</button>
+</div>
+<!-- Service Row -->
+<div class="p-6 hover:bg-surface-container-lowest transition-colors group flex items-center justify-between">
+<div class="flex-1">
+<h4 class="text-body-lg font-bold text-on-surface">Nail Art (Add-on)</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-label-md font-label-md text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span> 20 MIN
+                                </span>
+<span class="text-label-md font-label-md text-primary font-bold">RM 35.00</span>
+</div>
+</div>
+<button class="h-10 px-6 bg-surface border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95" onclick="toggleService('Nail Art (Add-on)', 35)">Select</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel (35% width equivalent) - Sticky Summary -->
+<aside class="md:col-span-4">
+<div class="bg-surface rounded-lg border border-border flex flex-col h-fit sticky top-[80px]">
+<div class="p-6 border-b border-border">
+<h3 class="text-headline-sm font-headline-md font-bold text-on-surface">Booking Summary</h3>
+</div>
+<div class="p-6 flex flex-col gap-6 min-h-[300px]" id="summary-content">
+<!-- Empty State -->
+<div class="flex-1 flex flex-col items-center justify-center text-center opacity-60" id="empty-summary">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-secondary text-[32px]" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<p class="text-body-md font-body-md text-secondary">Please select a service<br/>to continue booking.</p>
+</div>
+<!-- Selected Service Details (Hidden initially) -->
+<div class="hidden flex flex-col gap-4" id="selected-service-info">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase">Selected Service</p>
+<h4 class="text-body-lg font-bold text-on-surface" id="summary-service-name">--</h4>
+</div>
+<button class="text-danger hover:underline text-label-sm" onclick="clearSelection()">Remove</button>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg space-y-2">
+<div class="flex justify-between">
+<span class="text-body-sm text-secondary">Service Fee</span>
+<span class="text-label-md font-label-md text-on-surface" id="summary-price">RM 0.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-body-sm text-secondary">Booking Fee</span>
+<span class="text-label-md font-label-md text-on-surface">RM 0.00</span>
+</div>
+<div class="h-px bg-outline-variant my-2"></div>
+<div class="flex justify-between items-center">
+<span class="text-body-md font-bold text-on-surface">Total</span>
+<span class="text-headline-sm font-headline-md text-primary" id="summary-total">RM 0.00</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-4 bg-primary-fixed rounded-lg text-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="info">info</span>
+<p class="text-body-sm">Next step: Choose your preferred stylist</p>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-border">
+<button class="w-full h-touch-target-min bg-secondary-container text-on-secondary-container font-bold rounded-lg cursor-not-allowed transition-all" disabled="" id="next-button">
+                        Next: Stylist
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Success Message Toast (Mock) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-on-background text-surface px-6 py-4 rounded-full shadow-lg opacity-0 transition-opacity pointer-events-none flex items-center gap-3" id="toast">
+<span class="material-symbols-outlined text-success" data-icon="check_circle">check_circle</span>
+<span class="font-body-md" id="toast-message">Service added to booking</span>
+</div>
+<script>
+        let selectedService = null;
+
+        function selectCategory(el, category) {
+            document.querySelectorAll('.active-category').forEach(btn => {
+                btn.classList.remove('active-category');
+                btn.classList.add('bg-surface');
+                const check = btn.querySelector('.selection-check');
+                if (check) check.remove();
+            });
+
+            el.classList.add('active-category');
+            el.classList.remove('bg-surface');
+            
+            const checkIcon = document.createElement('span');
+            checkIcon.className = 'material-symbols-outlined absolute top-2 right-2 text-primary selection-check';
+            checkIcon.innerText = 'check_circle';
+            checkIcon.style.fontVariationSettings = "'FILL' 1";
+            el.appendChild(checkIcon);
+
+            document.getElementById('sub-service-title').innerText = category + ' Services';
+        }
+
+        function toggleService(name, price) {
+            selectedService = { name, price };
+            
+            // Update Summary UI
+            document.getElementById('empty-summary').classList.add('hidden');
+            document.getElementById('selected-service-info').classList.remove('hidden');
+            
+            document.getElementById('summary-service-name').innerText = name;
+            document.getElementById('summary-price').innerText = 'RM ' + price.toFixed(2);
+            document.getElementById('summary-total').innerText = 'RM ' + price.toFixed(2);
+            
+            // Enable Button
+            const nextBtn = document.getElementById('next-button');
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'cursor-not-allowed');
+            nextBtn.classList.add('bg-primary', 'text-on-primary', 'hover:opacity-90', 'active:scale-[0.98]');
+
+            showToast(`Selected: ${name}`);
+        }
+
+        function clearSelection() {
+            selectedService = null;
+            document.getElementById('empty-summary').classList.remove('hidden');
+            document.getElementById('selected-service-info').classList.add('hidden');
+            
+            const nextBtn = document.getElementById('next-button');
+            nextBtn.disabled = true;
+            nextBtn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'cursor-not-allowed');
+            nextBtn.classList.remove('bg-primary', 'text-on-primary', 'hover:opacity-90', 'active:scale-[0.98]');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+    </script>
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Account Settings — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item active" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Account Settings</div><div class="page-subtitle">Manage your profile, privacy &amp; data</div></div>
+    </div>
+    <div style="max-width:700px;">
+      <!-- Profile -->
+      <div class="card mb-24">
+        <div class="flex justify-between items-center mb-16">
+          <div class="card-title">Personal Information</div>
+          <button class="btn btn-secondary btn-sm">Edit</button>
+        </div>
+        <div class="grid grid-2" style="gap:16px;">
+          <div><label class="field-label">Full Name</label><input class="input" value="Sarah Lim Wei Ling" readonly style="background:var(--surface-low);"></div>
+          <div><label class="field-label">Phone (Login)</label><div class="input-group"><div class="input-prefix">+60</div><input class="input" value="12-345 6789" readonly style="background:var(--surface-low);"></div></div>
+          <div><label class="field-label">Email (Optional)</label><input class="input" value="sarah@email.com" readonly style="background:var(--surface-low);"></div>
+          <div><label class="field-label">Date of Birth</label><input class="input" value="15 Jan 1995" readonly style="background:var(--surface-low);"></div>
+          <div><label class="field-label">IC Number (masked)</label><input class="input" value="950115-**-****" readonly style="background:var(--surface-low);font-family:var(--font-mono);"></div>
+          <div><label class="field-label">Preferred Language</label><input class="input" value="English" readonly style="background:var(--surface-low);"></div>
+        </div>
+      </div>
+
+      <!-- Notifications shortcut -->
+      <div class="card mb-24">
+        <div class="flex justify-between items-center">
+          <div>
+            <div class="card-title">Notifications &amp; Privacy</div>
+            <div class="card-subtitle">Manage what you receive and your PDPA consent</div>
+          </div>
+          <a href="notifications.html" class="btn btn-secondary btn-sm">Manage →</a>
+        </div>
+      </div>
+
+      <!-- PDPA Data Rights -->
+      <div class="card mb-24" style="border:0.5px solid rgba(138,82,0,0.3);">
+        <div class="card-title mb-4">🔒 PDPA Data Rights</div>
+        <div class="card-subtitle mb-16">Under Malaysia's Personal Data Protection Act 2010, you have the right to access, correct, or delete your personal data.</div>
+        <div class="flex flex-col gap-12">
+          <div style="border:0.5px solid var(--border);border-radius:var(--radius);padding:16px;">
+            <div class="font-600 mb-4">📥 Request My Data Export</div>
+            <div class="text-sm text-muted mb-12">Download a copy of all your personal data stored in our system (bookings, transactions, profile, wallet history).</div>
+            <button class="btn btn-secondary btn-sm">Request Data Export</button>
+            <div class="text-xs text-muted mt-8">Data will be emailed to sarah@email.com within 7 business days</div>
+          </div>
+          <div style="border:0.5px solid var(--danger);border-radius:var(--radius);padding:16px;background:var(--danger-bg);">
+            <div class="font-600 mb-4 text-danger">🗑️ Delete My Account</div>
+            <div class="text-sm text-muted mb-12">Permanently delete your account and all associated data. This action cannot be undone. Active bookings must be cancelled first.</div>
+            <button class="btn btn-sm" style="background:var(--danger);color:#fff;">Request Account Deletion</button>
+            <div class="text-xs text-muted mt-8">Deletion processed within 30 days per PDPA 2010 requirements</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saved Payment -->
+      <div class="card mb-24">
+        <div class="flex justify-between items-center mb-16">
+          <div class="card-title">Saved Payment Method</div>
+          <button class="btn btn-secondary btn-sm">Manage</button>
+        </div>
+        <div class="flex items-center gap-12" style="padding:12px;background:var(--surface-low);border-radius:var(--radius);border:0.5px solid var(--border);">
+          <div style="font-size:24px;">💳</div>
+          <div><div class="font-600 text-sm">Visa ending in ••••4582</div><div class="text-xs text-muted">Expires 08/28 · Tokenised via Fiuu</div></div>
+          <span class="pill pill-success" style="margin-left:auto;">Active</span>
+        </div>
+      </div>
+
+      <!-- Sign Out -->
+      <button class="btn btn-secondary" style="color:var(--danger);border-color:var(--danger);">Sign Out of All Devices</button>
+    </div>
+  </main>
+</div>
+</body></html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LHDN MyInvois Compliance - Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "background": "#faf9f5",
+                "silver": "#C0C0C0",
+                "primary-container": "#1a5fa8",
+                "tertiary-container": "#7d5700",
+                "purple-mlm": "#4A3AB0",
+                "on-error": "#ffffff",
+                "surface-tint": "#1a5fa8",
+                "on-tertiary-fixed": "#271900",
+                "on-secondary-fixed": "#1b1c19",
+                "warning": "#8A5200",
+                "on-error-container": "#93000a",
+                "tertiary": "#5e4100",
+                "tertiary-fixed": "#ffdeaa",
+                "success": "#2E7D52",
+                "ink-primary": "#1A1A18",
+                "secondary-container": "#dcdad5",
+                "secondary-fixed": "#e4e2dd",
+                "on-primary": "#ffffff",
+                "bronze": "#CD7F32",
+                "tertiary-fixed-dim": "#f3be5e",
+                "on-background": "#1b1c1a",
+                "outline": "#727782",
+                "on-surface": "#1b1c1a",
+                "inverse-primary": "#a6c8ff",
+                "secondary": "#5f5f5a",
+                "danger": "#8A1F1F",
+                "on-surface-variant": "#424751",
+                "on-secondary": "#ffffff",
+                "surface-container": "#efeeea",
+                "on-secondary-container": "#5f5f5b",
+                "surface-variant": "#e3e2df",
+                "surface-container-low": "#f5f4f0",
+                "on-primary-fixed": "#001c3a",
+                "error-container": "#ffdad6",
+                "secondary-fixed-dim": "#c8c6c1",
+                "inverse-surface": "#30312e",
+                "surface-bright": "#faf9f5",
+                "on-tertiary-container": "#ffd184",
+                "on-secondary-fixed-variant": "#474743",
+                "primary": "#004786",
+                "on-primary-container": "#c4daff",
+                "surface-container-highest": "#e3e2df",
+                "inverse-on-surface": "#f2f1ed",
+                "error": "#ba1a1a",
+                "primary-fixed": "#d4e3ff",
+                "on-tertiary-fixed-variant": "#5f4100",
+                "surface-container-high": "#e9e8e4",
+                "platinum": "#E5E4E2",
+                "outline-variant": "#c2c6d3",
+                "on-primary-fixed-variant": "#004786",
+                "border": "#E2E1DC",
+                "surface": "#FFFFFF",
+                "surface-dim": "#dbdad6",
+                "primary-fixed-dim": "#a6c8ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline-md": ["Libre Franklin"],
+                "body-md": ["Libre Franklin"],
+                "label-sm": ["JetBrains Mono"],
+                "body-sm": ["Libre Franklin"],
+                "display-lg": ["Libre Franklin"],
+                "label-md": ["JetBrains Mono"],
+                "headline-lg": ["Libre Franklin"],
+                "body-lg": ["Libre Franklin"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Fixed Side Navigation -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest border-r border-border flex flex-col z-40">
+<div class="p-6">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Precision Salon</h1>
+<p class="text-label-md font-label-md text-secondary uppercase tracking-wider mt-1">Enterprise Admin</p>
+</div>
+<nav class="flex-1 px-2 space-y-1 overflow-y-auto no-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md">Members</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-md">MLM/Affiliate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-md">Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary bg-surface-container-high border-l-4 border-primary rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface border-b border-border flex justify-between items-center px-6 z-30">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-extrabold text-primary">Precision Salon OS</span>
+<div class="h-6 w-px bg-border mx-2"></div>
+<span class="text-body-md text-on-surface-variant font-medium">Compliance Configuration</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="flex items-center gap-3 ml-4 pl-4 border-l border-border">
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">Alex Rivera</p>
+<p class="text-label-sm text-secondary">Finance Lead</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbjNKUV44tLldZf6LbNHyGETuCjeXxJS64BPxgnChqWkIvXhjVpJ-nmxwOpLf0QBuCaKDHGjVW4JvQXGo9EKcd91pz5AdC9_Q_Rl5Ypk-btZAktjolmA0NsH7mxVp2BHf1rk48xha2LVm1aQKKhkkKW5UylplmTcCnVKbXbH3h0vGnpdUWbXihhCbUp1mLbDy9NSzsJTeenPGu-hrsOXuteJWCjyVK7chOCJU_ekMAJiOzcLMj0ntOAgyzIXQZATnrzDXqkP8-OZbJ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8">
+<!-- Persistent Sync Banner (Conditional) -->
+<div class="mb-6 bg-primary px-6 py-2 rounded-lg flex items-center justify-between text-white hidden" id="sync-banner">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span>
+<span class="text-body-sm font-medium">Synchronizing compliance data with LHDN MyInvois...</span>
+</div>
+</div>
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-display-lg font-display-lg text-ink-primary">LHDN MyInvois Compliance - Commission Payouts</h2>
+<p class="text-body-lg text-secondary mt-1">Configure automated tax reporting for affiliate and stylist commission distributions.</p>
+</div>
+<div class="flex gap-4">
+<button class="h-[56px] px-6 border border-border text-primary font-bold rounded-lg hover:bg-surface-container transition-all flex items-center gap-2" onclick="testConnection()">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+                    Test Connection with MyInvois API
+                </button>
+<button class="h-[56px] px-8 bg-primary text-white font-bold rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                    Save Configuration
+                </button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Column 1: Identity & Automation -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-gutter">
+<!-- Affiliate Tax Identity Section -->
+<section class="bg-surface border border-border rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<h3 class="text-headline-md font-headline-md text-ink-primary">Affiliate Tax Identity</h3>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-2 md:col-span-1">
+<label class="block text-label-md text-secondary mb-2">Merchant TIN (Tax Identification Number)</label>
+<input class="w-full h-[56px] border border-border rounded-lg px-4 focus:ring-2 focus:ring-primary focus:border-primary font-label-md bg-background" type="text" value="IG29485760010"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block text-label-md text-secondary mb-2">SST/GST Registration Number</label>
+<input class="w-full h-[56px] border border-border rounded-lg px-4 focus:ring-2 focus:ring-primary focus:border-primary font-label-md bg-background" type="text" value="W10-1808-32000045"/>
+</div>
+<div class="col-span-2">
+<label class="block text-label-md text-secondary mb-2">Business Registration Number (BRN)</label>
+<input class="w-full h-[56px] border border-border rounded-lg px-4 focus:ring-2 focus:ring-primary focus:border-primary font-label-md bg-background" type="text" value="202301045678 (1234567-X)"/>
+</div>
+</div>
+</section>
+<!-- Compliance Automation Section -->
+<section class="bg-surface border border-border rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="settings_suggest">settings_suggest</span>
+<h3 class="text-headline-md font-headline-md text-ink-primary">Compliance Automation</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-border">
+<div>
+<p class="text-body-md font-bold text-ink-primary">Auto-submit to MyInvois on Payout Approval</p>
+<p class="text-body-sm text-secondary">Instantly transmits self-billed invoices to LHDN when commission is released.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-7 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-border">
+<div>
+<p class="text-body-md font-bold text-ink-primary">Generate QR Code for Affiliate Receipts</p>
+<p class="text-body-sm text-secondary">Embeds LHDN validation QR codes directly into downloadable commission statements.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-7 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-border">
+<div>
+<p class="text-body-md font-bold text-ink-primary">Email Validation Report to Merchant</p>
+<p class="text-body-sm text-secondary">Sends a summary of successful LHDN approvals to the financial administrator weekly.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-7 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Column 2: Status & Template -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
+<!-- Submission Status Widget -->
+<section class="bg-surface border border-border rounded-xl p-6">
+<h3 class="text-headline-md font-headline-md text-ink-primary mb-6">Submission Status</h3>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="p-4 bg-success/10 rounded-lg border border-success/20 text-center">
+<p class="text-display-lg font-bold text-success">142</p>
+<p class="text-label-sm text-success uppercase">Success</p>
+</div>
+<div class="p-4 bg-danger/10 rounded-lg border border-danger/20 text-center">
+<p class="text-display-lg font-bold text-danger">3</p>
+<p class="text-label-sm text-danger uppercase">Failures</p>
+</div>
+<div class="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
+<p class="text-display-lg font-bold text-primary">12</p>
+<p class="text-label-sm text-primary uppercase">Pending</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-body-sm border-b border-border pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success text-[18px]" data-icon="check_circle">check_circle</span>
+<span>Batch #9021 (Oct Payouts)</span>
+</div>
+<span class="text-secondary font-label-md">2m ago</span>
+</div>
+<div class="flex items-center justify-between text-body-sm border-b border-border pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-danger text-[18px]" data-icon="error">error</span>
+<span>Batch #9018 (BRN Mismatch)</span>
+</div>
+<span class="text-secondary font-label-md">1h ago</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="schedule">schedule</span>
+<span>Batch #9022 (Pending Approval)</span>
+</div>
+<span class="text-secondary font-label-md">Scheduled</span>
+</div>
+</div>
+</section>
+<!-- Invoice Template Preview -->
+<section class="bg-surface border border-border rounded-xl p-6 flex flex-col h-full">
+<h3 class="text-headline-md font-headline-md text-ink-primary mb-4">Invoice Template Preview</h3>
+<div class="flex-1 bg-surface-container-low rounded-lg p-6 border border-border relative overflow-hidden">
+<!-- Simulated Document -->
+<div class="bg-white shadow-sm p-6 aspect-[1/1.414] max-w-[320px] mx-auto flex flex-col gap-4 scale-95 origin-top">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-bold text-[10px] text-primary">PRECISION SALON OS</p>
+<p class="text-[8px] text-secondary">Enterprise HQ, Kuala Lumpur</p>
+</div>
+<div class="w-12 h-12 bg-surface-container-highest border border-border flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[24px]" data-icon="qr_code_2">qr_code_2</span>
+<p class="text-[6px] text-secondary font-bold">LHDN QR</p>
+</div>
+</div>
+<div class="h-px bg-border w-full"></div>
+<div class="space-y-1">
+<p class="text-[10px] font-bold">COMMISSION STATEMENT</p>
+<div class="flex justify-between text-[8px]">
+<span class="text-secondary">Voucher ID: PS-99283</span>
+<span class="text-secondary">Date: 24 Oct 2023</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between border-b border-border py-1">
+<span class="text-[8px] font-medium">Service Commission (Sep)</span>
+<span class="text-[8px] font-bold">MYR 1,250.00</span>
+</div>
+<div class="flex justify-between border-b border-border py-1">
+<span class="text-[8px] font-medium">Retail Affiliate Bonus</span>
+<span class="text-[8px] font-bold">MYR 420.50</span>
+</div>
+</div>
+<div class="bg-surface-container-high p-2 flex justify-between">
+<span class="text-[10px] font-bold">NET TOTAL</span>
+<span class="text-[10px] font-extrabold">MYR 1,670.50</span>
+</div>
+<p class="text-[6px] text-center text-secondary italic">This is a system-generated self-billed invoice compliant with LHDN MyInvois standards.</p>
+</div>
+</div>
+<button class="mt-4 w-full h-[48px] border border-primary text-primary font-bold rounded-lg hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="edit_document">edit_document</span>
+                        Customize Template
+                    </button>
+</section>
+</div>
+</div>
+</main>
+<script>
+        function testConnection() {
+            const banner = document.getElementById('sync-banner');
+            banner.classList.remove('hidden');
+            
+            // Interaction logic for UI demonstration
+            setTimeout(() => {
+                banner.classList.add('bg-success');
+                banner.classList.remove('bg-primary');
+                banner.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        <span class="text-body-sm font-medium">Successfully connected to LHDN MyInvois Sandbox API (v1.0.4)</span>
+                    </div>
+                    <button onclick="this.parentElement.classList.add('hidden')" class="text-white hover:opacity-80">
+                        <span class="material-symbols-outlined" data-icon="close">close</span>
+                    </button>
+                `;
+            }, 2500);
+        }
+
+        // Handle SideNav interaction for demo purposes
+        const navItems = document.querySelectorAll('aside nav a');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                // For demo, prevent link jump
+                e.preventDefault();
+                navItems.forEach(i => {
+                    i.classList.remove('text-primary', 'bg-surface-container-high', 'border-l-4', 'border-primary');
+                    i.classList.add('text-secondary');
+                });
+                item.classList.add('text-primary', 'bg-surface-container-high', 'border-l-4', 'border-primary');
+                item.classList.remove('text-secondary');
+                item.style.transform = 'scale(0.98)';
+                setTimeout(() => item.style.transform = 'scale(1)', 200);
+            });
+        });
+    </script>
+</body></html>

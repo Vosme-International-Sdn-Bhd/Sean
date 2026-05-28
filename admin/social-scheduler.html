@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Social Media Scheduler — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Marketing</div>
+      <a class="nav-item" href="marketing-campaigns.html"><span class="icon">📣</span>Campaigns</a>
+      <a class="nav-item" href="google-reviews.html"><span class="icon">⭐</span>Google Reviews</a>
+      <a class="nav-item active" href="social-scheduler.html"><span class="icon">📱</span>Social Scheduler</a>
+      <a class="nav-item" href="voucher-builder.html"><span class="icon">🎟️</span>Vouchers</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="merchant-branding.html"><span class="icon">🎨</span>Branding</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Social Media Post Scheduler</div><div class="page-subtitle">Schedule posts across Facebook, Instagram, and WhatsApp</div></div>
+      <button class="btn btn-primary">+ Create Post</button>
+    </div>
+
+    <div class="grid" style="grid-template-columns:1fr 340px;gap:24px;">
+      <!-- Left: Composer + Calendar -->
+      <div>
+        <!-- Post Composer -->
+        <div class="card mb-24">
+          <div class="card-title mb-4">Compose Post</div>
+          <div class="card-subtitle mb-16">Create content for multiple platforms at once</div>
+
+          <!-- Platform selection -->
+          <div class="flex gap-8 mb-16">
+            <span class="platform-chip active-fb">f Facebook</span>
+            <span class="platform-chip active-ig">📷 Instagram</span>
+            <span class="platform-chip">💬 WhatsApp</span>
+          </div>
+
+          <!-- Content -->
+          <div class="mb-16">
+            <label class="field-label">Post Caption</label>
+            <textarea class="textarea" rows="4" placeholder="Write your post caption...">✨ Transform your look this weekend! Book your hair colour appointment now and get 10% off when you pay via wallet. Limited slots available — tap the link in bio to book! 💙 #PrecisionSalon #HairColour #KLSalon</textarea>
+            <div class="text-xs text-muted mt-4 text-right">218 / 2,200 characters</div>
+          </div>
+
+          <!-- Image upload placeholder -->
+          <div style="border:1px dashed var(--border);border-radius:var(--radius);padding:24px;text-align:center;background:var(--surface-low);margin-bottom:16px;">
+            <div style="font-size:32px;margin-bottom:8px;">🖼️</div>
+            <div class="text-sm text-muted">Drag &amp; drop image or <span style="color:var(--primary);cursor:pointer;">browse</span></div>
+            <div class="text-xs text-muted mt-4">Recommended: 1080×1080px for Instagram, 1200×630px for Facebook</div>
+          </div>
+
+          <!-- Schedule -->
+          <div class="grid grid-2" style="gap:12px;">
+            <div>
+              <label class="field-label">Schedule Date</label>
+              <input type="date" class="input" value="2026-06-01">
+            </div>
+            <div>
+              <label class="field-label">Schedule Time</label>
+              <input type="time" class="input" value="10:00">
+            </div>
+          </div>
+
+          <div class="mt-16 flex gap-8">
+            <button class="btn btn-primary">📅 Schedule Post</button>
+            <button class="btn btn-secondary">👁️ Preview</button>
+            <button class="btn btn-ghost">Save Draft</button>
+          </div>
+        </div>
+
+        <!-- Calendar View -->
+        <div class="card">
+          <div class="flex justify-between items-center mb-16">
+            <div class="card-title">June 2026 — Scheduled Posts</div>
+            <div class="flex gap-8">
+              <button class="btn btn-secondary btn-sm">‹ May</button>
+              <button class="btn btn-secondary btn-sm">Jul ›</button>
+            </div>
+          </div>
+          <div class="calendar-grid mb-8">
+            <div class="text-xs text-muted" style="text-align:center;font-family:var(--font-mono);">Sun</div>
+            <div class="text-xs text-muted" style="text-align:center;font-family:var(--font-mono);">Mon</div>
+            <div class="text-xs text-muted" style="text-align:center;font-family:var(--font-mono);">Tue</div>
+            <div class="text-xs text-muted" style="text-align:center;font-family:var(--font-mono);">Wed</div>
+            <div class="text-xs text-muted" style="text-align:center;font-family:var(--font-mono);">Thu</div>
+            <div class="text-xs text-muted" style="text-align:center;font-family:var(--font-mono);">Fri</div>
+            <div class="text-xs text-muted" style="text-align:center;font-family:var(--font-mono);">Sat</div>
+          </div>
+          <div class="calendar-grid" style="gap:6px;">
+            <div></div><div class="cal-day">1</div><div class="cal-day has-post">2</div><div class="cal-day">3</div><div class="cal-day today">4</div><div class="cal-day has-post">5</div><div class="cal-day">6</div>
+            <div class="cal-day">7</div><div class="cal-day has-post">8</div><div class="cal-day">9</div><div class="cal-day has-post">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day has-post">13</div>
+            <div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day has-post">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day has-post">19</div><div class="cal-day">20</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Upcoming Posts -->
+      <div>
+        <div class="card">
+          <div class="card-title mb-16">Upcoming Scheduled Posts</div>
+          <div class="flex flex-col gap-12">
+            <div style="border:0.5px solid var(--border);border-radius:var(--radius);padding:12px;">
+              <div class="flex gap-8 mb-8">
+                <span class="platform-chip active-fb" style="padding:2px 8px;font-size:11px;">Facebook</span>
+                <span class="platform-chip active-ig" style="padding:2px 8px;font-size:11px;">Instagram</span>
+              </div>
+              <div class="text-sm font-600 mb-4">Weekend Promo — Hair Colour 10% Off</div>
+              <div class="mono text-xs text-muted">1 Jun 2026 · 10:00 AM</div>
+              <div class="flex gap-8 mt-8">
+                <button class="btn btn-secondary btn-sm">Edit</button>
+                <button class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Delete</button>
+              </div>
+            </div>
+            <div style="border:0.5px solid var(--border);border-radius:var(--radius);padding:12px;">
+              <div class="flex gap-8 mb-8">
+                <span class="platform-chip active-ig" style="padding:2px 8px;font-size:11px;">Instagram</span>
+              </div>
+              <div class="text-sm font-600 mb-4">New Stylist Spotlight — Meet Nurul</div>
+              <div class="mono text-xs text-muted">5 Jun 2026 · 7:00 PM</div>
+              <div class="flex gap-8 mt-8">
+                <button class="btn btn-secondary btn-sm">Edit</button>
+                <button class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

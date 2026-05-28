@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Performance &amp; Payouts | Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#7d5700",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "surface-dim": "#dbdad6",
+                        "surface-bright": "#faf9f5",
+                        "on-primary-container": "#c4daff",
+                        "platinum": "#E5E4E2",
+                        "surface-variant": "#e3e2df",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c2c6d3",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-secondary-fixed-variant": "#474743",
+                        "on-secondary-fixed": "#1b1c19",
+                        "secondary-container": "#dcdad5",
+                        "secondary": "#5f5f5a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-tertiary-fixed": "#271900",
+                        "success": "#2E7D52",
+                        "on-primary-fixed-variant": "#004786",
+                        "error": "#ba1a1a",
+                        "primary": "#004786",
+                        "inverse-primary": "#a6c8ff",
+                        "bronze": "#CD7F32",
+                        "surface-container-highest": "#e3e2df",
+                        "silver": "#C0C0C0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "on-primary-fixed": "#001c3a",
+                        "primary-fixed": "#d4e3ff",
+                        "warning": "#8A5200",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#30312e",
+                        "on-background": "#1b1c1a",
+                        "surface-container-low": "#f5f4f0",
+                        "on-primary": "#ffffff",
+                        "ink-primary": "#1A1A18",
+                        "background": "#faf9f5",
+                        "surface-container": "#efeeea",
+                        "primary-container": "#1a5fa8",
+                        "on-secondary-container": "#5f5f5b",
+                        "inverse-on-surface": "#f2f1ed",
+                        "danger": "#8A1F1F",
+                        "secondary-fixed": "#e4e2dd",
+                        "outline": "#727782",
+                        "surface-tint": "#1a5fa8",
+                        "on-tertiary-container": "#ffd184",
+                        "on-surface": "#1b1c1a",
+                        "surface": "#FFFFFF",
+                        "on-surface-variant": "#424751",
+                        "purple-mlm": "#4A3AB0",
+                        "surface-container-high": "#e9e8e4",
+                        "tertiary": "#5e4100",
+                        "error-container": "#ffdad6",
+                        "border": "#E2E1DC",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "tile-height-min": "80px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-page": "24px",
+                        "touch-target-min": "56px",
+                        "gutter": "16px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Libre Franklin"],
+                        "headline-md": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #faf9f5;
+            color: #1b1c1a;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+        .flat-layered-border {
+            border: 0.5px solid #E2E1DC;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f5f4f0;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c2c6d3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-hidden">
+<!-- SideNavBar (Authority: JSON & Contextual Logic) -->
+<!-- The user is on Staff Management, mapping to "Staff Management" label -->
+<aside class="h-screen w-72 flex-col fixed left-0 top-0 bg-surface-container-low dark:bg-surface-dim border-r border-border dark:border-outline-variant flex py-stack-lg px-stack-md z-50">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">content_cut</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed leading-tight">Precision OS</h1>
+<p class="font-label-sm text-label-sm text-secondary">Enterprise Admin</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary dark:text-secondary-fixed hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary dark:text-secondary-fixed hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary dark:text-secondary-fixed hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<!-- ACTIVE TAB: Staff Management -->
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-primary-container text-on-primary-container border-l-4 border-primary font-bold active:scale-95 duration-100 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="font-label-md text-label-md">Staff Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary dark:text-secondary-fixed hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md">Customer Base</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary dark:text-secondary-fixed hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-secondary dark:text-secondary-fixed hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">System Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-2">
+<button class="w-full flex items-center justify-center gap-2 bg-secondary-container text-on-secondary-container py-3 rounded-lg font-label-md text-label-md hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">contact_support</span>
+                Support Ticket
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<div class="ml-72 flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar (Authority: JSON) -->
+<header class="flex justify-between items-center h-touch-target-min px-margin-page bg-surface dark:bg-surface-bright border-b border-border dark:border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed tracking-tight">Precision Salon OS</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed hover:text-primary transition-all" href="#">All Outlets</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed hover:text-primary transition-all" href="#">Reconciliation</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed hover:text-primary transition-all" href="#">Payout History</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2 font-body-sm text-body-sm w-64 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Search staff members..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-secondary hover:bg-surface-container-low rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-low rounded-full transition-all">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="w-px h-6 bg-border mx-2"></div>
+<img alt="Administrator Profile" class="w-9 h-9 rounded-full border border-border object-cover" data-alt="A professional close-up headshot of a corporate administrator for a luxury salon enterprise. The individual has a confident, approachable expression, set against a blurred, brightly lit modern office interior with a clean, light-mode aesthetic. The lighting is soft and even, highlighting professional attire. The image uses a high-key color palette of whites and soft neutrals, consistent with a high-end business software platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbKN2vaZt4JHWAdDWkc6LkZ-n_Wz6sa9sv_FJYo9NYYK0TeB_yLUK6UUI43sNYIZYxz71tAs9tcJgSCL-620c4gda7RsxLdTgAikuPLiEebocScU3ytDoBe8Iy-bLREpiIhAXHY3LzQVnnL-NWlQ8d168CMciGV1ynTo6rl3QfbsKakcF7rbQASvnYhFSKmruxGfZSXGTqqXyGY9wZON7sJvpsQqedVBcxcbBOoWhLhqkCzHoBgvLMocoCPkrOOnRECcxexFp8oqkd"/>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 overflow-y-auto bg-background p-margin-page custom-scrollbar">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-ink-primary">Staff Performance &amp; Payouts</h2>
+<p class="font-body-md text-body-md text-secondary">Monitoring earnings and commission status for October 2023</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="px-5 h-12 flex items-center justify-center gap-2 border border-border bg-white text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">download</span>
+                        Export Report
+                    </button>
+<button class="px-6 h-12 flex items-center justify-center gap-2 bg-primary text-white rounded-lg font-label-md text-label-md hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+                        Process Payouts
+                    </button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<div class="bg-surface p-stack-lg rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Total Staff Count</p>
+<div class="flex items-end justify-between">
+<h3 class="font-display-lg text-display-lg text-ink-primary">24</h3>
+<span class="px-2 py-1 bg-success/10 text-success text-[12px] font-bold rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +2
+                        </span>
+</div>
+<p class="mt-2 text-secondary font-body-sm text-body-sm">+2 this month</p>
+</div>
+<div class="bg-surface p-stack-lg rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Monthly Commission</p>
+<h3 class="font-display-lg text-display-lg text-ink-primary">RM 14,250</h3>
+<p class="mt-2 text-secondary font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">history</span>
+                        Last updated 2h ago
+                    </p>
+</div>
+<div class="bg-surface p-stack-lg rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-2">Top Stylist (Sales)</p>
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center font-bold text-primary border border-border">ST</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-ink-primary">Sarah Tan</p>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold rounded uppercase tracking-tighter">Senior Stylist</span>
+</div>
+</div>
+<p class="font-headline-md text-headline-md text-primary-container font-bold">RM 8,420.00</p>
+</div>
+<div class="bg-primary p-stack-lg rounded-xl border border-primary-container shadow-lg relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px] text-white">account_balance_wallet</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider mb-2 relative z-10">Ready For Transfer</p>
+<h3 class="font-display-lg text-display-lg text-white relative z-10">RM 8,125</h3>
+<button class="mt-3 w-full py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg font-label-md text-label-md transition-all relative z-10">
+                        Review Batch
+                    </button>
+</div>
+</div>
+<!-- Stylist Performance Section -->
+<div class="bg-surface rounded-xl border border-border overflow-hidden">
+<!-- Toolbar -->
+<div class="p-stack-md border-b border-border bg-surface-container-low flex flex-col lg:flex-row gap-4 justify-between items-center">
+<div class="flex flex-wrap gap-stack-sm w-full lg:w-auto">
+<div class="relative flex-1 lg:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full bg-white border border-border rounded-lg pl-10 pr-4 py-2 font-body-sm text-body-sm focus:ring-1 focus:ring-primary outline-none" placeholder="Search by name or ID..." type="text"/>
+</div>
+<select class="bg-white border border-border rounded-lg px-4 py-2 font-body-sm text-body-sm focus:ring-1 focus:ring-primary outline-none">
+<option>All Roles</option>
+<option>Senior Stylist</option>
+<option>Junior Stylist</option>
+<option>Specialist</option>
+</select>
+<select class="bg-white border border-border rounded-lg px-4 py-2 font-body-sm text-body-sm focus:ring-1 focus:ring-primary outline-none">
+<option>Status: All</option>
+<option>Pending</option>
+<option>Paid</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-white border border-border rounded-lg px-4 py-2 font-body-sm text-body-sm text-secondary w-full lg:w-auto">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Oct 01, 2023 - Oct 31, 2023</span>
+</div>
+</div>
+<!-- Performance Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="px-margin-page py-4 font-semibold">Staff Member</th>
+<th class="px-6 py-4 font-semibold">Role</th>
+<th class="px-6 py-4 font-semibold">Total Sales</th>
+<th class="px-6 py-4 font-semibold">Tip Total</th>
+<th class="px-6 py-4 font-semibold">Commission</th>
+<th class="px-6 py-4 font-semibold">Payout Status</th>
+<th class="px-6 py-4 font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Row 1: Sarah Tan -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-margin-page py-4">
+<div class="flex items-center gap-3">
+<img alt="Sarah Tan" class="w-10 h-10 rounded-full border border-border object-cover" data-alt="A professional headshot of a female senior salon stylist with a creative, stylish haircut and modern attire. She has a friendly and confident expression. The background is a minimalist, softly lit hair salon studio with warm wooden textures and high-key white lighting, evoking a premium service environment. The lighting is clean and cinematic, highlighting her role as a top professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe5lE-mGs2sJeTdviRVDQAq3SxUXBqyR7kNIf-T0ugcGcSKz_kU38Pmr4BVY-gX6bGvfZO0Nv4KO4quJw6noAeKTKTJ6fNc86gmPiCZ-w4jP-cB9gIBXXiI_RAIDB2rMEHj9166LUqKn6RmXuJGBr60zIHlinsVhUTsdfkah7Vet4crh2oMIpvSlPjOAVc8oMBlX2N7NAX7ClG1XAKXnTwoWHINV6i7oy_lO5ainjC_77YVLQ3z8YUUrwlpgiIWMEXLxNEy6giOYhU"/>
+<div>
+<p class="font-body-md text-body-md font-bold text-ink-primary">Sarah Tan</p>
+<p class="font-label-sm text-label-sm text-secondary">#ST-2023-011</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Senior Stylist</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-ink-primary">RM 8,420.00</span>
+<span class="text-[10px] text-success font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">arrow_upward</span> 12%
+                                        </span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-label-md text-label-md text-on-surface-variant">RM 450.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="font-label-md text-label-md text-primary font-bold">RM 2,526.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-warning/10 text-warning uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-warning mr-2"></span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-secondary hover:text-primary hover:bg-primary-fixed rounded transition-all">
+<span class="material-symbols-outlined">person_search</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Marcus Ling -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-margin-page py-4">
+<div class="flex items-center gap-3">
+<img alt="Marcus Ling" class="w-10 h-10 rounded-full border border-border object-cover" data-alt="A professional headshot of a male salon stylist with a sharp, modern haircut. He is wearing a minimalist dark polo shirt. The setting is a bright, upscale salon with glass partitions and soft bokeh lighting. The overall mood is sophisticated and clean, representing the high standards of a premier beauty business. The color palette is composed of neutrals, soft grays, and natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9mKNi5HyBfjofozMKEtitKuyY5I6Ds7cpqySkOB4vQNBolwgSAhw_uN-B7HI45SA4IO1uEko6OVNGRaVdZ1NqGONzdFpyvPXvCApEUqn642JUQx1rICHI0JgyS0woVmcUiFlyAYFTuHOxOMt23AJxSa5Obw5YOuCT3ICaPEDpk29Vvl0Bzcvi04q1zHeB0MSwLG2FPxmwnxZIptcBpXWpSg03bwcgnQ6VhxsqWOm5O3ImR3FVdFBX9KJaNqeTLWp2JN06kPSlA6at"/>
+<div>
+<p class="font-body-md text-body-md font-bold text-ink-primary">Marcus Ling</p>
+<p class="font-label-sm text-label-sm text-secondary">#ST-2023-084</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stylist</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-ink-primary">RM 6,200.00</span>
+<span class="text-[10px] text-success font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">arrow_upward</span> 5%
+                                        </span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-label-md text-label-md text-on-surface-variant">RM 220.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="font-label-md text-label-md text-primary font-bold">RM 1,240.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-success/10 text-success uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-success mr-2"></span>
+                                        Paid
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-secondary hover:text-primary hover:bg-primary-fixed rounded transition-all">
+<span class="material-symbols-outlined">person_search</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Jennifer Low -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-margin-page py-4">
+<div class="flex items-center gap-3">
+<img alt="Jennifer Low" class="w-10 h-10 rounded-full border border-border object-cover" data-alt="A portrait of a professional female stylist in her 30s with elegant, styled hair. She is set within a luxurious hair studio featuring minimalist decor and pristine lighting. The composition is high-key and bright, with a focuses on her expert and welcoming demeanor. The visual style follows a modern corporate aesthetic with soft white lighting and a clean, high-density clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQHUMxGzn8ZPnjB5FnToQO9BSeBfHvZCRiXMrotu7MK-3rZ6MCQtEE9Gt6bdyTdCJgMdM4AuP0HccUIOp1TwjBHTCMJIJ8WZv36jeoO6WGenZDMQppbrSiR_xbWQjiScuyFQdL0MLG8NFek0bwEgoXaqw5jF7gBLRdmk7I97-gZ3Rew4zK2_CC4ByjX2LI7Oje3oYCqmhIq9-XzYKSspvIYV2wP5wob8mY24_41MveAJTkTasntQ6Ko-BZW6a-985dhxei8GfdwLIG"/>
+<div>
+<p class="font-body-md text-body-md font-bold text-ink-primary">Jennifer Low</p>
+<p class="font-label-sm text-label-sm text-secondary">#ST-2023-015</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Senior Stylist</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-ink-primary">RM 7,850.00</span>
+<span class="text-[10px] text-error font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">arrow_downward</span> 2%
+                                        </span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-label-md text-label-md text-on-surface-variant">RM 310.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="font-label-md text-label-md text-primary font-bold">RM 2,355.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-warning/10 text-warning uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-warning mr-2"></span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-secondary hover:text-primary hover:bg-primary-fixed rounded transition-all">
+<span class="material-symbols-outlined">person_search</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-border bg-surface-container-low flex items-center justify-between">
+<p class="font-body-sm text-body-sm text-secondary">Showing 1-3 of 24 staff members</p>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-border bg-white rounded-lg disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-lg font-label-sm text-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-border rounded-lg font-label-sm text-label-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-border rounded-lg font-label-sm text-label-sm">3</button>
+<button class="p-2 border border-border bg-white rounded-lg hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Batch Summary Footer (As per user request) -->
+<div class="mt-stack-lg p-stack-lg bg-surface border-2 border-primary-container rounded-xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center text-white shadow-inner">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-widest">October Batch Summary</p>
+<p class="font-body-md text-body-md text-ink-primary font-medium">12 Stylists are ready for payout. Totaling <span class="font-bold text-primary">RM 8,125.00</span></p>
+</div>
+</div>
+<div class="flex gap-stack-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 h-12 flex items-center justify-center gap-2 border border-border bg-white text-secondary-fixed-dim hover:text-secondary rounded-lg font-label-md text-label-md transition-all">
+                        Preview Ledger
+                    </button>
+<button class="flex-1 md:flex-none px-8 h-12 flex items-center justify-center gap-2 bg-primary text-white rounded-lg font-label-md text-label-md hover:scale-[1.02] active:scale-95 transition-all shadow-md">
+                        Execute Batch Payout
+                    </button>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Simple micro-interaction for rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Tactical feedback as per design system
+                row.style.transform = 'scale(0.99)';
+                setTimeout(() => {
+                    row.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+
+        // Search highlight logic (Visual only)
+        const searchInput = document.querySelector('input[placeholder="Search staff members..."]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-105');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-105');
+        });
+    </script>
+</body></html>

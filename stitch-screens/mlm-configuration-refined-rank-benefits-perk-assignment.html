@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MLM Configuration | Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#5e4100",
+                        "surface-container-low": "#f5f4f0",
+                        "on-secondary-fixed-variant": "#474743",
+                        "on-surface-variant": "#424751",
+                        "on-primary-container": "#c4daff",
+                        "ink-primary": "#1A1A18",
+                        "border": "#E2E1DC",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e8e4",
+                        "surface": "#FFFFFF",
+                        "background": "#faf9f5",
+                        "on-tertiary-container": "#ffd184",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#faf9f5",
+                        "on-surface": "#1b1c1a",
+                        "secondary-container": "#dcdad5",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "surface-variant": "#e3e2df",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdeaa",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#a6c8ff",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#271900",
+                        "platinum": "#E5E4E2",
+                        "on-secondary-container": "#5f5f5b",
+                        "inverse-on-surface": "#f2f1ed",
+                        "purple-mlm": "#4A3AB0",
+                        "primary-fixed": "#d4e3ff",
+                        "surface-container-highest": "#e3e2df",
+                        "secondary-fixed": "#e4e2dd",
+                        "warning": "#8A5200",
+                        "on-primary-fixed": "#001c3a",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "primary-container": "#1a5fa8",
+                        "tertiary-container": "#7d5700",
+                        "on-primary-fixed-variant": "#004786",
+                        "bronze": "#CD7F32",
+                        "secondary": "#5f5f5a",
+                        "on-secondary-fixed": "#1b1c19",
+                        "outline-variant": "#c2c6d3",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c1a",
+                        "danger": "#8A1F1F",
+                        "inverse-surface": "#30312e",
+                        "surface-container": "#efeeea",
+                        "outline": "#727782",
+                        "silver": "#C0C0C0",
+                        "success": "#2E7D52",
+                        "surface-tint": "#1a5fa8",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#004786",
+                        "secondary-fixed-dim": "#c8c6c1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "touch-target-min": "56px",
+                        "stack-md": "16px",
+                        "tile-height-min": "80px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-md": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .thin-scrollbar::-webkit-scrollbar { width: 6px; }
+        .thin-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .thin-scrollbar::-webkit-scrollbar-thumb { background: #E2E1DC; border-radius: 10px; }
+        .active-nav-border { border-right: 2px solid #004786; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-spacing-margin-page sticky top-0 z-50 ml-64 w-[calc(100%-16rem)] h-touch-target-min bg-background border-b border-border">
+<div class="flex items-center gap-stack-md flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-body-sm focus:ring-2 focus:ring-primary" placeholder="Search configurations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="p-2 hover:bg-surface-container rounded-full transition-all duration-200">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-all duration-200">
+<span class="material-symbols-outlined text-primary">help</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-all duration-200">
+<span class="material-symbols-outlined text-primary">apps</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden border border-border">
+<img alt="Admin User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmjdsn9osIBpCjgAKmIW0y5aijLmZIWG1X-Dc1gLjlFTPweAv8vUjVUhFmT86WAhhLIScaRRha0Z4iBlPeEZC3L9yF58aw-O_eq9Q6xmm2mnodKqul4aCFoXfdI5RRvpz-PTUulIxPylv8XLHk9-WaolC59BWyMM-zIH4KYLV1kzvZ3ClJ3yhZ1lSw7QQB_hl_Chhe-NbCwd8g9Krq3fIr2T1AODxL36mzVXF_D5BaQTDUgGGE9EM4jpqGht76lpRUn6-BlA1TOt3W"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="flex flex-col h-full py-spacing-margin-page w-64 fixed left-0 top-0 bg-surface border-r border-border z-[60]">
+<div class="px-6 mb-8">
+<h1 class="text-headline-md font-headline-md text-primary">Precision Salon OS</h1>
+<p class="font-label-md text-label-md text-secondary">Admin Console</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">calendar_today</span>
+<span class="font-body-md">Bookings</span>
+</a>
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">shopping_cart</span>
+<span class="font-body-md">Orders</span>
+</a>
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-body-md">Members</span>
+</a>
+<a class="text-primary font-bold border-r-2 border-primary bg-primary-fixed/10 flex items-center px-4 py-3" href="#">
+<span class="material-symbols-outlined mr-3">account_tree</span>
+<span class="font-body-md">MLM/Affiliate</span>
+</a>
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">campaign</span>
+<span class="font-body-md">Marketing</span>
+</a>
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">badge</span>
+<span class="font-body-md">Staff</span>
+</a>
+<a class="text-secondary flex items-center px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 p-spacing-margin-page">
+<div class="max-w-[1400px] mx-auto">
+<header class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-ink-primary">MLM Configuration</h2>
+<p class="text-secondary font-body-sm">Global merchant-level commission rules and rank architecture.</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="px-6 py-2 border border-border text-primary rounded-lg font-body-md hover:bg-surface-container transition-all">Discard Changes</button>
+<button class="px-6 py-2 bg-primary text-white rounded-lg font-body-md shadow-sm hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save Configuration
+                    </button>
+</div>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Section 1: Commission Rate Matrix (Bento style) -->
+<section class="col-span-12 lg:col-span-8 bg-surface rounded-xl border border-border overflow-hidden">
+<div class="px-6 py-4 border-b border-border bg-surface-container-lowest flex justify-between items-center"><h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">percent</span>
+    Commission Rate Matrix
+</h3>
+<div class="flex items-center gap-3 bg-surface-container px-3 py-1.5 rounded-lg">
+<span class="text-label-sm font-bold text-secondary uppercase">Global Override</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div></div>
+<div class="p-0 overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border"><th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant">EVENT TYPE</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant">CALCULATION MODE</th>
+<th class="px-6 py-4 font-label-md text-label-md text-primary">LEVEL 1</th>
+<th class="px-6 py-4 font-label-md text-label-md text-primary">LEVEL 2</th>
+<th class="px-6 py-4 font-label-md text-label-md text-primary">LEVEL 3</th></tr>
+</thead>
+<tbody class="divide-y divide-border"><tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-body-md font-semibold">New Service Booking</td>
+<td class="px-6 py-4">
+<select class="bg-surface-container-low border-none rounded text-body-sm focus:ring-2 focus:ring-primary py-1.5 pl-2 pr-8">
+<option selected="">Percentage of Total (%)</option>
+<option>Fixed RM per Order</option>
+<option>Tiered / Variable</option>
+</select>
+</td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="10"/><span class="text-secondary text-label-sm">%</span></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="5"/><span class="text-secondary text-label-sm">%</span></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="2"/><span class="text-secondary text-label-sm">%</span></div></td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-body-md font-semibold">Product Sale</td>
+<td class="px-6 py-4">
+<select class="bg-surface-container-low border-none rounded text-body-sm focus:ring-2 focus:ring-primary py-1.5 pl-2 pr-8">
+<option selected="">Percentage of Total (%)</option>
+<option>Fixed RM per Order</option>
+<option>Tiered / Variable</option>
+</select>
+</td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="15"/><span class="text-secondary text-label-sm">%</span></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="7"/><span class="text-secondary text-label-sm">%</span></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="3"/><span class="text-secondary text-label-sm">%</span></div></td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-body-md font-semibold">Wallet Top-up</td>
+<td class="px-6 py-4">
+<select class="bg-surface-container-low border-none rounded text-body-sm focus:ring-2 focus:ring-primary py-1.5 pl-2 pr-8">
+<option>Percentage of Total (%)</option>
+<option selected="">Fixed RM per Order</option>
+<option>Tiered / Variable</option>
+</select>
+</td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><span class="text-secondary text-label-sm">RM</span><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="5.00"/></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><span class="text-secondary text-label-sm">RM</span><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="2.00"/></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><span class="text-secondary text-label-sm">RM</span><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="1.00"/></div></td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-body-md font-semibold">Membership Renewal</td>
+<td class="px-6 py-4">
+<select class="bg-surface-container-low border-none rounded text-body-sm focus:ring-2 focus:ring-primary py-1.5 pl-2 pr-8">
+<option selected="">Percentage of Total (%)</option>
+<option>Fixed RM per Order</option>
+<option>Tiered / Variable</option>
+</select>
+</td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="12"/><span class="text-secondary text-label-sm">%</span></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="6"/><span class="text-secondary text-label-sm">%</span></div></td>
+<td class="px-6 py-4"><div class="flex items-center gap-1"><input class="w-16 bg-transparent border-none focus:ring-2 focus:ring-primary rounded p-1 font-label-md" type="number" value="2"/><span class="text-secondary text-label-sm">%</span></div></td>
+</tr></tbody>
+</table>
+</div>
+</section>
+<!-- Section 3: Network & Payout Rules -->
+<section class="col-span-12 lg:col-span-4 bg-surface rounded-xl border border-border flex flex-col">
+<div class="px-6 py-4 border-b border-border bg-surface-container-lowest">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">rule</span>
+                            Network &amp; Payout Rules
+                        </h3>
+</div>
+<div class="p-6 space-y-6 flex-1">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-secondary">MINIMUM PAYOUT AMOUNT (RM)</label>
+<input class="w-full border border-border rounded-lg p-3 font-body-md focus:border-primary focus:ring-0" type="number" value="100.00"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-secondary">REFUND HOLD PERIOD (DAYS)</label>
+<div class="flex items-center gap-4">
+<input class="flex-1 h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" max="30" min="0" type="range" value="14"/>
+<span class="font-label-md bg-primary-fixed px-3 py-1 rounded">14 Days</span>
+</div>
+</div>
+<div class="pt-4 border-t border-border space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-body-md font-semibold">Auto-Reverse on Refund</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md font-semibold">Immediate Level Payout</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Rank Thresholds & Requirements -->
+<section class="col-span-12 bg-surface rounded-xl border border-border">
+<div class="px-6 py-4 border-b border-border bg-surface-container-lowest">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">military_tech</span>
+                            Rank Thresholds &amp; Requirements
+                        </h3>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-stack-md"><!-- Starter -->
+<div class="border border-border rounded-xl p-4 bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm">STARTER</span>
+<span class="material-symbols-outlined text-secondary opacity-50">info</span>
+</div>
+<div class="space-y-3">
+<div>
+<p class="text-label-sm text-secondary mb-1">MIN. DOWNLINES</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-0 cursor-default" readonly="" type="number" value="0"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">GROUP SALES (RM)</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-0 cursor-default" readonly="" type="number" value="0"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">ACTIVE DIRECTS</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-0 cursor-default" readonly="" type="number" value="0"/>
+</div>
+</div>
+</div>
+<!-- Bronze -->
+<div class="border border-bronze/30 border-2 rounded-xl p-4 bg-surface shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 bg-[#CD7F32]/20 text-[#CD7F32] rounded-full text-label-sm font-bold">BRONZE</span>
+<span class="material-symbols-outlined text-[#CD7F32] cursor-pointer">edit</span>
+</div>
+<div class="space-y-3">
+<div>
+<p class="text-label-sm text-secondary mb-1">MIN. DOWNLINES</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-bronze/20 rounded" type="number" value="3"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">GROUP SALES (RM)</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-bronze/20 rounded" type="number" value="5000"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">ACTIVE DIRECTS</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-bronze/20 rounded" type="number" value="2"/>
+</div>
+</div>
+</div>
+<!-- Silver -->
+<div class="border border-silver/30 border-2 rounded-xl p-4 bg-surface">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 bg-silver/20 text-secondary rounded-full text-label-sm font-bold">SILVER</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer">edit</span>
+</div>
+<div class="space-y-3">
+<div>
+<p class="text-label-sm text-secondary mb-1">MIN. DOWNLINES</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-silver/40 rounded" type="number" value="10"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">GROUP SALES (RM)</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-silver/40 rounded" type="number" value="15000"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">ACTIVE DIRECTS</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-silver/40 rounded" type="number" value="5"/>
+</div>
+</div>
+</div>
+<!-- Gold -->
+<div class="border border-tertiary-fixed-dim/30 border-2 rounded-xl p-4 bg-surface">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-tertiary rounded-full text-label-sm font-bold">GOLD</span>
+<span class="material-symbols-outlined text-tertiary cursor-pointer">edit</span>
+</div>
+<div class="space-y-3">
+<div>
+<p class="text-label-sm text-secondary mb-1">MIN. DOWNLINES</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-tertiary/20 rounded" type="number" value="25"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">GROUP SALES (RM)</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-tertiary/20 rounded" type="number" value="50000"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">ACTIVE DIRECTS</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-tertiary/20 rounded" type="number" value="12"/>
+</div>
+</div>
+</div>
+<!-- Diamond -->
+<div class="border border-primary/30 border-2 rounded-xl p-4 bg-primary/5">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 bg-primary text-white rounded-full text-label-sm font-bold">DIAMOND</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">edit</span>
+</div>
+<div class="space-y-3">
+<div>
+<p class="text-label-sm text-secondary mb-1">MIN. DOWNLINES</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-primary/20 rounded" type="number" value="100"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">GROUP SALES (RM)</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-primary/20 rounded" type="number" value="250000"/>
+</div>
+<div>
+<p class="text-label-sm text-secondary mb-1">ACTIVE DIRECTS</p>
+<input class="w-full text-headline-md font-bold bg-transparent border-none p-0 focus:ring-2 focus:ring-primary/20 rounded" type="number" value="30"/>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<!-- Section 4: Rank Benefits -->
+<section class="col-span-12 bg-surface rounded-xl border border-border">
+<div class="px-6 py-4 border-b border-border bg-surface-container-lowest flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">redeem</span>
+                            Rank Benefits &amp; Perks
+                        </h3>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+                            Add Perk
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6 gap-6">
+<!-- Perk Item 1 -->
+<div class="flex gap-4 p-4 rounded-xl border border-border hover:border-primary/40 transition-all group">
+<div class="h-12 w-12 rounded-lg bg-primary-fixed/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">new_releases</span>
+</div>
+<div class="flex-1"><div class="flex justify-between items-start mb-1">
+<h4 class="font-body-md font-bold text-ink-primary">Early Product Access</h4>
+<div class="flex gap-1">
+<button class="p-1 text-secondary hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined text-[18px]">settings</span></button>
+<button class="p-1 text-danger/60 hover:bg-error-container hover:text-danger rounded-full transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<p class="text-body-sm text-secondary mb-4 line-clamp-2">Priority access to stock for top-tier members.</p>
+<div class="space-y-1.5">
+<p class="text-label-sm text-secondary font-medium uppercase tracking-wider">Assign to Ranks</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-tertiary text-label-sm rounded font-bold">GOLD</span>
+<span class="px-2 py-0.5 bg-primary text-white text-label-sm rounded font-bold">DIAMOND</span>
+</div>
+</div></div>
+</div>
+<!-- Perk Item 2 -->
+<div class="flex gap-4 p-4 rounded-xl border border-border hover:border-primary/40 transition-all group">
+<div class="h-12 w-12 rounded-lg bg-tertiary-fixed/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<div class="flex-1"><div class="flex justify-between items-start mb-1">
+<h4 class="font-body-md font-bold text-ink-primary">Annual Bonus Pool</h4>
+<div class="flex gap-1">
+<button class="p-1 text-secondary hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined text-[18px]">settings</span></button>
+<button class="p-1 text-danger/60 hover:bg-error-container hover:text-danger rounded-full transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<p class="text-body-sm text-secondary mb-4 line-clamp-2">0.5% share of total quarterly revenue pool.</p>
+<div class="space-y-1.5">
+<p class="text-label-sm text-secondary font-medium uppercase tracking-wider">Assign to Ranks</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-primary text-white text-label-sm rounded font-bold">DIAMOND</span>
+</div>
+</div></div>
+</div>
+<!-- Perk Item 3 -->
+<div class="flex gap-4 p-4 rounded-xl border border-border hover:border-primary/40 transition-all group">
+<div class="h-12 w-12 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">percent</span>
+</div>
+<div class="flex-1"><div class="flex justify-between items-start mb-1">
+<h4 class="font-body-md font-bold text-ink-primary">Service Fee Discount</h4>
+<div class="flex gap-1">
+<button class="p-1 text-secondary hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined text-[18px]">settings</span></button>
+<button class="p-1 text-danger/60 hover:bg-error-container hover:text-danger rounded-full transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<p class="text-body-sm text-secondary mb-4 line-clamp-2">10% discount on all internal salon services.</p>
+<div class="space-y-1.5">
+<p class="text-label-sm text-secondary font-medium uppercase tracking-wider">Assign to Ranks</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-silver/20 text-secondary text-label-sm rounded font-bold">SILVER</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-tertiary text-label-sm rounded font-bold">GOLD</span>
+<span class="px-2 py-0.5 bg-primary text-white text-label-sm rounded font-bold">DIAMOND</span>
+</div>
+</div></div>
+</div>
+</div>
+</section>
+</div>
+<!-- Decorative Visual for Dashboard High-Density feel -->
+<section class="mt-stack-lg bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-border bg-surface-container-lowest flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h3 class="font-headline-md text-headline-md">Performance Simulation</h3>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-label-md font-medium text-secondary">Simulation Mode</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="p-6 grid grid-cols-12 gap-8">
+<div class="col-span-12 lg:col-span-5 space-y-6">
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-label-md text-secondary">AVG. MONTHLY BOOKINGS / MEMBER</label>
+<span class="font-label-md bg-primary-fixed px-2 py-0.5 rounded">12</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" max="50" min="1" type="range" value="12"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-label-md text-secondary">AVG. ORDER VALUE (RM)</label>
+<span class="font-label-md bg-primary-fixed px-2 py-0.5 rounded">185.00</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" max="500" min="50" step="5" type="range" value="185"/>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-label-md text-secondary">ACTIVE NETWORK SIZE</label>
+<span class="font-label-md bg-primary-fixed px-2 py-0.5 rounded">2,450</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" max="10000" min="100" step="50" type="range" value="2450"/>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-7 flex flex-col justify-between">
+<div class="grid grid-cols-3 gap-4">
+<div class="p-4 bg-primary-fixed/20 rounded-xl border border-primary/10">
+<p class="text-label-sm text-on-primary-fixed-variant mb-1 uppercase tracking-wider">Total Commission</p>
+<p class="text-headline-md font-bold text-primary">RM 42,800</p>
+<p class="text-label-sm text-success flex items-center mt-1"><span class="material-symbols-outlined text-sm">trending_up</span> +8.2%</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-border">
+<p class="text-label-sm text-secondary mb-1 uppercase tracking-wider">Per Active Node</p>
+<p class="text-headline-md font-bold text-ink-primary">RM 17.45</p>
+<p class="text-label-sm text-secondary mt-1">Monthly average</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-border">
+<p class="text-label-sm text-secondary mb-1 uppercase tracking-wider">Growth Rate</p>
+<p class="text-headline-md font-bold text-ink-primary">14.2%</p>
+<p class="text-label-sm text-secondary mt-1">Projected YoY</p>
+</div>
+</div>
+<div class="mt-6 flex items-center justify-between p-4 bg-surface-container-highest rounded-lg">
+<div class="flex items-center gap-3">
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="text-label-sm font-bold text-on-surface-variant uppercase tracking-widest">Confidence Score</span>
+<span class="material-symbols-outlined text-[16px] text-secondary cursor-help">info</span>
+</div>
+<span class="text-body-sm text-secondary">Bayesian estimation model</span>
+</div>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-display-lg font-bold text-primary leading-none">92%</span>
+<span class="text-label-md text-primary font-bold mb-1">ACCURACY</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Success Toast (Hidden by default) -->
+<div class="fixed bottom-8 right-8 bg-success text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300 z-[100]" id="toast">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-body-md">Configuration saved successfully</span>
+</div>
+<script>
+        // Simple Interaction logic
+        const saveBtn = document.querySelector('button.bg-primary');
+        const toast = document.getElementById('toast');
+
+        saveBtn.addEventListener('click', () => {
+            saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span> Saving...';
+            setTimeout(() => {
+                saveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Save Configuration';
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 3000);
+            }, 1000);
+        });
+
+        // Toggle Simulation
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                console.log('Setting changed:', e.target.checked);
+            });
+        });
+    </script>
+</body></html>

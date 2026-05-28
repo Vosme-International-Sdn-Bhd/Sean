@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Affiliate Hub - SalonPortal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "platinum": "#E5E4E2",
+                    "on-primary-fixed": "#001c3a",
+                    "on-secondary-container": "#5f5f5b",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-surface-variant": "#424751",
+                    "on-surface": "#1b1c1a",
+                    "outline-variant": "#c2c6d3",
+                    "on-primary-container": "#c4daff",
+                    "background": "#faf9f5",
+                    "surface-container-low": "#f5f4f0",
+                    "on-background": "#1b1c1a",
+                    "inverse-primary": "#a6c8ff",
+                    "on-error-container": "#93000a",
+                    "bronze": "#CD7F32",
+                    "surface-tint": "#1a5fa8",
+                    "success": "#2E7D52",
+                    "secondary-container": "#dcdad5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "tertiary-fixed": "#ffdeaa",
+                    "silver": "#C0C0C0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#1b1c19",
+                    "surface-container-high": "#e9e8e4",
+                    "ink-primary": "#1A1A18",
+                    "surface-bright": "#faf9f5",
+                    "secondary-fixed": "#e4e2dd",
+                    "danger": "#8A1F1F",
+                    "on-tertiary-fixed": "#271900",
+                    "surface-container": "#efeeea",
+                    "secondary": "#5f5f5a",
+                    "outline": "#727782",
+                    "tertiary-container": "#7d5700",
+                    "surface": "#FFFFFF",
+                    "on-tertiary-container": "#ffd184",
+                    "primary-fixed": "#d4e3ff",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1a5fa8",
+                    "on-secondary-fixed-variant": "#474743",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "tertiary": "#5e4100",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "primary": "#004786",
+                    "border": "#E2E1DC",
+                    "surface-dim": "#dbdad6",
+                    "warning": "#8A5200",
+                    "surface-container-highest": "#e3e2df",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#004786",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "surface-variant": "#e3e2df",
+                    "purple-mlm": "#4A3AB0",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#30312e",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "56px",
+                    "stack-md": "16px",
+                    "gutter": "16px",
+                    "stack-lg": "24px",
+                    "tile-height-min": "80px",
+                    "stack-sm": "8px",
+                    "margin-page": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Libre Franklin"],
+                    "display-lg": ["Libre Franklin"],
+                    "body-sm": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"],
+                    "headline-lg": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .affiliate-gradient {
+            background: linear-gradient(135deg, #4A3AB0 0%, #1a5fa8 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c2c6d3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim flex justify-between items-center px-gutter w-full h-16 sticky top-0 z-50 border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">SalonPortal</span>
+</div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="text-on-surface-variant dark:text-outline hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Book</a>
+<a class="text-on-surface-variant dark:text-outline hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Wallet</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary px-3 py-2 font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Affiliate Hub</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80 p-2 rounded-full hover:bg-surface-container">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80 p-2 rounded-full hover:bg-surface-container">settings</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a person with a clean, friendly expression, set against a soft-focus office background. The lighting is bright and even, reflecting a high-key corporate aesthetic with natural skin tones and a sharp, modern photographic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5TnV0k_o7X5wb4_o-T7IWOPlYqwz7QLqxDjVyoduRP5QKL8P_SbcP6TB6-11dgb6dcj2eqKe8SkYl05MRgVMmDAEr5g8U0XhZBDNf8qgmAk7Kod47hj64zClv7y6AbG8Rri8zekGuo9BWuKk7w8FgJFaOkv1ZlexxZhnjyV7bVFr57ghut3sd7lUVa6MasoinPDr_sVN4V5Bt0gXjlLI9QqzojAXkWKIEBLHpXrvpP1GKN1pzZ5ATrAANsWtIhlwhj9ktxSu1gSJt"/>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 relative">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline p-stack-md z-40 pt-20">
+<div class="flex items-center gap-stack-sm mb-stack-lg px-2">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">content_cut</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary dark:text-primary-fixed font-bold">Main Branch</p>
+<p class="text-xs text-on-surface-variant">Premium Tier</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-touch-target-min text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-touch-target-min text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span> Book
+                </a>
+<a class="flex items-center gap-3 px-3 py-touch-target-min text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Wallet
+                </a>
+<a class="flex items-center gap-3 px-3 py-touch-target-min bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md font-bold" href="#">
+<span class="material-symbols-outlined">groups</span> Affiliate Hub
+                </a>
+</nav>
+<div class="pt-stack-lg border-t border-outline-variant mt-stack-lg space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help</span> Support
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-margin-page">
+<div class="max-w-6xl mx-auto space-y-stack-lg">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-stack-md mb-stack-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-ink-primary">Affiliate Hub</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Grow with us and earn exclusive rewards for every referral.</p>
+</div>
+<div class="flex items-center gap-stack-sm bg-surface p-2 rounded-lg border-[0.5px] border-border shadow-sm">
+<span class="material-symbols-outlined text-purple-mlm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<div class="pr-4">
+<p class="text-[10px] font-label-md text-on-surface-variant uppercase tracking-wider">Current Tier</p>
+<p class="font-label-md text-label-md text-purple-mlm font-bold">SILVER PARTNER</p>
+</div>
+</div>
+</header>
+<!-- Top Section: Promo & Link -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Referral Link & QR Card -->
+<section class="lg:col-span-7 bg-surface border-[0.5px] border-border rounded-lg p-stack-lg flex flex-col gap-stack-lg relative">
+<div class="flex flex-col md:flex-row gap-stack-lg">
+<div class="flex-1 space-y-stack-md">
+<div class="flex items-center gap-stack-sm mb-2">
+<span class="p-2 bg-primary/10 text-primary rounded-lg material-symbols-outlined">share</span>
+<h2 class="font-headline-md text-headline-md text-ink-primary">Your Referral Link</h2>
+</div>
+<p class="text-on-surface-variant font-body-md">Share this link with your friends to earn RM20 credit for every successful referral.</p>
+<div class="flex flex-col gap-stack-sm pt-2">
+<div class="flex-1 bg-surface-container-low border-[0.5px] border-outline-variant rounded-lg px-4 py-3 font-label-md text-label-md flex items-center justify-between">
+<span class="truncate font-medium">salonportal.my/ref/SARAH_G772</span>
+<button class="material-symbols-outlined text-primary hover:bg-primary/10 p-1 rounded transition-colors" title="Copy link">content_copy</button>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<button class="flex-1 bg-primary text-on-primary px-4 py-2.5 rounded font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">send</span> Share Link
+          </button>
+<button class="flex items-center gap-2 bg-[#25D366]/10 text-[#25D366] px-4 py-2.5 rounded font-label-md text-label-md hover:bg-[#25D366]/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+          </button>
+<button class="flex items-center gap-2 bg-[#1877F2]/10 text-[#1877F2] px-4 py-2.5 rounded font-label-md text-label-md hover:bg-[#1877F2]/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">public</span> Facebook
+          </button>
+</div>
+</div>
+</div>
+<div class="w-full md:w-40 flex flex-col items-center justify-center bg-surface-container-low p-stack-md rounded-lg border-[0.5px] border-outline-variant">
+<div class="bg-white p-2 rounded border-[0.5px] border-border mb-2">
+<img alt="QR Code" class="w-24 h-24" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlDwfIdjgQ0k8CxV5u91wkkECjjOuQL7arb7LkpwFlfFeh4Y7SQcTfSqmsSZVm1mdmkJrrC2d4xYoqQ2Kl2Q2KzmIGlyNkuj2VLbl0BkPVg2yv8mbIpAnlrbJx0-IuIRWVoqPgu5ErxauWIeeoUFg1dGvYD7JC7vuJdFK2ZTWBwTGcRuQgiT5kPJQsq3ArEV8FS4e21hxaWkVPrLr4NGFRtFlhd4qrS06n9A0uz7b1KRmBh7Y7uQwKPv-w2l9yvZgjpw5xj9aWfpg-"/>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center">In-salon QR Code</p>
+<button class="mt-2 flex items-center gap-1 text-primary hover:underline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">download</span> Download
+      </button>
+</div>
+</div>
+</section>
+<!-- Rank Progress Card -->
+<section class="lg:col-span-5 bg-surface border-[0.5px] border-border rounded-lg p-stack-lg flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant font-bold uppercase tracking-widest">Rank Progress</h3>
+<span class="px-2 py-0.5 bg-silver/20 text-on-surface-variant rounded text-[10px] font-bold">GOLD NEXT</span>
+</div>
+<div class="flex items-center gap-stack-lg flex-1">
+<div class="relative flex items-center justify-center">
+<svg class="w-32 h-32 transform -rotate-90">
+<circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-width="10"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.2" stroke-dashoffset="95" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-headline-lg font-bold">72%</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Progress</span>
+</div>
+</div>
+<div class="flex-1 space-y-4">
+<div>
+<p class="text-body-sm text-on-surface-variant">Current: <span class="font-bold text-on-surface">Silver</span></p>
+<p class="text-body-sm text-on-surface-variant">Target: <span class="font-bold text-primary">Gold</span></p>
+</div>
+<div class="p-3 bg-primary/5 rounded border-[0.5px] border-primary/20">
+<p class="font-label-sm text-label-sm text-primary font-bold flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Projected Bonus
+        </p>
+<p class="text-[11px] leading-tight text-on-surface-variant">Upgrade to Gold to earn <span class="font-bold text-success">+2% higher</span> commission on all bookings.</p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-[0.5px] border-outline-variant/30 flex justify-between items-center">
+<p class="text-xs text-on-surface-variant italic">8 more signups to reach Gold</p>
+<div class="flex gap-4">
+<div class="text-right">
+<p class="text-[9px] text-outline uppercase">Current</p>
+<p class="font-label-md text-label-md font-bold">5%</p>
+</div>
+<div class="text-right">
+<p class="text-[9px] text-primary uppercase">Next</p>
+<p class="font-label-md text-label-md font-bold text-primary">7%</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-stack-lg"><div class="bg-surface border-[0.5px] border-border rounded-lg p-stack-md space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Link Clicks</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">1,284</p>
+</div>
+<span class="text-success font-label-sm font-bold flex items-center gap-0.5">+12% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+</div>
+<div class="h-8 w-full flex items-end gap-1 px-1">
+<div class="flex-1 bg-primary/20 h-3 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-5 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-5 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-7 rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-8 rounded-t-sm"></div>
+</div>
+</div>
+<div class="bg-surface border-[0.5px] border-border rounded-lg p-stack-md space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Signups</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">42</p>
+</div>
+<span class="text-success font-label-sm font-bold flex items-center gap-0.5">+4 <span class="material-symbols-outlined text-[14px]">person_add</span></span>
+</div>
+<div class="h-8 w-full flex items-end gap-1 px-1">
+<div class="flex-1 bg-success/20 h-2 rounded-t-sm"></div>
+<div class="flex-1 bg-success/20 h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-success/20 h-3 rounded-t-sm"></div>
+<div class="flex-1 bg-success/20 h-5 rounded-t-sm"></div>
+<div class="flex-1 bg-success/20 h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-success/20 h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-success h-5 rounded-t-sm"></div>
+</div>
+</div>
+<div class="bg-surface border-[0.5px] border-border rounded-lg p-stack-md space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Conv. Rate</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">3.27%</p>
+</div>
+<span class="text-success font-label-sm font-bold flex items-center gap-0.5">+0.5% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+</div>
+<div class="h-8 w-full flex items-end gap-1 px-1">
+<div class="flex-1 bg-warning/20 h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-warning/20 h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-warning/20 h-5 rounded-t-sm"></div>
+<div class="flex-1 bg-warning/20 h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-warning/20 h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-warning/20 h-5 rounded-t-sm"></div>
+<div class="flex-1 bg-warning h-6 rounded-t-sm"></div>
+</div>
+</div>
+<div class="bg-surface border-[0.5px] border-border rounded-lg p-stack-md space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Commissions</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">RM 840</p>
+</div>
+<span class="text-on-surface font-label-sm font-bold">Oct '24</span>
+</div>
+<div class="h-8 w-full flex items-end gap-1 px-1">
+<div class="flex-1 bg-purple-mlm/20 h-3 rounded-t-sm"></div>
+<div class="flex-1 bg-purple-mlm/20 h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-purple-mlm/20 h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-purple-mlm/20 h-5 rounded-t-sm"></div>
+<div class="flex-1 bg-purple-mlm/20 h-7 rounded-t-sm"></div>
+<div class="flex-1 bg-purple-mlm/20 h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-purple-mlm h-8 rounded-t-sm"></div>
+</div>
+</div></div>
+<!-- Rewards Grid / List -->
+<section class="bg-surface border-border rounded-xl overflow-hidden border-[0.5px]"><div class="px-stack-lg py-4 border-b-[0.5px] border-border flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-ink-primary">Recent Conversions</h3>
+<button class="text-primary font-label-md text-label-md font-bold flex items-center gap-1 hover:underline">
+    View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b-[0.5px] border-outline-variant">
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Customer / Rank</th>
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-center">Level</th>
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Reward</th>
+</tr>
+</thead>
+<tbody class="divide-y-[0.5px] divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-stack-lg py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-bold text-xs">LW</div>
+<div>
+<p class="font-body-md text-body-md font-bold leading-tight">Lee Wei</p>
+<span class="text-[10px] bg-silver/20 text-on-surface-variant px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Silver Member</span>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-4 text-center">
+<span class="inline-block px-2 py-0.5 bg-primary/5 text-primary border border-primary/10 rounded text-[10px] font-bold">L1</span>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant">24 Oct, 2024</td>
+<td class="px-stack-lg py-4">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-success/10 text-success border-[0.5px] border-success/20 rounded-full text-[10px] font-bold uppercase">
+<span class="w-1.5 h-1.5 bg-success rounded-full"></span> Paid
+          </span>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-right font-bold text-primary">+RM 20.00</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-stack-lg py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-bold text-xs">AA</div>
+<div>
+<p class="font-body-md text-body-md font-bold leading-tight">Amirul Ariff</p>
+<span class="text-[10px] bg-surface-container-high text-on-surface-variant px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">New Member</span>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-4 text-center">
+<span class="inline-block px-2 py-0.5 bg-primary/5 text-primary border border-primary/10 rounded text-[10px] font-bold">L2</span>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant">22 Oct, 2024</td>
+<td class="px-stack-lg py-4">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-warning/10 text-warning border-[0.5px] border-warning/20 rounded-full text-[10px] font-bold uppercase">
+<span class="w-1.5 h-1.5 bg-warning rounded-full"></span> Pending
+          </span>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-right font-bold text-on-surface-variant">+RM 15.00</td>
+</tr>
+</tbody>
+</table>
+</div></section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline py-stack-lg px-margin-page w-full mt-auto flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<div class="text-center md:text-left">
+<p class="font-label-md text-label-md font-bold text-on-surface">SalonPortal Malaysia</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 SalonPortal Malaysia. All rights reserved.</p>
+</div>
+<div class="flex gap-stack-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Refund Policy</a>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for copy link button
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.querySelector('.material-symbols-outlined')?.textContent === 'content_copy') {
+                    const originalIcon = this.querySelector('.material-symbols-outlined').textContent;
+                    this.querySelector('.material-symbols-outlined').textContent = 'check';
+                    this.classList.add('text-success');
+                    setTimeout(() => {
+                        this.querySelector('.material-symbols-outlined').textContent = originalIcon;
+                        this.classList.remove('text-success');
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body></html>

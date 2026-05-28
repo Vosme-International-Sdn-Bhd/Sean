@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>My Bookings — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item active" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">My Bookings</div><div class="page-subtitle">Manage your appointments</div></div>
+      <a href="booking-service.html" class="btn btn-primary">+ New Booking</a>
+    </div>
+
+    <div class="tabs">
+      <a class="tab active" href="#">All</a>
+      <a class="tab" href="#">Upcoming</a>
+      <a class="tab" href="#">Completed</a>
+      <a class="tab" href="#">Cancelled</a>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex gap-12 mb-24">
+      <select class="input select" style="width:180px;height:40px;font-size:13px;">
+        <option>All Outlets</option><option>KLCC Branch</option><option>Bangsar Branch</option>
+      </select>
+      <input type="date" class="input" style="width:180px;height:40px;font-size:13px;">
+      <select class="input select" style="width:160px;height:40px;font-size:13px;">
+        <option>All Services</option><option>Hair</option><option>Nails</option><option>Facial</option>
+      </select>
+    </div>
+
+    <!-- Bookings List -->
+    <div class="flex flex-col gap-12">
+      <!-- Upcoming — owned by current user — show action buttons -->
+      <div class="card">
+        <div class="flex justify-between items-center">
+          <div class="flex gap-16 items-center">
+            <div style="width:4px;height:60px;background:var(--success);border-radius:4px;flex-shrink:0;"></div>
+            <div>
+              <div class="font-600" style="font-size:15px;">Hair Colour + Trim</div>
+              <div class="text-sm text-muted mt-4">👩 Aishah Binti Rahmat &nbsp;·&nbsp; 🏪 KLCC Branch</div>
+              <div class="mono text-sm mt-4">Thu 29 May 2026 · 2:00 PM — 3:30 PM</div>
+            </div>
+          </div>
+          <div class="flex flex-col items-center gap-8" style="min-width:160px;">
+            <span class="pill pill-success">✓ Confirmed</span>
+            <div class="flex gap-8">
+              <a href="reschedule.html" class="btn btn-secondary btn-sm">Reschedule</a>
+              <a href="cancel-booking.html" class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Cancel</a>
+            </div>
+            <button class="btn btn-ghost btn-sm" style="font-size:12px;" onclick="navigator.clipboard.writeText(window.location.href)">🔗 Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex justify-between items-center">
+          <div class="flex gap-16 items-center">
+            <div style="width:4px;height:60px;background:var(--warning);border-radius:4px;flex-shrink:0;"></div>
+            <div>
+              <div class="font-600" style="font-size:15px;">Manicure + Pedicure</div>
+              <div class="text-sm text-muted mt-4">👩 Nurul Aisyah &nbsp;·&nbsp; 🏪 Bangsar Branch</div>
+              <div class="mono text-sm mt-4">Sat 1 Jun 2026 · 11:00 AM</div>
+            </div>
+          </div>
+          <div class="flex flex-col items-center gap-8" style="min-width:160px;">
+            <span class="pill pill-warning">⏳ Pending</span>
+            <div class="flex gap-8">
+              <a href="reschedule.html" class="btn btn-secondary btn-sm">Reschedule</a>
+              <a href="cancel-booking.html" class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completed — show View Invoice + Rebook -->
+      <div class="card" style="opacity:0.85;">
+        <div class="flex justify-between items-center">
+          <div class="flex gap-16 items-center">
+            <div style="width:4px;height:60px;background:var(--outline);border-radius:4px;flex-shrink:0;"></div>
+            <div>
+              <div class="font-600" style="font-size:15px;">Hair Treatment</div>
+              <div class="text-sm text-muted mt-4">👩 Aishah Binti Rahmat &nbsp;·&nbsp; 🏪 KLCC Branch</div>
+              <div class="mono text-sm mt-4">Mon 25 May 2026 · 10:00 AM</div>
+            </div>
+          </div>
+          <div class="flex flex-col items-center gap-8" style="min-width:160px;">
+            <span class="pill pill-neutral">✓ Completed</span>
+            <div class="flex gap-8">
+              <a href="visit-history.html" class="btn btn-secondary btn-sm">View Invoice</a>
+              <a href="booking-service.html" class="btn btn-secondary btn-sm">Rebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cancelled -->
+      <div class="card" style="opacity:0.7;">
+        <div class="flex justify-between items-center">
+          <div class="flex gap-16 items-center">
+            <div style="width:4px;height:60px;background:var(--danger);border-radius:4px;flex-shrink:0;"></div>
+            <div>
+              <div class="font-600" style="font-size:15px;">Facial Treatment</div>
+              <div class="text-sm text-muted mt-4">👩 Siti Nabilah &nbsp;·&nbsp; 🏪 Mont Kiara</div>
+              <div class="mono text-sm mt-4">Thu 15 May 2026 · 3:00 PM</div>
+            </div>
+          </div>
+          <div class="flex flex-col items-center gap-8">
+            <span class="pill pill-danger">✕ Cancelled</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

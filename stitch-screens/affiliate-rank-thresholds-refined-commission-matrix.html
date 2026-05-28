@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Affiliate Rank Thresholds | SalonPro SaaS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dcdad5; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c2c6d3; }
+        
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        
+        .tier-gradient-diamond { background: linear-gradient(135deg, #e3e2df 0%, #ffffff 50%, #c4daff 100%); }
+        .tier-gradient-gold { background: linear-gradient(135deg, #ffd184 0%, #ffffff 50%, #7d5700 100%); }
+        .tier-gradient-silver { background: linear-gradient(135deg, #c8c6c1 0%, #ffffff 50%, #5f5f5a 100%); }
+        .tier-gradient-bronze { background: linear-gradient(135deg, #e4e2dd 0%, #ffffff 50%, #CD7F32 100%); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#efeeea",
+                        "danger": "#8A1F1F",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#474743",
+                        "background": "#faf9f5",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-dim": "#dbdad6",
+                        "error": "#ba1a1a",
+                        "border": "#E2E1DC",
+                        "tertiary": "#5e4100",
+                        "inverse-primary": "#a6c8ff",
+                        "outline": "#727782",
+                        "surface-variant": "#e3e2df",
+                        "purple-mlm": "#4A3AB0",
+                        "surface-tint": "#1a5fa8",
+                        "secondary-container": "#dcdad5",
+                        "primary": "#004786",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e8e4",
+                        "surface-bright": "#faf9f5",
+                        "outline-variant": "#c2c6d3",
+                        "success": "#2E7D52",
+                        "on-primary-fixed": "#001c3a",
+                        "primary-fixed": "#d4e3ff",
+                        "surface": "#FFFFFF",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "tertiary-container": "#7d5700",
+                        "primary-container": "#1a5fa8",
+                        "on-secondary-fixed": "#1b1c19",
+                        "bronze": "#CD7F32",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "secondary": "#5f5f5a",
+                        "on-secondary-container": "#5f5f5b",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-primary-container": "#c4daff",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1c1a",
+                        "secondary-fixed": "#e4e2dd",
+                        "on-surface-variant": "#424751",
+                        "platinum": "#E5E4E2",
+                        "tertiary-fixed": "#ffdeaa",
+                        "ink-primary": "#1A1A18",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "silver": "#C0C0C0",
+                        "on-surface": "#1b1c1a",
+                        "surface-container-low": "#f5f4f0",
+                        "on-primary-fixed-variant": "#004786",
+                        "warning": "#8A5200",
+                        "on-tertiary-container": "#ffd184",
+                        "surface-container-highest": "#e3e2df"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "56px",
+                        "margin-page": "24px",
+                        "tile-height-min": "80px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-lg": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen flex">
+<!-- SIDE BAR -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-14 pb-8 z-30 docked left-0 h-full w-64 bg-surface-container border-r border-border">
+<div class="px-6 mb-8">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">Commission Engine</h1>
+<p class="font-label-md text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Enterprise Tier</p>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md">Bookings</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-md">Orders</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md">Members</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-bold rounded-lg py-3 px-4 flex items-center gap-3 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-md">MLM/Affiliate</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-md">Marketing</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md">Staff</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-3 border-t border-border pt-4">
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-label-md">Support</span>
+</a>
+<a class="text-on-surface-variant py-3 px-4 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- TOP NAVBAR -->
+<header class="flex justify-between items-center h-14 px-margin-page w-full z-40 sticky top-0 bg-surface border-b border-border">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md font-bold text-primary">SalonPro SaaS</span>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-body-sm w-64 focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="Search affiliate records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full text-label-sm font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                    City Center Outlet
+                </div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors" data-icon="help">help</button>
+<img alt="Manager Profile" class="w-8 h-8 rounded-full border border-border" data-alt="Close-up professional headshot of a female salon manager with a confident smile, wearing corporate attire. The background is a blurred high-end salon interior with soft, warm ambient lighting. Professional photography style, clean and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTBcCzDgMJpW6UpObI-mDFDoK8QwExbKKM-ik4A6QREqAoR5qIkzuwcZn4l8XtYFd8ziEXOPmQvqs7BDB5agyYO6pwhzfS1Y4rpwGYcj0QRPHbMpCDxdcrF8MT9lugwqhTRlVUp2ExSh0B5WvYXU5D5HYlEcjN_bVyQYkUSHQ53IWQ1ie64tKyK0qgaCCvWaCI4AB3fjLpyREV9l7JcwL2XeHPQU4pbhArwZIk7n9PaPcLItGNC0kheN9A40-7MdcoJv1xmDbfrNcd"/>
+</div>
+</header>
+<!-- CANVAS -->
+<div class="flex-1 overflow-y-auto p-margin-page">
+<!-- HEADER SECTION -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex items-center gap-2 text-label-sm text-outline mb-2">
+<span>MLM Configuration</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">Affiliate Rank Thresholds</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-ink-primary">Rank &amp; Commission Thresholds</h2>
+<p class="text-body-md text-on-surface-variant">Configure qualification requirements and tiered commission structures for all affiliate levels.</p>
+</div>
+<div class="flex gap-stack-md">
+<button class="flex items-center gap-2 px-6 py-3 border border-border rounded-lg text-on-surface hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md">Audit Logs</span>
+</button>
+<button class="flex items-center gap-2 px-6 py-3 border border-border rounded-lg text-on-surface hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+<span class="font-label-md">Reset to Default</span>
+</button>
+<button class="flex items-center gap-2 px-8 py-3 bg-primary text-on-primary rounded-lg shadow-lg shadow-primary/20 hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+<span class="font-label-md">Save Changes</span>
+</button>
+</div>
+</div>
+<!-- MAIN GRID -->
+<div class="space-y-gutter">
+<!-- RANKS CONFIGURATION TABLE -->
+<div class="bg-surface rounded-xl border border-border overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-border flex justify-between items-center bg-surface-container-lowest">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+                            Active Rank Requirements
+                        </h3>
+<div class="flex items-center gap-2 text-label-sm text-on-surface-variant italic">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+                            Changes apply on next monthly reconciliation (Oct 1st)
+                        </div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-left">
+<th class="px-6 py-4 font-label-md text-label-sm uppercase text-outline">Affiliate Rank</th>
+<th class="px-6 py-4 font-label-md text-label-sm uppercase text-outline text-center">L1 Downline Required</th>
+<th class="px-6 py-4 font-label-md text-label-sm uppercase text-outline text-center">Monthly Group Sales (MYR)</th>
+<th class="px-6 py-4 font-label-md text-label-sm uppercase text-outline text-center">Auto-Promotion</th>
+<th class="px-6 py-4 font-label-md text-label-sm uppercase text-outline text-right">Preview</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- STARTER -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-headline-md text-body-md font-bold">Starter</p>
+<p class="text-label-sm text-outline">Entry-level affiliate</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-24 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="0"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-32 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="0"/>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="bg-success/10 text-success text-label-sm px-3 py-1 rounded-full font-bold">Always On</span>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="bg-surface-variant text-on-surface-variant text-label-sm px-4 py-2 rounded-lg font-bold">NORMAL</span>
+</td>
+</tr>
+<!-- BRONZE -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg flex items-center justify-center tier-gradient-bronze text-white shadow-sm">
+<span class="material-symbols-outlined" data-icon="military_tech" data-weight="fill" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div>
+<p class="font-headline-md text-body-md font-bold">Bronze Agent</p>
+<p class="text-label-sm text-outline">Emerging leader</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-24 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="5"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-32 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="5000"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input checked="" class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="bg-bronze text-white text-label-sm px-4 py-2 rounded-lg font-bold shadow-sm">BRONZE</span>
+</td>
+</tr>
+<!-- SILVER -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg flex items-center justify-center tier-gradient-silver text-secondary shadow-sm">
+<span class="material-symbols-outlined" data-icon="stars" data-weight="fill" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div>
+<p class="font-headline-md text-body-md font-bold">Silver Agent</p>
+<p class="text-label-sm text-outline">Established networker</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-24 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="12"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-32 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="25000"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input checked="" class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="bg-silver text-on-secondary-fixed-variant text-label-sm px-4 py-2 rounded-lg font-bold shadow-sm">SILVER</span>
+</td>
+</tr>
+<!-- GOLD -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg flex items-center justify-center tier-gradient-gold text-tertiary shadow-sm">
+<span class="material-symbols-outlined" data-icon="trophy" data-weight="fill" style="font-variation-settings: 'FILL' 1;">trophy</span>
+</div>
+<div>
+<p class="font-headline-md text-body-md font-bold">Gold Agent</p>
+<p class="text-label-sm text-outline">Elite performer</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-24 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="30"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-32 px-3 py-2 border border-border rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="100000"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input checked="" class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="bg-warning text-white text-label-sm px-4 py-2 rounded-lg font-bold shadow-sm">GOLD</span>
+</td>
+</tr>
+<!-- DIAMOND -->
+<tr class="hover:bg-surface-container-lowest transition-colors group bg-primary-container/5">
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg flex items-center justify-center tier-gradient-diamond text-primary shadow-sm border border-primary/20">
+<span class="material-symbols-outlined" data-icon="diamond" data-weight="fill" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<div>
+<p class="font-headline-md text-body-md font-bold">Diamond</p>
+<p class="text-label-sm text-outline">Global ambassador</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-24 px-3 py-2 border border-primary/30 rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none bg-white" type="number" value="100"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input class="w-32 px-3 py-2 border border-primary/30 rounded text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none bg-white" type="number" value="500000"/>
+</td>
+<td class="px-6 py-6 text-center">
+<input checked="" class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-6 text-right">
+<span class="bg-primary text-white text-label-sm px-4 py-2 rounded-lg font-bold shadow-md uppercase tracking-wider">Diamond</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- COMMISSION RATES SUB-SECTION -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- RATES GRID -->
+<div class="lg:col-span-2 bg-surface rounded-xl border border-border shadow-sm">
+<div class="px-6 py-4 border-b border-border flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="percent">percent</span>
+                                Multi-Tier Commission Rates
+                            </h3>
+<button class="text-primary text-label-sm font-bold hover:underline">Bulk Edit (%)</button>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-4 gap-4 mb-4">
+<div class="col-span-1"></div>
+<div class="text-center font-label-md text-label-sm text-outline py-2 bg-surface-container rounded">L1 Direct (%)</div>
+<div class="text-center font-label-md text-label-sm text-outline py-2 bg-surface-container rounded">L2 Indirect (%)</div>
+<div class="text-center font-label-md text-label-sm text-outline py-2 bg-surface-container rounded">L3 Indirect (%)</div>
+</div>
+<div class="space-y-3"><!-- Starter Rates -->
+<div class="grid grid-cols-4 gap-4 items-center">
+<div class="font-body-md font-bold text-on-surface">Starter</div>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="5.0"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="0.0"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="0.0"/>
+</div>
+<!-- Bronze Rates -->
+<div class="grid grid-cols-4 gap-4 items-center">
+<div class="font-body-md font-bold text-on-surface">Bronze Agent</div>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="8.0"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="2.0"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="0.0"/>
+</div>
+<!-- Silver Rates -->
+<div class="grid grid-cols-4 gap-4 items-center">
+<div class="font-body-md font-bold text-on-surface">Silver Agent</div>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="10.0"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="3.5"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="1.0"/>
+</div>
+<!-- Gold Rates -->
+<div class="grid grid-cols-4 gap-4 items-center">
+<div class="font-body-md font-bold text-on-surface">Gold Agent</div>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="12.0"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="5.0"/>
+<input class="w-full px-3 py-2 border border-border rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.1" type="number" value="2.0"/>
+</div>
+<!-- Diamond Rates -->
+<div class="grid grid-cols-4 gap-4 items-center bg-primary-container/10 p-3 -mx-3 rounded-xl border border-primary/20">
+<div class="font-body-md font-bold text-primary">Diamond</div>
+<input class="w-full px-3 py-2 border border-primary/30 rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none shadow-sm bg-white" step="0.1" type="number" value="15.0"/>
+<input class="w-full px-3 py-2 border border-primary/30 rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none shadow-sm bg-white" step="0.1" type="number" value="7.5"/>
+<input class="w-full px-3 py-2 border border-primary/30 rounded-lg text-center font-label-md focus:border-primary focus:ring-1 focus:ring-primary outline-none shadow-sm bg-white" step="0.1" type="number" value="5.0"/>
+</div></div>
+</div>
+</div>
+<!-- RECENT HISTORY / ANALYTICS -->
+<div class="bg-surface rounded-xl border border-border shadow-sm flex flex-col">
+<div class="px-6 py-4 border-b border-border">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                                Policy Updates
+                            </h3>
+</div>
+<div class="flex-1 p-6 space-y-6 overflow-y-auto max-h-[400px]">
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-success shrink-0"></div>
+<div>
+<p class="font-body-sm font-bold">Diamond Threshold Increased</p>
+<p class="text-label-sm text-on-surface-variant">L1 requirement adjusted from 80 to 100 members.</p>
+<p class="text-[10px] text-outline mt-1 uppercase">2 days ago • Admin: Sarah K.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-primary shrink-0"></div>
+<div>
+<p class="font-body-sm font-bold">Commission Boost Event</p>
+<p class="text-label-sm text-on-surface-variant">Applied 2% temporary boost to Gold L2 sales.</p>
+<p class="text-[10px] text-outline mt-1 uppercase">1 week ago • System Auto</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-error shrink-0"></div>
+<div>
+<p class="font-body-sm font-bold">Rollback Performed</p>
+<p class="text-label-sm text-on-surface-variant">Reset Bronze Agent requirements due to sync error.</p>
+<p class="text-[10px] text-outline mt-1 uppercase">Aug 14, 2023 • Admin: Jason M.</p>
+</div>
+</div>
+<div class="mt-6 p-4 bg-surface-container rounded-lg">
+<p class="text-label-sm font-bold text-on-surface flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                                    Impact Analysis
+                                </p>
+<p class="text-body-sm text-on-surface-variant mb-4">Current settings project a <span class="text-success font-bold">+12.4%</span> payout increase next month.</p>
+<button class="w-full py-2 bg-white border border-border rounded font-label-md text-primary hover:bg-surface-container-high transition-all">View Simulation</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- OFFLINE / SYNC BANNER -->
+<div class="hidden fixed top-0 left-64 right-0 h-10 bg-primary flex items-center justify-center text-on-primary text-label-md z-50 transition-all duration-300 transform -translate-y-full" id="sync-banner">
+<span class="material-symbols-outlined text-sm mr-2 animate-spin" data-icon="sync">sync</span>
+            Synchronizing new thresholds with global node...
+        </div>
+</main>
+<script>
+        // Simple Interaction logic
+        const saveBtn = document.querySelector('button:has(span:contains("save"))');
+        const syncBanner = document.getElementById('sync-banner');
+
+        function simulateSync() {
+            syncBanner.classList.remove('hidden', '-translate-y-full');
+            setTimeout(() => {
+                syncBanner.classList.add('-translate-y-full');
+                setTimeout(() => syncBanner.classList.add('hidden'), 300);
+            }, 3000);
+        }
+
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerText.includes('Save Changes')) {
+                btn.addEventListener('click', simulateSync);
+            }
+        });
+
+        // Toggle Active Sidebar states (Visual only for demo)
+        document.querySelectorAll('aside nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('aside nav a').forEach(l => {
+                    l.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold', 'rounded-lg');
+                    l.classList.add('text-on-surface-variant');
+                });
+                link.classList.remove('text-on-surface-variant');
+                link.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold', 'rounded-lg');
+            });
+        });
+    </script>
+</body></html>

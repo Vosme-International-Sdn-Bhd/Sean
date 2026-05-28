@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wallet Dashboard | LUXE SALON</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "danger": "#8A1F1F",
+                    "on-secondary-container": "#5f5f5b",
+                    "primary-container": "#1a5fa8",
+                    "surface": "#FFFFFF",
+                    "tertiary-container": "#7d5700",
+                    "warning": "#8A5200",
+                    "on-primary-fixed-variant": "#004786",
+                    "on-primary-fixed": "#001c3a",
+                    "on-primary-container": "#c4daff",
+                    "surface-container-high": "#e9e8e4",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#1a5fa8",
+                    "background": "#faf9f5",
+                    "surface-bright": "#faf9f5",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container": "#efeeea",
+                    "platinum": "#E5E4E2",
+                    "bronze": "#CD7F32",
+                    "purple-mlm": "#4A3AB0",
+                    "silver": "#C0C0C0",
+                    "surface-dim": "#dbdad6",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#ffd184",
+                    "on-surface": "#1b1c1a",
+                    "outline-variant": "#c2c6d3",
+                    "tertiary": "#5e4100",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "on-surface-variant": "#424751",
+                    "outline": "#727782",
+                    "primary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e2df",
+                    "border": "#E2E1DC",
+                    "on-secondary-fixed-variant": "#474743",
+                    "secondary-fixed": "#e4e2dd",
+                    "inverse-on-surface": "#f2f1ed",
+                    "on-tertiary-fixed": "#271900",
+                    "success": "#2E7D52",
+                    "surface-container-low": "#f5f4f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "primary": "#004786",
+                    "inverse-surface": "#30312e",
+                    "secondary-container": "#dcdad5",
+                    "on-primary": "#ffffff",
+                    "secondary": "#5f5f5a",
+                    "error": "#ba1a1a",
+                    "on-background": "#1b1c1a",
+                    "on-secondary-fixed": "#1b1c19",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "inverse-primary": "#a6c8ff",
+                    "ink-primary": "#1A1A18",
+                    "surface-container-highest": "#e3e2df"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "24px",
+                    "touch-target-min": "56px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "gutter": "16px",
+                    "tile-height-min": "80px",
+                    "margin-page": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"],
+                    "headline-lg": ["Libre Franklin"],
+                    "body-sm": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-lg": ["Libre Franklin"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #faf9f5;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background">
+<!-- TopNavBar Implementation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-page h-touch-target-min bg-surface border-b border-border">
+<div class="font-headline-lg text-headline-md tracking-tight text-primary">LUXE SALON</div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Book</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1 transition-colors duration-200" href="#">Wallet</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all active:scale-95">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border">
+<img alt="User Profile" data-alt="A professional studio headshot of a sophisticated woman with a friendly expression. The lighting is soft and high-key, emphasizing a clean and modern aesthetic. The background is a minimalist, neutral gray that complements the corporate and premium brand identity of Luxe Salon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPBdUTJztrefzAsWUvnYobiuF6HguUHyBgP9wnyuEiT9uxDgXELCuT8o74xwUud7MOQzYFPN-pFAmC8bN0pwFRCcBHMqq3_xOEQA0XtZ8sloaxu9bj4XBeA7WrEGtouY1ZjIZB8Bz6PX3cx70pWcfaPa48cZEuy_LzxpiH9N8WGSrcpyTjlXmN8_z5D5T62xCGpyue-tW_meKKT20I8lE1mfHp13BNw62bDk-es588y4n6k7qUl8UtZd_kzekC2sYfGzHJ9YWJxsAN"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on small, visible on large) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full p-stack-md w-64 bg-surface border-r border-border z-40 pt-[72px]">
+<div class="mb-stack-lg px-2">
+<h2 class="font-headline-md text-headline-md text-primary">Luxe Portal</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Premium Member</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Book</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Wallet</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<div class="mt-auto p-4">
+<button class="w-full bg-primary-container text-on-primary-container h-touch-target-min rounded-lg font-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">add</span>
+                Book Now
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] lg:pl-64 min-h-screen">
+<div class="max-w-7xl mx-auto p-margin-page">
+<!-- Header Section -->
+<header class="mb-stack-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-display-lg text-ink-primary tracking-tight">Wallet</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your credits and transaction history.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 h-touch-target-min rounded-lg font-label-md flex items-center justify-center gap-2 hover:opacity-95 transition-all shadow-md active:scale-95" onclick="openTopUp()">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                    Top-Up Balance
+                </button>
+</header>
+<!-- Bento Balance Cards -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-stack-lg">
+<!-- Main Balance Card -->
+<div class="md:col-span-8 bg-surface border border-border p-8 rounded-xl flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform duration-500"></div>
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Main Balance</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-display-lg text-display-lg text-ink-primary">RM</span>
+<span class="font-display-lg text-[56px] font-bold text-ink-primary">1,240.50</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-success">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-md text-label-md">+ RM 150.00 this month</span>
+</div>
+</div>
+<!-- Bonus Credit Card -->
+<div class="md:col-span-4 bg-primary text-on-primary p-8 rounded-xl flex flex-col justify-between min-h-[220px] shadow-lg">
+<div>
+<span class="font-label-md text-label-md opacity-80 uppercase tracking-widest">Bonus Credit</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-headline-lg text-headline-lg">RM</span>
+<span class="font-headline-lg text-[40px] font-bold">85.00</span>
+</div>
+</div>
+<div class="bg-white/10 p-3 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined">info</span>
+<span class="font-body-sm text-body-sm">Expires on 31 Dec 2024</span>
+</div>
+</div>
+</section>
+<!-- Transactions Ledger -->
+<section class="bg-surface border border-border rounded-xl overflow-hidden">
+<div class="p-6 border-b border-border flex justify-between items-center bg-surface-container-low">
+<h2 class="font-headline-md text-headline-md text-ink-primary">Recent Transactions</h2>
+<div class="flex gap-2">
+<button class="h-10 px-4 border border-border rounded-lg font-label-md text-on-surface-variant flex items-center gap-2 hover:bg-background transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter
+                        </button>
+<button class="h-10 px-4 border border-border rounded-lg font-label-md text-on-surface-variant flex items-center gap-2 hover:bg-background transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Export
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-left">
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-tight">Date</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-tight">Description</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-tight text-right">Amount</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-tight">Status</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-tight"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-5 font-label-md text-body-sm text-on-surface">24 Oct 2024</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Balayage Color &amp; Cut</span>
+<span class="font-body-sm text-on-surface-variant">Booking #LX-8821</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-label-md text-danger font-bold">- RM 450.00</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-label-md bg-success/10 text-success">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-5 font-label-md text-body-sm text-on-surface">22 Oct 2024</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Wallet Top-Up</span>
+<span class="font-body-sm text-on-surface-variant">Online Banking (FPX)</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-label-md text-success font-bold">+ RM 500.00</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-label-md bg-success/10 text-success">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-5 font-label-md text-body-sm text-on-surface">20 Oct 2024</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Signature Keratin Treatment</span>
+<span class="font-body-sm text-on-surface-variant">Booking #LX-8790</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-label-md text-danger font-bold">- RM 280.00</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-label-md bg-success/10 text-success">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-5 font-label-md text-body-sm text-on-surface">15 Oct 2024</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Product Purchase: Silk Oil</span>
+<span class="font-body-sm text-on-surface-variant">In-Store</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-label-md text-danger font-bold">- RM 120.00</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-label-md bg-secondary-container text-on-secondary-container">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-border flex justify-center">
+<button class="font-label-md text-primary hover:underline transition-all">View All Transactions</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="lg:ml-64 w-full py-stack-lg px-margin-page flex flex-col md:flex-row justify-between items-center gap-stack-md bg-surface-container-low border-t border-border">
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">© 2024 Luxe Salon Portal. All rights reserved.</div>
+<div class="flex gap-stack-lg">
+<a class="font-body-sm text-body-sm text-on-secondary-container hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-secondary-container hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-secondary-container hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+<!-- Top-Up Drawer / Modal Overlay -->
+<div class="fixed inset-0 z-[100] hidden" id="topup-modal">
+<div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeTopUp()"></div>
+<div class="absolute right-0 top-0 h-full w-full max-w-md bg-surface shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col" id="topup-drawer">
+<div class="p-6 border-b border-border flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-ink-primary">Top-Up Balance</h3>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-danger" onclick="closeTopUp()">close</button>
+</div>
+<div class="p-6 flex-1 overflow-y-auto">
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Select or enter the amount you wish to add to your Luxe Wallet.</p>
+<div class="grid grid-cols-2 gap-4 mb-stack-lg">
+<button class="h-14 border-2 border-primary bg-primary/5 text-primary font-label-md rounded-lg hover:bg-primary/10 transition-all">RM 100.00</button>
+<button class="h-14 border border-border text-on-surface-variant font-label-md rounded-lg hover:border-primary transition-all">RM 200.00</button>
+<button class="h-14 border border-border text-on-surface-variant font-label-md rounded-lg hover:border-primary transition-all">RM 500.00</button>
+<button class="h-14 border border-border text-on-surface-variant font-label-md rounded-lg hover:border-primary transition-all">Custom</button>
+</div>
+<div class="mb-stack-lg">
+<label class="font-label-md text-label-md text-secondary block mb-2 uppercase">Custom Amount</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-label-md text-on-surface-variant">RM</span>
+<input class="w-full pl-12 h-touch-target-min border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none font-label-md" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="bg-surface-container-high p-4 rounded-xl mb-stack-lg border border-border">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">redeem</span>
+<span class="font-label-md text-label-md text-primary">Bonus Credit Promotion</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Top up RM 500.00 or more to receive an extra 10% bonus credit!</p>
+</div>
+</div>
+<div class="p-6 border-t border-border">
+<button class="w-full bg-primary-container text-on-primary-container h-touch-target-min rounded-lg font-label-md shadow-md hover:opacity-90 active:scale-[0.98] transition-all">
+                    Proceed to Payment
+                </button>
+</div>
+</div>
+</div>
+<!-- Sync Banner -->
+<div class="fixed top-0 left-0 w-full z-[60] bg-primary-container text-on-primary-container px-margin-page h-8 flex items-center justify-center gap-2 transform -translate-y-full transition-transform duration-500" id="sync-banner">
+<span class="material-symbols-outlined text-sm animate-spin">sync</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Synchronizing Wallet Data...</span>
+</div>
+<script>
+        function openTopUp() {
+            const modal = document.getElementById('topup-modal');
+            const drawer = document.getElementById('topup-drawer');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                drawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeTopUp() {
+            const modal = document.getElementById('topup-modal');
+            const drawer = document.getElementById('topup-drawer');
+            drawer.classList.add('translate-x-full');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Atmospheric micro-interaction for sync banner
+        window.addEventListener('load', () => {
+            const banner = document.getElementById('sync-banner');
+            setTimeout(() => {
+                banner.classList.remove('-translate-y-full');
+                setTimeout(() => {
+                    banner.classList.add('-translate-y-full');
+                }, 3000);
+            }, 1000);
+        });
+    </script>
+</body></html>

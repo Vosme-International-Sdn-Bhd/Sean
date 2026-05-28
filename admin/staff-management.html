@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Staff Management — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>ADMIN BACKEND</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-item" href="dashboard.html"><span class="icon">📊</span>Dashboard</a>
+      <a class="nav-item" href="bookings-schedule.html"><span class="icon">📅</span>Bookings</a>
+      <div class="nav-section-label">People</div>
+      <a class="nav-item" href="members-crm.html"><span class="icon">👥</span>Members CRM</a>
+      <a class="nav-item active" href="staff-management.html"><span class="icon">🧑‍💼</span>Staff Management</a>
+      <a class="nav-item" href="staff-performance.html"><span class="icon">📈</span>Staff Performance</a>
+      <div class="nav-section-label">Finance</div>
+      <a class="nav-item" href="revenue-reports.html"><span class="icon">💰</span>Revenue</a>
+      <a class="nav-item" href="lhdn-dashboard.html"><span class="icon">🧾</span>LHDN MyInvois</a>
+      <div class="nav-section-label">Settings</div>
+      <a class="nav-item" href="outlet-settings.html"><span class="icon">🏪</span>Outlet Settings</a>
+      <a class="nav-item" href="outlet-management.html"><span class="icon">🗺️</span>Outlets</a>
+      <a class="nav-item" href="security-settings.html"><span class="icon">🔒</span>Security</a>
+      <a class="nav-item" href="superadmin.html"><span class="icon">👑</span>Superadmin</a>
+    </nav>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div><div class="page-title">Staff Management</div><div class="page-subtitle">Add, edit, and deactivate staff accounts</div></div>
+      <button class="btn btn-primary">+ Add Staff</button>
+    </div>
+
+    <!-- Stats row -->
+    <div class="grid grid-4 mb-24">
+      <div class="stat-card"><div class="stat-label">Total Staff</div><div class="stat-value">18</div></div>
+      <div class="stat-card"><div class="stat-label">Active</div><div class="stat-value" style="color:var(--success);">15</div></div>
+      <div class="stat-card"><div class="stat-label">On Leave</div><div class="stat-value" style="color:var(--warning);">2</div></div>
+      <div class="stat-card"><div class="stat-label">Inactive</div><div class="stat-value" style="color:var(--outline);">1</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex gap-12 mb-16">
+      <input class="input" style="width:240px;height:40px;font-size:13px;" placeholder="🔍 Search name, role...">
+      <select class="input select" style="width:160px;height:40px;font-size:13px;">
+        <option>All Outlets</option><option>KLCC Branch</option><option>Bangsar</option>
+      </select>
+      <select class="input select" style="width:160px;height:40px;font-size:13px;">
+        <option>All Roles</option><option>Stylist</option><option>Cashier</option><option>Manager</option>
+      </select>
+      <select class="input select" style="width:140px;height:40px;font-size:13px;">
+        <option>All Status</option><option>Active</option><option>On Leave</option><option>Inactive</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th><input type="checkbox"></th><th>Staff</th><th>Role</th><th>Outlet</th><th>Commission</th><th>Status</th><th>Last Login</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="flex items-center gap-10"><div class="avatar">AR</div><div><div class="font-600 text-sm">Aishah Binti Rahmat</div><div class="text-xs text-muted mono">+60 11-234 5678</div></div></div></td>
+            <td><span class="pill pill-info">Stylist</span></td>
+            <td>KLCC Branch</td>
+            <td><span class="mono text-sm">35%</span></td>
+            <td><span class="pill pill-success">Active</span></td>
+            <td><span class="mono text-xs">2026-05-28</span></td>
+            <td><div class="flex gap-8"><button class="btn btn-secondary btn-sm">Edit</button><button class="btn btn-sm" style="color:var(--warning);border:0.5px solid var(--warning);background:transparent;">Leave</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="flex items-center gap-10"><div class="avatar" style="background:#ffd184;color:#5e4100;">NA</div><div><div class="font-600 text-sm">Nurul Aisyah</div><div class="text-xs text-muted mono">+60 11-987 6543</div></div></div></td>
+            <td><span class="pill pill-info">Stylist</span></td>
+            <td>Bangsar</td>
+            <td><span class="mono text-sm">30%</span></td>
+            <td><span class="pill pill-success">Active</span></td>
+            <td><span class="mono text-xs">2026-05-27</span></td>
+            <td><div class="flex gap-8"><button class="btn btn-secondary btn-sm">Edit</button><button class="btn btn-sm" style="color:var(--warning);border:0.5px solid var(--warning);background:transparent;">Leave</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="flex items-center gap-10"><div class="avatar" style="background:var(--surface-container);color:var(--outline);">LM</div><div><div class="font-600 text-sm">Lim Ming Hui</div><div class="text-xs text-muted mono">+60 11-555 1234</div></div></div></td>
+            <td><span class="pill pill-neutral">Cashier</span></td>
+            <td>KLCC Branch</td>
+            <td><span class="mono text-sm">—</span></td>
+            <td><span class="pill pill-warning">On Leave</span></td>
+            <td><span class="mono text-xs">2026-05-20</span></td>
+            <td><div class="flex gap-8"><button class="btn btn-secondary btn-sm">Edit</button><button class="btn btn-sm" style="color:var(--success);border:0.5px solid var(--success);background:transparent;">Activate</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="flex items-center gap-10"><div class="avatar" style="background:var(--primary-container);color:var(--primary-dark);">RM</div><div><div class="font-600 text-sm">Ravi Menon</div><div class="text-xs text-muted mono">+60 12-888 0099</div></div></div></td>
+            <td><span class="pill" style="background:rgba(74,58,176,0.1);color:var(--purple-mlm);">Manager</span></td>
+            <td>KLCC Branch</td>
+            <td><span class="mono text-sm">—</span></td>
+            <td><span class="pill pill-success">Active</span></td>
+            <td><span class="mono text-xs">2026-05-28</span></td>
+            <td><div class="flex gap-8"><button class="btn btn-secondary btn-sm">Edit</button><button class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Deactivate</button></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body></html>

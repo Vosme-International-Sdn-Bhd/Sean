@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Revenue Reports | Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "surface-container-high": "#e9e8e4",
+                    "secondary": "#5f5f5a",
+                    "surface-dim": "#dbdad6",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#7d5700",
+                    "surface-container-highest": "#e3e2df",
+                    "surface": "#FFFFFF",
+                    "purple-mlm": "#4A3AB0",
+                    "background": "#faf9f5",
+                    "tertiary-fixed": "#ffdeaa",
+                    "on-secondary": "#ffffff",
+                    "success": "#2E7D52",
+                    "surface-tint": "#1a5fa8",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#a6c8ff",
+                    "on-primary-fixed-variant": "#004786",
+                    "secondary-container": "#dcdad5",
+                    "bronze": "#CD7F32",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "platinum": "#E5E4E2",
+                    "on-tertiary-fixed": "#271900",
+                    "on-secondary-container": "#5f5f5b",
+                    "warning": "#8A5200",
+                    "outline-variant": "#c2c6d3",
+                    "border": "#E2E1DC",
+                    "primary-container": "#1a5fa8",
+                    "tertiary": "#5e4100",
+                    "surface-bright": "#faf9f5",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#004786",
+                    "outline": "#727782",
+                    "surface-variant": "#e3e2df",
+                    "on-background": "#1b1c1a",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "surface-container": "#efeeea",
+                    "surface-container-low": "#f5f4f0",
+                    "on-primary-container": "#c4daff",
+                    "on-primary-fixed": "#001c3a",
+                    "primary-fixed": "#d4e3ff",
+                    "on-surface-variant": "#424751",
+                    "secondary-fixed": "#e4e2dd",
+                    "inverse-surface": "#30312e",
+                    "inverse-on-surface": "#f2f1ed",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-secondary-fixed": "#1b1c19",
+                    "on-tertiary-container": "#ffd184",
+                    "silver": "#C0C0C0",
+                    "on-secondary-fixed-variant": "#474743",
+                    "ink-primary": "#1A1A18",
+                    "danger": "#8A1F1F",
+                    "on-surface": "#1b1c1a",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "touch-target-min": "56px",
+                    "gutter": "16px",
+                    "stack-lg": "24px",
+                    "tile-height-min": "80px",
+                    "margin-page": "24px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Libre Franklin"],
+                    "body-md": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-sm": ["Libre Franklin"],
+                    "body-lg": ["Libre Franklin"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #E2E1DC;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-stack-lg gap-stack-sm bg-surface-container-low border-r border-border w-64 z-20">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Precision Salon OS</h1>
+<p class="font-label-md text-label-md text-secondary opacity-70">Admin Portal</p>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto custom-scrollbar">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg border-l-4 border-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-md text-label-md">Revenue Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Members</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-md text-label-md">MLM/Affiliate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-md text-label-md">Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 left-64 right-0 h-14 px-margin-page bg-surface flex justify-between items-center border-b border-border z-10">
+<div class="flex items-center gap-gutter">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Revenue Analytics</h2>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-sm w-64 transition-all" placeholder="Search transactions..." type="text"/>
+</div>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-8 w-px bg-border mx-2"></div>
+<div class="flex items-center gap-2">
+<div class="text-right hidden lg:block">
+<p class="font-label-md text-label-md text-on-surface leading-none">Admin User</p>
+<p class="font-label-sm text-label-sm text-secondary">Global Manager</p>
+</div>
+<img class="h-9 w-9 rounded-full object-cover border border-border" data-alt="A professional headshot of a corporate manager in a bright, modern studio. The lighting is soft and high-key, highlighting clean lines and a professional demeanor. The image fits the minimalist and precise aesthetic of a high-end salon management operating system with a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd71Db8Oq2BaFM_fQro8dyX3P0dm4xtYjyizoQd7MNYjxlOdfukgWJLKLKVLig9Cx1Liw44X8q6UwMWGrY6xL25zG-86EftBNwoP-wTvoKIFQBS8A1NKxJZ5Flr15z8GCDteqS6_I_c33RDBqHFKp1Vd1SLassJIGUFEfEtXbe6aJB0Td0VFXouvJYICEZzZfenLQlTpSeW2y3IRhhTCc9CHn12uiXqsNaFpyrtL9NKUfDGardEmVIcxaCkV_obW8H29r-I5mp3BdB"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-14 h-screen overflow-y-auto custom-scrollbar bg-background">
+<div class="p-margin-page space-y-stack-lg pb-stack-lg">
+<!-- Filter Bar -->
+<section class="flex flex-col lg:flex-row gap-stack-md justify-between items-start lg:items-center bg-surface p-4 rounded-lg border border-border shadow-sm">
+<div class="flex flex-wrap gap-stack-md items-center">
+<div class="flex items-center gap-2 px-3 py-2 border border-border rounded-lg bg-surface hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-secondary text-sm">calendar_month</span>
+<span class="font-label-md text-label-md">Last 30 Days</span>
+<span class="material-symbols-outlined text-outline text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 border border-border rounded-lg bg-surface hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-secondary text-sm">storefront</span>
+<span class="font-label-md text-label-md">All Outlets</span>
+<span class="material-symbols-outlined text-outline text-sm">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-stack-sm w-full lg:w-auto">
+<button class="flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-2 border border-border text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export CSV
+                    </button>
+<button class="flex-1 lg:flex-none px-6 py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                        Update Report
+                    </button>
+</div>
+</section>
+<!-- KPI Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface p-6 rounded-lg border border-border flex flex-col justify-between h-32 hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Total Revenue</span>
+<div class="bg-success/10 text-success p-1 rounded">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+</div>
+</div>
+<div>
+<h3 class="font-display-lg text-display-lg text-on-surface font-bold">RM 142,580</h3>
+<p class="font-label-sm text-label-sm text-success">+12.5% from last month</p>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-lg border border-border flex flex-col justify-between h-32 hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Avg. Ticket Size</span>
+<div class="bg-primary/10 text-primary p-1 rounded">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+</div>
+<div>
+<h3 class="font-display-lg text-display-lg text-on-surface font-bold">RM 185.00</h3>
+<p class="font-label-sm text-label-sm text-primary">+RM 12.00 increase</p>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-lg border border-border flex flex-col justify-between h-32 hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Returning Rev.</span>
+<div class="bg-purple-mlm/10 text-purple-mlm p-1 rounded">
+<span class="material-symbols-outlined text-sm">group</span>
+</div>
+</div>
+<div>
+<h3 class="font-display-lg text-display-lg text-on-surface font-bold">68%</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">High loyalty score</p>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-lg border border-border flex flex-col justify-between h-32 hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Growth %</span>
+<div class="bg-warning/10 text-warning p-1 rounded">
+<span class="material-symbols-outlined text-sm">show_chart</span>
+</div>
+</div>
+<div>
+<h3 class="font-display-lg text-display-lg text-on-surface font-bold">+8.4%</h3>
+<p class="font-label-sm text-label-sm text-secondary">Target: 10.0%</p>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Revenue Trend Line Chart -->
+<div class="lg:col-span-2 bg-surface p-6 rounded-lg border border-border shadow-sm min-h-[400px]"><div class="flex justify-between items-center mb-6"><h4 class="font-headline-md text-headline-md font-bold text-on-surface">Revenue Trends</h4><div class="flex items-center gap-4"><div class="flex items-center gap-2"><div class="w-3 h-1.5 rounded-full bg-primary"></div><span class="font-label-sm text-label-sm text-secondary">Revenue (RM)</span></div><div class="flex bg-surface-container rounded-lg p-1"><button class="px-3 py-1 bg-surface text-primary rounded shadow-sm font-label-sm text-label-sm">Daily</button><button class="px-3 py-1 text-secondary font-label-sm text-label-sm">Weekly</button><button class="px-3 py-1 text-secondary font-label-sm text-label-sm">Monthly</button></div></div></div><div class="relative h-64 w-full group cursor-crosshair"><svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100"><defs><lineargradient id="areaGradient" x1="0%" x2="0%" y1="0%" y2="100%"><stop offset="0%" stop-color="#1a5fa8" stop-opacity="0.3"></stop><stop offset="100%" stop-color="#1a5fa8" stop-opacity="0"></stop></lineargradient></defs><g class="grid-lines"><line stroke="#E2E1DC" stroke-width="0.1" x1="0" x2="100" y1="0" y2="0"></line><line stroke="#E2E1DC" stroke-width="0.1" x1="0" x2="100" y1="25" y2="25"></line><line stroke="#E2E1DC" stroke-width="0.1" x1="0" x2="100" y1="50" y2="50"></line><line stroke="#E2E1DC" stroke-width="0.1" x1="0" x2="100" y1="75" y2="75"></line><line stroke="#E2E1DC" stroke-width="0.1" x1="0" x2="100" y1="100" y2="100"></line></g><path d="M 0 60 C 10 65, 15 35, 25 40 C 35 45, 40 10, 50 15 C 60 20, 65 50, 75 45 C 85 40, 90 5, 100 10 L 100 100 L 0 100 Z" fill="url(#areaGradient)"></path><path d="M 0 60 C 10 65, 15 35, 25 40 C 35 45, 40 10, 50 15 C 60 20, 65 50, 75 45 C 85 40, 90 5, 100 10" fill="none" stroke="#1a5fa8" stroke-width="2"></path><line class="opacity-0 group-hover:opacity-100 transition-opacity" stroke="#1a5fa8" stroke-dasharray="4" stroke-width="0.5" x1="50" x2="50" y1="0" y2="100"></line><circle class="opacity-0 group-hover:opacity-100 transition-all scale-0 group-hover:scale-100" cx="50" cy="15" fill="white" r="3" stroke="#1a5fa8" stroke-width="2"></circle></svg><div class="absolute top-4 left-1/2 -translate-x-1/2 bg-on-background text-surface text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 border border-outline/20"><p class="font-label-sm opacity-70">June 15, 2024</p><p class="font-bold text-lg mt-1">RM 7,420.00</p></div><div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between -ml-12 font-label-sm text-[10px] text-secondary text-right w-10"><span class="-mt-2">RM 10k</span><span>RM 7.5k</span><span>RM 5k</span><span>RM 2.5k</span><span class="-mb-2">RM 0</span></div></div><div class="flex justify-between mt-6 px-2 font-label-sm text-label-sm text-secondary opacity-80"><span>Jun 01</span><span>Jun 08</span><span>Jun 15</span><span>Jun 22</span><span>Jun 30</span></div></div>
+<!-- Channel Breakdown -->
+<div class="bg-surface p-6 rounded-lg border border-border shadow-sm flex flex-col">
+<h4 class="font-headline-md text-headline-md font-bold text-on-surface mb-6">Channel Breakdown</h4>
+<div class="flex-1 flex flex-col items-center">
+<div class="relative w-48 h-48 flex items-center justify-center">
+<!-- SVG Donut Chart -->
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewbox="0 0 100 100">
+<!-- Background Circle (Gray) - 100% -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#E3E2DF" stroke-width="12"></circle>
+<!-- Member App (14%) - #DBDAD6 -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#DBDAD6" stroke-dasharray="251.2" stroke-dashoffset="0" stroke-width="12"></circle>
+<!-- Web Booking (24%) - #A6C8FF -->
+<!-- Offset is Member App (14%) -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#A6C8FF" stroke-dasharray="60.288 190.912" stroke-dashoffset="-35.168" stroke-width="12"></circle>
+<!-- POS Checkout (62%) - #1A5FA8 -->
+<!-- Offset is Member App (14%) + Web Booking (24%) = 38% -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#1A5FA8" stroke-dasharray="155.744 95.456" stroke-dashoffset="-95.456" stroke-width="12"></circle>
+</svg>
+<div class="text-center z-10">
+<p class="font-display-lg text-display-lg font-extrabold text-on-surface leading-none">POS</p>
+<p class="font-label-sm text-label-sm text-secondary mt-1">62% Total</p>
+</div>
+</div>
+<div class="mt-8 w-full space-y-1">
+<!-- Legend Row: POS -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#1A5FA8]"></div>
+<span class="font-body-md text-on-surface">POS Checkout</span>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface leading-none">RM 88,400</p>
+<p class="font-label-sm text-secondary mt-0.5">62%</p>
+</div>
+</div>
+<!-- Legend Row: Web -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#A6C8FF]"></div>
+<span class="font-body-md text-on-surface">Web Booking</span>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface leading-none">RM 34,180</p>
+<p class="font-label-sm text-secondary mt-0.5">24%</p>
+</div>
+</div>
+<!-- Legend Row: Member App -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#DBDAD6]"></div>
+<span class="font-body-md text-on-surface">Member App</span>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface leading-none">RM 20,000</p>
+<p class="font-label-sm text-secondary mt-0.5">14%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Data Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Revenue Category -->
+<div class="bg-surface p-6 rounded-lg border border-border shadow-sm">
+<h4 class="font-headline-md text-headline-md font-bold text-on-surface mb-6">Revenue by Category</h4>
+<div class="space-y-stack-md">
+<div class="space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">Haircut &amp; Styling</span>
+<span class="font-bold">RM 52,100</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">Coloring &amp; Treatments</span>
+<span class="font-bold">RM 38,450</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-full rounded-full" style="width: 55%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">Manicure &amp; Spa</span>
+<span class="font-bold">RM 24,120</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-full rounded-full" style="width: 40%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">Retail Products</span>
+<span class="font-bold">RM 15,910</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-full rounded-full" style="width: 25%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Method Distribution -->
+<div class="bg-surface p-6 rounded-lg border border-border shadow-sm">
+<h4 class="font-headline-md text-headline-md font-bold text-on-surface mb-6">Payment Distribution</h4>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary">Fiuu (Card/FPX)</p>
+<p class="font-label-md text-label-md font-bold">48%</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center text-success">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary">Member Wallet</p>
+<p class="font-label-md text-label-md font-bold">32%</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-warning/10 flex items-center justify-center text-warning">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary">Cash</p>
+<p class="font-label-md text-label-md font-bold">15%</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-purple-mlm/10 flex items-center justify-center text-purple-mlm">
+<span class="material-symbols-outlined">confirmation_number</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary">Vouchers</p>
+<p class="font-label-md text-label-md font-bold">5%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Transaction Log Table -->
+<section class="bg-surface rounded-lg border border-border shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-border flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md font-bold text-on-surface">Daily Revenue Log</h4>
+<div class="flex items-center gap-2">
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border">
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Trans. Count</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Avg. Ticket</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Gross Rev.</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Refunds</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Net Revenue</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="px-6 py-4 font-label-md text-label-md">June 24, 2024</td>
+<td class="px-6 py-4 font-body-md text-body-md">42</td>
+<td class="px-6 py-4 font-body-md text-body-md">RM 192.40</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold">RM 8,080.80</td>
+<td class="px-6 py-4 font-body-md text-body-md text-error">RM 0.00</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold text-primary">RM 8,080.80</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-success/10 text-success rounded-full text-[10px] font-bold uppercase">Settled</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="px-6 py-4 font-label-md text-label-md">June 23, 2024</td>
+<td class="px-6 py-4 font-body-md text-body-md">38</td>
+<td class="px-6 py-4 font-body-md text-body-md">RM 175.50</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold">RM 6,669.00</td>
+<td class="px-6 py-4 font-body-md text-body-md text-error">RM 120.00</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold text-primary">RM 6,549.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-success/10 text-success rounded-full text-[10px] font-bold uppercase">Settled</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="px-6 py-4 font-label-md text-label-md">June 22, 2024</td>
+<td class="px-6 py-4 font-body-md text-body-md">51</td>
+<td class="px-6 py-4 font-body-md text-body-md">RM 205.00</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold">RM 10,455.00</td>
+<td class="px-6 py-4 font-body-md text-body-md text-error">RM 0.00</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold text-primary">RM 10,455.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-success/10 text-success rounded-full text-[10px] font-bold uppercase">Settled</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer border-l-4 border-warning bg-warning/5">
+<td class="px-6 py-4 font-label-md text-label-md">June 21, 2024</td>
+<td class="px-6 py-4 font-body-md text-body-md">29</td>
+<td class="px-6 py-4 font-body-md text-body-md">RM 168.00</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold">RM 4,872.00</td>
+<td class="px-6 py-4 font-body-md text-body-md text-error">RM 0.00</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold text-primary">RM 4,872.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-warning/10 text-warning rounded-full text-[10px] font-bold uppercase">Processing</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="px-6 py-4 font-label-md text-label-md">June 20, 2024</td>
+<td class="px-6 py-4 font-body-md text-body-md">45</td>
+<td class="px-6 py-4 font-body-md text-body-md">RM 198.50</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold">RM 8,932.50</td>
+<td class="px-6 py-4 font-body-md text-body-md text-error">RM 45.00</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold text-primary">RM 8,887.50</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-success/10 text-success rounded-full text-[10px] font-bold uppercase">Settled</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-low border-t border-border flex items-center justify-between">
+<p class="font-label-sm text-label-sm text-secondary">Showing 5 of 30 days</p>
+<div class="flex gap-2">
+<button class="p-1 border border-border rounded hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-1 border border-border rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Sync Banner -->
+<div class="fixed top-0 left-0 w-full bg-primary text-on-primary py-1 px-margin-page flex justify-center items-center gap-2 transform transition-transform duration-500 z-50 -translate-y-full" id="sync-banner">
+<span class="material-symbols-outlined text-sm animate-spin">sync</span>
+<span class="font-label-sm text-label-sm">Syncing latest revenue data...</span>
+</div>
+<script>
+        // Simple Micro-interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulated Sync
+            const banner = document.getElementById('sync-banner');
+            setTimeout(() => {
+                banner.classList.remove('-translate-y-full');
+                setTimeout(() => {
+                    banner.classList.add('-translate-y-full');
+                }, 3000);
+            }, 1000);
+
+            // Row click highlighting
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('click', () => {
+                    rows.forEach(r => r.classList.remove('bg-primary-fixed/30'));
+                    row.classList.add('bg-primary-fixed/30');
+                });
+            });
+        });
+    </script>
+</body></html>

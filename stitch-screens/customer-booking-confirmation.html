@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#1b1c1a",
+            "surface": "#FFFFFF",
+            "inverse-surface": "#30312e",
+            "platinum": "#E5E4E2",
+            "on-error-container": "#93000a",
+            "silver": "#C0C0C0",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#faf9f5",
+            "inverse-on-surface": "#f2f1ed",
+            "on-secondary-container": "#5f5f5b",
+            "inverse-primary": "#a6c8ff",
+            "danger": "#8A1F1F",
+            "surface-container-highest": "#e3e2df",
+            "on-error": "#ffffff",
+            "tertiary": "#5e4100",
+            "on-tertiary-fixed": "#271900",
+            "on-surface-variant": "#424751",
+            "background": "#faf9f5",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#ffdeaa",
+            "warning": "#8A5200",
+            "tertiary-container": "#7d5700",
+            "on-tertiary-container": "#ffd184",
+            "outline": "#727782",
+            "success": "#2E7D52",
+            "tertiary-fixed-dim": "#f3be5e",
+            "secondary-fixed": "#e4e2dd",
+            "primary-fixed": "#d4e3ff",
+            "secondary": "#5f5f5a",
+            "surface-container-high": "#e9e8e4",
+            "surface-container-low": "#f5f4f0",
+            "outline-variant": "#c2c6d3",
+            "surface-tint": "#1a5fa8",
+            "ink-primary": "#1A1A18",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "purple-mlm": "#4A3AB0",
+            "on-secondary-fixed": "#1b1c19",
+            "primary": "#004786",
+            "on-primary-fixed": "#001c3a",
+            "on-primary-fixed-variant": "#004786",
+            "error": "#ba1a1a",
+            "secondary-container": "#dcdad5",
+            "secondary-fixed-dim": "#c8c6c1",
+            "border": "#E2E1DC",
+            "primary-container": "#1a5fa8",
+            "on-secondary-fixed-variant": "#474743",
+            "surface-dim": "#dbdad6",
+            "on-primary-container": "#c4daff",
+            "on-tertiary-fixed-variant": "#5f4100",
+            "bronze": "#CD7F32",
+            "primary-fixed-dim": "#a6c8ff",
+            "surface-variant": "#e3e2df",
+            "on-surface": "#1b1c1a",
+            "surface-container": "#efeeea"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "touch-target-min": "56px",
+            "stack-md": "16px",
+            "stack-lg": "24px",
+            "gutter": "16px",
+            "tile-height-min": "80px",
+            "stack-sm": "8px",
+            "margin-page": "24px"
+          },
+          "fontFamily": {
+            "body-sm": ["Libre Franklin"],
+            "body-md": ["Libre Franklin"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Libre Franklin"],
+            "headline-md": ["Libre Franklin"],
+            "display-lg": ["Libre Franklin"],
+            "body-lg": ["Libre Franklin"],
+            "label-sm": ["JetBrains Mono"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #faf9f5;
+      font-family: 'Libre Franklin', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .payment-option:checked + label {
+      border-color: #004786;
+      background-color: #f0f7ff;
+    }
+    .payment-option:checked + label .check-icon {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-border fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-touch-target-min">
+<div class="flex items-center gap-stack-md">
+<span class="text-headline-md font-headline-md font-bold text-primary">GlowPOS Salon</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-secondary hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer" data-icon="sync">sync</span>
+<span class="material-symbols-outlined text-secondary hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer" data-icon="settings">settings</span>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-[80px] pb-12 flex items-center justify-center px-gutter">
+<div class="w-full max-w-[640px] flex flex-col gap-stack-lg">
+<!-- Stepper Indicator -->
+<div class="flex justify-between items-center mb-4 px-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-success text-on-primary flex items-center justify-center font-bold text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+</div>
+<span class="text-label-md font-label-md text-success">Service</span>
+</div>
+<div class="h-[2px] flex-grow mx-4 bg-success opacity-30"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-success text-on-primary flex items-center justify-center font-bold text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+</div>
+<span class="text-label-md font-label-md text-success">Time</span>
+</div>
+<div class="h-[2px] flex-grow mx-4 bg-primary opacity-30"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-label-md">3</div>
+<span class="text-label-md font-label-md text-primary">Confirm</span>
+</div>
+</div>
+<!-- Main Confirmation Card -->
+<div class="bg-surface rounded-xl border border-border shadow-[0px_4px_20px_rgba(0,0,0,0.05)] overflow-hidden">
+<!-- Header -->
+<div class="bg-surface-container-low p-stack-lg border-b border-border">
+<h1 class="text-headline-md font-headline-md text-on-surface">Booking Summary</h1>
+<p class="text-body-sm font-body-sm text-secondary mt-1">Please review your appointment details before confirming.</p>
+</div>
+<!-- Details Section -->
+<div class="p-stack-lg flex flex-col gap-stack-lg">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-col gap-1">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Service</span>
+<h2 class="text-body-lg font-bold text-on-surface">Signature Balayage &amp; Toning</h2>
+<div class="flex items-center gap-2 text-secondary mt-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="text-body-sm font-body-sm">180 Minutes (3 hrs)</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Price</span>
+<p class="text-headline-sm font-bold text-primary">RM 480.00</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg py-4 border-y border-border/50">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Stylist Avatar" class="w-full h-full object-cover" data-alt="A professional female hair stylist with a friendly smile, wearing a clean black salon apron. She is in a high-end modern salon setting with warm, soft lighting and blurred salon chairs in the background. The aesthetic is professional, clean, and trustworthy, with a soft-focus depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACPXdl3Xt66k50X3I6l0EvsphKqQVECGzQGXOMPv8nCuBOKv0IEZJy8_eVUUqRIrtKyIB-aUEo_rNTDxMvKdZ3rwTGxzVPoYdTIQTPrp-KGe6HrGnFZhnwD6oG9qvEQuW7phPVjC81kgVLV_je6QcTkxPr8CyhzgWXSBW-A3IoaJf6stsfVzIMvAZoY9_K7QvP_zjvuDqhhL64UccJubEx8hvzzONpA5W_b4bg1idm29LENXBCZF2k8DrVxh_VghOmtHGkFQwlz0uP"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Stylist</span>
+<span class="text-body-md font-bold">Sarah Jenkins</span>
+<span class="text-body-sm text-secondary">Senior Art Director</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]" data-icon="calendar_month">calendar_month</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Date &amp; Time</span>
+<span class="text-body-md font-bold">Friday, 24 Oct 2024</span>
+<span class="text-body-sm text-secondary">10:30 AM — 1:30 PM</span>
+</div>
+</div>
+</div>
+<!-- Payment Method Selection -->
+<div class="flex flex-col gap-stack-md">
+<span class="text-label-md font-label-md text-on-surface">Payment Method</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-stack-md">
+<!-- Pay at Salon -->
+<div class="relative">
+<input checked="" class="hidden payment-option" id="pay_salon" name="payment" onclick="toggleWallet(false)" type="radio"/>
+<label class="flex flex-col p-4 border border-border rounded-lg cursor-pointer hover:bg-surface-container-high transition-all h-full relative" for="pay_salon">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<span class="material-symbols-outlined text-primary check-icon hidden" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-body-md font-bold">Pay at Salon</span>
+<span class="text-body-sm text-secondary">Settle after service</span>
+</label>
+</div>
+<!-- Pay with Wallet -->
+<div class="relative">
+<input class="hidden payment-option" id="pay_wallet" name="payment" onclick="toggleWallet(true)" type="radio"/>
+<label class="flex flex-col p-4 border border-border rounded-lg cursor-pointer hover:bg-surface-container-high transition-all h-full relative" for="pay_wallet">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="material-symbols-outlined text-primary check-icon hidden" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-body-md font-bold">Wallet Balance</span>
+<span class="text-body-sm text-secondary">RM 450.00 available</span>
+</label>
+</div>
+</div>
+<!-- Wallet Alert/Insufficient Message -->
+<div class="hidden animate-in fade-in slide-in-from-top-2 duration-300" id="wallet_info">
+<div class="bg-warning/10 border border-warning/20 p-stack-sm rounded-lg flex gap-3">
+<span class="material-symbols-outlined text-warning" data-icon="info">info</span>
+<div class="flex flex-col">
+<p class="text-body-sm text-on-surface">Your wallet balance (RM 450.00) is insufficient for this RM 480.00 service. Remaining RM 30.00 will be charged at the salon.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-stack-lg border-t border-border bg-surface-container-lowest flex flex-col sm:flex-row gap-stack-md">
+<button class="flex-1 order-2 sm:order-1 h-touch-target-min border border-outline-variant text-primary font-bold rounded-lg hover:bg-surface-container-high transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+            Back to Time
+          </button>
+<button class="flex-[2] order-1 sm:order-2 h-touch-target-min bg-primary text-on-primary font-bold rounded-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-lg active:scale-[0.98]" id="confirm_btn">
+            Confirm Booking
+            <span class="material-symbols-outlined" data-icon="done_all">done_all</span>
+</button>
+</div>
+</div>
+<!-- Trust Badges -->
+<div class="flex justify-center gap-stack-lg opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="security">security</span>
+<span class="text-label-sm font-label-sm">Secure Booking</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified">verified</span>
+<span class="text-label-sm font-label-sm">Certified Stylists</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="notifications_active">notifications_active</span>
+<span class="text-label-sm font-label-sm">SMS Reminders</span>
+</div>
+</div>
+</div>
+</main>
+<script>
+    function toggleWallet(show) {
+      const infoBox = document.getElementById('wallet_info');
+      const confirmBtn = document.getElementById('confirm_btn');
+      
+      if (show) {
+        infoBox.classList.remove('hidden');
+        confirmBtn.innerHTML = 'Confirm & Pay with Wallet <span class="material-symbols-outlined" data-icon="payments">payments</span>';
+      } else {
+        infoBox.classList.add('hidden');
+        confirmBtn.innerHTML = 'Confirm Booking <span class="material-symbols-outlined" data-icon="done_all">done_all</span>';
+      }
+    }
+
+    // Micro-interaction for the confirm button
+    document.getElementById('confirm_btn').addEventListener('click', function() {
+      const btn = this;
+      const originalContent = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Processing...';
+      
+      setTimeout(() => {
+        btn.classList.remove('bg-primary');
+        btn.classList.add('bg-success');
+        btn.innerHTML = '<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> Booking Confirmed!';
+        
+        // Throw some confetti effect or redirect logic here
+        setTimeout(() => {
+          // Reset for demo purposes
+          // btn.disabled = false;
+          // btn.classList.remove('bg-success');
+          // btn.classList.add('bg-primary');
+          // btn.innerHTML = originalContent;
+        }, 2000);
+      }, 1500);
+    });
+  </script>
+</body></html>

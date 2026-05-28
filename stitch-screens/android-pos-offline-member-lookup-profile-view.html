@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Salon OS - Android POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-surface-variant": "#424751",
+                "surface-container-highest": "#e3e2df",
+                "on-error-container": "#93000a",
+                "on-surface": "#1b1c1a",
+                "outline": "#727782",
+                "surface-dim": "#dbdad6",
+                "tertiary-container": "#7d5700",
+                "secondary": "#5f5f5a",
+                "primary-fixed": "#d4e3ff",
+                "border": "#E2E1DC",
+                "secondary-container": "#dcdad5",
+                "on-tertiary-container": "#ffd184",
+                "on-secondary-container": "#5f5f5b",
+                "ink-primary": "#1A1A18",
+                "on-primary-container": "#c4daff",
+                "on-primary": "#ffffff",
+                "inverse-on-surface": "#f2f1ed",
+                "secondary-fixed": "#e4e2dd",
+                "warning": "#8A5200",
+                "on-secondary": "#ffffff",
+                "on-tertiary-fixed": "#271900",
+                "danger": "#8A1F1F",
+                "primary-fixed-dim": "#a6c8ff",
+                "tertiary-fixed": "#ffdeaa",
+                "bronze": "#CD7F32",
+                "on-primary-fixed-variant": "#004786",
+                "purple-mlm": "#4A3AB0",
+                "on-secondary-fixed-variant": "#474743",
+                "error": "#ba1a1a",
+                "success": "#2E7D52",
+                "on-secondary-fixed": "#1b1c19",
+                "background": "#faf9f5",
+                "secondary-fixed-dim": "#c8c6c1",
+                "surface-tint": "#1a5fa8",
+                "on-tertiary-fixed-variant": "#5f4100",
+                "silver": "#C0C0C0",
+                "surface-variant": "#e3e2df",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#f3be5e",
+                "surface": "#FFFFFF",
+                "surface-container-high": "#e9e8e4",
+                "inverse-primary": "#a6c8ff",
+                "surface-bright": "#faf9f5",
+                "primary": "#004786",
+                "on-primary-fixed": "#001c3a",
+                "on-tertiary": "#ffffff",
+                "surface-container": "#efeeea",
+                "surface-container-low": "#f5f4f0",
+                "tertiary": "#5e4100",
+                "on-error": "#ffffff",
+                "inverse-surface": "#30312e",
+                "outline-variant": "#c2c6d3",
+                "on-background": "#1b1c1a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-md": "16px",
+                "tile-height-min": "80px",
+                "margin-page": "24px",
+                "stack-sm": "8px",
+                "gutter": "16px",
+                "touch-target-min": "56px",
+                "stack-lg": "24px"
+            },
+            "fontFamily": {
+                "headline-md": ["Libre Franklin"],
+                "label-sm": ["JetBrains Mono"],
+                "label-md": ["JetBrains Mono"],
+                "display-lg": ["Libre Franklin"],
+                "body-sm": ["Libre Franklin"],
+                "headline-lg": ["Libre Franklin"],
+                "body-lg": ["Libre Franklin"],
+                "body-md": ["Libre Franklin"]
+            },
+            "fontSize": {
+                "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .swipe-hint {
+            animation: swipe-bounce 2s infinite;
+        }
+        @keyframes swipe-bounce {
+            0%, 100% { transform: translateX(0); opacity: 0.5; }
+            50% { transform: translateX(-8px); opacity: 1; }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E2E1DC;
+            border-radius: 10px;
+        }
+        
+        /* Hide side-nav and summary on small screens unless toggled */
+        @media (max-width: 1023px) {
+            .nav-collapsed { transform: translateX(-100%); }
+            .aside-collapsed { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen w-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-4 md:px-margin-page h-12 w-full z-50 transition-colors duration-200 shrink-0 bg-warning">
+<div class="flex items-center gap-stack-sm"><button class="lg:hidden material-symbols-outlined text-on-primary p-2" id="nav-toggle">menu</button><div class="flex flex-col"><div class="flex items-center gap-1"><span class="material-symbols-outlined text-on-primary text-[18px]">cloud_off</span><span class="font-label-md text-on-primary">Offline Mode — Saving Locally</span></div><span class="text-[10px] text-on-primary/80 font-label-sm uppercase ml-6">Last Synced: 14:32:01</span></div></div>
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">Precision Salon OS</span>
+<div class="flex items-center gap-stack-sm">
+<button class="material-symbols-outlined text-white/80 hover:bg-white/10 p-1 rounded transition-colors" data-icon="sync">sync</button>
+<button class="material-symbols-outlined text-white/80 hover:bg-white/10 p-1 rounded transition-colors" data-icon="settings">settings</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- SideNavBar -->
+<nav class="fixed lg:relative left-0 top-0 h-full w-64 bg-surface-container border-r border-border flex flex-col py-stack-lg px-stack-md z-40 transition-transform duration-300 lg:translate-x-0 nav-collapsed" id="sidebar">
+<div class="flex items-center gap-stack-md mb-stack-lg px-2">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shrink-0">A</div>
+<div class="min-w-0">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight truncate">Artisan Salon</h3>
+<p class="font-body-md text-body-md text-secondary">Station 04</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-stack-md px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span>POS Home</span>
+</a>
+<a class="flex items-center gap-stack-md px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-stack-md px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Members</span>
+</a>
+<a class="flex items-center gap-stack-md px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span>Sync</span>
+</a>
+<a class="flex items-center gap-stack-md px-4 py-3 text-secondary hover:bg-surface-container-high rounded-lg active:scale-95 transition-all" href="#"><span class="material-symbols-outlined" data-icon="sync">sync</span><span class="flex-1">Sync</span><span class="bg-error text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">12</span></a>
+</div>
+<div class="mt-auto p-4 bg-surface-container-low border border-border rounded-xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-success" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm text-secondary">STORAGE OK</span>
+</div>
+<div class="h-1 w-full bg-border rounded-full overflow-hidden">
+<div class="h-full bg-success w-[85%]"></div>
+</div>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+<!-- Left Panel: Service Grid -->
+<section class="flex-1 h-full p-4 md:p-margin-page overflow-y-auto custom-scrollbar">
+<div class="flex items-center justify-between mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Service Categories</h1>
+<div class="flex gap-stack-sm">
+<button class="px-3 h-10 border border-border rounded-lg font-label-md text-label-md hover:bg-surface-container text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+<span class="hidden sm:inline">Filter</span>
+</button>
+</div>
+</div>
+<!-- Service Scrollable Grid -->
+<div class="gap-gutter flex overflow-x-auto snap-x custom-scrollbar pb-4 -mx-1 px-1">
+<button class="flex flex-col items-start p-stack-md h-[120px] bg-surface border border-border rounded-xl hover:border-primary transition-all active:scale-[0.98] text-left group flex-shrink-0 w-40 md:w-48 snap-start">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="content_cut">content_cut</span>
+<span class="font-body-md text-body-md font-bold mb-1">Haircut</span>
+<span class="font-label-md text-label-md text-secondary">From RM 45.00</span>
+</button>
+<button class="flex flex-col items-start p-stack-md h-[120px] bg-surface border border-border rounded-xl hover:border-primary transition-all active:scale-[0.98] text-left flex-shrink-0 w-40 md:w-48 snap-start">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="palette">palette</span>
+<span class="font-body-md text-body-md font-bold mb-1">Coloring</span>
+<span class="font-label-md text-label-md text-secondary">From RM 180.00</span>
+</button>
+<button class="flex flex-col items-start p-stack-md h-[120px] bg-surface border border-border rounded-xl hover:border-primary transition-all active:scale-[0.98] text-left flex-shrink-0 w-40 md:w-48 snap-start">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="spa">spa</span>
+<span class="font-body-md text-body-md font-bold mb-1">Treatment</span>
+<span class="font-label-md text-label-md text-secondary">From RM 120.00</span>
+</button>
+<button class="flex flex-col items-start p-stack-md h-[120px] bg-primary-container/10 border border-primary rounded-xl hover:border-primary transition-all active:scale-[0.98] text-left relative flex-shrink-0 w-40 md:w-48 snap-start">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="front_hand">front_hand</span>
+<span class="font-body-md text-body-md font-bold mb-1">Nails</span>
+<span class="font-label-md text-label-md text-secondary">From RM 65.00</span>
+<span class="absolute top-2 right-2 material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style='font-variation-settings: "FILL" 1;'>check_circle</span>
+</button>
+<button class="flex flex-col items-start p-stack-md h-[120px] bg-surface border border-border rounded-xl hover:border-primary transition-all active:scale-[0.98] text-left flex-shrink-0 w-40 md:w-48 snap-start">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="face">face</span>
+<span class="font-body-md text-body-md font-bold mb-1">Facial</span>
+<span class="font-label-md text-label-md text-secondary">From RM 250.00</span>
+</button>
+</div>
+<div class="mt-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Sub-Services: Nails</h2>
+<div class="grid grid-cols-1 @md:grid-cols-2 xl:grid-cols-2 gap-gutter">
+<div class="flex items-center gap-2 p-stack-md min-h-tile-height-min bg-surface border border-border rounded-xl hover:border-primary transition-all cursor-pointer group">
+<button class="material-symbols-outlined text-secondary hover:text-danger p-1 rounded-full hover:bg-danger/10 transition-colors" data-icon="close">close</button>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<p class="font-body-md text-body-md font-bold">Classic Manicure</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase">45 MIN • STYLIST A</p>
+</div>
+<div class="flex items-center justify-between sm:justify-end gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1">
+<button class="material-symbols-outlined text-secondary text-[18px]" data-icon="remove">remove</button>
+<span class="px-2 font-label-md text-label-md">01</span>
+<button class="material-symbols-outlined text-primary text-[18px]" data-icon="add">add</button>
+</div>
+<span class="font-label-md text-label-md font-bold">RM 65.00</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 p-stack-md min-h-tile-height-min bg-surface border border-primary rounded-xl hover:border-primary transition-all cursor-pointer group">
+<button class="material-symbols-outlined text-secondary hover:text-danger p-1 rounded-full hover:bg-danger/10 transition-colors" data-icon="close">close</button>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<p class="font-body-md text-body-md font-bold">Gel Extensions</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase">90 MIN • STYLIST B</p>
+</div>
+<div class="flex items-center justify-between sm:justify-end gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1">
+<button class="material-symbols-outlined text-secondary text-[18px]" data-icon="remove">remove</button>
+<span class="px-2 font-label-md text-label-md">01</span>
+<button class="material-symbols-outlined text-primary text-[18px]" data-icon="add">add</button>
+</div>
+<span class="font-label-md text-label-md font-bold">RM 185.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Order Summary -->
+<aside class="fixed lg:relative right-0 top-0 h-full w-full sm:w-80 lg:w-[35%] bg-surface border-l border-border flex flex-col z-40 transition-transform duration-300 lg:translate-x-0 aside-collapsed shadow-2xl lg:shadow-none" id="order-aside">
+<!-- Mobile Close Btn -->
+<button class="lg:hidden absolute left-4 top-4 material-symbols-outlined text-secondary" id="aside-close">close</button>
+<div class="p-stack-md border-b border-border mt-12 lg:mt-0">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<div class="relative flex-1 group/search">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary" data-icon="search">search</span>
+<input class="w-full pl-10 pr-10 h-12 rounded-t-lg border border-border focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all bg-surface-container-low" placeholder="Offline Search (Phone / QR)" type="text" value="Sarah"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary cursor-pointer" data-icon="qr_code_scanner">qr_code_scanner</span>
+<!-- Results Dropdown -->
+<div class="absolute top-full left-0 w-full bg-surface border border-t-0 border-border rounded-b-lg shadow-xl z-50">
+<div class="p-2 flex items-center justify-between bg-primary-container/5">
+<span class="font-label-sm text-primary">LOCAL RESULTS</span>
+<span class="material-symbols-outlined text-[16px] text-primary">storage</span>
+</div>
+<div class="p-3 hover:bg-surface-container transition-colors cursor-pointer flex items-center justify-between border-b border-border">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">SJ</div>
+<div>
+<p class="text-sm font-bold">Sarah Jenkins</p>
+<p class="text-[10px] text-secondary">+60 12-345 6789</p>
+</div>
+</div>
+<span class="text-[8px] bg-primary/10 text-primary px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Cached</span>
+</div>
+<div class="p-3 opacity-40 bg-surface-container-low cursor-not-allowed flex items-center justify-between group">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">cloud_off</span>
+<p class="text-sm">Search Cloud...</p>
+</div>
+<span class="text-[8px] font-bold uppercase text-secondary">Requires Internet</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Selected Member -->
+<div class="bg-surface-container-low p-stack-md rounded-xl border border-border flex items-center justify-between cursor-pointer hover:bg-surface-container-high transition-colors" id="member-trigger">
+<div class="flex items-center gap-stack-sm min-w-0">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border shrink-0">
+<img alt="Member Portrait" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtBOB9n7OUyisrkekdxHjek4r9N1L-f2lCoX86kAhQrpj8Ix-CZb6YB-uzahEnr_8u3hazQ3Yv2aDIlMliuZZnLzjhh8lS0-zn_QGAoq8DbvJpRKzq_pNSCEibSTd8piwWJTpQ-6S4f5MP57jMrhyZU_3S-9FDxGvKJ7IaJQ9-1XUoO8L9dmX_fYol9vc6wI9_WfG8S03bPMJVIGEzeBxAU8TVI_l9zIMdJGUWyi-vAf1X6g1dySsJ8j4_6AyqnsGwSzgze7UVge5M"/>
+</div>
+<div class="min-w-0">
+<p class="font-body-md text-body-md font-bold leading-tight truncate">Sarah Jenkins</p>
+<p class="font-label-sm text-label-sm text-secondary truncate">+60 12-345 6789</p>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="px-1.5 py-0.5 bg-warning/10 text-warning font-label-sm text-[10px] rounded border border-warning/20 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="workspace_premium" style='font-variation-settings: "FILL" 1;'>workspace_premium</span>
+                                GOLD
+                            </span>
+</div>
+</div>
+</div>
+<!-- Order List -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-stack-md space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Summary</h3>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 swipe-hint">
+<span class="material-symbols-outlined text-[14px]" data-icon="swipe_left">swipe_left</span>
+                            Slide
+                        </span>
+</div>
+<div class="space-y-2">
+<div class="relative group overflow-hidden rounded-lg">
+<div class="flex items-center justify-between p-stack-md bg-white border-b border-border min-h-touch-target-min relative z-10 transition-transform duration-300">
+<div class="min-w-0">
+<p class="font-body-md text-body-md font-bold truncate">Gel Extensions</p>
+<p class="font-label-sm text-label-sm text-secondary">Stylist: Michael Chen</p>
+</div>
+<span class="font-label-md text-label-md font-bold shrink-0">RM 185.00</span>
+</div>
+<div class="absolute inset-0 bg-danger flex items-center justify-end px-stack-md">
+<span class="material-symbols-outlined text-white" data-icon="delete">delete</span>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-lg">
+<div class="flex items-center justify-between p-stack-md bg-white border-b border-border min-h-touch-target-min relative z-10">
+<div class="min-w-0">
+<p class="font-body-md text-body-md font-bold truncate">Moisture Therapy</p>
+<p class="font-label-sm text-label-sm text-secondary">Stylist: Michael Chen</p>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-warning line-through">RM 120.00</span>
+<span class="font-label-md text-label-md font-bold">RM 108.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Checkout -->
+<div class="p-stack-md bg-surface-container border-t border-border space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-secondary">Subtotal</span>
+<span class="font-label-md text-label-md">RM 293.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary">
+<span class="font-body-md text-body-md text-secondary">Discount (10%)</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="edit">edit</span>
+</div>
+<span class="font-label-md text-label-md text-danger">-RM 29.30</span>
+</div>
+<div class="flex justify-between items-center py-2 border-t border-border/50">
+<span class="font-headline-md text-headline-md font-bold">Total</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary">RM 263.70</span>
+</div>
+<button class="w-full h-14 bg-primary text-on-primary font-headline-md rounded-lg active:scale-95 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        CHECKOUT
+                    </button>
+<button class="w-full h-10 border border-danger text-danger font-label-md rounded-lg hover:bg-danger/5 transition-colors">
+                        VOID
+                    </button>
+</div>
+</aside>
+</main>
+</div>
+<!-- Mobile Summary Trigger (Floating Action) -->
+<button class="lg:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-xl z-30 flex items-center justify-center" id="mobile-summary-fab">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-danger text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-background">2</span>
+</button>
+<!-- Member Profile Drawer -->
+<div class="fixed right-0 top-0 h-full w-full sm:w-80 bg-surface border-l border-border shadow-2xl translate-x-full transition-transform duration-300 ease-in-out z-[60]" id="member-drawer">
+<div class="flex flex-col p-stack-lg h-full overflow-y-auto custom-scrollbar">
+<div class="flex items-center justify-between mb-stack-lg">
+<h2 class="font-headline-md text-headline-md">Member Profile <span class="ml-2 text-[10px] bg-secondary-container text-secondary px-2 py-0.5 rounded-full uppercase font-bold tracking-widest inline-block align-middle">Offline</span></h2>
+<button class="material-symbols-outlined text-secondary" data-icon="close" id="drawer-close">close</button>
+</div>
+<div class="flex flex-col items-center mb-stack-lg">
+<div class="w-24 h-24 rounded-full border-2 border-warning p-1 mb-stack-sm relative">
+<img alt="Member Profile Large" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbkJH8tRsweY2lUyxEvny9-XNnBCo-rGJkSbQ2PdnrEeVfJ3b98AGpTIWrwLf8sD-spPibtnBs3SdGQhkEoEc54YoBdzxvQg-KAoexhKhkZIkN2cukbOn2VQfmYl8acrCS6RU3w_luwex21FsPSGmccBVYDnRKbqq54DTQK8AHr8WhPquZaBxbXlqxEv4soTDZ304e-yYei1CI5MQzyoPKd5lDOnx1BEWLCfAtuiX9Dhf9Mezcn4JzKFzEYEvc2ri89EobsX51lVcv"/>
+<div class="absolute bottom-0 right-0 bg-warning text-white p-1 rounded-full border-2 border-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md">Sarah Jenkins</h3>
+<p class="font-body-md text-body-md text-secondary">Platinum Tier Member</p><p class="text-[10px] text-secondary/60 mt-1 uppercase font-label-sm">Cached: 14 Oct 2023 14:32</p>
+<div class="mt-stack-sm w-full flex flex-col items-center">
+<button class="w-full px-6 py-2 bg-surface-container-highest text-secondary border border-border rounded-lg font-label-md cursor-not-allowed opacity-60 flex items-center justify-center gap-2" disabled="">
+<span class="material-symbols-outlined text-[18px]">edit_off</span>
+Edit Profile
+</button>
+<p class="text-[10px] text-error mt-2 text-center px-4 italic">Editing disabled in offline mode to prevent sync conflicts.</p>
+</div>
+</div>
+<div class="space-y-stack-md flex-1">
+<div class="p-4 bg-surface-container-low rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Last Visit</p><p class="text-[10px] text-secondary/60 mt-1 uppercase font-label-sm">Cached: 14 Oct 2023 14:32</p>
+<p class="font-body-md text-body-md font-bold">14 Oct 2023 (12 days ago)</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Prefers Stylist</p><p class="text-[10px] text-secondary/60 mt-1 uppercase font-label-sm">Cached: 14 Oct 2023 14:32</p>
+<p class="font-body-md text-body-md font-bold">Michael Chen</p>
+</div>
+<div class="flex gap-2">
+<div class="flex-1 flex flex-col items-center p-3 bg-primary-container/10 rounded-lg border border-primary/10">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-[10px] mt-1 text-center">WALLET</span>
+<span class="font-body-md font-bold">RM 450</span>
+</div>
+<div class="flex-1 flex flex-col items-center p-3 bg-error/10 rounded-lg border border-error/10">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<span class="font-label-sm text-[10px] mt-1 text-center">ALLERGY</span>
+<span class="font-body-md font-bold text-error">Latex</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Responsive Sidebar Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.toggle('nav-collapsed');
+        });
+
+        // Responsive Order Summary Toggle
+        const fab = document.getElementById('mobile-summary-fab');
+        const aside = document.getElementById('order-aside');
+        const asideClose = document.getElementById('aside-close');
+
+        fab.addEventListener('click', () => {
+            aside.classList.remove('aside-collapsed');
+        });
+
+        asideClose.addEventListener('click', () => {
+            aside.classList.add('aside-collapsed');
+        });
+
+        // Member Profile Drawer Logic
+        const memberTrigger = document.getElementById('member-trigger');
+        const drawer = document.getElementById('member-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+
+        memberTrigger.addEventListener('click', () => {
+            drawer.classList.remove('translate-x-full');
+        });
+
+        drawerClose.addEventListener('click', () => {
+            drawer.classList.add('translate-x-full');
+        });
+
+        // Close UI on outside click for mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024) {
+                if (!sidebar.contains(e.target) && e.target !== navToggle) {
+                    sidebar.classList.add('nav-collapsed');
+                }
+            }
+        });
+
+        // Swipe Micro-interactions
+        document.querySelectorAll('.group').forEach(item => {
+            let startX = 0;
+            const content = item.querySelector('.z-10');
+            if(!content) return;
+            
+            item.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+            }, {passive: true});
+
+            item.addEventListener('touchmove', e => {
+                const diff = e.touches[0].clientX - startX;
+                if (diff < 0) {
+                    const transform = Math.max(diff, -80);
+                    content.style.transform = `translateX(${transform}px)`;
+                }
+            }, {passive: true});
+
+            item.addEventListener('touchend', e => {
+                const diff = e.changedTouches[0].clientX - startX;
+                if (diff < -40) {
+                    content.style.transform = `translateX(-80px)`;
+                } else {
+                    content.style.transform = `translateX(0px)`;
+                }
+            });
+        });
+    </script>
+</body></html>

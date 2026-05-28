@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Credit Note Tracker - Glow Salon Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c2c6d3;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "platinum": "#E5E4E2",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d4e3ff",
+                        "surface-variant": "#e3e2df",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "danger": "#8A1F1F",
+                        "tertiary": "#5e4100",
+                        "surface-container-lowest": "#ffffff",
+                        "warning": "#8A5200",
+                        "on-primary-container": "#c4daff",
+                        "primary": "#004786",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#FFFFFF",
+                        "surface-container": "#efeeea",
+                        "on-secondary-fixed-variant": "#474743",
+                        "inverse-primary": "#a6c8ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#7d5700",
+                        "tertiary-fixed": "#ffdeaa",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dcdad5",
+                        "on-secondary-container": "#5f5f5b",
+                        "primary-container": "#1a5fa8",
+                        "surface-bright": "#faf9f5",
+                        "surface-container-highest": "#e3e2df",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "on-tertiary-fixed": "#271900",
+                        "ink-primary": "#1A1A18",
+                        "surface-dim": "#dbdad6",
+                        "on-background": "#1b1c1a",
+                        "background": "#faf9f5",
+                        "success": "#2E7D52",
+                        "outline": "#727782",
+                        "on-surface": "#1b1c1a",
+                        "inverse-surface": "#30312e",
+                        "silver": "#C0C0C0",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "surface-container-low": "#f5f4f0",
+                        "secondary": "#5f5f5a",
+                        "secondary-fixed": "#e4e2dd",
+                        "outline-variant": "#c2c6d3",
+                        "on-tertiary-container": "#ffd184",
+                        "on-secondary-fixed": "#1b1c19",
+                        "surface-tint": "#1a5fa8",
+                        "purple-mlm": "#4A3AB0",
+                        "on-primary-fixed": "#001c3a",
+                        "on-surface-variant": "#424751",
+                        "bronze": "#CD7F32",
+                        "on-primary": "#ffffff",
+                        "border": "#E2E1DC",
+                        "surface-container-high": "#e9e8e4",
+                        "on-tertiary-fixed-variant": "#5f4100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "56px",
+                        "stack-lg": "24px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-page": "24px",
+                        "tile-height-min": "80px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "headline-md": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen">
+<!-- Sync Banner -->
+<div class="fixed top-0 left-0 w-full bg-primary-container text-white py-2 px-margin-page z-50 flex items-center justify-between text-label-sm transition-transform translate-y-0" id="sync-banner">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+<span>Syncing credit note data with LHDN MyInvois Portal...</span>
+</div>
+<button class="hover:bg-white/10 p-1 rounded" onclick="this.parentElement.style.transform='translateY(-100%)'">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-border bg-surface flex flex-col py-margin-page z-40">
+<div class="px-6 mb-8">
+<h1 class="text-headline-md font-headline-md font-bold text-primary-container">Glow Salon</h1>
+<p class="text-label-sm text-secondary">Admin Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="text-label-md font-label-md">MLM/Affiliate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="text-label-md font-label-md">Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-6 pt-4 border-t border-border mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a middle-aged male salon manager wearing a sharp navy blue suit in a bright, modern corporate environment. The background is a clean, minimalist office with soft focus. The overall aesthetic is professional, reliable, and high-trust, consistent with a premium business software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxf79qmnMUKMASQiVZk_SuynYq7osukkmpNBYlbDMAPJxKQFJN66A4405cFNEf8yeDprmHt9PFKHBOh1racyTyhcsB2e1M5uJlCeFO64W4gEtsN4mPK2sQq_FpHHnBBGBo3pKHXA-rV3hraLW2cx8TLe8DIrFzsvc55WuamcPS0LwQ2U4hjTen2CjuAQxCrRQEvcHgMXVePcJUbmuWzMvuMNn8Enm9Cv1Uz4Ybqxnt-glPHFrn2sAxMQvoUN09oqrxt4_uXn25pYrC"/>
+</div>
+<div>
+<p class="text-body-sm font-bold">Admin Manager</p>
+<p class="text-label-sm text-secondary">Outlet: Bangsar</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pl-64 pt-touch-target-min">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-64 right-0 h-touch-target-min bg-surface border-b border-border z-30 flex items-center justify-between px-margin-page">
+<div class="flex items-center gap-4">
+<h2 class="text-headline-md font-headline-md text-primary-container">Credit Note Tracker</h2>
+<span class="text-label-sm bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded uppercase">MyInvois v1.0</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-2 px-4 h-10 border border-border text-primary font-medium rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="text-label-md">Export CSV</span>
+</button>
+<button class="flex items-center gap-2 px-6 h-10 bg-primary-container text-white font-medium rounded-lg hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span class="text-label-md">Sync with LHDN</span>
+</button>
+<div class="w-[1px] h-6 bg-border mx-2"></div>
+<button class="material-symbols-outlined text-secondary hover:text-primary">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary">help</button>
+</div>
+</header>
+<div class="p-margin-page space-y-stack-lg">
+<!-- Summary Stats -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-surface p-stack-md rounded-xl border border-border flex flex-col justify-between h-[120px]">
+<span class="text-label-sm text-secondary uppercase font-bold tracking-wider">Total Credit Notes</span>
+<div class="flex items-end justify-between">
+<span class="text-display-lg font-display-lg text-ink-primary">1,284</span>
+<span class="text-label-md text-secondary pb-2">RM 42,500.00</span>
+</div>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border flex flex-col justify-between h-[120px]">
+<span class="text-label-sm text-secondary uppercase font-bold tracking-wider">Pending Submission</span>
+<div class="flex items-end justify-between">
+<span class="text-display-lg font-display-lg text-warning">24</span>
+<div class="bg-warning/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-warning">pending_actions</span>
+</div>
+</div>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border flex flex-col justify-between h-[120px]">
+<span class="text-label-sm text-secondary uppercase font-bold tracking-wider">Rejected by LHDN</span>
+<div class="flex items-end justify-between">
+<span class="text-display-lg font-display-lg text-danger">08</span>
+<div class="bg-danger/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-danger">error_outline</span>
+</div>
+</div>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border flex flex-col justify-between h-[120px]">
+<span class="text-label-sm text-secondary uppercase font-bold tracking-wider">Finalized (Accepted)</span>
+<div class="flex items-end justify-between">
+<span class="text-display-lg font-display-lg text-success">1,252</span>
+<div class="bg-success/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-success">task_alt</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters -->
+<section class="bg-surface p-gutter rounded-xl border border-border">
+<div class="flex flex-wrap gap-stack-md items-end">
+<div class="flex-1 min-w-[240px] space-y-1">
+<label class="text-label-sm text-secondary font-bold">Search</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 h-11 border border-border rounded-lg bg-surface-container-low focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-sm" placeholder="Order ID or Member Name" type="text"/>
+</div>
+</div>
+<div class="w-[200px] space-y-1">
+<label class="text-label-sm text-secondary font-bold">Date Range</label>
+<div class="relative">
+<input class="w-full px-4 h-11 border border-border rounded-lg bg-surface-container-low focus:ring-2 focus:ring-primary outline-none transition-all font-body-sm" type="date"/>
+</div>
+</div>
+<div class="w-[180px] space-y-1">
+<label class="text-label-sm text-secondary font-bold">Status</label>
+<select class="w-full px-4 h-11 border border-border rounded-lg bg-surface-container-low focus:ring-2 focus:ring-primary outline-none transition-all font-body-sm appearance-none">
+<option>All Statuses</option>
+<option>Draft</option>
+<option>Pending</option>
+<option>Accepted</option>
+<option>Rejected</option>
+</select>
+</div>
+<div class="w-[180px] space-y-1">
+<label class="text-label-sm text-secondary font-bold">Reason</label>
+<select class="w-full px-4 h-11 border border-border rounded-lg bg-surface-container-low focus:ring-2 focus:ring-primary outline-none transition-all font-body-sm appearance-none">
+<option>All Reasons</option>
+<option>Sales Return</option>
+<option>Price Adjustment</option>
+<option>Discount</option>
+<option>Error in Invoice</option>
+</select>
+</div>
+<button class="h-11 px-6 border border-primary text-primary font-medium rounded-lg hover:bg-primary/5 transition-all">
+                        Reset Filters
+                    </button>
+</div>
+</section>
+<!-- Table Section -->
+<section class="bg-surface rounded-xl border border-border overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border">
+<th class="px-6 py-4 text-left text-label-sm text-secondary font-bold uppercase tracking-wider">CN Reference</th>
+<th class="px-6 py-4 text-left text-label-sm text-secondary font-bold uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 text-left text-label-sm text-secondary font-bold uppercase tracking-wider">Original Invoice</th>
+<th class="px-6 py-4 text-left text-label-sm text-secondary font-bold uppercase tracking-wider">Member</th>
+<th class="px-6 py-4 text-left text-label-sm text-secondary font-bold uppercase tracking-wider">Reason</th>
+<th class="px-6 py-4 text-right text-label-sm text-secondary font-bold uppercase tracking-wider">Amount (RM)</th>
+<th class="px-6 py-4 text-center text-label-sm text-secondary font-bold uppercase tracking-wider">LHDN Status</th>
+<th class="px-6 py-4 text-right text-label-sm text-secondary font-bold uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Row 1: Accepted -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4">
+<span class="font-label-md text-primary-container font-medium">CN-2023-008</span>
+</td>
+<td class="px-6 py-4 text-body-sm text-secondary">24 Oct 2023</td>
+<td class="px-6 py-4">
+<a class="text-primary hover:underline font-label-md" href="#">INV-88219</a>
+</td>
+<td class="px-6 py-4 text-body-sm font-medium">Sarah Jenkins</td>
+<td class="px-6 py-4">
+<span class="text-label-sm bg-secondary-container px-2 py-1 rounded">Sales Return</span>
+</td>
+<td class="px-6 py-4 text-right font-label-md">240.00</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                        Accepted
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="View Details"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="Download PDF"><span class="material-symbols-outlined">picture_as_pdf</span></button>
+</td>
+</tr>
+<!-- Row 2: Rejected -->
+<tr class="bg-danger/5 hover:bg-danger/10 transition-colors group">
+<td class="px-6 py-4">
+<span class="font-label-md text-danger font-medium">CN-2023-009</span>
+</td>
+<td class="px-6 py-4 text-body-sm text-secondary">25 Oct 2023</td>
+<td class="px-6 py-4">
+<a class="text-primary hover:underline font-label-md" href="#">INV-88224</a>
+</td>
+<td class="px-6 py-4 text-body-sm font-medium">Michael Chen</td>
+<td class="px-6 py-4">
+<span class="text-label-sm bg-secondary-container px-2 py-1 rounded">Error in Invoice</span>
+</td>
+<td class="px-6 py-4 text-right font-label-md text-danger">1,150.00</td>
+<td class="px-6 py-4 text-center relative group/tooltip">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-danger/10 text-danger text-label-sm font-bold cursor-help">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                                        Rejected
+                                    </span>
+<!-- Tooltip -->
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 bg-inverse-surface text-inverse-on-surface text-label-sm rounded shadow-lg opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none z-10">
+                                        Error E042: Invalid Member Tax ID format. Please verify and resubmit.
+                                    </div>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Retry Submission">
+<span class="material-symbols-outlined">replay</span>
+</button>
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="View Details"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<!-- Row 3: Pending -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4">
+<span class="font-label-md text-primary-container font-medium">CN-2023-010</span>
+</td>
+<td class="px-6 py-4 text-body-sm text-secondary">26 Oct 2023</td>
+<td class="px-6 py-4">
+<a class="text-primary hover:underline font-label-md" href="#">INV-88241</a>
+</td>
+<td class="px-6 py-4 text-body-sm font-medium">Emily Watson</td>
+<td class="px-6 py-4">
+<span class="text-label-sm bg-secondary-container px-2 py-1 rounded">Discount</span>
+</td>
+<td class="px-6 py-4 text-right font-label-md">45.00</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-warning/10 text-warning text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="View Details"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="Download PDF"><span class="material-symbols-outlined">picture_as_pdf</span></button>
+</td>
+</tr>
+<!-- Repeat Rows for visual density -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4"><span class="font-label-md text-primary-container font-medium">CN-2023-011</span></td>
+<td class="px-6 py-4 text-body-sm text-secondary">26 Oct 2023</td>
+<td class="px-6 py-4"><a class="text-primary hover:underline font-label-md" href="#">INV-88245</a></td>
+<td class="px-6 py-4 text-body-sm font-medium">Lim Wei Kiat</td>
+<td class="px-6 py-4"><span class="text-label-sm bg-secondary-container px-2 py-1 rounded">Price Adjustment</span></td>
+<td class="px-6 py-4 text-right font-label-md">12.50</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                        Accepted
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right space-x-2">
+<button class="p-2 text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-2 text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">picture_as_pdf</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer / Pagination -->
+<footer class="bg-surface-container-low px-margin-page py-4 border-t border-border flex items-center justify-between">
+<div class="flex items-center gap-4">
+<p class="text-label-sm text-secondary">
+                            Last Synced: <span class="font-bold text-on-surface">Today, 14:32:05</span>
+</p>
+<div class="w-[1px] h-4 bg-border"></div>
+<p class="text-label-sm text-secondary">Showing 1 to 10 of 1,284 entries</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-border rounded-lg bg-surface hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 rounded-lg bg-primary text-white text-label-md font-bold">1</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-high text-label-md transition-colors">2</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-high text-label-md transition-colors">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-high text-label-md transition-colors">129</button>
+</div>
+<button class="p-2 border border-border rounded-lg bg-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</footer>
+</section>
+</div>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Atmospheric effect for sync banner
+        setTimeout(() => {
+            const banner = document.getElementById('sync-banner');
+            banner.style.transform = 'translateY(-100%)';
+        }, 5000);
+
+        // Simple table hover interaction
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.classList.add('shadow-sm');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.classList.remove('shadow-sm');
+            });
+        });
+
+        // Search highlight mock
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.parentElement.classList.add('scale-[1.01]');
+            searchInput.parentElement.parentElement.style.transition = 'all 0.2s ease-out';
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

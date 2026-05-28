@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Cancel Booking — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body style="background:rgba(0,0,0,0.35);">
+<!-- Simulated modal overlay -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div class="modal" style="max-width:500px;width:100%;">
+    <div class="modal-title">Cancel Appointment?</div>
+    <div class="modal-body">Review the details below before confirming cancellation.</div>
+
+    <!-- Booking Summary -->
+    <div style="background:var(--surface-low);border-radius:var(--radius);padding:16px;border:0.5px solid var(--border);margin:16px 0;">
+      <div class="flex justify-between text-sm mb-8">
+        <span class="text-muted">Service</span><span class="font-600">Hair Colour + Trim</span>
+      </div>
+      <div class="flex justify-between text-sm mb-8">
+        <span class="text-muted">Stylist</span><span class="font-600">Aishah Binti Rahmat</span>
+      </div>
+      <div class="flex justify-between text-sm mb-8">
+        <span class="text-muted">Date &amp; Time</span><span class="font-600 mono">Thu 29 May 2026 · 2:00 PM</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-muted">Outlet</span><span class="font-600">KLCC Branch</span>
+      </div>
+    </div>
+
+    <!-- Policy Warning -->
+    <div class="alert alert-warning mb-16">
+      ⚠️ Cancellations within 24 hours may incur a fee per our cancellation policy.
+    </div>
+
+    <!-- Reason -->
+    <div class="mb-16">
+      <label class="field-label">Reason for cancellation *</label>
+      <select class="input select">
+        <option value="">Select a reason...</option>
+        <option>Changed plans</option>
+        <option>Found alternative</option>
+        <option>Emergency</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <!-- Ownership note -->
+    <div class="text-xs text-muted mb-16" style="font-family:var(--font-mono);">
+      Only the booking owner can cancel. Your account: +60 12-345 6789
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col gap-8">
+      <a href="my-bookings.html" class="btn btn-danger btn-full">Confirm Cancellation</a>
+      <a href="my-bookings.html" class="btn btn-secondary btn-full">Keep Appointment</a>
+    </div>
+  </div>
+</div>
+</body></html>

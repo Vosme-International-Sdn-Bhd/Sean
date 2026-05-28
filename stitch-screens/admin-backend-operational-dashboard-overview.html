@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Salon OS - Dashboard</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#424751",
+                        "surface-container-highest": "#e3e2df",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1c1a",
+                        "outline": "#727782",
+                        "surface-dim": "#dbdad6",
+                        "tertiary-container": "#7d5700",
+                        "secondary": "#5f5f5a",
+                        "primary-fixed": "#d4e3ff",
+                        "border": "#E2E1DC",
+                        "secondary-container": "#dcdad5",
+                        "on-tertiary-container": "#ffd184",
+                        "on-secondary-container": "#5f5f5b",
+                        "ink-primary": "#1A1A18",
+                        "on-primary-container": "#c4daff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "secondary-fixed": "#e4e2dd",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1a5fa8",
+                        "platinum": "#E5E4E2",
+                        "warning": "#8A5200",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#271900",
+                        "danger": "#8A1F1F",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "tertiary-fixed": "#ffdeaa",
+                        "bronze": "#CD7F32",
+                        "on-primary-fixed-variant": "#004786",
+                        "purple-mlm": "#4A3AB0",
+                        "on-secondary-fixed-variant": "#474743",
+                        "error": "#ba1a1a",
+                        "success": "#2E7D52",
+                        "on-secondary-fixed": "#1b1c19",
+                        "background": "#faf9f5",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "surface-tint": "#1a5fa8",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "silver": "#C0C0C0",
+                        "surface-variant": "#e3e2df",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "surface": "#FFFFFF",
+                        "surface-container-high": "#e9e8e4",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-bright": "#faf9f5",
+                        "primary": "#004786",
+                        "on-primary-fixed": "#001c3a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#efeeea",
+                        "surface-container-low": "#f5f4f0",
+                        "tertiary": "#5e4100",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "outline-variant": "#c2c6d3",
+                        "on-background": "#1b1c1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "tile-height-min": "80px",
+                        "margin-page": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "touch-target-min": "56px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-container {
+            position: relative;
+            height: 240px;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .mobile-sidebar-hidden { transform: translateX(-100%); transition: transform 0.3s ease; }
+            .mobile-sidebar-visible { transform: translateX(0); transition: transform 0.3s ease; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Mobile Navigation Trigger (Hidden on Desktop) -->
+<div class="lg:hidden fixed top-0 left-0 right-0 h-touch-target-min bg-surface border-b border-border z-[60] flex items-center px-4 justify-between">
+<button class="p-2 text-primary" id="mobile-menu-toggle">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-primary font-black">Precision Salon</h1>
+<div class="h-8 w-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="Manager" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClqBnVdOTipLj1jo0fhuvRCWDTo94nfT9LazG-RpaFO-G-IMX2u3jSL_jygSt8uDLstk6uMJAnI3-zdJT6H_oZHeu-ExIS-gH7qtlr61Q_pU4yfBnsiO9pxYpwkGI0DD2Vr3MgoXZLPt3NTytWsRQEpM57XAr1Tlgyn2T8Zwh-N9QuLXMPOgv3M-Kwg98bgMuYIjhLo1bSB_pzZnk0nlx_RMWtGw-QyYrqp_bWdgfARc4doBBMWoZMAB0HbKqKNeelvLfv_agN0C5X"/>
+</div>
+</div>
+<!-- Persistent Sync Banner -->
+<div class="hidden h-8 w-full flex items-center justify-center bg-primary-container text-white font-label-md text-label-md fixed top-0 z-[70]" id="sync-banner">
+<span class="material-symbols-outlined text-sm mr-2">sync</span>
+        SYNCING DATA...
+    </div>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 z-50 bg-surface-container-low border-r border-border flex flex-col py-stack-lg px-stack-md mobile-sidebar-hidden lg:translate-x-0 transition-transform duration-300" id="sidebar">
+<div class="mb-stack-lg px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-white overflow-hidden shrink-0">
+<img alt="Salon Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHdjF0v_69EXq26Do7gufZ36UziR3glf-SXsqhUyIUNKIN61glUVqgFnX16t8DXD562bmCn4CG4iS5iYKZX2RzoLOyT8QGoMvr8BvNmR1eWGxhGOm3OTSch230cOyKDfWtEKvtDgxiqFRYuzOv6uLEOGM9UJkzx36T_JtwXyG7bW3Ry3RGabyXyYk1zzAWwxuU6KCqKokkfObl2ncat-ShgK0tyW2zLP8TFQUy80m2oXpfal8-YA-CIcS9t_qrUVjKYD276cxb-4-c"/>
+</div>
+<div class="overflow-hidden">
+<h1 class="font-headline-md text-headline-md text-primary font-black leading-tight truncate">Precision Salon</h1>
+<p class="font-label-md text-label-md text-on-secondary-container opacity-70">Admin Backend</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Members</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span>MLM/Affiliate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span>Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span>Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-stack-lg space-y-1">
+<button class="w-full h-touch-target-min bg-primary text-white rounded-lg font-bold flex items-center justify-center gap-2 mb-4 active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+                Quick Order
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-secondary-container/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Overlay for mobile sidebar -->
+<div class="fixed inset-0 bg-black/50 z-[45] hidden lg:hidden" id="sidebar-overlay"></div>
+<!-- Main Wrapper -->
+<main class="lg:pl-64 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="hidden lg:flex fixed top-0 right-0 left-64 z-40 bg-surface border-b border-border h-touch-target-min px-margin-page justify-between items-center">
+<div class="flex items-center gap-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Dashboard</h2>
+<div class="h-6 w-px bg-border"></div>
+<div class="flex items-center text-on-secondary-container">
+<span class="material-symbols-outlined text-sm mr-1">store</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Outlet: Mid Valley</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<input class="h-10 pl-10 pr-4 rounded-lg border-border bg-surface-container-low focus:ring-primary focus:border-primary text-body-sm w-64 transition-all" placeholder="Search transactions..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-secondary-container opacity-60">search</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-variant overflow-hidden cursor-pointer">
+<img alt="Manager Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClqBnVdOTipLj1jo0fhuvRCWDTo94nfT9LazG-RpaFO-G-IMX2u3jSL_jygSt8uDLstk6uMJAnI3-zdJT6H_oZHeu-ExIS-gH7qtlr61Q_pU4yfBnsiO9pxYpwkGI0DD2Vr3MgoXZLPt3NTytWsRQEpM57XAr1Tlgyn2T8Zwh-N9QuLXMPOgv3M-Kwg98bgMuYIjhLo1bSB_pzZnk0nlx_RMWtGw-QyYrqp_bWdgfARc4doBBMWoZMAB0HbKqKNeelvLfv_agN0C5X"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="mt-touch-target-min p-margin-page space-y-stack-lg max-w-[1600px] mx-auto w-full">
+<!-- Mobile Outlet Context (Visible only on mobile) -->
+<div class="lg:hidden flex items-center justify-between mb-2">
+<div class="flex items-center text-on-secondary-container">
+<span class="material-symbols-outlined text-sm mr-1">store</span>
+<span class="font-label-md text-label-md uppercase font-bold">Outlet: Mid Valley</span>
+</div>
+<button class="text-primary font-bold text-label-md">Change</button>
+</div>
+<!-- Summary Stats (Top Row) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Revenue Card -->
+<div class="bg-surface p-stack-md rounded-lg border border-border flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-secondary-container">Today's Revenue</p>
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div class="mt-4">
+<p class="font-headline-lg text-headline-lg font-black text-ink-primary">RM 4,285.50</p>
+<div class="flex items-center gap-1 mt-2 text-success">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm">+12.5% vs yesterday</span>
+</div>
+</div>
+</div>
+<!-- Appointments Card -->
+<div class="bg-surface p-stack-md rounded-lg border border-border flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-secondary-container">Total Appointments</p>
+<span class="material-symbols-outlined text-primary">event_available</span>
+</div>
+<div class="mt-4">
+<p class="font-headline-lg text-headline-lg font-black text-ink-primary">24</p>
+<div class="flex items-center gap-1 mt-2 text-success">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm">8 slots remaining</span>
+</div>
+</div>
+</div>
+<!-- Members Card -->
+<div class="bg-surface p-stack-md rounded-lg border border-border flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-secondary-container">New Members</p>
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<div class="mt-4">
+<p class="font-headline-lg text-headline-lg font-black text-ink-primary">12</p>
+<div class="flex items-center gap-1 mt-2 text-warning">
+<span class="material-symbols-outlined text-sm">trending_flat</span>
+<span class="font-label-sm text-label-sm">Stable acquisition</span>
+</div>
+</div>
+</div>
+<!-- On-Hold Card -->
+<div class="bg-surface p-stack-md rounded-lg border border-border flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-secondary-container">On-Hold Orders</p>
+<span class="material-symbols-outlined text-danger">pause_circle</span>
+</div>
+<div class="mt-4">
+<p class="font-headline-lg text-headline-lg font-black text-ink-primary">03</p>
+<div class="flex items-center gap-1 mt-2 text-danger">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span class="font-label-sm text-label-sm">Requires attention</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Compliance Row -->
+<div class="bg-surface border border-border rounded-lg p-stack-md flex flex-col md:flex-row items-center justify-between gap-stack-md">
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="p-2 bg-surface-container rounded-lg shrink-0">
+<img alt="LHDN MyInvois" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByeei9w8bdMP_thzCPisUoLzCLCpR8qX_FnT78dHrIkrWbg-hbPi-k0bJ83jS8mDFknml-JMB2LGun-A8xKZESLi1OgpkU8zuROnkg7g7LF0rYIez1VlE-6AVI43jqnQhBx1s3ujlfVq2B_CoabH1yd6t0PZvF2Zaa0p5Ittxnx8iSftnjwc9D1VSKZ8v53Csj89hBN-owb4smw1UgEtC131HjwKnFNiMK9-uTJmA6D1SwRlL7QXGXTHTIooZ9IVQQKME0hPCV0WtS"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-ink-primary text-lg md:text-xl">LHDN MyInvois Compliance</h3>
+<p class="font-body-sm text-body-sm text-on-secondary-container hidden sm:block">Real-time e-invoice status for today.</p>
+</div>
+</div>
+<div class="flex gap-4 md:gap-stack-lg w-full md:w-auto justify-between md:justify-end">
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-secondary-container mb-1 uppercase tracking-tight scale-90 sm:scale-100">Accepted</span>
+<div class="px-3 py-1 sm:px-4 sm:py-2 bg-success/10 text-success rounded-lg font-black text-headline-md border border-success/20">18</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-secondary-container mb-1 uppercase tracking-tight scale-90 sm:scale-100">Pending</span>
+<div class="px-3 py-1 sm:px-4 sm:py-2 bg-warning/10 text-warning rounded-lg font-black text-headline-md border border-warning/20">04</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-secondary-container mb-1 uppercase tracking-tight scale-90 sm:scale-100">Rejected</span>
+<div class="px-3 py-1 sm:px-4 sm:py-2 bg-danger/10 text-danger rounded-lg font-black text-headline-md border border-danger/20">01</div>
+</div>
+</div>
+<button class="w-full md:w-auto outline outline-1 outline-border px-6 h-10 rounded-lg font-bold text-primary hover:bg-surface-container-low transition-colors">
+                    Re-sync All
+                </button>
+</div>
+<!-- Charts & Operations -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Revenue Trends (Large Chart) -->
+<div class="col-span-12 xl:col-span-8 bg-surface border border-border rounded-lg p-stack-md overflow-hidden">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-stack-md gap-4">
+<h3 class="font-headline-md text-headline-md text-ink-primary">Revenue Trends</h3>
+<div class="flex bg-surface-container-low p-1 rounded-lg w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-4 py-1.5 bg-surface rounded shadow-sm font-label-md text-label-md text-primary font-bold">Weekly</button>
+<button class="flex-1 sm:flex-none px-4 py-1.5 font-label-md text-label-md text-on-secondary-container">Monthly</button>
+</div>
+</div>
+<div class="chart-container flex items-end justify-between px-2 sm:px-4 pb-6 border-b border-border overflow-x-auto min-w-[300px]">
+<!-- Bar chart with responsive scaling -->
+<div class="flex-1 flex items-end justify-between gap-2 px-1">
+<div class="w-full max-w-[48px] bg-primary/20 rounded-t-sm relative group cursor-pointer" style="height: 40%;"></div>
+<div class="w-full max-w-[48px] bg-primary/20 rounded-t-sm relative group cursor-pointer" style="height: 55%;"></div>
+<div class="w-full max-w-[48px] bg-primary/20 rounded-t-sm relative group cursor-pointer" style="height: 35%;"></div>
+<div class="w-full max-w-[48px] bg-primary/20 rounded-t-sm relative group cursor-pointer" style="height: 70%;"></div>
+<div class="w-full max-w-[48px] bg-primary/20 rounded-t-sm relative group cursor-pointer" style="height: 85%;"></div>
+<div class="w-full max-w-[48px] bg-primary-container rounded-t-sm relative group cursor-pointer" style="height: 95%;"></div>
+<div class="w-full max-w-[48px] bg-primary/20 rounded-t-sm relative group cursor-pointer" style="height: 60%;"></div>
+</div>
+</div>
+<div class="flex justify-between px-4 mt-2 font-label-sm text-label-sm text-on-secondary-container overflow-x-auto min-w-[300px]">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span class="font-bold text-primary">Sat</span><span>Sun</span>
+</div>
+</div>
+<!-- Sales Mix -->
+<div class="col-span-12 md:col-span-6 xl:col-span-4 bg-surface border border-border rounded-lg p-stack-md flex flex-col shadow-sm">
+<h3 class="font-headline-md text-headline-md text-ink-primary mb-stack-md">Sales Mix</h3>
+<div class="flex-1 flex flex-col items-center justify-center py-4">
+<div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-[12px] sm:border-[16px] border-primary-container relative">
+<div class="absolute inset-0 rounded-full border-[12px] sm:border-[16px] border-secondary-fixed border-t-transparent border-r-transparent -rotate-45"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-label-sm text-label-sm opacity-60 uppercase text-[10px]">Total</span>
+<span class="font-headline-md text-headline-md font-black">100%</span>
+</div>
+</div>
+<div class="mt-6 w-full space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="font-body-sm text-body-sm">Services</span>
+</div>
+<span class="font-label-md text-label-md font-bold">72%</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed"></div>
+<span class="font-body-sm text-body-sm">Products</span>
+</div>
+<span class="font-label-md text-label-md font-bold">28%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Today's Schedule (Table) -->
+<div class="col-span-12 md:col-span-12 xl:col-span-8 bg-surface border border-border rounded-lg overflow-hidden shadow-sm flex flex-col">
+<div class="p-stack-md border-b border-border flex justify-between items-center bg-surface">
+<h3 class="font-headline-md text-headline-md text-ink-primary">Upcoming Appointments</h3>
+<a class="text-primary font-bold font-label-md text-label-md hover:underline" href="#">View All</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full min-w-[600px]">
+<thead class="bg-surface-container-low border-b border-border">
+<tr>
+<th class="px-4 py-3 text-left font-label-md text-label-md text-on-secondary-container">Time</th>
+<th class="px-4 py-3 text-left font-label-md text-label-md text-on-secondary-container">Customer</th>
+<th class="px-4 py-3 text-left font-label-md text-label-md text-on-secondary-container">Service</th>
+<th class="px-4 py-3 text-left font-label-md text-label-md text-on-secondary-container">Stylist</th>
+<th class="px-4 py-3 text-right font-label-md text-label-md text-on-secondary-container">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 font-label-md text-label-md">14:30</td>
+<td class="px-4 py-3 font-body-sm text-body-sm font-bold">Sarah Jenkins</td>
+<td class="px-4 py-3 font-body-sm text-body-sm">Color &amp; Balayage</td>
+<td class="px-4 py-3 font-body-sm text-body-sm">Marcus K.</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-block px-2 py-1 bg-primary/10 text-primary rounded font-label-sm text-label-sm font-bold">Confirmed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 font-label-md text-label-md">15:00</td>
+<td class="px-4 py-3 font-body-sm text-body-sm font-bold">Ahmad Rizal</td>
+<td class="px-4 py-3 font-body-sm text-body-sm">Executive Cut</td>
+<td class="px-4 py-3 font-body-sm text-body-sm">Jenny L.</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-block px-2 py-1 bg-warning/10 text-warning rounded font-label-sm text-label-sm font-bold">Arriving</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 font-label-md text-label-md">15:15</td>
+<td class="px-4 py-3 font-body-sm text-body-sm font-bold">Michelle Yeoh</td>
+<td class="px-4 py-3 font-body-sm text-body-sm">Keratin Treatment</td>
+<td class="px-4 py-3 font-body-sm text-body-sm">Marcus K.</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-block px-2 py-1 bg-secondary-container/50 text-on-secondary-container rounded font-label-sm text-label-sm font-bold">On Hold</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Inventory Alerts (Sidebar Column) -->
+<div class="col-span-12 md:col-span-6 xl:col-span-4 bg-surface border border-border rounded-lg p-stack-md shadow-sm">
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="font-headline-md text-headline-md text-ink-primary">Inventory Alerts</h3>
+<span class="px-2 py-1 bg-danger text-white rounded font-label-sm text-label-sm">3 Critical</span>
+</div>
+<div class="space-y-3">
+<div class="p-3 border border-border rounded-lg flex items-center gap-3 bg-surface-container-lowest">
+<div class="w-10 h-10 bg-error-container/20 rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-danger">inventory</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-body-sm text-body-sm font-bold truncate">Serioxyl Denser Hair</p>
+<div class="flex justify-between mt-1">
+<span class="font-label-sm text-label-sm text-danger font-bold">2 units left</span>
+<span class="font-label-sm text-label-sm text-on-secondary-container">Min: 5</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-danger h-full" style="width: 20%;"></div>
+</div>
+</div>
+</div>
+<div class="p-3 border border-border rounded-lg flex items-center gap-3 bg-surface-container-lowest">
+<div class="w-10 h-10 bg-error-container/20 rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-danger">inventory</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-body-sm text-body-sm font-bold truncate">Kerastase Elixir</p>
+<div class="flex justify-between mt-1">
+<span class="font-label-sm text-label-sm text-danger font-bold">1 units left</span>
+<span class="font-label-sm text-label-sm text-on-secondary-container">Min: 4</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-danger h-full" style="width: 15%;"></div>
+</div>
+</div>
+</div>
+<button class="w-full h-10 mt-2 border border-primary text-primary font-bold text-label-md rounded-lg hover:bg-primary/5 transition-colors">
+                            Create Purchase Order
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const syncBanner = document.getElementById('sync-banner');
+
+            // Responsive Sidebar Toggle
+            function toggleSidebar() {
+                sidebar.classList.toggle('mobile-sidebar-hidden');
+                sidebar.classList.toggle('mobile-sidebar-visible');
+                overlay.classList.toggle('hidden');
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleSidebar);
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', toggleSidebar);
+            }
+
+            // Mock sync visual interaction
+            window.triggerSync = function() {
+                syncBanner.classList.remove('hidden');
+                setTimeout(() => {
+                    syncBanner.classList.add('hidden');
+                }, 2000);
+            }
+
+            // Smooth scroll for cards on mobile touch
+            const tables = document.querySelectorAll('.overflow-x-auto');
+            tables.forEach(table => {
+                table.style.webkitOverflowScrolling = 'touch';
+            });
+        });
+    </script>
+</body></html>

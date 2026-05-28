@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Marketing Toolkit | SalonPortal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#5f5f5a",
+                        "primary-container": "#1a5fa8",
+                        "surface-tint": "#1a5fa8",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#424751",
+                        "on-secondary-fixed-variant": "#474743",
+                        "on-primary-container": "#c4daff",
+                        "outline-variant": "#c2c6d3",
+                        "platinum": "#E5E4E2",
+                        "on-background": "#1b1c1a",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-fixed": "#271900",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f5f4f0",
+                        "silver": "#C0C0C0",
+                        "outline": "#727782",
+                        "surface-bright": "#faf9f5",
+                        "border": "#E2E1DC",
+                        "on-surface": "#1b1c1a",
+                        "tertiary-container": "#7d5700",
+                        "tertiary": "#5e4100",
+                        "inverse-primary": "#a6c8ff",
+                        "warning": "#8A5200",
+                        "on-tertiary-container": "#ffd184",
+                        "ink-primary": "#1A1A18",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "primary": "#004786",
+                        "surface-dim": "#dbdad6",
+                        "on-primary-fixed-variant": "#004786",
+                        "tertiary-fixed": "#ffdeaa",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#efeeea",
+                        "on-secondary-fixed": "#1b1c19",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "surface": "#FFFFFF",
+                        "surface-variant": "#e3e2df",
+                        "secondary-container": "#dcdad5",
+                        "on-error-container": "#93000a",
+                        "success": "#2E7D52",
+                        "surface-container-high": "#e9e8e4",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "bronze": "#CD7F32",
+                        "danger": "#8A1F1F",
+                        "inverse-surface": "#30312e",
+                        "error-container": "#ffdad6",
+                        "background": "#faf9f5",
+                        "purple-mlm": "#4A3AB0",
+                        "secondary-fixed": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "surface-container-highest": "#e3e2df",
+                        "on-primary-fixed": "#001c3a",
+                        "on-secondary-container": "#5f5f5b",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "gutter": "16px",
+                        "touch-target-min": "56px",
+                        "tile-height-min": "80px",
+                        "margin-page": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E2E1DC; border-radius: 10px; }
+        .active-nav-bg { background-color: #1a5fa8; color: #ffffff; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-hidden h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed w-full h-16 border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center px-gutter sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">SalonPortal</span>
+</div>
+<div class="flex-1 max-w-xl mx-8 hidden md:block">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full cursor-pointer active:opacity-80" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full cursor-pointer active:opacity-80" data-icon="settings">settings</button>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXRqWqgQ5rezVV03WRYF4Ul5FpP7JXlq0OFkOsHEf80jfS9JCf5Qx8cRVF6ZyYkHT-e6IKB-SQVozVcQXwhVYPQ2SplTa7HoV9GQc1WZkUlZzqb6oZ2eT2erBvLuym4E1ouGZcLjnnND75X8ZCBWtEZrTAWAlR7tKCOPE0Ndj991DO8saG3XyqXURLKDFm-2rfggtZfTya0xcH0ZhJQcB8Qohqm2ZDK7zwk91O0NkMHDaLgwjoEdnkqza4Dd7_eLoWaw50DNDZpRX0"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-surface-container-lowest text-primary dark:text-primary-fixed h-screen w-64 flex flex-col border-r border-outline-variant dark:border-outline flat no shadows fixed left-0 top-0 pt-20 p-stack-md z-40">
+<div class="flex items-center gap-3 mb-stack-lg px-2">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Main Branch</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Premium Tier</span>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span>Book</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Wallet</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span>Affiliate Hub</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md text-error" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 overflow-y-auto custom-scrollbar bg-background p-margin-page">
+<div class="max-w-6xl mx-auto space-y-stack-lg pb-12">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-outline-variant pb-stack-md">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-purple-mlm/10 text-purple-mlm px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Affiliate Pro</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-ink-primary">Marketing Toolkit</h1>
+<p class="text-body-md text-on-surface-variant max-w-2xl mt-1">
+                            Empower your influence. Use these professionally designed assets and tracked links to share SalonPortal with your network and earn commissions.
+                        </p>
+</div>
+<div class="flex gap-3">
+<div class="bg-surface p-4 rounded-xl border border-outline-variant flex items-center gap-4 min-w-[200px]">
+<div class="bg-success/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-success" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Top Asset</p>
+<p class="font-bold text-body-md text-ink-primary">IG Story V.2</p>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg">
+<!-- Left Column: Tooling -->
+<div class="lg:col-span-2 space-y-stack-lg">
+<!-- Link Builder -->
+<div class="bg-surface rounded-xl border border-outline-variant p-stack-lg">
+<div class="flex items-center gap-3 mb-stack-md">
+<span class="material-symbols-outlined text-purple-mlm" data-icon="link">link</span>
+<h3 class="font-headline-md text-headline-md">Campaign Link Builder</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md mb-stack-md">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Select Destination</label>
+<select class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:border-primary outline-none appearance-none">
+<option>Home Page (General)</option>
+<option>Hair Care Services</option>
+<option>Premium Spa Membership</option>
+<option>Retail Products Shop</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Source / Campaign (Optional)</label>
+<input class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:border-primary outline-none" placeholder="e.g. instagram_bio" type="text"/>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-3 items-center bg-surface-container-low p-4 rounded-lg border border-outline-variant border-dashed">
+<code class="flex-1 font-label-md text-label-md text-primary truncate">https://salonportal.my/ref?id=A8821&amp;dest=hair_care&amp;utm=ig_bio</code>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg flex items-center gap-2 font-bold transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="content_copy">content_copy</span>
+                                    Copy Link
+                                </button>
+</div>
+</div>
+<!-- Creatives Grid -->
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-purple-mlm" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md">Shareable Creatives</h3>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container border border-outline-variant rounded-full text-label-sm font-bold text-on-surface">All</button>
+<button class="px-3 py-1 hover:bg-surface-container transition-colors rounded-full text-label-sm font-medium text-on-surface-variant">Instagram</button>
+<button class="px-3 py-1 hover:bg-surface-container transition-colors rounded-full text-label-sm font-medium text-on-surface-variant">Banners</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Creative Card 1 -->
+<div class="group bg-surface rounded-xl border border-outline-variant overflow-hidden hover:border-purple-mlm transition-all duration-300">
+<div class="relative aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Professional salon interior with soft, high-key lighting. Modern hair styling equipment is arranged neatly against a clean white and blue background. The overall aesthetic is minimalist, corporate, and extremely professional, aligning with a high-end business tool theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKntz2Yu1oXeFnNMLG57k1CrxulakAyxN9ACDA7UoUOrXNdAlKGvve_yRlqCWZeMwpO5gw2NHMWaAPiBUKycwCLlIE-aKSr6o-UeVu-wh4-n_IL6GZmXqUggK_OGw2aahc6VUY-_7mCwteETdg8NX2qDetSHq5wWHrrzZXC76hD7qVlpljflB8agpedbruRZDdWdr0lFdtYGv0reOBDYkVapBhSTcSMMYMogdufDXUma7XS4dQ2gUE_lm96srWicRCP70IIKNAUlBR"/>
+<div class="absolute inset-0 bg-ink-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+<button class="w-10 h-10 rounded-full bg-white text-ink-primary flex items-center justify-center hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-container transition-colors"><span class="material-symbols-outlined" data-icon="download">download</span></button>
+</div>
+</div>
+<div class="p-3">
+<p class="font-bold text-body-sm">Modern Service Square</p>
+<p class="text-label-sm text-on-surface-variant">1080 x 1080px</p>
+</div>
+</div>
+<!-- Creative Card 2 -->
+<div class="group bg-surface rounded-xl border border-outline-variant overflow-hidden hover:border-purple-mlm transition-all duration-300">
+<div class="relative aspect-[9/16] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, vertical social media template featuring a high-quality close-up of a professional haircut. The lighting is bright and clear, emphasizing texture and detail. The color scheme is a sophisticated blend of white, soft greys, and corporate blue accents. The design feels sharp, modern, and utilitarian." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPVepYP13RadY94vHW_322LhRsh-o654XPZ_8h0htbQfZvLBqf_NXTIdJUCVOkgun9K7rD-fvQxY399KTg9PsomDnqfNfXlmRWRqHfVDgZd6_QoIMNJ4Z8SR5D0JiLw-w6tYlgwc_TfJehs4jRyPPgC9oZqS_SpWelWPUu7QXbgzqOpI9Z6DL4U1tShpCdTOsF54qZsYXWnCgyna_9I8Z17SWbviTls-A7wwe_iQzIBe3Bgsst4ZveiFW1obiktfpYmYo_sO7s3ASa"/>
+<div class="absolute inset-0 bg-ink-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+<button class="w-10 h-10 rounded-full bg-white text-ink-primary flex items-center justify-center hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-container transition-colors"><span class="material-symbols-outlined" data-icon="download">download</span></button>
+</div>
+</div>
+<div class="p-3">
+<p class="font-bold text-body-sm">Promo Story Template</p>
+<p class="text-label-sm text-on-surface-variant">1080 x 1920px</p>
+</div>
+</div>
+<!-- Creative Card 3 -->
+<div class="group bg-surface rounded-xl border border-outline-variant overflow-hidden hover:border-purple-mlm transition-all duration-300">
+<div class="relative aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A macro shot of premium hair styling products arranged in a clean, grid-like composition on a white marble surface. The lighting is soft and ambient, creating a high-end spa aesthetic. Dominant colors include professional navy blue and clean white, conveying a sense of quality and business reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAePOMbWX7GwZDut888Txi2lShnfCGAkq6c7qQ_RVr68J8t9jGpQXiqEYAKeZ6_aN4UYKOgWupdJdxaZ63h_Ws9zsR2UO8YtRRDcjZapGlzmlkLoWx6xU-x8c485q73dmb8FkJG84YjFvzwk6hRYqzDHKPRNhTLivAzFV4n053CUubi3iDV1N8f0oJLqY5D1zMAqdVCAwqi3Wwy8Qvv7v_HvOhqyNojO_pFBB4ZHAvZglRqeK7O3PIAhJzM1ox4n2DkrGO_TT8NGQwy"/>
+<div class="absolute inset-0 bg-ink-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+<button class="w-10 h-10 rounded-full bg-white text-ink-primary flex items-center justify-center hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-container transition-colors"><span class="material-symbols-outlined" data-icon="download">download</span></button>
+</div>
+</div>
+<div class="p-3">
+<p class="font-bold text-body-sm">Product Focus Tile</p>
+<p class="text-label-sm text-on-surface-variant">1080 x 1080px</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Swipe Files & Stats -->
+<div class="space-y-stack-lg">
+<!-- Best Performing Sidebar -->
+<div class="bg-primary-container text-on-primary-container p-stack-lg rounded-xl shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-label-md text-label-md opacity-80 mb-4 uppercase tracking-wider">Performance Insight</h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[32px]" data-icon="stars">stars</span>
+<div>
+<p class="text-body-sm opacity-90">Best Performing Link</p>
+<p class="font-bold text-body-lg">/dest=hair_care</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-label-sm bg-white/20 px-2 py-0.5 rounded">128 Clicks</span>
+<span class="text-label-sm bg-white/20 px-2 py-0.5 rounded">12% Conv.</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-white/10">
+<p class="text-label-sm opacity-80">Recommendation:</p>
+<p class="text-body-sm mt-1 italic leading-relaxed">"Hair care links are converting 3x faster this month. Use 'Modern Square V.2' for best results."</p>
+</div>
+</div>
+</div>
+<!-- Background Decor -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Promotional Copy (Swipe Files) -->
+<div class="bg-surface rounded-xl border border-outline-variant p-stack-lg flex flex-col h-[500px]">
+<div class="flex items-center gap-3 mb-stack-md">
+<span class="material-symbols-outlined text-purple-mlm" data-icon="chat">chat</span>
+<h3 class="font-headline-md text-headline-md">Promotional Copy</h3>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar space-y-4 pr-2">
+<!-- Swipe File 1 -->
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-bold text-on-surface-variant">WhatsApp / Personal</span>
+<button class="text-primary material-symbols-outlined hover:scale-110 transition-transform" data-icon="content_copy">content_copy</button>
+</div>
+<p class="text-body-sm leading-relaxed">
+                                        "Hey! Just had the best experience at SalonPortal. Their new branch is amazing. If you're looking for a change, check them out here: [LINK]"
+                                    </p>
+</div>
+<!-- Swipe File 2 -->
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-bold text-on-surface-variant">Instagram / Story</span>
+<button class="text-primary material-symbols-outlined hover:scale-110 transition-transform" data-icon="content_copy">content_copy</button>
+</div>
+<p class="text-body-sm leading-relaxed italic">
+                                        "Treat yourself! ✨ Use my referral link to book your next hair appointment at SalonPortal and we both get a bonus reward. 💇‍♀️ Link in bio!"
+                                    </p>
+</div>
+<!-- Swipe File 3 -->
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-bold text-on-surface-variant">Facebook / Group</span>
+<button class="text-primary material-symbols-outlined hover:scale-110 transition-transform" data-icon="content_copy">content_copy</button>
+</div>
+<p class="text-body-sm leading-relaxed">
+                                        "Found a salon that actually gets it right every time. Highly recommend SalonPortal for their premium service and professional atmosphere. Link for booking: [LINK]"
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-highest text-primary dark:text-primary-fixed w-full py-stack-lg border-t border-outline-variant dark:border-outline flat no shadows z-50">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-page w-full">
+<div class="flex flex-col items-center md:items-start mb-4 md:mb-0">
+<span class="font-label-md text-label-md font-bold text-on-surface">SalonPortal</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 SalonPortal Malaysia. All rights reserved.</p>
+</div>
+<div class="flex gap-stack-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Refund Policy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the Copy Buttons
+        document.querySelectorAll('[data-icon="content_copy"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalIcon = this.innerHTML;
+                this.innerHTML = 'check';
+                this.classList.add('text-success');
+                setTimeout(() => {
+                    this.innerHTML = originalIcon;
+                    this.classList.remove('text-success');
+                }, 2000);
+            });
+        });
+
+        // Destination selector change mock logic
+        const select = document.querySelector('select');
+        const codeElement = document.querySelector('code');
+        select.addEventListener('change', (e) => {
+            const val = e.target.value.toLowerCase().split(' ')[0];
+            codeElement.innerText = `https://salonportal.my/ref?id=A8821&dest=${val}&utm=marketing_toolkit`;
+        });
+    </script>
+</body></html>

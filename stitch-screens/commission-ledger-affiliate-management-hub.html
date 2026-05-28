@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Commission Ledger | Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#7d5700",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e3e2df",
+                        "surface": "#FFFFFF",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dbdad6",
+                        "surface-container-high": "#e9e8e4",
+                        "secondary": "#5f5f5a",
+                        "purple-mlm": "#4A3AB0",
+                        "background": "#faf9f5",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-secondary": "#ffffff",
+                        "success": "#2E7D52",
+                        "secondary-container": "#dcdad5",
+                        "surface-tint": "#1a5fa8",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#004786",
+                        "inverse-primary": "#a6c8ff",
+                        "warning": "#8A5200",
+                        "platinum": "#E5E4E2",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary-container": "#5f5f5b",
+                        "outline-variant": "#c2c6d3",
+                        "border": "#E2E1DC",
+                        "on-error": "#ffffff",
+                        "bronze": "#CD7F32",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "surface-variant": "#e3e2df",
+                        "on-background": "#1b1c1a",
+                        "surface-container": "#efeeea",
+                        "primary-container": "#1a5fa8",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#004786",
+                        "outline": "#727782",
+                        "tertiary": "#5e4100",
+                        "surface-bright": "#faf9f5",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-tertiary-container": "#ffd184",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#1b1c19",
+                        "silver": "#C0C0C0",
+                        "on-primary-fixed": "#001c3a",
+                        "surface-container-low": "#f5f4f0",
+                        "on-primary-container": "#c4daff",
+                        "secondary-fixed": "#e4e2dd",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f1ed",
+                        "primary-fixed": "#d4e3ff",
+                        "on-surface-variant": "#424751",
+                        "on-surface": "#1b1c1a",
+                        "ink-primary": "#1A1A18",
+                        "danger": "#8A1F1F",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#474743"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "touch-target-min": "56px",
+                        "tile-height-min": "80px",
+                        "margin-page": "24px",
+                        "stack-lg": "24px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-sm": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #faf9f5; color: #1b1c1a; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e1dc; border-radius: 10px; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid #E2E1DC; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface border-r border-border dark:border-outline flex flex-col py-margin-page z-40">
+<div class="px-gutter mb-stack-lg">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Precision Salon OS</h1>
+<p class="text-label-sm text-on-surface-variant">Admin Portal</p>
+</div>
+<nav class="flex-1 px-stack-sm space-y-1">
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-medium">Bookings</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium">Members</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-primary-fixed-variant bg-primary-fixed rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-medium">MLM/Affiliate</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-medium">Marketing</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-medium">Staff</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter py-stack-md text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface border-b border-border flex items-center justify-between px-gutter z-30">
+<div class="flex items-center gap-stack-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-sm" placeholder="Search orders, members, or IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border text-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                Bangsar Outlet
+            </button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all active:scale-95 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-sm">
+                AD
+            </div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-margin-page h-[calc(100vh-64px)] overflow-y-auto">
+<!-- Header & Description -->
+<div class="mb-stack-lg">
+<h2 class="text-headline-lg font-headline-lg text-ink-primary">Commission Ledger</h2>
+<p class="text-body-md text-on-surface-variant">Detailed audit of all affiliate commissions earned across the network.</p>
+</div>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg">
+<div class="bg-surface p-stack-lg rounded-xl border border-border shadow-sm flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div>
+<span class="text-label-md uppercase tracking-wider text-on-surface-variant">Total Commissions (Pending)</span>
+<div class="text-display-lg font-headline-lg text-warning mt-1">RM 12,450.00</div>
+</div>
+<div class="flex items-center gap-2 mt-4 text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">info</span>
+                    Awaiting verification cycle
+                </div>
+</div>
+<div class="bg-surface p-stack-lg rounded-xl border border-border shadow-sm flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div>
+<span class="text-label-md uppercase tracking-wider text-on-surface-variant">Total Commissions (Confirmed)</span>
+<div class="text-display-lg font-headline-lg text-success mt-1">RM 45,820.50</div>
+</div>
+<div class="flex items-center gap-2 mt-4 text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Verified &amp; ready for settlement
+                </div>
+</div>
+<div class="bg-primary text-white p-stack-lg rounded-xl border border-primary shadow-lg flex flex-col justify-between group overflow-hidden relative">
+<div class="relative z-10">
+<span class="text-label-md uppercase tracking-wider opacity-80">Ready for Payout</span>
+<div class="text-display-lg font-headline-lg mt-1">RM 8,940.00</div>
+</div>
+<button class="relative z-10 w-full mt-4 bg-white text-primary font-bold py-2 rounded-lg text-label-md transition-transform active:scale-[0.98]">
+                    Initiate Batch Payout
+                </button>
+<div class="absolute -right-4 -bottom-4 text-white opacity-10 scale-150 transform">
+<span class="material-symbols-outlined text-9xl">payments</span>
+</div>
+</div>
+</div>
+<!-- Filters & Table Controls -->
+<div class="bg-surface border border-border rounded-xl shadow-sm mb-stack-md p-stack-md flex flex-wrap items-center gap-stack-md">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">person_search</span>
+<input class="w-full h-11 pl-10 pr-4 border border-border rounded-lg text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Search by Member or ID" type="text"/>
+</div>
+<div class="flex gap-2">
+<select class="h-11 px-4 border border-border rounded-lg text-body-sm focus:border-primary outline-none bg-surface min-w-[140px]">
+<option value="">All Statuses</option>
+<option>Pending</option>
+<option>Confirmed</option>
+<option>Paid</option>
+<option>Reversed</option>
+</select>
+<select class="h-11 px-4 border border-border rounded-lg text-body-sm focus:border-primary outline-none bg-surface min-w-[100px]">
+<option value="">All Levels</option>
+<option>L1</option>
+<option>L2</option>
+<option>L3</option>
+</select>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">calendar_month</span>
+<input class="h-11 pl-10 pr-4 border border-border rounded-lg text-body-sm bg-surface-container-low cursor-pointer w-48" readonly="" type="text" value="Oct 01 - Oct 31, 2023"/>
+</div>
+</div>
+<div class="h-8 w-px bg-border mx-2"></div>
+<button class="h-11 px-4 text-on-surface-variant hover:bg-surface-container-high rounded-lg flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-lg">file_download</span>
+<span class="text-label-md">Export</span>
+</button>
+</div>
+<!-- Ledger Table -->
+<div class="bg-surface border border-border rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full border-collapse text-left">
+<thead>
+<tr class="bg-surface-container-low border-b border-border">
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant">ID / Ref</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant">Date</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant">Beneficiary</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant">Source Member</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant">Level</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant text-right">Sales (RM)</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant text-center">Rate</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant text-right">Earned (RM)</th>
+<th class="px-gutter py-4 text-label-sm uppercase font-semibold text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-gutter py-4 font-label-md text-primary font-medium">#ORD-90211</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">2023-10-24</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="font-bold text-body-md text-ink-primary">Sarah Tan</span>
+<span class="text-label-sm text-on-surface-variant uppercase">Diamond Director</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Ahmad Firdaus</td>
+<td class="px-gutter py-4">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded text-label-sm font-bold">L1</span>
+</td>
+<td class="px-gutter py-4 text-right font-label-md">1,250.00</td>
+<td class="px-gutter py-4 text-center font-label-md text-on-surface-variant">10%</td>
+<td class="px-gutter py-4 text-right font-label-md text-primary font-bold">125.00</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-green-100 text-success">
+                                    Confirmed
+                                </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-gutter py-4 font-label-md text-primary font-medium">#ORD-90208</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">2023-10-24</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="font-bold text-body-md text-ink-primary">Michelle Yeoh</span>
+<span class="text-label-sm text-on-surface-variant uppercase">Platinum Member</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Jessica Lee</td>
+<td class="px-gutter py-4">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-label-sm font-bold">L2</span>
+</td>
+<td class="px-gutter py-4 text-right font-label-md">800.00</td>
+<td class="px-gutter py-4 text-center font-label-md text-on-surface-variant">5%</td>
+<td class="px-gutter py-4 text-right font-label-md text-primary font-bold">40.00</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-amber-100 text-warning">
+                                    Pending
+                                </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-gutter py-4 font-label-md text-primary font-medium">#ORD-90195</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">2023-10-23</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="font-bold text-body-md text-ink-primary">Kevin Lim</span>
+<span class="text-label-sm text-on-surface-variant uppercase">Gold Affiliate</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Sam Chen</td>
+<td class="px-gutter py-4">
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded text-label-sm font-bold">L3</span>
+</td>
+<td class="px-gutter py-4 text-right font-label-md">2,100.00</td>
+<td class="px-gutter py-4 text-center font-label-md text-on-surface-variant">2.5%</td>
+<td class="px-gutter py-4 text-right font-label-md text-primary font-bold">52.50</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-blue-100 text-primary">
+                                    Paid
+                                </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-gutter py-4 font-label-md text-primary font-medium">#ORD-90182</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">2023-10-22</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="font-bold text-body-md text-ink-primary">Sarah Tan</span>
+<span class="text-label-sm text-on-surface-variant uppercase">Diamond Director</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Lily Wang</td>
+<td class="px-gutter py-4">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded text-label-sm font-bold">L1</span>
+</td>
+<td class="px-gutter py-4 text-right font-label-md">500.00</td>
+<td class="px-gutter py-4 text-center font-label-md text-on-surface-variant">10%</td>
+<td class="px-gutter py-4 text-right font-label-md text-danger font-bold">-50.00</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-red-100 text-danger">
+                                    Reversed
+                                </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-gutter py-4 font-label-md text-primary font-medium">#ORD-90175</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">2023-10-22</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="font-bold text-body-md text-ink-primary">David Chong</span>
+<span class="text-label-sm text-on-surface-variant uppercase">Director</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-sm text-on-surface-variant">Eric Ng</td>
+<td class="px-gutter py-4">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded text-label-sm font-bold">L1</span>
+</td>
+<td class="px-gutter py-4 text-right font-label-md">3,400.00</td>
+<td class="px-gutter py-4 text-center font-label-md text-on-surface-variant">10%</td>
+<td class="px-gutter py-4 text-right font-label-md text-primary font-bold">340.00</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-green-100 text-success">
+                                    Confirmed
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-gutter py-4 bg-surface-container-low flex items-center justify-between border-t border-border">
+<span class="text-body-sm text-on-surface-variant">Showing 1-5 of 128 commissions</span>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors">26</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual Toast Layer -->
+<div class="fixed bottom-margin-page right-margin-page bg-inverse-surface text-inverse-on-surface px-stack-lg py-stack-md rounded-lg shadow-xl translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 z-50" id="toast">
+<span class="material-symbols-outlined text-success">check_circle</span>
+<span class="text-body-md font-medium">Batch payout initialized successfully.</span>
+</div>
+<script>
+        // Micro-interaction for the payout button
+        const payoutBtn = document.querySelector('button.bg-white.text-primary');
+        const toast = document.getElementById('toast');
+
+        payoutBtn.addEventListener('click', () => {
+            payoutBtn.disabled = true;
+            payoutBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">sync</span> Processing...';
+            
+            setTimeout(() => {
+                payoutBtn.innerHTML = 'Batch Payout Successful';
+                payoutBtn.classList.remove('text-primary');
+                payoutBtn.classList.add('text-success');
+                
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                    payoutBtn.innerHTML = 'Initiate Batch Payout';
+                    payoutBtn.classList.add('text-primary');
+                    payoutBtn.classList.remove('text-success');
+                    payoutBtn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+
+        // Search highlight effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

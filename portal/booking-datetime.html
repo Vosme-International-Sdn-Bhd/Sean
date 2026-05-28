@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GlowPOS Salon - Book Appointment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1b1c1a",
+                    "surface": "#FFFFFF",
+                    "inverse-surface": "#30312e",
+                    "platinum": "#E5E4E2",
+                    "on-error-container": "#93000a",
+                    "silver": "#C0C0C0",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#faf9f5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "on-secondary-container": "#5f5f5b",
+                    "inverse-primary": "#a6c8ff",
+                    "danger": "#8A1F1F",
+                    "surface-container-highest": "#e3e2df",
+                    "on-error": "#ffffff",
+                    "tertiary": "#5e4100",
+                    "on-tertiary-fixed": "#271900",
+                    "on-surface-variant": "#424751",
+                    "background": "#faf9f5",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdeaa",
+                    "warning": "#8A5200",
+                    "tertiary-container": "#7d5700",
+                    "on-tertiary-container": "#ffd184",
+                    "outline": "#727782",
+                    "success": "#2E7D52",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "secondary-fixed": "#e4e2dd",
+                    "primary-fixed": "#d4e3ff",
+                    "secondary": "#5f5f5a",
+                    "surface-container-high": "#e9e8e4",
+                    "surface-container-low": "#f5f4f0",
+                    "outline-variant": "#c2c6d3",
+                    "surface-tint": "#1a5fa8",
+                    "ink-primary": "#1A1A18",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "purple-mlm": "#4A3AB0",
+                    "on-secondary-fixed": "#1b1c19",
+                    "primary": "#004786",
+                    "on-primary-fixed": "#001c3a",
+                    "on-primary-fixed-variant": "#004786",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#dcdad5",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "border": "#E2E1DC",
+                    "primary-container": "#1a5fa8",
+                    "on-secondary-fixed-variant": "#474743",
+                    "surface-dim": "#dbdad6",
+                    "on-primary-container": "#c4daff",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "bronze": "#CD7F32",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "surface-variant": "#e3e2df",
+                    "on-surface": "#1b1c1a",
+                    "surface-container": "#efeeea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "56px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "tile-height-min": "80px",
+                    "stack-sm": "8px",
+                    "margin-page": "24px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Libre Franklin"],
+                    "body-md": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"],
+                    "display-lg": ["Libre Franklin"],
+                    "body-lg": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-day {
+            box-shadow: inset 0 0 0 2px #004786;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-gutter h-touch-target-min bg-surface dark:bg-background border-b border-border dark:border-outline-variant sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">GlowPOS Salon</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container-high transition-colors rounded-full">wifi</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container-high transition-colors rounded-full">sync</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container-high transition-colors rounded-full">settings</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden h-[calc(100vh-56px)]">
+<!-- Left Panel: Navigation & Calendar -->
+<div class="flex-1 flex flex-col border-r border-border bg-surface overflow-y-auto">
+<!-- Progress Stepper -->
+<div class="px-margin-page py-stack-lg border-b border-border bg-surface-container-lowest">
+<nav class="flex items-center justify-between max-w-2xl mx-auto">
+<!-- Step 1: Complete -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-success text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="text-label-sm font-label-sm text-success">Service</span>
+</div>
+<div class="flex-1 h-0.5 bg-success mx-4"></div>
+<!-- Step 2: Complete -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-success text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="text-label-sm font-label-sm text-success">Stylist</span>
+</div>
+<div class="flex-1 h-0.5 bg-primary mx-4"></div>
+<!-- Step 3: Active -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center ring-4 ring-primary-fixed">
+<span class="text-label-md font-label-md">03</span>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold">Schedule</span>
+</div>
+<div class="flex-1 h-0.5 bg-surface-container-highest mx-4"></div>
+<!-- Step 4: Pending -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-secondary flex items-center justify-center">
+<span class="text-label-md font-label-md">04</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Review</span>
+</div>
+</nav>
+</div>
+<!-- Interaction Canvas -->
+<div class="p-margin-page space-y-stack-lg">
+<div class="flex flex-col lg:flex-row gap-stack-lg">
+<!-- Calendar Section -->
+<section class="flex-1">
+<div class="flex items-center justify-between mb-stack-md">
+<h2 class="text-headline-sm font-headline-md text-ink-primary">Select Date</h2>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors border border-border">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="text-body-md font-bold px-4">October 2024</span>
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors border border-border">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Mini Calendar Grid -->
+<div class="grid grid-cols-7 gap-1 text-center bg-surface-container-low p-4 rounded-xl border border-border">
+<!-- Weekdays -->
+<div class="text-label-sm font-label-sm text-secondary pb-2">SU</div>
+<div class="text-label-sm font-label-sm text-secondary pb-2">MO</div>
+<div class="text-label-sm font-label-sm text-secondary pb-2">TU</div>
+<div class="text-label-sm font-label-sm text-secondary pb-2">WE</div>
+<div class="text-label-sm font-label-sm text-secondary pb-2">TH</div>
+<div class="text-label-sm font-label-sm text-secondary pb-2">FR</div>
+<div class="text-label-sm font-label-sm text-secondary pb-2">SA</div>
+<!-- Calendar Days (Mocked for Oct 2024) -->
+<!-- Oct 1 starts on Tuesday -->
+<div class="aspect-square flex items-center justify-center text-outline-variant">29</div>
+<div class="aspect-square flex items-center justify-center text-outline-variant">30</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">1</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">2</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">3</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">4</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">5</div>
+<!-- ... middle days ... -->
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">...</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">21</div>
+<!-- Active Selected Day Oct 24 -->
+<div class="aspect-square flex items-center justify-center bg-primary text-on-primary rounded-lg font-bold shadow-md transform scale-110">24</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">25</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">26</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">27</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">28</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">29</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">30</div>
+<div class="aspect-square flex items-center justify-center hover:bg-surface-container-highest cursor-pointer rounded-lg text-on-surface">31</div>
+</div>
+</section>
+<!-- Time Slots Section -->
+<section class="flex-[1.5] space-y-stack-md">
+<h2 class="text-headline-sm font-headline-md text-ink-primary">Available Slots</h2>
+<!-- Morning -->
+<div class="space-y-stack-sm">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]">light_mode</span>
+<span class="text-label-md font-label-md uppercase tracking-wider">Morning</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all">09:00 AM</button>
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all">10:00 AM</button>
+<button class="h-14 bg-primary text-on-primary rounded-lg flex items-center justify-center text-body-md font-bold shadow-lg ring-2 ring-primary ring-offset-2">11:00 AM</button>
+</div>
+</div>
+<!-- Afternoon -->
+<div class="space-y-stack-sm">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]">sunny</span>
+<span class="text-label-md font-label-md uppercase tracking-wider">Afternoon</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all">01:00 PM</button>
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all">02:30 PM</button>
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all">04:00 PM</button>
+</div>
+</div>
+<!-- Evening -->
+<div class="space-y-stack-sm">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]">dark_mode</span>
+<span class="text-label-md font-label-md uppercase tracking-wider">Evening</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all">06:00 PM</button>
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all opacity-40 cursor-not-allowed bg-surface-container" disabled="">07:00 PM</button>
+<button class="h-14 border border-border rounded-lg flex items-center justify-center text-body-md hover:bg-surface-container transition-all">08:00 PM</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Right Panel: Order Summary -->
+<aside class="w-full md:w-[380px] bg-surface-container-low border-l border-border flex flex-col">
+<div class="p-margin-page flex-1 space-y-stack-lg">
+<h3 class="text-headline-sm font-headline-md text-ink-primary border-b border-border pb-stack-sm">Booking Summary</h3>
+<div class="space-y-stack-md">
+<!-- Service Detail -->
+<div class="flex gap-4 p-4 bg-surface rounded-xl border border-border">
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<div class="flex-1">
+<p class="text-label-sm font-label-sm text-secondary uppercase">Service</p>
+<p class="text-body-md font-bold">Classic Manicure</p>
+<p class="text-label-md font-label-md text-primary">RM 65.00</p>
+</div>
+</div>
+<!-- Stylist Detail -->
+<div class="flex gap-4 p-4 bg-surface rounded-xl border border-border">
+<img alt="Elena K." class="w-12 h-12 rounded-full object-cover border border-border" data-alt="A professional close-up portrait of a skilled female salon stylist with a friendly and warm expression. She has neatly styled dark hair and is wearing a clean, minimalist professional black salon uniform. The background is a soft-focus high-end modern salon interior with warm ambient lighting and sleek architectural lines, emphasizing a premium professional environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPpm1KrhPPyyFygWFAlawLfR3DyeJjGnbdJiGD4UwNVGF-EsJRGo7-ZVT2LZGF71D-of4xUQ_cGi6g7kstHZ8lg0WviFfdxcgetNz5u2bRYV-wrJ89D6BoZuPhnooiE5HE9Qw6zdx5cuy5xRL3P87X_ITq3LeL9upql55rfFPnrts007rAqnTeMxKXsC05b49hE1yePMLoQoeR1SytVYQbXmnI3Qz3rbTDYiAcNRZmvwhorGBttZOfHMvRBMIAwRy225ehMY-pAkDv"/>
+<div class="flex-1">
+<p class="text-label-sm font-label-sm text-secondary uppercase">Stylist</p>
+<p class="text-body-md font-bold">Elena K.</p>
+<p class="text-body-sm font-body-sm text-success flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9 (120+ reviews)
+                            </p>
+</div>
+</div>
+<!-- Selected Schedule -->
+<div class="p-4 bg-primary-container text-on-primary-container rounded-xl border border-primary/20 shadow-sm">
+<p class="text-label-sm font-label-sm uppercase opacity-80 mb-2">Selected Time</p>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-body-lg font-bold">Tue, Oct 24</span>
+<span class="text-body-md">11:00 AM</span>
+</div>
+<span class="material-symbols-outlined text-display-lg opacity-20">calendar_month</span>
+</div>
+</div>
+</div>
+<div class="pt-stack-lg border-t border-border mt-auto">
+<div class="flex justify-between items-center mb-stack-md">
+<span class="text-body-md text-secondary">Total Estimate</span>
+<span class="text-headline-sm font-headline-md text-ink-primary">RM 65.00</span>
+</div>
+</div>
+</div>
+<!-- Persistent Footer CTA -->
+<div class="p-margin-page pt-0">
+<button class="w-full h-touch-target-min bg-primary text-on-primary font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container active:scale-[0.98] transition-all shadow-md">
+<span>Review Booking</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm font-label-sm text-secondary mt-4">
+                    No payment required until service completion.
+                </p>
+</div>
+</aside>
+</main>
+<!-- SideNavBar (Hidden on smaller viewports, persistent on desktop POS) -->
+<div class="hidden md:flex fixed left-0 top-0 bottom-0 w-[280px] bg-surface-container-low border-r border-border flex-col py-stack-lg z-40 transform -translate-x-full lg:translate-x-0 transition-transform">
+<div class="px-gutter mb-stack-lg">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">GlowPOS</span>
+<p class="text-label-sm font-label-sm text-secondary">Main Branch • Active</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-gutter py-3 mx-2 text-secondary hover:bg-secondary-container transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="text-label-md font-label-md">POS Home</span>
+</a>
+<a class="flex items-center gap-4 px-gutter py-3 mx-2 bg-primary-container text-on-primary-container rounded-lg shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</a>
+<a class="flex items-center gap-4 px-gutter py-3 mx-2 text-secondary hover:bg-secondary-container transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Members</span>
+</a>
+<a class="flex items-center gap-4 px-gutter py-3 mx-2 text-secondary hover:bg-secondary-container transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-md font-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-4 px-gutter py-3 mx-2 text-secondary hover:bg-secondary-container transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-4 px-gutter py-3 mx-2 text-secondary hover:bg-secondary-container transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-gutter border-t border-border pt-stack-lg">
+<div class="flex items-center gap-3">
+<img alt="Salon Manager Profile" class="w-10 h-10 rounded-full border border-border" data-alt="A portrait of a confident male salon manager in a sleek, charcoal grey business shirt. He has a professional and approachable demeanor, standing in a brightly lit, high-end commercial office space with soft-focus glass partitions and warm wood accents in the background. The lighting is crisp and modern, reflecting a premium business-tool aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIkcxG752hBzZi6IWJVUM-FXEeSrgsiikaqJtsuKnNBnRqceRyr73YdjWa9YfN2tf7r0EpR1nNGh2TmE8Fuv3QLSWdqVa06TercmFJjjgjp5d51-qyI35k0PS1qInJvh8ajLA6-V2e9IDXaXaWt5MSlfEYSI-VO9-Z6Mqd7PhkI8aZ9DeL0B3HWqjwHf3wsYboMaxhZt4NJmpapWLy1VA4Mq7TloTS2AjfCN5o5PibGFXHuOmkDgNxfLKWE6CfAiEDCJeSrw3HpgVZ"/>
+<div class="flex-col">
+<p class="text-label-md font-label-md font-bold">Admin User</p>
+<p class="text-label-sm font-label-sm text-secondary">Salon Manager</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Responsive Layout Adjustment -->
+<style>
+        @media (min-width: 1024px) {
+            body { padding-left: 280px; }
+            header { width: calc(100% - 280px); left: 280px; }
+        }
+    </style>
+<script>
+        // Simple micro-interaction for time slot selection
+        const timeButtons = document.querySelectorAll('button.h-14:not([disabled])');
+        timeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                timeButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary', 'shadow-lg', 'ring-2', 'ring-primary', 'ring-offset-2', 'font-bold');
+                    b.classList.add('border', 'border-border', 'text-body-md');
+                });
+                btn.classList.add('bg-primary', 'text-on-primary', 'shadow-lg', 'ring-2', 'ring-primary', 'ring-offset-2', 'font-bold');
+                btn.classList.remove('border', 'border-border', 'text-body-md');
+            });
+        });
+    </script>
+</body></html>

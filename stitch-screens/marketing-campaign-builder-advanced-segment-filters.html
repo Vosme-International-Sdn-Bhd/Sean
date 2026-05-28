@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Marketing Campaign Builder - Elite Salon Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E2E1DC; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c2c6d3; }
+        .transition-active { transition: all 150px ease-in-out; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "bronze": "#CD7F32",
+                        "on-error-container": "#93000a",
+                        "warning": "#8A5200",
+                        "platinum": "#E5E4E2",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary-container": "#5f5f5b",
+                        "outline-variant": "#c2c6d3",
+                        "border": "#E2E1DC",
+                        "primary-container": "#1a5fa8",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#004786",
+                        "outline": "#727782",
+                        "tertiary": "#5e4100",
+                        "surface-bright": "#faf9f5",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "surface-variant": "#e3e2df",
+                        "on-background": "#1b1c1a",
+                        "surface-container": "#efeeea",
+                        "on-primary-fixed": "#001c3a",
+                        "surface-container-low": "#f5f4f0",
+                        "on-primary-container": "#c4daff",
+                        "secondary-fixed": "#e4e2dd",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f1ed",
+                        "primary-fixed": "#d4e3ff",
+                        "on-surface-variant": "#424751",
+                        "on-tertiary-container": "#ffd184",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#1b1c19",
+                        "silver": "#C0C0C0",
+                        "on-secondary-fixed-variant": "#474743",
+                        "on-surface": "#1b1c1a",
+                        "ink-primary": "#1A1A18",
+                        "danger": "#8A1F1F",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dbdad6",
+                        "surface-container-high": "#e9e8e4",
+                        "secondary": "#5f5f5a",
+                        "tertiary-container": "#7d5700",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e3e2df",
+                        "surface": "#FFFFFF",
+                        "purple-mlm": "#4A3AB0",
+                        "background": "#faf9f5",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-secondary": "#ffffff",
+                        "success": "#2E7D52",
+                        "surface-tint": "#1a5fa8",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#004786",
+                        "inverse-primary": "#a6c8ff",
+                        "secondary-container": "#dcdad5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "tile-height-min": "80px",
+                        "margin-page": "24px",
+                        "stack-lg": "24px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "touch-target-min": "56px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-sm": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Persistent Sync Banner -->
+<div class="hidden h-8 w-full bg-primary flex items-center justify-center text-white font-label-sm uppercase tracking-widest z-50" id="sync-banner">
+<span class="material-symbols-outlined text-sm mr-2">sync</span>
+        Synchronizing Marketing Data...
+    </div>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface dark:bg-surface-container border-r border-border dark:border-outline-variant flex flex-col z-40">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Elite Salon Admin</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">HQ Management</p>
+</div>
+<nav class="flex-1 px-3 space-y-1 overflow-y-auto">
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">calendar_month</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">shopping_cart</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-label-md text-label-md">Members</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">account_tree</span>
+<span class="font-label-md text-label-md">MLM/Affiliate</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg bg-primary-container text-on-primary-container border-l-4 border-primary scale-98 transition-transform duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="font-label-md text-label-md">Marketing</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border dark:border-outline-variant space-y-1">
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+<span class="font-label-md text-label-md">Help Support</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-danger">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-surface dark:bg-surface-container-low border-b border-border dark:border-outline-variant flex justify-between items-center px-6 z-30">
+<div class="flex items-center space-x-4">
+<span class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary-fixed">SalonPOS Pro</span>
+<div class="h-6 w-px bg-border mx-2"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Marketing Campaign Builder</span>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-2 text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm">store</span>
+<span class="font-label-sm text-label-sm">Outlet: Central Mall</span>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">sync</span></button>
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 h-2 w-2 bg-danger rounded-full"></span>
+</button>
+<img alt="Manager Avatar" class="h-10 w-10 rounded-full border border-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGGgLEykRGd5oX0Odx3p80VK9rYRe1TyAV1ZvDhIQOsBXKBdc-qQjjmiUu4CVUe_QdvJzSuDZduPPeSsGVEiXWwbi5Uk039-_7WAZG7tx760nBaSHUk-9cRVHZ_1V4DDX7-fUWs9M6Su2M7oX_c2a5Ra2GbQ0QCmEUDQnaiQw2JG9N8HmBK-N0IedQAcoejZxqaGuZx7Yo_6066K9FdDtywK8bvNeKcKPy_5aiGiGkgUB22Xe1wkWQ78EiuxNbDNFoZD8Y6tFIVBLE"/>
+</div>
+</div>
+</header>
+<!-- Main Content Grid -->
+<main class="ml-64 mt-16 h-[calc(100vh-64px)] overflow-hidden flex">
+<!-- Left Pane: Audience Segments -->
+<section class="w-[340px] xl:w-[400px] border-r border-border bg-surface-container-low flex flex-col">
+<div class="p-6 border-b border-border bg-surface">
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Target Audience</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Define who receives this message</p>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Segment Type Toggle -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Segment Type</label>
+<div class="flex p-1 bg-surface-container rounded-lg border border-border">
+<button class="flex-1 py-2 px-3 rounded-md bg-surface shadow-sm text-primary font-label-md text-sm border border-primary/20">Dynamic</button>
+<button class="flex-1 py-2 px-3 rounded-md text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-sm">Static List</button>
+</div>
+<p class="text-[10px] text-on-surface-variant italic">Dynamic segments auto-update based on real-time behavior.</p>
+</div>
+<div class="border-t border-border/50 pt-6 space-y-6">
+<!-- Membership Tier -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Membership Tier</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center p-2 border border-primary bg-primary-container/10 rounded-lg cursor-pointer">
+<input checked="" class="rounded border-primary text-primary focus:ring-primary mr-2 h-4 w-4" type="checkbox"/>
+<span class="text-label-sm font-medium text-primary">Platinum</span>
+</label>
+<label class="flex items-center p-2 border border-border bg-surface rounded-lg cursor-pointer hover:border-primary transition-colors">
+<input checked="" class="rounded border-border text-primary focus:ring-primary mr-2 h-4 w-4" type="checkbox"/>
+<span class="text-label-sm font-medium">Gold</span>
+</label>
+<label class="flex items-center p-2 border border-border bg-surface rounded-lg cursor-pointer hover:border-primary transition-colors">
+<input class="rounded border-border text-primary focus:ring-primary mr-2 h-4 w-4" type="checkbox"/>
+<span class="text-label-sm font-medium">Silver</span>
+</label>
+<label class="flex items-center p-2 border border-border bg-surface rounded-lg cursor-pointer hover:border-primary transition-colors">
+<input class="rounded border-border text-primary focus:ring-primary mr-2 h-4 w-4" type="checkbox"/>
+<span class="text-label-sm font-medium">Bronze</span>
+</label>
+</div>
+</div>
+<!-- Visit Date Range -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Last Visit Date</label>
+<select class="w-full bg-surface border-border border rounded-lg h-11 px-3 focus:ring-2 focus:ring-primary focus:border-primary font-body-sm text-sm">
+<option>Last 30 days</option>
+<option selected="">Last 90 days</option>
+<option>Last 6 months</option>
+<option>Custom Date Range...</option>
+</select>
+</div>
+<!-- Spend Behavior -->
+<div class="space-y-4">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Spend Behavior</label>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Lifetime Spend: $500+</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" max="5000" min="0" step="100" type="range"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Avg Order Value: Any</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary/40" max="1000" min="0" step="50" type="range"/>
+</div>
+</div>
+<!-- Service Preference -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Service Preference</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-primary text-white rounded text-[10px] font-medium flex items-center">Haircut <span class="material-symbols-outlined text-xs ml-1">close</span></span>
+<span class="px-2 py-1 bg-primary text-white rounded text-[10px] font-medium flex items-center">Coloring <span class="material-symbols-outlined text-xs ml-1">close</span></span>
+<span class="px-2 py-1 border border-border bg-surface text-on-surface-variant rounded text-[10px] font-medium hover:border-primary cursor-pointer">+ Nails</span>
+<span class="px-2 py-1 border border-border bg-surface text-on-surface-variant rounded text-[10px] font-medium hover:border-primary cursor-pointer">+ Facial</span>
+</div>
+</div>
+<!-- Regular Stylist -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Regular Stylist</label>
+<select class="w-full bg-surface border-border border rounded-lg h-11 px-3 font-body-sm text-sm">
+<option>Any Stylist</option>
+<option>Elena Rossi</option>
+<option>Marcus Chen</option>
+<option>Sarah Johnson</option>
+</select>
+</div>
+<!-- Demographics -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Demographics</label>
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-sm">Birthday Month</span>
+<select class="bg-surface border-border border rounded-lg h-9 px-2 font-body-sm text-sm min-w-[140px]">
+<option>Select Month</option>
+<option>Current Month</option>
+<option>Next Month</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Segment Summary Widget -->
+<div class="bg-surface border border-border rounded-xl p-4 space-y-4">
+<h4 class="font-label-md text-xs text-on-surface uppercase tracking-widest border-b border-border pb-2">Segment Summary</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<p class="text-[10px] text-on-surface-variant uppercase">Retention</p>
+<p class="text-sm font-bold text-success">High (82%)</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] text-on-surface-variant uppercase">Top Service</p>
+<p class="text-sm font-bold">Hair Spa</p>
+</div>
+</div>
+<div class="pt-2">
+<p class="text-[10px] text-on-surface-variant uppercase mb-2">Age Distribution</p>
+<div class="flex h-2 rounded-full overflow-hidden bg-surface-container-high">
+<div class="bg-primary w-[35%]"></div>
+<div class="bg-primary-fixed-dim w-[45%]"></div>
+<div class="bg-surface-variant w-[20%]"></div>
+</div>
+<div class="flex justify-between text-[8px] mt-1 text-on-surface-variant">
+<span>18-24</span>
+<span>25-45</span>
+<span>46+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Reach Counter (Enhanced) -->
+<div class="p-6 bg-primary text-white border-t border-primary/20">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-sm opacity-80 uppercase tracking-widest font-bold">Estimated Reach</span>
+<span class="material-symbols-outlined text-xl">groups_3</span>
+</div>
+<div class="flex items-baseline space-x-2">
+<span class="font-display-lg text-4xl font-black">1,428</span>
+<span class="font-label-sm text-sm opacity-80">Customers</span>
+</div>
+<div class="mt-4">
+<div class="flex justify-between text-[10px] mb-1 opacity-90">
+<span>Database Penetration</span>
+<span>74%</span>
+</div>
+<div class="h-2 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-[74%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Center Pane: Composer -->
+<section class="flex-1 flex flex-col bg-surface">
+<div class="p-6 border-b border-border flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Compose Message</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Craft your content &amp; media</p>
+</div>
+<!-- Channel Toggle -->
+<div class="flex bg-surface-container rounded-xl p-1.5 border border-border">
+<button class="flex items-center px-4 py-2 rounded-lg bg-surface shadow-sm text-primary font-label-md">
+<span class="material-symbols-outlined mr-2 text-lg">chat</span> WhatsApp
+                    </button>
+<button class="flex items-center px-4 py-2 rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-2 text-lg">mail</span> Email
+                    </button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8 max-w-3xl mx-auto w-full space-y-8">
+<!-- Template Selection -->
+<div class="space-y-4">
+<label class="font-headline-sm text-lg font-bold">1. Select Template</label>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 border-2 border-primary rounded-xl bg-primary-container/5 cursor-pointer relative">
+<div class="absolute top-3 right-3 text-primary"><span class="material-symbols-outlined">check_circle</span></div>
+<h4 class="font-label-md text-primary mb-1">Promo Blast</h4>
+<p class="text-xs text-on-surface-variant">Direct sales template with CTA button.</p>
+</div>
+<div class="p-4 border border-border rounded-xl bg-surface hover:border-primary transition-colors cursor-pointer group">
+<h4 class="font-label-md text-on-surface mb-1 group-hover:text-primary">Loyalty Reward</h4>
+<p class="text-xs text-on-surface-variant">Dynamic points update for VIPs.</p>
+</div>
+</div>
+</div>
+<!-- Message Editor -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-lg font-bold">2. Message Content</label>
+<div class="flex space-x-2">
+<button class="px-2 py-1 bg-surface-container rounded font-label-sm text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors">{{name}}</button>
+<button class="px-2 py-1 bg-surface-container rounded font-label-sm text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors">{{last_service}}</button>
+<button class="px-2 py-1 bg-surface-container rounded font-label-sm text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors">{{discount}}</button>
+</div>
+</div>
+<textarea class="w-full h-48 p-4 border border-border rounded-xl font-body-md focus:ring-2 focus:ring-primary focus:border-primary resize-none" placeholder="Type your message here...">Hello {{name}}! It has been a while since your last {{last_service}}. We miss you! Enjoy 20% OFF your next visit. Use code: GLOW20. Book now!</textarea>
+<div class="flex justify-between items-center text-xs text-on-surface-variant px-1">
+<span>142/1024 characters</span>
+<span class="flex items-center text-success"><span class="material-symbols-outlined text-sm mr-1">verified</span> WhatsApp Verified Template</span>
+</div>
+</div>
+<!-- Media Upload -->
+<div class="space-y-4">
+<label class="font-headline-sm text-lg font-bold">3. Visual Media (Optional)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="h-12 w-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<p class="font-label-md text-on-surface">Click to upload or drag &amp; drop</p>
+<p class="text-xs text-on-surface-variant mt-1">Recommended size: 1200x628px (Max 5MB)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Preview & Schedule -->
+<section class="w-[380px] border-l border-border bg-surface-container-high flex flex-col">
+<div class="p-6 border-b border-border bg-surface/50">
+<h2 class="font-headline-md text-headline-md text-on-surface">Preview</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time mobile visualization</p>
+</div>
+<div class="flex-1 overflow-y-auto p-6 flex flex-col items-center">
+<!-- Phone Frame -->
+<div class="w-full max-w-[280px] aspect-[9/18.5] bg-black rounded-[2.5rem] p-3 shadow-2xl border-4 border-slate-800 relative">
+<div class="w-full h-full bg-[#E5DDD5] rounded-[2rem] overflow-hidden flex flex-col">
+<div class="bg-[#075E54] p-3 pt-6 flex items-center space-x-2">
+<span class="material-symbols-outlined text-white text-sm">arrow_back</span>
+<div class="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">spa</span>
+</div>
+<div class="flex-1">
+<p class="text-white text-[10px] font-bold leading-tight">Elite Salon &amp; Spa</p>
+<p class="text-white/70 text-[8px]">Online</p>
+</div>
+</div>
+<div class="flex-1 p-3 space-y-4 overflow-y-auto">
+<div class="flex justify-center">
+<span class="bg-[#D1E9F6] text-[8px] px-2 py-0.5 rounded shadow-sm text-on-surface-variant uppercase">Today</span>
+</div>
+<div class="bg-white p-1.5 rounded-lg rounded-tl-none shadow-sm max-w-[85%] relative">
+<div class="w-full aspect-video bg-surface-container rounded-sm overflow-hidden mb-1.5">
+<img alt="Salon Promo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUrFcIdTf1re5k7FtJ0WXvu3YZiZCEOh2e2IQyNRrtuZhrg1Vy82RBePrqEAPv2sTzMhA26BI_BOb3Nob6aFQTPkdOujHgWPLBth5TEgp_nxTd8j4rrQFVT7cIwA9c9lBfXaFQDfPmaxIKT72E6c4R6qP-GsGBU2kZJbF5UIBZH5hknm5-BELIaMkjAzMX4mGHghOkWrxEnVnZoL73sFSaahbPGq_qR7XhIm2qv8RyV6GWCv9SG4LePxO_61Sqc5nzMv5YHWBgwzmc"/>
+</div>
+<p class="text-[9px] text-on-surface leading-normal">
+                                    Hello Sarah! It has been a while since your last Hair Spa. We miss you! Enjoy 20% OFF your next visit. Use code: GLOW20. Book now!
+                                </p>
+<div class="flex justify-end mt-1">
+<span class="text-[7px] text-on-surface-variant">10:42 AM</span>
+<span class="material-symbols-outlined text-[10px] text-blue-400 ml-1" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+<div class="mt-2 pt-2 border-t border-border flex items-center justify-center text-blue-600 font-bold text-[9px] space-x-1">
+<span class="material-symbols-outlined text-[10px]">calendar_today</span>
+<span>Book Appointment</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scheduling Controls -->
+<div class="w-full mt-8 space-y-6">
+<div class="space-y-4 bg-surface p-4 rounded-xl border border-border">
+<label class="font-label-md text-label-md text-on-surface uppercase">Scheduling Options</label>
+<div class="space-y-2">
+<label class="flex items-center p-3 rounded-lg border border-primary bg-primary-container/5 cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary h-4 w-4" name="schedule" type="radio"/>
+<span class="ml-3 font-body-sm text-on-surface">Send Immediately</span>
+</label>
+<label class="flex items-center p-3 rounded-lg border border-border hover:border-primary transition-colors cursor-pointer group">
+<input class="text-primary focus:ring-primary h-4 w-4" name="schedule" type="radio"/>
+<span class="ml-3 font-body-sm text-on-surface-variant group-hover:text-on-surface">Schedule for later</span>
+</label>
+</div>
+</div>
+<button class="w-full h-14 bg-primary text-white rounded-xl font-headline-md shadow-lg shadow-primary/20 hover:scale-[0.98] transition-active active:opacity-90 flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span>Launch Campaign</span>
+</button>
+<button class="w-full py-3 text-on-surface-variant font-label-md hover:text-primary transition-colors">
+                        Save as Draft
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Success Modal -->
+<div class="hidden fixed inset-0 bg-ink-primary/40 backdrop-blur-sm z-[60] flex items-center justify-center p-6" id="success-modal">
+<div class="bg-surface w-full max-w-md rounded-2xl p-8 text-center shadow-2xl scale-95 animate-in fade-in zoom-in duration-300">
+<div class="h-20 w-20 bg-success/10 text-success rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Campaign Launched!</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Your WhatsApp blast to 1,428 customers has been queued and will start delivering shortly.</p>
+<div class="grid grid-cols-2 gap-4">
+<button class="py-3 border border-border rounded-xl font-label-md hover:bg-surface-container transition-colors">View Report</button>
+<button class="py-3 bg-primary text-white rounded-xl font-label-md shadow-lg shadow-primary/10" onclick="document.getElementById('success-modal').classList.add('hidden')">Got it</button>
+</div>
+</div>
+</div>
+<script>
+        // Micro-interaction for Launch Campaign
+        const launchBtn = document.querySelector('button.bg-primary');
+        const modal = document.getElementById('success-modal');
+        const syncBanner = document.getElementById('sync-banner');
+
+        launchBtn.addEventListener('click', () => {
+            if (launchBtn.disabled) return;
+            launchBtn.disabled = true;
+            const originalHTML = launchBtn.innerHTML;
+            launchBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span><span>Launching...</span>';
+            
+            syncBanner.classList.remove('hidden');
+            
+            setTimeout(() => {
+                modal.classList.remove('hidden');
+                launchBtn.disabled = false;
+                launchBtn.innerHTML = originalHTML;
+                syncBanner.classList.add('hidden');
+            }, 1800);
+        });
+    </script>
+</body></html>

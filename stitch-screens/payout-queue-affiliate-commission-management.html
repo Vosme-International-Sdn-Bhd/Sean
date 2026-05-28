@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payout Queue - SalonPOS Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#004786",
+                    "inverse-surface": "#30312e",
+                    "surface-variant": "#e3e2df",
+                    "purple-mlm": "#4A3AB0",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "tertiary": "#5e4100",
+                    "border": "#E2E1DC",
+                    "primary": "#004786",
+                    "warning": "#8A5200",
+                    "surface-container-highest": "#e3e2df",
+                    "surface-dim": "#dbdad6",
+                    "surface": "#FFFFFF",
+                    "tertiary-container": "#7d5700",
+                    "primary-fixed": "#d4e3ff",
+                    "on-tertiary-container": "#ffd184",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1a5fa8",
+                    "on-secondary-fixed-variant": "#474743",
+                    "surface-bright": "#faf9f5",
+                    "secondary-fixed": "#e4e2dd",
+                    "danger": "#8A1F1F",
+                    "surface-container": "#efeeea",
+                    "secondary": "#5f5f5a",
+                    "on-tertiary-fixed": "#271900",
+                    "outline": "#727782",
+                    "silver": "#C0C0C0",
+                    "on-secondary-fixed": "#1b1c19",
+                    "surface-container-high": "#e9e8e4",
+                    "on-error": "#ffffff",
+                    "ink-primary": "#1A1A18",
+                    "on-background": "#1b1c1a",
+                    "inverse-primary": "#a6c8ff",
+                    "on-primary-container": "#c4daff",
+                    "background": "#faf9f5",
+                    "surface-container-low": "#f5f4f0",
+                    "on-error-container": "#93000a",
+                    "bronze": "#CD7F32",
+                    "secondary-container": "#dcdad5",
+                    "surface-tint": "#1a5fa8",
+                    "success": "#2E7D52",
+                    "inverse-on-surface": "#f2f1ed",
+                    "tertiary-fixed": "#ffdeaa",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-surface-variant": "#424751",
+                    "on-surface": "#1b1c1a",
+                    "outline-variant": "#c2c6d3",
+                    "platinum": "#E5E4E2",
+                    "on-primary-fixed": "#001c3a",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#5f5f5b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Libre Franklin', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .row-expanded { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-border flex flex-col py-4 space-y-2 z-20">
+<div class="px-6 mb-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Precision Salon</h1>
+<p class="text-secondary text-sm font-body-sm">Admin Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">calendar_month</span>
+<span class="font-body-md text-body-md">Bookings</span>
+</a>
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">shopping_cart</span>
+<span class="font-body-md text-body-md">Orders</span>
+</a>
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-body-md text-body-md">Members</span>
+</a>
+<!-- ACTIVE: MLM/Affiliate -->
+<a class="flex items-center px-4 py-2 bg-primary-container text-on-primary-container font-semibold rounded-lg mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">account_tree</span>
+<span class="font-body-md text-body-md">MLM/Affiliate</span>
+</a>
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">campaign</span>
+<span class="font-body-md text-body-md">Marketing</span>
+</a>
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">badge</span>
+<span class="font-body-md text-body-md">Staff</span>
+</a>
+<a class="flex items-center px-4 py-2 text-secondary hover:bg-surface-container-low mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Header / TopNavBar (Shared Component) -->
+<header class="h-16 fixed top-0 right-0 left-64 z-10 bg-surface border-b border-border flex justify-between items-center px-6">
+<div class="flex items-center flex-1">
+<span class="font-headline-sm text-headline-sm font-bold text-ink-primary mr-8">SalonPOS Admin</span>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">search</span>
+<input class="w-full bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search members or transactions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex flex-col items-end">
+<span class="text-xs font-label-sm text-secondary uppercase tracking-wider">Outlet Selector</span>
+<span class="text-sm font-body-sm font-semibold">Central Mall</span>
+</div>
+<button class="relative">
+<span class="material-symbols-outlined text-secondary">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-danger rounded-full"></span>
+</button>
+<div class="flex items-center space-x-3 cursor-pointer">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border border-border">
+<img class="w-full h-full object-cover" data-alt="Close up professional headshot of a modern salon administrator with a warm and welcoming expression. The background is a blurred, high-end salon interior with soft, professional lighting. The overall color scheme is neutral with blue accents, conveying a clean, efficient, and corporate persona in a high-density workplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwEYz3A9N85uscSTkQUEUdXaOfoaTohQ12YxwP49O_O1yJrF7y2guQfPBsWiuiAx5kZHcQhHi27OelMwgfzH8wz1nZhXpQHqW8K_GKNogGI7INX7JWRzKz8ly7MLjcFMSvMSXNmg5BrOfAj5yjUQ4wvBtlCEkGzp_IBeakZaS8h0M5oDZoVY_zI5pxW5c2TNjD1hBH8RiVSYhjVThaGEOM3BqErtcQoIzhPH50RnQOqxVgOeL7A0LL2Plg9glNAsSkqKJJnWKnlKbp"/>
+</div>
+<span class="text-sm font-body-sm font-semibold">Admin Profile</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen bg-surface-container-low">
+<!-- Payout Queue Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-ink-primary">Payout Queue</h2>
+<p class="font-body-md text-body-md text-secondary mt-1">Review and process affiliate withdrawal requests and commission payouts.</p>
+</div>
+<div class="flex space-x-3">
+<button class="flex items-center px-4 py-2 border border-border rounded-lg bg-surface text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined mr-2 text-sm">download</span>
+<span class="font-label-md text-label-md">Export Bank CSV</span>
+</button>
+<button class="flex items-center px-6 py-2 bg-primary text-white rounded-lg opacity-50 cursor-not-allowed transition-all active:scale-95 shadow-sm" disabled="" id="batchApproveBtn">
+<span class="material-symbols-outlined mr-2">check_circle</span>
+<span class="font-label-md text-label-md">Batch Approve</span>
+</button>
+</div>
+</div>
+<!-- Stats Summary Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-surface p-6 rounded-xl border border-border shadow-sm flex items-center">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-secondary font-label-sm uppercase tracking-wide text-xs">Total Pending (RM)</p>
+<p class="font-headline-md text-headline-md text-ink-primary">RM 42,550.00</p>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-border shadow-sm flex items-center">
+<div class="w-12 h-12 rounded-lg bg-warning/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-warning">pending_actions</span>
+</div>
+<div>
+<p class="text-secondary font-label-sm uppercase tracking-wide text-xs">Requests Today</p>
+<p class="font-headline-md text-headline-md text-ink-primary">24 Requests</p>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-border shadow-sm flex items-center">
+<div class="w-12 h-12 rounded-lg bg-success/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-success">task_alt</span>
+</div>
+<div>
+<p class="text-secondary font-label-sm uppercase tracking-wide text-xs">Ready for Batch Payout</p>
+<p class="font-headline-md text-headline-md text-ink-primary">18 Verified</p>
+</div>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="bg-surface rounded-xl border border-border p-4 mb-6 flex flex-wrap items-center gap-4">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-label-sm text-secondary">STATUS:</span>
+<select class="bg-surface-container-low border border-border rounded-lg text-sm px-3 py-1.5 focus:ring-1 focus:ring-primary">
+<option>All Statuses</option>
+<option selected="">Pending Review</option>
+<option>Approved</option>
+<option>Rejected</option>
+</select>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-xs font-label-sm text-secondary">RANK:</span>
+<select class="bg-surface-container-low border border-border rounded-lg text-sm px-3 py-1.5 focus:ring-1 focus:ring-primary">
+<option>All Ranks</option>
+<option>Platinum</option>
+<option>Gold</option>
+<option>Silver</option>
+<option>Bronze</option>
+</select>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-xs font-label-sm text-secondary">DATE RANGE:</span>
+<div class="flex items-center bg-surface-container-low border border-border rounded-lg px-3 py-1.5 space-x-2">
+<span class="material-symbols-outlined text-secondary text-sm">calendar_today</span>
+<span class="text-sm">Oct 01 - Oct 14, 2023</span>
+</div>
+</div>
+<div class="ml-auto flex items-center text-secondary hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm mr-1">restart_alt</span>
+<span class="text-xs font-label-md uppercase tracking-wider">Reset Filters</span>
+</div>
+</div>
+<!-- Main Data Table -->
+<div class="bg-surface rounded-xl border border-border overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border">
+<th class="p-4 w-12 text-center">
+<input class="rounded border-border text-primary focus:ring-primary h-4 w-4" id="selectAll" type="checkbox"/>
+</th>
+<th class="p-4 font-label-sm text-secondary text-xs uppercase tracking-wider">Member Name/ID</th>
+<th class="p-4 font-label-sm text-secondary text-xs uppercase tracking-wider">Current Rank</th>
+<th class="p-4 font-label-sm text-secondary text-xs uppercase tracking-wider">Requested Amount</th>
+<th class="p-4 font-label-sm text-secondary text-xs uppercase tracking-wider">Bank Details</th>
+<th class="p-4 font-label-sm text-secondary text-xs uppercase tracking-wider">Request Date</th>
+<th class="p-4 font-label-sm text-secondary text-xs uppercase tracking-wider text-center">Status</th>
+<th class="p-4 font-label-sm text-secondary text-xs uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border/50">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group" onclick="toggleRow('details-1')">
+<td class="p-4 text-center" onclick="event.stopPropagation()">
+<input class="row-check rounded border-border text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim text-on-primary-fixed-variant flex items-center justify-center font-bold text-xs mr-3">SN</div>
+<div>
+<p class="font-body-md font-semibold text-ink-primary">Sarah Ng</p>
+<p class="text-xs font-label-sm text-secondary mono">AFF-98234</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-xs font-semibold">GOLD</span>
+</td>
+<td class="p-4">
+<p class="font-body-md font-bold text-ink-primary">RM 2,450.00</p>
+</td>
+<td class="p-4">
+<div class="text-xs">
+<p class="font-semibold text-ink-primary">Maybank Berhad</p>
+<p class="text-secondary mono">1642 9845 0092</p>
+</div>
+</td>
+<td class="p-4">
+<p class="text-sm font-body-sm text-ink-primary">Oct 12, 2023</p>
+<p class="text-xs text-secondary">02:30 PM</p>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning/10 text-warning">
+<span class="w-1.5 h-1.5 rounded-full bg-warning mr-1.5"></span>
+                                Pending
+                            </span>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-transform duration-300">expand_more</span>
+</td>
+</tr>
+<!-- Row 1 Details Expansion -->
+<tr class="hidden bg-surface-container-low transition-all" id="details-1">
+<td class="p-0 border-t border-border" colspan="8">
+<div class="p-6 grid grid-cols-4 gap-8">
+<div class="col-span-1">
+<h4 class="text-xs font-label-sm text-secondary uppercase tracking-widest mb-3">Verification Checks</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-sm text-success">
+<span class="material-symbols-outlined text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            ID Verified
+                                        </li>
+<li class="flex items-center text-sm text-success">
+<span class="material-symbols-outlined text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            Bank Linked (Maybank)
+                                        </li>
+<li class="flex items-center text-sm text-success">
+<span class="material-symbols-outlined text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            Min Balance Met
+                                        </li>
+</ul>
+</div>
+<div class="col-span-2">
+<h4 class="text-xs font-label-sm text-secondary uppercase tracking-widest mb-3">Commission Source Summary</h4>
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-surface p-3 rounded-lg border border-border">
+<p class="text-[10px] text-secondary">LEVEL 1 EARNINGS</p>
+<p class="font-bold text-sm text-ink-primary">RM 1,850.00</p>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-2">
+<div class="bg-primary h-1 rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="bg-surface p-3 rounded-lg border border-border">
+<p class="text-[10px] text-secondary">LEVEL 2 EARNINGS</p>
+<p class="font-bold text-sm text-ink-primary">RM 450.00</p>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-2">
+<div class="bg-primary h-1 rounded-full" style="width: 20%"></div>
+</div>
+</div>
+<div class="bg-surface p-3 rounded-lg border border-border">
+<p class="text-[10px] text-secondary">LEVEL 3 EARNINGS</p>
+<p class="font-bold text-sm text-ink-primary">RM 150.00</p>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-2">
+<div class="bg-primary h-1 rounded-full" style="width: 5%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 flex flex-col justify-end space-y-2">
+<button class="w-full py-2 bg-success text-white rounded-lg text-sm font-semibold hover:bg-success/90">Quick Approve</button>
+<button class="w-full py-2 border border-danger text-danger rounded-lg text-sm font-semibold hover:bg-danger/5">Decline Request</button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group" onclick="toggleRow('details-2')">
+<td class="p-4 text-center" onclick="event.stopPropagation()">
+<input class="row-check rounded border-border text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-on-primary-fixed-variant text-white flex items-center justify-center font-bold text-xs mr-3">JC</div>
+<div>
+<p class="font-body-md font-semibold text-ink-primary">Jason Chin</p>
+<p class="text-xs font-label-sm text-secondary mono">AFF-97112</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full bg-platinum text-on-secondary-fixed text-xs font-semibold">SILVER</span>
+</td>
+<td class="p-4">
+<p class="font-body-md font-bold text-ink-primary">RM 1,120.00</p>
+</td>
+<td class="p-4">
+<div class="text-xs">
+<p class="font-semibold text-ink-primary">CIMB Bank</p>
+<p class="text-secondary mono">7022 1190 3344</p>
+</div>
+</td>
+<td class="p-4">
+<p class="text-sm font-body-sm text-ink-primary">Oct 13, 2023</p>
+<p class="text-xs text-secondary">09:15 AM</p>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning/10 text-warning">
+<span class="w-1.5 h-1.5 rounded-full bg-warning mr-1.5"></span>
+                                Pending
+                            </span>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-transform duration-300">expand_more</span>
+</td>
+</tr>
+<tr class="hidden bg-surface-container-low transition-all" id="details-2">
+<td class="p-6" colspan="8">
+<div class="animate-pulse bg-surface-container-high h-24 rounded-lg"></div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group" onclick="toggleRow('details-3')">
+<td class="p-4 text-center" onclick="event.stopPropagation()">
+<input class="row-check rounded border-border text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-purple-mlm text-white flex items-center justify-center font-bold text-xs mr-3">WL</div>
+<div>
+<p class="font-body-md font-semibold text-ink-primary">Winnie Lim</p>
+<p class="text-xs font-label-sm text-secondary mono">AFF-99002</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-primary text-xs font-semibold uppercase">Platinum</span>
+</td>
+<td class="p-4">
+<p class="font-body-md font-bold text-ink-primary">RM 5,200.00</p>
+</td>
+<td class="p-4">
+<div class="text-xs">
+<p class="font-semibold text-ink-primary">Public Bank</p>
+<p class="text-secondary mono">4009 2211 4455</p>
+</div>
+</td>
+<td class="p-4">
+<p class="text-sm font-body-sm text-ink-primary">Oct 14, 2023</p>
+<p class="text-xs text-secondary">11:45 AM</p>
+</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning/10 text-warning">
+<span class="w-1.5 h-1.5 rounded-full bg-warning mr-1.5"></span>
+                                Pending Review
+                            </span>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-transform duration-300">expand_more</span>
+</td>
+</tr>
+<tr class="hidden bg-surface-container-low transition-all" id="details-3">
+<td class="p-6" colspan="8">
+<div class="animate-pulse bg-surface-container-high h-24 rounded-lg"></div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="p-4 bg-surface border-t border-border flex justify-between items-center">
+<p class="text-sm text-secondary">Showing <span class="font-semibold">1-3</span> of <span class="font-semibold">24</span> payout requests</p>
+<div class="flex space-x-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-border text-secondary hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white font-semibold text-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-border text-secondary hover:bg-surface-container-low">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-border text-secondary hover:bg-surface-container-low">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-border text-secondary hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay / Toast Implementation (Simple Vanilla JS) -->
+<div class="fixed bottom-8 right-8 bg-ink-primary text-white px-6 py-3 rounded-lg shadow-xl translate-y-20 opacity-0 transition-all duration-300 flex items-center z-50" id="toast">
+<span class="material-symbols-outlined mr-2 text-success">check_circle</span>
+<span id="toastMessage">Action successful</span>
+</div>
+<script>
+        // Row expansion logic
+        function toggleRow(id) {
+            const row = document.getElementById(id);
+            const icon = row.previousElementSibling.querySelector('.material-symbols-outlined:last-child');
+            
+            if (row.classList.contains('hidden')) {
+                row.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                row.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Selection & Bulk Action logic
+        const selectAll = document.getElementById('selectAll');
+        const checkboxes = document.querySelectorAll('.row-check');
+        const batchBtn = document.getElementById('batchApproveBtn');
+
+        selectAll.addEventListener('change', (e) => {
+            checkboxes.forEach(cb => {
+                cb.checked = e.target.checked;
+            });
+            updateBatchButton();
+        });
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateBatchButton);
+        });
+
+        function updateBatchButton() {
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            if (checkedCount > 0) {
+                batchBtn.disabled = false;
+                batchBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                batchBtn.innerHTML = `<span class="material-symbols-outlined mr-2">check_circle</span><span class="font-label-md text-label-md">Approve ${checkedCount} Selected</span>`;
+            } else {
+                batchBtn.disabled = true;
+                batchBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                batchBtn.innerHTML = `<span class="material-symbols-outlined mr-2">check_circle</span><span class="font-label-md text-label-md">Batch Approve</span>`;
+            }
+        }
+
+        // Action Trigger
+        batchBtn.addEventListener('click', () => {
+            showToast("Processing batch payout...");
+            setTimeout(() => {
+                showToast("18 Payouts successfully batched for bank transfer.");
+            }, 1500);
+        });
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const message = document.getElementById('toastMessage');
+            message.textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body></html>

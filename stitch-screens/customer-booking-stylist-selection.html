@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1b1c1a",
+                    "surface": "#FFFFFF",
+                    "inverse-surface": "#30312e",
+                    "platinum": "#E5E4E2",
+                    "on-error-container": "#93000a",
+                    "silver": "#C0C0C0",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#faf9f5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "on-secondary-container": "#5f5f5b",
+                    "inverse-primary": "#a6c8ff",
+                    "danger": "#8A1F1F",
+                    "surface-container-highest": "#e3e2df",
+                    "on-error": "#ffffff",
+                    "tertiary": "#5e4100",
+                    "on-tertiary-fixed": "#271900",
+                    "on-surface-variant": "#424751",
+                    "background": "#faf9f5",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdeaa",
+                    "warning": "#8A5200",
+                    "tertiary-container": "#7d5700",
+                    "on-tertiary-container": "#ffd184",
+                    "outline": "#727782",
+                    "success": "#2E7D52",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "secondary-fixed": "#e4e2dd",
+                    "primary-fixed": "#d4e3ff",
+                    "secondary": "#5f5f5a",
+                    "surface-container-high": "#e9e8e4",
+                    "surface-container-low": "#f5f4f0",
+                    "outline-variant": "#c2c6d3",
+                    "surface-tint": "#1a5fa8",
+                    "ink-primary": "#1A1A18",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "purple-mlm": "#4A3AB0",
+                    "on-secondary-fixed": "#1b1c19",
+                    "primary": "#004786",
+                    "on-primary-fixed": "#001c3a",
+                    "on-primary-fixed-variant": "#004786",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#dcdad5",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "border": "#E2E1DC",
+                    "primary-container": "#1a5fa8",
+                    "on-secondary-fixed-variant": "#474743",
+                    "surface-dim": "#dbdad6",
+                    "on-primary-container": "#c4daff",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "bronze": "#CD7F32",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "surface-variant": "#e3e2df",
+                    "on-surface": "#1b1c1a",
+                    "surface-container": "#efeeea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "56px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "tile-height-min": "80px",
+                    "stack-sm": "8px",
+                    "margin-page": "24px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Libre Franklin"],
+                    "body-md": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"],
+                    "display-lg": ["Libre Franklin"],
+                    "body-lg": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-complete { color: #2E7D52; }
+        .stylist-card-active { border: 2px solid #004786; background-color: #f0f7ff; }
+        .glass-panel { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.8); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar Shell -->
+<header class="bg-surface border-b border-border flex justify-between items-center w-full px-gutter h-touch-target-min fixed top-0 z-50">
+<div class="flex items-center gap-stack-md">
+<span class="text-headline-md font-headline-md font-bold text-primary">GlowPOS Salon</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-secondary hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-secondary hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer" data-icon="sync">sync</span>
+<span class="material-symbols-outlined text-secondary hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer" data-icon="settings">settings</span>
+</div>
+</header>
+<main class="mt-[56px] flex flex-1 overflow-hidden">
+<!-- Main Content Area: Left 65% -->
+<section class="w-[65%] flex flex-col h-[calc(100vh-56px)] overflow-y-auto">
+<!-- Progress Stepper -->
+<nav class="w-full px-margin-page py-stack-lg bg-surface-container-lowest">
+<div class="flex items-center justify-between max-w-2xl mx-auto relative">
+<!-- Line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-0 w-1/3 h-[2px] bg-success -translate-y-1/2 z-0"></div>
+<!-- Step 1: Complete -->
+<div class="z-10 flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-success text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="check">check</span>
+</div>
+<span class="text-label-sm font-label-sm text-success">Service</span>
+</div>
+<!-- Step 2: Active -->
+<div class="z-10 flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center border-4 border-surface">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold">Stylist</span>
+</div>
+<!-- Step 3: Pending -->
+<div class="z-10 flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-surface border-2 border-outline-variant text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Time</span>
+</div>
+<!-- Step 4: Pending -->
+<div class="z-10 flex flex-col items-center gap-1">
+<div class="w-10 h-10 rounded-full bg-surface border-2 border-outline-variant text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Confirm</span>
+</div>
+</div>
+</nav>
+<!-- Selection Header -->
+<div class="px-margin-page py-stack-md">
+<div class="bg-surface-container rounded-lg p-stack-md border border-border flex justify-between items-center">
+<div class="flex items-center gap-stack-md">
+<div class="bg-primary-container p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="content_cut">content_cut</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">SELECTED SERVICE</p>
+<h2 class="text-headline-sm font-headline-md text-on-surface">Classic Manicure</h2>
+</div>
+</div>
+<div class="text-right">
+<p class="text-headline-sm font-headline-md font-bold text-primary">RM 65.00</p>
+<p class="text-label-sm font-label-sm text-secondary">45 Minutes</p>
+</div>
+</div>
+</div>
+<!-- Stylist Grid -->
+<div class="px-margin-page pb-stack-lg">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-stack-md">Select a Stylist</h3>
+<div class="grid grid-cols-2 gap-gutter">
+<!-- No Preference Card -->
+<button class="stylist-card group flex items-center gap-stack-md p-stack-md bg-surface border border-border rounded-xl text-left transition-all hover:bg-surface-container-high focus:outline-none" onclick="selectStylist('any', 'No Preference')">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest flex items-center justify-center border-2 border-dashed border-outline">
+<span class="material-symbols-outlined text-outline text-display-lg" data-icon="group_add">group_add</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-on-surface">No Preference</h4>
+<p class="text-body-sm text-secondary">Assign any available expert</p>
+<div class="mt-2 inline-flex items-center gap-1 bg-success/10 text-success px-2 py-1 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span>
+                                Fastest Booking
+                            </div>
+</div>
+</button>
+<!-- Stylist Card 1 -->
+<button class="stylist-card group flex items-center gap-stack-md p-stack-md bg-surface border border-border rounded-xl text-left transition-all hover:bg-surface-container-high focus:outline-none" onclick="selectStylist('sarah', 'Sarah Jenkins')">
+<img class="w-20 h-20 rounded-full object-cover border-2 border-surface shadow-sm" data-alt="A professional female hair stylist with a friendly smile, wearing a modern black salon uniform. She is standing in a brightly lit, high-end professional hair salon with marble surfaces and gold accents. The lighting is soft and flattering, emphasizing a clean and corporate aesthetic. Her hair is neatly styled, reflecting the professional quality of the salon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-W0pJTw4oqmlGDJkV0MW8BBfwDzZqBAQzZlvD9NlkKSkM5y4hlOkioNHkQqCqmbrvFcnQ22GwvKlQ4T_YGaCdrd4kpB96y_hMwua_ycOGMioLWGHsPnD_YQQ0vrVfGdJyl7yTjJrdH_ACksOSJ0ilSGgd0mMHnqt0kwQACCEOnva6jUX4fYLJytmsub_PzaOUEgaHdEHbTPcLLpgs4xc4H7Tg5m01H1gaIIVJdZB8uTZwciOUEhQsxoOhaCBz4AgQpoHvUDUtlM4K"/>
+<div class="flex-1">
+<h4 class="text-body-lg font-bold text-on-surface">Sarah Jenkins</h4>
+<p class="text-body-sm text-secondary">Nail Art Specialist</p>
+<div class="mt-2 flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+                                Today, 2:30 PM
+                            </div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-warning" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm">4.9</span>
+</div>
+</button>
+<!-- Stylist Card 2 -->
+<button class="stylist-card group flex items-center gap-stack-md p-stack-md bg-surface border border-border rounded-xl text-left transition-all hover:bg-surface-container-high focus:outline-none" onclick="selectStylist('marcus', 'Marcus Wong')">
+<img class="w-20 h-20 rounded-full object-cover border-2 border-surface shadow-sm" data-alt="A sharp, professional male stylist with a focused expression, wearing a minimalist gray apron over a white shirt. He is set against a background of a modern, organized salon workstation with premium tools. The lighting is bright and clear, creating a sophisticated business environment. The overall mood is precise, professional, and high-trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFCSgTwkcLsGT7-QL3RmYXOSeT6AWsRjE1TOj6WoOF6DrKgVQWiKRpwvdoo7ObIroIO9WPc_sYcztgBx0X8di5zv_8WeGtPWR2LjgObm5zhOmcHnh9sRO_MgIHNG-wdUR9yyMZMZKqSG7MkBj-IpgIKPWHMeUR9wyihJA7Sor2ic_d7HbiVBqJUN3uUqoC7rJeMkXjYFsoTTwxsfsTFXF1aKnp_UiYo7e2elptgaCxv4LEJrZcxwJrpGdq_8Fxfym5r9cCEvqqwaC7"/>
+<div class="flex-1">
+<h4 class="text-body-lg font-bold text-on-surface">Marcus Wong</h4>
+<p class="text-body-sm text-secondary">Senior Tech</p>
+<div class="mt-2 flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+                                Today, 4:15 PM
+                            </div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-warning" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm">4.8</span>
+</div>
+</button>
+<!-- Stylist Card 3 -->
+<button class="stylist-card group flex items-center gap-stack-md p-stack-md bg-surface border border-border rounded-xl text-left transition-all hover:bg-surface-container-high focus:outline-none" onclick="selectStylist('eliza', 'Eliza Beth')">
+<img class="w-20 h-20 rounded-full object-cover border-2 border-surface shadow-sm" data-alt="A vibrant female stylist with stylish glasses and a professional demeanor. She is working in a high-density, modern salon space with clean lines and soft, natural lighting. The color palette is composed of neutrals and soft wood tones, creating a welcoming but corporate atmosphere. Her posture is confident and helpful." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmg_4TJwi34FEJaD5hjpcTmRsjXSGXTqTzd8lNao8ZHtgla_BdO4sBSXSKu7yRYbMUaJ_ZrhNPczddtUCE9JoqsjSWcd3tZZlRlIEFKU6zTNW5oFwZtRWbsMCi-W22P67LQUtyu5Gco6CCUlv-ZMcpGIk-WOknytn1q3m6_m8u0KqM--CQJ2v3B3sUtp-l1jKkebbxxdlFhzSfiZNk83npoaaty8T-1F5zBQ1BH81DRTG1-3c-rjzgzmb4rZGjZQVcRr5oBoaMXfdP"/>
+<div class="flex-1">
+<h4 class="text-body-lg font-bold text-on-surface">Eliza Beth</h4>
+<p class="text-body-sm text-secondary">Classic Care Expert</p>
+<div class="mt-2 flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_today">calendar_today</span>
+                                Tomorrow, 10:00 AM
+                            </div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-warning" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm">5.0</span>
+</div>
+</button>
+</div>
+</div>
+</section>
+<!-- Booking Summary Sidebar: Right 35% -->
+<aside class="w-[35%] bg-surface border-l border-border h-[calc(100vh-56px)] flex flex-col">
+<div class="p-margin-page flex-1 flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-stack-lg border-b border-border pb-stack-sm">Booking Summary</h3>
+<div class="space-y-stack-lg">
+<!-- Service Summary -->
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Service</p>
+<p class="text-body-md font-bold text-on-surface">Classic Manicure</p>
+<p class="text-body-sm text-on-surface-variant">45 min duration</p>
+</div>
+<p class="font-label-md text-label-md text-on-surface">RM 65.00</p>
+</div>
+<!-- Stylist Summary -->
+<div class="flex justify-between items-start">
+<div class="flex-1">
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Stylist</p>
+<p class="text-body-md text-outline italic" id="summary-stylist">Not selected</p>
+</div>
+<button class="text-primary text-label-sm font-label-sm hover:underline">Change</button>
+</div>
+<!-- Appointment Time Summary -->
+<div class="flex justify-between items-start opacity-50">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Appointment Time</p>
+<p class="text-body-md italic">Pending selection</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-stack-lg border-t border-border">
+<div class="flex justify-between items-center mb-stack-lg">
+<span class="text-body-lg font-headline-md text-on-surface">Total Amount</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">RM 65.00</span>
+</div>
+<button class="w-full h-touch-target-min rounded-lg bg-outline text-on-surface-variant font-bold cursor-not-allowed transition-all active:scale-[0.98]" disabled="" id="next-button">
+                        Next: Choose Time
+                    </button>
+<p class="text-center text-label-sm font-label-sm text-secondary mt-stack-md">
+                        Cancellation policy applies. Secure checkout.
+                    </p>
+</div>
+</div>
+</aside>
+</main>
+<!-- SideNavBar (Hidden on Mobile, Logic handled by layout) -->
+<nav class="hidden md:flex flex-col h-full w-[80px] bg-surface-container-low border-r border-border fixed left-0 top-[56px] py-stack-lg items-center gap-stack-lg z-40">
+<div class="p-3 text-secondary hover:bg-secondary-container rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+</div>
+<div class="p-3 bg-primary-container text-on-primary-container rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<div class="p-3 text-secondary hover:bg-secondary-container rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<div class="p-3 text-secondary hover:bg-secondary-container rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<div class="mt-auto p-3 text-secondary hover:bg-secondary-container rounded-lg cursor-pointer transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</div>
+</nav>
+<script>
+        function selectStylist(id, name) {
+            // Remove active classes from all cards
+            document.querySelectorAll('.stylist-card').forEach(card => {
+                card.classList.remove('stylist-card-active');
+            });
+            
+            // Add active class to clicked card
+            // Find parent button if click target was inside
+            const selectedCard = event.currentTarget;
+            selectedCard.classList.add('stylist-card-active');
+            
+            // Update Summary
+            const summaryLabel = document.getElementById('summary-stylist');
+            summaryLabel.innerText = name;
+            summaryLabel.classList.remove('text-outline', 'italic');
+            summaryLabel.classList.add('font-bold', 'text-on-surface');
+            
+            // Enable Button
+            const nextBtn = document.getElementById('next-button');
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('bg-outline', 'text-on-surface-variant', 'cursor-not-allowed');
+            nextBtn.classList.add('bg-primary', 'text-on-primary', 'cursor-pointer', 'hover:bg-primary-container');
+            
+            // Interaction Feedback
+            selectedCard.style.transform = 'scale(0.98)';
+            setTimeout(() => { selectedCard.style.transform = 'scale(1)'; }, 150);
+        }
+    </script>
+</body></html>

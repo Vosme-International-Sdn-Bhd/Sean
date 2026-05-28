@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxe Salon | Wallet Top-Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "danger": "#8A1F1F",
+                    "on-secondary-container": "#5f5f5b",
+                    "primary-container": "#1a5fa8",
+                    "surface": "#FFFFFF",
+                    "tertiary-container": "#7d5700",
+                    "warning": "#8A5200",
+                    "on-primary-fixed-variant": "#004786",
+                    "on-primary-fixed": "#001c3a",
+                    "on-primary-container": "#c4daff",
+                    "surface-container-high": "#e9e8e4",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#1a5fa8",
+                    "background": "#faf9f5",
+                    "surface-bright": "#faf9f5",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container": "#efeeea",
+                    "platinum": "#E5E4E2",
+                    "bronze": "#CD7F32",
+                    "purple-mlm": "#4A3AB0",
+                    "silver": "#C0C0C0",
+                    "surface-dim": "#dbdad6",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#ffd184",
+                    "on-surface": "#1b1c1a",
+                    "outline-variant": "#c2c6d3",
+                    "tertiary": "#5e4100",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "on-surface-variant": "#424751",
+                    "outline": "#727782",
+                    "primary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e2df",
+                    "border": "#E2E1DC",
+                    "on-secondary-fixed-variant": "#474743",
+                    "secondary-fixed": "#e4e2dd",
+                    "inverse-on-surface": "#f2f1ed",
+                    "on-tertiary-fixed": "#271900",
+                    "success": "#2E7D52",
+                    "surface-container-low": "#f5f4f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "primary": "#004786",
+                    "inverse-surface": "#30312e",
+                    "secondary-container": "#dcdad5",
+                    "on-primary": "#ffffff",
+                    "secondary": "#5f5f5a",
+                    "error": "#ba1a1a",
+                    "on-background": "#1b1c1a",
+                    "on-secondary-fixed": "#1b1c19",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "inverse-primary": "#a6c8ff",
+                    "ink-primary": "#1A1A18",
+                    "surface-container-highest": "#e3e2df"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "24px",
+                    "touch-target-min": "56px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "gutter": "16px",
+                    "tile-height-min": "80px",
+                    "margin-page": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"],
+                    "headline-lg": ["Libre Franklin"],
+                    "body-sm": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-lg": ["Libre Franklin"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-package {
+            border: 2px solid #1a5fa8 !important;
+            background-color: #f5f4f0;
+        }
+        .best-value-badge {
+            background: linear-gradient(135deg, #1a5fa8 0%, #004786 100%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-page h-touch-target-min bg-surface dark:bg-surface-container-low border-b border-border dark:border-outline-variant">
+<div class="font-headline-lg text-headline-md tracking-tight text-primary dark:text-primary-fixed">LUXE SALON</div>
+<div class="hidden md:flex items-center gap-stack-lg h-full">
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Book</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-body-md text-body-md" href="#">Wallet</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-primary p-2 transition-all active:opacity-80 scale-95" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-primary p-2 transition-all active:opacity-80 scale-95" data-icon="settings">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border">
+<img alt="User profile avatar" data-alt="Close up portrait of a professional woman with a minimalist and sophisticated look, set against a soft, clean studio background. The lighting is high-key and flattering, emphasizing a modern corporate aesthetic with subtle warm tones that align with a premium salon brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrMRMLGNhXiwQgXpXkXzj7HKvLRNEZGu4gvqjOmuoQUoEb5KEkSAWr8NIaxNx4FzDs9rVrJtmbjpdIabGZsWLEYaJGEYemG8RYB7-tjAOyXUP7E_OJph5miZlngzdfCPhOTjjjRcma0Jp22oQ6HLNs7_tNUFjXbks17U0UEAkAammsXfgXDct9GcRviA5C7njoUkjo3yQvRiPkxNPGyoysF_BoA0maJ88CMxVgwc_67FPIiLuNDFs7l2Vpr5rJwGc_KCV8U7ylez5l"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-[80px] pb-stack-lg px-margin-page max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mt-stack-lg">
+<!-- Left Panel: Package Selection -->
+<div class="lg:col-span-8 space-y-stack-lg">
+<section class="bg-surface p-stack-lg rounded-lg border border-border shadow-sm">
+<div class="flex items-center justify-between mb-stack-md">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Top-Up Wallet</h1>
+<span class="font-label-md text-label-md bg-secondary-container px-3 py-1 rounded-full text-on-secondary-container">Current Balance: RM 45.00</span>
+</div>
+<p class="text-on-surface-variant mb-stack-lg font-body-md">Select a top-up package to enjoy bonus credits and exclusive member rates.</p>
+<!-- Packages Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md" id="packages-grid">
+<!-- Package 1 -->
+<button class="package-card relative flex flex-col items-start p-stack-md border border-border rounded-lg text-left transition-all hover:bg-surface-container-low focus:outline-none" onclick="selectPackage(100, 15, this)">
+<span class="font-label-sm text-label-sm text-primary mb-1">Standard</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md">RM 100</span>
+</div>
+<div class="mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-success text-sm" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md text-success">+15% Bonus Credits</span>
+</div>
+</button>
+<!-- Package 2 (Best Value) -->
+<button class="package-card active-package relative flex flex-col items-start p-stack-md border border-border rounded-lg text-left transition-all hover:bg-surface-container-low focus:outline-none" onclick="selectPackage(300, 20, this)">
+<div class="absolute -top-3 right-4 best-value-badge px-3 py-1 rounded-full">
+<span class="text-white font-label-sm text-[10px] uppercase tracking-wider font-bold">Best Value</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary mb-1">Premium</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md">RM 300</span>
+</div>
+<div class="mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-success text-sm" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md text-success">+20% Bonus Credits</span>
+</div>
+</button>
+<!-- Package 3 -->
+<button class="package-card relative flex flex-col items-start p-stack-md border border-border rounded-lg text-left transition-all hover:bg-surface-container-low focus:outline-none" onclick="selectPackage(500, 25, this)">
+<span class="font-label-sm text-label-sm text-primary mb-1">Elite</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md">RM 500</span>
+</div>
+<div class="mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-success text-sm" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md text-success">+25% Bonus Credits</span>
+</div>
+</button>
+<!-- Package 4 -->
+<button class="package-card relative flex flex-col items-start p-stack-md border border-border rounded-lg text-left transition-all hover:bg-surface-container-low focus:outline-none" onclick="selectPackage(1000, 30, this)">
+<span class="font-label-sm text-label-sm text-primary mb-1">Luxe</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md">RM 1000</span>
+</div>
+<div class="mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-success text-sm" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md text-success">+30% Bonus Credits</span>
+</div>
+</button>
+</div>
+<!-- Custom Amount -->
+<div class="mt-stack-lg pt-stack-lg border-t border-border">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2" for="custom-amount">Or Enter Custom Amount (Min RM 10)</label>
+<div class="relative max-w-sm">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="text-on-surface-variant font-label-md">RM</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-label-md text-label-md" id="custom-amount" min="10" oninput="updateCustom(this.value)" placeholder="0.00" type="number"/>
+</div>
+</div>
+</section>
+<!-- Payment Methods info -->
+<div class="bg-surface-container p-stack-md rounded-lg border border-border flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Secure payments powered by <strong>Fiuu</strong>. We support Credit/Debit Cards, FPX Banking, and major E-Wallets.</p>
+</div>
+</div>
+<!-- Right Panel: Summary Sidebar -->
+<div class="lg:col-span-4">
+<div class="sticky top-[104px] bg-surface p-stack-lg rounded-lg border border-border shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-lg">Transaction Summary</h2>
+<div class="space-y-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-body-md">Top-Up Amount</span>
+<span class="font-label-md text-label-md" id="summary-amount">RM 300.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-body-md">Bonus Credits</span>
+<span class="text-success font-label-md text-label-md" id="summary-bonus">+ RM 60.00</span>
+</div>
+<div class="pt-stack-md border-t border-border flex justify-between items-center">
+<span class="font-bold text-on-surface font-body-lg">Total Received</span>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary" id="summary-total">RM 360.00</span>
+<p class="text-[10px] text-on-surface-variant font-label-sm">CREDITS TO WALLET</p>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full mt-stack-lg bg-primary text-white py-4 rounded-lg font-headline-md text-body-md font-bold hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="pay-btn">
+                        Proceed to Payment
+                        <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="mt-stack-md flex items-center justify-center gap-2 opacity-50">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock">lock</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Encrypted Checkout</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-margin-page flex flex-col md:flex-row justify-between items-center gap-stack-md bg-surface-container-low dark:bg-surface-container-highest border-t border-border dark:border-outline-variant mt-12">
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">LUXE SALON PORTAL</div>
+<div class="flex gap-stack-md">
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Privacy Policy</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Terms of Service</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Help Center</a>
+</div>
+<p class="text-secondary dark:text-secondary-fixed font-body-sm text-body-sm">© 2024 Luxe Salon Portal. All rights reserved.</p>
+</footer>
+<script>
+        let currentAmount = 300;
+        let currentBonusPercent = 20;
+
+        function selectPackage(amount, bonus, element) {
+            currentAmount = amount;
+            currentBonusPercent = bonus;
+            
+            // UI Updates
+            document.querySelectorAll('.package-card').forEach(el => el.classList.remove('active-package'));
+            element.classList.add('active-package');
+            
+            // Clear custom input
+            document.getElementById('custom-amount').value = '';
+            
+            updateSummary();
+        }
+
+        function updateCustom(val) {
+            const amount = parseFloat(val);
+            if (isNaN(amount)) {
+                currentAmount = 0;
+            } else {
+                currentAmount = amount;
+            }
+            
+            // Basic bonus logic for custom amounts (5% flat bonus for custom amounts over RM 100)
+            currentBonusPercent = currentAmount >= 100 ? 5 : 0;
+            
+            // Deselect predefined packages
+            document.querySelectorAll('.package-card').forEach(el => el.classList.remove('active-package'));
+            
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const bonusAmount = (currentAmount * (currentBonusPercent / 100));
+            const total = currentAmount + bonusAmount;
+            
+            document.getElementById('summary-amount').innerText = `RM ${currentAmount.toFixed(2)}`;
+            document.getElementById('summary-bonus').innerText = `+ RM ${bonusAmount.toFixed(2)}`;
+            document.getElementById('summary-total').innerText = `RM ${total.toFixed(2)}`;
+
+            const payBtn = document.getElementById('pay-btn');
+            if (currentAmount < 10) {
+                payBtn.disabled = true;
+                payBtn.style.opacity = '0.5';
+                payBtn.style.cursor = 'not-allowed';
+            } else {
+                payBtn.disabled = false;
+                payBtn.style.opacity = '1';
+                payBtn.style.cursor = 'pointer';
+            }
+        }
+
+        // Initialize summary
+        updateSummary();
+    </script>
+</body></html>

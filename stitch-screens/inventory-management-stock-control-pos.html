@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Salon OS - Inventory Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdeaa",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#dcdad5",
+                    "on-secondary-container": "#5f5f5b",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#7d5700",
+                    "surface-container-highest": "#e3e2df",
+                    "surface-bright": "#faf9f5",
+                    "primary-container": "#1a5fa8",
+                    "primary-fixed": "#d4e3ff",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "surface-variant": "#e3e2df",
+                    "platinum": "#E5E4E2",
+                    "warning": "#8A5200",
+                    "on-primary-container": "#c4daff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#efeeea",
+                    "on-secondary-fixed-variant": "#474743",
+                    "inverse-primary": "#a6c8ff",
+                    "primary": "#004786",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#FFFFFF",
+                    "danger": "#8A1F1F",
+                    "tertiary": "#5e4100",
+                    "outline-variant": "#c2c6d3",
+                    "on-tertiary-container": "#ffd184",
+                    "on-secondary-fixed": "#1b1c19",
+                    "secondary-fixed": "#e4e2dd",
+                    "border": "#E2E1DC",
+                    "surface-container-high": "#e9e8e4",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-primary-fixed": "#001c3a",
+                    "surface-tint": "#1a5fa8",
+                    "purple-mlm": "#4A3AB0",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#424751",
+                    "bronze": "#CD7F32",
+                    "on-tertiary-fixed": "#271900",
+                    "ink-primary": "#1A1A18",
+                    "inverse-on-surface": "#f2f1ed",
+                    "background": "#faf9f5",
+                    "surface-dim": "#dbdad6",
+                    "on-background": "#1b1c1a",
+                    "on-primary-fixed-variant": "#004786",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-error": "#ffffff",
+                    "silver": "#C0C0C0",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "secondary": "#5f5f5a",
+                    "surface-container-low": "#f5f4f0",
+                    "success": "#2E7D52",
+                    "outline": "#727782",
+                    "inverse-surface": "#30312e",
+                    "on-surface": "#1b1c1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-page": "24px",
+                    "stack-md": "16px",
+                    "tile-height-min": "80px",
+                    "touch-target-min": "56px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Libre Franklin"],
+                    "display-lg": ["Libre Franklin"],
+                    "body-sm": ["Libre Franklin"],
+                    "body-md": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Libre Franklin"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Libre Franklin', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="fixed left-0 top-0 h-full z-40 flex flex-col h-screen w-64 flex-shrink-0 bg-surface dark:bg-surface-dim border-r border-border dark:border-outline-variant flat no shadows">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Precision Salon OS</h1>
+<p class="font-label-sm text-secondary opacity-70">Admin Terminal</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">shopping_cart</span> Purchase Orders
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">local_shipping</span> Suppliers
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">analytics</span> Reports
+            </a>
+</nav>
+<div class="px-4 py-6 mt-auto border-t border-border">
+<button class="w-full py-3 bg-primary text-white rounded-lg font-bold active:scale-95 duration-150 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">qr_code_scanner</span> Quick Scan
+            </button>
+<div class="mt-4 flex flex-col space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-high transition-colors font-label-md text-label-md text-danger" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 min-w-0">
+<!-- TopAppBar (Execution from JSON) -->
+<header class="flex justify-between items-center w-full px-margin-page py-4 bg-surface dark:bg-surface-dim sticky top-0 z-30 border-b border-border dark:border-outline-variant flat no shadows">
+<div class="flex items-center gap-8">
+<h2 class="font-headline-lg text-headline-lg font-black text-ink-primary dark:text-surface-bright">Inventory Management</h2>
+<nav class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">All Products</a>
+<a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors font-label-md text-label-md" href="#">Low Stock</a>
+<a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors font-label-md text-label-md" href="#">Categories</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-border rounded-lg pl-10 pr-4 py-2 font-body-sm focus:border-primary focus:ring-0" placeholder="Search product..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container transition-colors rounded-full">sync</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container transition-colors rounded-full relative">
+                        notifications
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container transition-colors rounded-full">help</button>
+</div>
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-border">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEMP5-avHynRiI-5aP9CK-qqn6C84qGUir4cioBQzgGP-I4kLSnkDqhx8f6qiiegpEzdbZLQlfhu91flGP3uY4OjNVZg0gTYWdjWER5HX1Y0TFNsqM5iSXOXx2HrtzhEt-svNg3IjHxBhpCYHDDF_4hi995IyMFTmWLN66NqjB8NVUojeQsZA9nVG7jRRetRfFBDUU_p_9NoGa_3uzK8vUWHbwqDTbeLopJA1N3PrdTgS42OIqgFfNgBoG7upL-Bpfleb-_aI-vj91"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-margin-page space-y-stack-lg">
+<!-- Hero Header Actions -->
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-md text-headline-md text-ink-primary">Global Overview</h3>
+<p class="font-body-md text-on-surface-variant">Real-time stock synchronization across all salon branches.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-bold shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+                    New Purchase Order
+                </button>
+</div>
+<!-- Bento Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Stat Card 1 -->
+<div class="bg-surface p-6 rounded-xl border border-border flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-secondary">Total SKUs</span>
+<span class="material-symbols-outlined text-primary">category</span>
+</div>
+<div class="text-3xl font-bold text-ink-primary">1,284</div>
+<div class="flex items-center gap-1 text-success font-label-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12 new this month
+                    </div>
+</div>
+<!-- Stat Card 2 (Warning) -->
+<div class="bg-surface p-6 rounded-xl border-l-4 border-l-warning border-border flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-warning font-bold uppercase tracking-wider">Low Stock</span>
+<span class="material-symbols-outlined text-warning">warning</span>
+</div>
+<div class="text-3xl font-bold text-ink-primary">18</div>
+<div class="text-on-surface-variant font-body-sm">Requires immediate review</div>
+</div>
+<!-- Stat Card 3 (Danger) -->
+<div class="bg-error-container p-6 rounded-xl border border-error-container flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-on-error-container font-bold uppercase tracking-wider">Out of Stock</span>
+<span class="material-symbols-outlined text-error">error</span>
+</div>
+<div class="text-3xl font-bold text-on-error-container">04</div>
+<div class="text-on-error-container font-body-sm">Critical delivery delays</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface p-6 rounded-xl border border-border flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-secondary">Inventory Value</span>
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div class="text-3xl font-bold text-ink-primary">RM 42.5k</div>
+<div class="flex items-center gap-1 text-secondary font-label-sm">
+                        Calculated at cost price
+                    </div>
+</div>
+</div>
+<div class="flex gap-gutter">
+<!-- Main Inventory Table Container -->
+<div class="flex-[3] bg-surface rounded-xl border border-border overflow-hidden flex flex-col">
+<!-- Table Header/Filters -->
+<div class="p-4 bg-surface-container-low border-b border-border flex flex-wrap gap-4 items-center">
+<div class="relative flex-1 min-w-[200px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface border border-border rounded-lg pl-9 pr-4 py-2 font-body-sm focus:border-primary focus:ring-0" placeholder="Filter by brand or name..." type="text"/>
+</div>
+<select class="bg-surface border border-border rounded-lg px-4 py-2 font-body-sm focus:border-primary focus:ring-0">
+<option>All Categories</option>
+<option>Retail Product</option>
+<option>Professional Use</option>
+</select>
+<select class="bg-surface border border-border rounded-lg px-4 py-2 font-body-sm focus:border-primary focus:ring-0">
+<option>All Status</option>
+<option>In Stock</option>
+<option>Low Stock</option>
+<option>Out of Stock</option>
+</select>
+<button class="material-symbols-outlined p-2 border border-border rounded-lg hover:bg-surface-container transition-colors">filter_list</button>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest">
+<th class="px-6 py-4 font-label-md text-secondary uppercase text-xs tracking-widest border-b border-border">Product &amp; Brand</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase text-xs tracking-widest border-b border-border">Category</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase text-xs tracking-widest border-b border-border">Current Stock</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase text-xs tracking-widest border-b border-border">Reorder Pt.</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase text-xs tracking-widest border-b border-border text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container border border-border flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">sanitizer</span>
+</div>
+<div>
+<div class="font-body-md font-bold text-ink-primary">Caviar Replenishing Shampoo</div>
+<div class="font-body-sm text-secondary">Alterna Professional</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-bold">Retail</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-label-md text-ink-primary">42 Units</span>
+<span class="text-[10px] text-success font-bold uppercase">In Stock</span>
+</div>
+</td>
+<td class="px-6 py-4 font-label-md text-on-surface-variant">15</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container/10 rounded" title="Update Stock">edit_square</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container rounded" title="History">history</button>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container/10 rounded" title="Add to PO">add_task</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Low Stock) -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-warning/5">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container border border-border flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-warning">format_color_fill</span>
+</div>
+<div>
+<div class="font-body-md font-bold text-ink-primary">iNOA 5.3 Golden Brown</div>
+<div class="font-body-sm text-secondary">L'Oréal Professionnel</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm">
+<span class="px-3 py-1 rounded-full bg-purple-mlm/10 text-purple-mlm text-xs font-bold">Professional</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-label-md text-warning font-bold">4 Tubes</span>
+<span class="text-[10px] text-warning font-black uppercase">Low Stock</span>
+</div>
+</td>
+<td class="px-6 py-4 font-label-md text-on-surface-variant">10</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container/10 rounded">edit_square</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container rounded">history</button>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container/10 rounded">add_task</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Out of Stock) -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-error/5">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-error-container border border-error-container flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-error">dangerous</span>
+</div>
+<div>
+<div class="font-body-md font-bold text-ink-primary">Bleach Powder 500g</div>
+<div class="font-body-sm text-secondary">Schwarzkopf</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm">
+<span class="px-3 py-1 rounded-full bg-purple-mlm/10 text-purple-mlm text-xs font-bold">Professional</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-label-md text-error font-bold">0 Units</span>
+<span class="text-[10px] text-error font-black uppercase">Out of Stock</span>
+</div>
+</td>
+<td class="px-6 py-4 font-label-md text-on-surface-variant">5</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-100">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container/10 rounded">edit_square</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container rounded">history</button>
+<button class="bg-primary text-white text-xs px-3 py-2 rounded font-bold">REORDER NOW</button>
+</div>
+</td>
+</tr>
+<!-- More generic rows for visual density -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container border border-border flex-shrink-0 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">brush</span>
+</div>
+<div>
+<div class="font-body-md font-bold text-ink-primary">Styling Mousse (Firm Hold)</div>
+<div class="font-body-sm text-secondary">Wella Professionals</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-bold">Retail</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-label-md text-ink-primary">24 Units</span>
+<span class="text-[10px] text-success font-bold uppercase">In Stock</span>
+</div>
+</td>
+<td class="px-6 py-4 font-label-md text-on-surface-variant">8</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container/10 rounded">edit_square</button>
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container rounded">history</button>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container/10 rounded">add_task</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="p-4 border-t border-border flex justify-between items-center bg-surface">
+<span class="font-body-sm text-on-surface-variant">Showing 1 to 10 of 1,284 products</span>
+<div class="flex gap-2">
+<button class="px-4 py-2 border border-border rounded-lg font-label-md text-secondary hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">Previous</button>
+<button class="px-4 py-2 border border-border rounded-lg font-label-md text-secondary hover:bg-surface-container transition-colors">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Critical Replenishment -->
+<aside class="flex-1 min-w-[320px] bg-surface-container-low rounded-xl border border-border flex flex-col h-fit sticky top-[88px]">
+<div class="p-4 border-b border-border flex items-center justify-between">
+<h4 class="font-headline-md text-sm font-bold uppercase tracking-widest text-secondary">Critical Restock</h4>
+<span class="bg-error text-white text-[10px] px-2 py-0.5 rounded-full font-bold">6 ITEMS</span>
+</div>
+<div class="p-4 space-y-4">
+<!-- Critical Item 1 -->
+<div class="p-3 bg-white border border-border rounded-lg shadow-sm hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="font-body-sm font-bold text-ink-primary">iNOA 5.3 Golden Brown</div>
+<span class="material-symbols-outlined text-warning text-lg">priority_high</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<div class="text-[10px] text-secondary font-label-md">Current: 4 Tubes</div>
+<div class="text-[10px] text-error font-label-md font-bold">Min Target: 10</div>
+</div>
+<button class="text-xs text-primary font-bold hover:underline">Add to Draft PO</button>
+</div>
+</div>
+<!-- Critical Item 2 -->
+<div class="p-3 bg-white border border-border rounded-lg shadow-sm hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="font-body-sm font-bold text-ink-primary">Bleach Powder 500g</div>
+<span class="material-symbols-outlined text-error text-lg" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<div class="text-[10px] text-secondary font-label-md">Current: 0 Units</div>
+<div class="text-[10px] text-error font-label-md font-bold">Out of Stock</div>
+</div>
+<button class="text-xs text-primary font-bold hover:underline">Quick Order</button>
+</div>
+</div>
+<!-- Critical Item 3 -->
+<div class="p-3 bg-white border border-border rounded-lg shadow-sm hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="font-body-sm font-bold text-ink-primary">Salon Towels (White)</div>
+<span class="material-symbols-outlined text-warning text-lg">priority_high</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<div class="text-[10px] text-secondary font-label-md">Current: 12 Units</div>
+<div class="text-[10px] text-error font-label-md font-bold">Min Target: 50</div>
+</div>
+<button class="text-xs text-primary font-bold hover:underline">Add to Draft PO</button>
+</div>
+</div>
+</div>
+<div class="mt-4 p-4 border-t border-border bg-surface-container">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 bg-primary-container/20 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+</div>
+<div>
+<div class="font-body-sm font-bold">Vendor Pickup Scheduled</div>
+<div class="text-[10px] text-on-surface-variant">L'Oréal Delivery • Today 2:00 PM</div>
+</div>
+</div>
+<button class="w-full py-3 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all text-sm uppercase tracking-wide">
+                            Generate Restock Report
+                        </button>
+</div>
+</aside>
+</div>
+<!-- Footer Meta -->
+<footer class="flex justify-between text-on-surface-variant font-label-sm py-8 border-t border-border opacity-50">
+<div>Precision Salon OS v2.4.0 • Enterprise Inventory System</div>
+<div>Last synced: 2 minutes ago • Branch ID: MY-KL-001</div>
+</footer>
+</div>
+</main>
+<!-- Contextual Toast Notification (Simulated) -->
+<div class="fixed bottom-8 right-8 bg-ink-primary text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 translate-y-32 transition-transform duration-300 z-50" id="toast">
+<span class="material-symbols-outlined text-success">check_circle</span>
+<div>
+<div class="font-bold font-body-sm">Inventory Updated</div>
+<div class="text-xs opacity-80">Caviar Replenishing Shampoo stock adjusted +5.</div>
+</div>
+<button class="material-symbols-outlined text-sm ml-4" onclick="hideToast()">close</button>
+</div>
+<script>
+        // Micro-interactions
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => {
+                hideToast();
+            }, 5000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('translate-y-32');
+        }
+
+        // Simulating some interactive behavior on table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', (e) => {
+                if(!e.target.closest('button')) {
+                    // Logic for opening product detail drawer
+                    console.log('Product clicked');
+                }
+            });
+        });
+        
+        // Auto-show toast as a demo micro-interaction
+        setTimeout(showToast, 2000);
+    </script>
+</body></html>

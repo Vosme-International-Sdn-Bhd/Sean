@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Salon OS - Members CRM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .tier-bronze { background-color: #CD7F32; color: #ffffff; }
+        .tier-silver { background-color: #C0C0C0; color: #1b1c1a; }
+        .tier-gold { background-color: #FFD700; color: #1b1c1a; }
+        .tier-platinum { background-color: #E5E4E2; color: #1b1c1a; }
+
+        .row-expanded {
+            max-height: 500px;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+        }
+        .row-collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f5f4f0",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#5f5f5b",
+                      "secondary": "#5f5f5a",
+                      "danger": "#8A1F1F",
+                      "surface-bright": "#faf9f5",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1b1c1a",
+                      "tertiary": "#5e4100",
+                      "surface-container-highest": "#e3e2df",
+                      "secondary-fixed-dim": "#c8c6c1",
+                      "on-primary-fixed-variant": "#004786",
+                      "platinum": "#E5E4E2",
+                      "tertiary-container": "#7d5700",
+                      "purple-mlm": "#4A3AB0",
+                      "on-background": "#1b1c1a",
+                      "inverse-surface": "#30312e",
+                      "error": "#ba1a1a",
+                      "background": "#faf9f5",
+                      "inverse-primary": "#a6c8ff",
+                      "inverse-on-surface": "#f2f1ed",
+                      "surface-tint": "#1a5fa8",
+                      "surface-dim": "#dbdad6",
+                      "surface-variant": "#e3e2df",
+                      "primary-fixed": "#d4e3ff",
+                      "primary": "#004786",
+                      "secondary-container": "#dcdad5",
+                      "warning": "#8A5200",
+                      "surface-container-high": "#e9e8e4",
+                      "surface-container": "#efeeea",
+                      "on-tertiary": "#ffffff",
+                      "silver": "#C0C0C0",
+                      "outline": "#727782",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#c4daff",
+                      "on-surface-variant": "#424751",
+                      "bronze": "#CD7F32",
+                      "tertiary-fixed": "#ffdeaa",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#1a5fa8",
+                      "on-secondary-fixed": "#1b1c19",
+                      "on-tertiary-fixed": "#271900",
+                      "ink-primary": "#1A1A18",
+                      "secondary-fixed": "#e4e2dd",
+                      "tertiary-fixed-dim": "#f3be5e",
+                      "success": "#2E7D52",
+                      "border": "#E2E1DC",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "on-primary-fixed": "#001c3a",
+                      "on-tertiary-container": "#ffd184",
+                      "surface": "#FFFFFF",
+                      "outline-variant": "#c2c6d3",
+                      "on-secondary-fixed-variant": "#474743"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "tile-height-min": "80px",
+                      "stack-sm": "8px",
+                      "touch-target-min": "56px",
+                      "gutter": "16px",
+                      "stack-md": "16px",
+                      "margin-page": "24px",
+                      "stack-lg": "24px"
+              },
+              "fontFamily": {
+                      "label-sm": ["JetBrains Mono"],
+                      "body-sm": ["Libre Franklin"],
+                      "body-md": ["Libre Franklin"],
+                      "headline-lg": ["Libre Franklin"],
+                      "display-lg": ["Libre Franklin"],
+                      "body-lg": ["Libre Franklin"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-md": ["Libre Franklin"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-container-low text-on-surface font-body-md overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface flex justify-between items-center w-full px-margin-page h-touch-target-min border-b border-border fixed top-0 z-50">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">Precision Salon OS</span>
+</div>
+<div class="flex-1 max-w-xl mx-stack-lg">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-2 pl-10 pr-4 font-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="Search members by name, phone or email..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full" data-icon="sync">sync</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full" data-icon="settings">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 border border-border">
+<img alt="Manager Profile" data-alt="A professional studio portrait of a modern salon manager with a clean, minimalist background. The lighting is soft and corporate, reflecting a high-end service environment with a neutral color palette of soft greys and whites. The individual looks confident and friendly, perfectly suited for a premium business application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHuK9FFg6CY3cllDqveZ6pzDT2QdpJdq4q0c6GhLD0wpWiouvTF3v8TacGJYu9VaKcqkqrJZnXA7Ig4tdxPD0sK4vibFd0SB9-zUykkXLmIZPrflW5EXkpuWLqoQYYAk3rYXjMkvHV3BkEQV0BM6u_G4FKkeYynn06ivX_aDwIp_jZZYe_Z6Mdrghvoiv1SLESvidFf-95aEew3CsBaMzXYZnbM1u4bZVsn2r2F2YoI_hBOEkrg0yCs-UHi_2hVMcEhkUPAS26on2O"/>
+</div>
+</div>
+</header>
+<!-- Sidebar Navigation -->
+<nav class="h-full w-64 fixed left-0 top-0 bg-surface-container-low border-r border-border flex flex-col pt-[56px] z-40">
+<div class="p-stack-md flex flex-col gap-1">
+<div class="px-4 py-3 mb-2">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Main Branch</h2>
+<p class="font-label-md text-label-md text-on-secondary-container">Enterprise Admin</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container border-r-2 border-primary transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-secondary-container hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</div>
+<div class="mt-auto p-stack-md border-t border-border">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md mb-4 active:scale-95 duration-200">Quick Checkout</button>
+<a class="flex items-center gap-3 px-4 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-[56px] h-[calc(100vh-56px)] overflow-y-auto p-stack-lg">
+<div class="max-w-7xl mx-auto space-y-stack-lg pb-margin-page">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-display-lg text-display-lg text-ink-primary">Member Directory</h1>
+<p class="text-on-surface-variant font-body-md">Manage salon members, loyalty tiers, and customer profiles.</p>
+</div>
+<div class="flex gap-stack-md">
+<button class="flex items-center gap-2 border border-border px-4 py-2 rounded-lg font-label-md bg-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="file_download">file_download</span> Export CSV
+                    </button>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_add">person_add</span> Add New Member
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats Summary -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-stack-md">
+<div class="bg-surface p-stack-md rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Members</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">2,482</h3>
+<p class="text-success text-label-sm flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span> +12% this month
+                    </p>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Active Platinum</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">148</h3>
+<p class="text-on-surface-variant text-label-sm mt-2">6% of total base</p>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Wallet Balance</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">RM 48.2k</h3>
+<p class="text-on-surface-variant text-label-sm mt-2">Store credit liability</p>
+</div>
+<div class="bg-surface p-stack-md rounded-xl border border-border">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Referral Conversion</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">18.4%</h3>
+<p class="text-warning text-label-sm flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="error">error</span> Down 2% vs LY
+                    </p>
+</div>
+</div>
+<!-- Table Filters and Actions -->
+<div class="bg-surface rounded-xl border border-border overflow-hidden">
+<div class="p-4 border-b border-border flex flex-wrap gap-stack-md items-center justify-between bg-surface-bright">
+<div class="flex gap-stack-sm items-center">
+<span class="font-label-md text-label-md text-on-surface-variant mr-2">Filter By:</span>
+<select class="bg-surface border border-border rounded-lg font-label-sm px-3 py-1.5 focus:ring-1 focus:ring-primary outline-none">
+<option>All Tiers</option>
+<option>Platinum</option>
+<option>Gold</option>
+<option>Silver</option>
+<option>Bronze</option>
+</select>
+<select class="bg-surface border border-border rounded-lg font-label-sm px-3 py-1.5 focus:ring-1 focus:ring-primary outline-none">
+<option>Last Visit: Any</option>
+<option>Recent (7 Days)</option>
+<option>Inactive (30+ Days)</option>
+<option>Lapsed (90+ Days)</option>
+</select>
+<button class="text-primary font-label-sm hover:underline ml-2">Clear Filters</button>
+</div>
+<div class="flex gap-stack-sm">
+<div class="relative group">
+<button class="bg-surface border border-border px-4 py-1.5 rounded-lg font-label-sm flex items-center gap-2 hover:bg-surface-container transition-colors">
+                                Bulk Actions <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border">
+<th class="p-4 w-12"><input class="rounded text-primary focus:ring-primary" type="checkbox"/></th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Member Name</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Tier</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant text-right">Wallet Balance</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant text-right">Referrals</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant text-right">Last Visit</th>
+<th class="p-4 w-16"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Member Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer" onclick="toggleRow('row-1')">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary" onclick="event.stopPropagation()" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold">AL</div>
+<div>
+<p class="font-body-md font-semibold text-ink-primary">Amanda Lim</p>
+<p class="font-label-sm text-on-surface-variant">amanda.lim@email.com</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded font-label-sm tier-platinum text-[10px] uppercase font-bold tracking-widest">Platinum</span>
+</td>
+<td class="p-4 text-right font-label-md text-success">RM 1,420.00</td>
+<td class="p-4 text-right font-label-md">12</td>
+<td class="p-4 text-right">
+<p class="font-body-sm">Oct 24, 2023</p>
+<p class="font-label-sm text-on-surface-variant text-[11px]">3 days ago</p>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="unfold_more">unfold_more</span>
+</td>
+</tr>
+<!-- Expanded Row 1 -->
+<tr class="row-collapsed bg-surface-container-lowest" id="row-1">
+<td class="p-0" colspan="7">
+<div class="p-6 grid grid-cols-12 gap-stack-lg border-x-4 border-l-primary bg-surface">
+<div class="col-span-4 space-y-4 border-r border-border pr-6">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase">Quick Profile Edit</h4>
+<div class="space-y-3">
+<div>
+<label class="font-label-sm text-label-sm mb-1 block">Phone Number</label>
+<input class="w-full border border-border rounded p-2 font-body-sm focus:border-primary outline-none" type="text" value="+60 12-345 6789"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm mb-1 block">Preferred Stylist</label>
+<select class="w-full border border-border rounded p-2 font-body-sm focus:border-primary outline-none">
+<option selected="">David Wong</option>
+<option>Sarah Tan</option>
+<option>Michael Khoo</option>
+</select>
+</div>
+</div>
+</div>
+<div class="col-span-5 space-y-4 border-r border-border pr-6">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase">Loyalty Statistics</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-3 rounded-lg">
+<p class="font-label-sm text-[11px] text-on-surface-variant">TOTAL SPENT</p>
+<p class="font-headline-md text-ink-primary">RM 8,240</p>
+</div>
+<div class="bg-surface-container p-3 rounded-lg">
+<p class="font-label-sm text-[11px] text-on-surface-variant">LOYALTY POINTS</p>
+<p class="font-headline-md text-ink-primary">2,450 pts</p>
+</div>
+<div class="bg-surface-container p-3 rounded-lg">
+<p class="font-label-sm text-[11px] text-on-surface-variant">AVG ORDER</p>
+<p class="font-headline-md text-ink-primary">RM 185</p>
+</div>
+<div class="bg-surface-container p-3 rounded-lg">
+<p class="font-label-sm text-[11px] text-on-surface-variant">LIFETIME VISITS</p>
+<p class="font-headline-md text-ink-primary">42</p>
+</div>
+</div>
+</div>
+<div class="col-span-3 flex flex-col justify-center gap-3">
+<button class="w-full bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:opacity-90">Save Changes</button>
+<button class="w-full border border-border py-2.5 rounded-lg font-label-md hover:bg-surface-container-high transition-colors">View Full History</button>
+<button class="w-full text-danger py-2.5 rounded-lg font-label-md hover:bg-error-container/20 transition-colors">Deactivate Member</button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Member Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer" onclick="toggleRow('row-2')">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary" onclick="event.stopPropagation()" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold">BK</div>
+<div>
+<p class="font-body-md font-semibold text-ink-primary">Ben Khoo</p>
+<p class="font-label-sm text-on-surface-variant">ben.khoo@provider.my</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded font-label-sm tier-gold text-[10px] uppercase font-bold tracking-widest" style="background-color: #f3be5e;">Gold</span>
+</td>
+<td class="p-4 text-right font-label-md">RM 45.50</td>
+<td class="p-4 text-right font-label-md">2</td>
+<td class="p-4 text-right">
+<p class="font-body-sm">Oct 12, 2023</p>
+<p class="font-label-sm text-on-surface-variant text-[11px]">15 days ago</p>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="unfold_more">unfold_more</span>
+</td>
+</tr>
+<tr class="row-collapsed" id="row-2">
+<td colspan="7"> <!-- Row Expansion Content Generic --> </td>
+</tr>
+<!-- Member Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer" onclick="toggleRow('row-3')">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary" onclick="event.stopPropagation()" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold">ST</div>
+<div>
+<p class="font-body-md font-semibold text-ink-primary">Siti Taylor</p>
+<p class="font-label-sm text-on-surface-variant">siti.t@gmail.com</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded font-label-sm tier-silver text-[10px] uppercase font-bold tracking-widest">Silver</span>
+</td>
+<td class="p-4 text-right font-label-md">RM 200.00</td>
+<td class="p-4 text-right font-label-md">0</td>
+<td class="p-4 text-right">
+<p class="font-body-sm">Sep 30, 2023</p>
+<p class="font-label-sm text-on-surface-variant text-[11px]">27 days ago</p>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="unfold_more">unfold_more</span>
+</td>
+</tr>
+<tr class="row-collapsed" id="row-3">
+<td colspan="7"> <!-- Row Expansion Content Generic --> </td>
+</tr>
+<!-- Member Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer" onclick="toggleRow('row-4')">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary" onclick="event.stopPropagation()" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">JR</div>
+<div>
+<p class="font-body-md font-semibold text-ink-primary">Jordan Rizal</p>
+<p class="font-label-sm text-on-surface-variant">jordan.rizal@outlook.com</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded font-label-sm tier-bronze text-[10px] uppercase font-bold tracking-widest">Bronze</span>
+</td>
+<td class="p-4 text-right font-label-md">RM 0.00</td>
+<td class="p-4 text-right font-label-md">1</td>
+<td class="p-4 text-right">
+<p class="font-body-sm">Aug 15, 2023</p>
+<p class="font-label-sm text-on-surface-variant text-[11px]">Lapsed Member</p>
+</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="unfold_more">unfold_more</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer/Pagination -->
+<div class="p-4 bg-surface-container-low border-t border-border flex items-center justify-between">
+<p class="font-label-sm text-on-surface-variant">Showing 1 to 25 of 2,482 entries</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded border border-border flex items-center justify-center hover:bg-surface transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-label-sm">1</button>
+<button class="w-8 h-8 rounded border border-border flex items-center justify-center hover:bg-surface transition-colors font-label-sm">2</button>
+<button class="w-8 h-8 rounded border border-border flex items-center justify-center hover:bg-surface transition-colors font-label-sm">3</button>
+<span class="px-2 self-center">...</span>
+<button class="w-8 h-8 rounded border border-border flex items-center justify-center hover:bg-surface transition-colors font-label-sm">99</button>
+<button class="w-8 h-8 rounded border border-border flex items-center justify-center hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Help / Tips -->
+<div class="bg-primary-container/10 border border-primary/20 p-stack-md rounded-xl flex gap-stack-md items-start">
+<span class="material-symbols-outlined text-primary" data-icon="lightbulb">lightbulb</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Pro-tip for Salon Managers</h4>
+<p class="font-body-sm text-on-surface-variant mt-1">Filtering by "Lapsed Members" can help you identify high-value Platinum clients who haven't visited in 90 days. Use bulk actions to send them a targeted "We Miss You" loyalty voucher.</p>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function toggleRow(rowId) {
+            const row = document.getElementById(rowId);
+            if (row.classList.contains('row-collapsed')) {
+                // Close others
+                document.querySelectorAll('.row-expanded').forEach(r => {
+                    r.classList.add('row-collapsed');
+                    r.classList.remove('row-expanded');
+                });
+                // Open this one
+                row.classList.remove('row-collapsed');
+                row.classList.add('row-expanded');
+            } else {
+                row.classList.add('row-collapsed');
+                row.classList.remove('row-expanded');
+            }
+        }
+    </script>
+</body></html>

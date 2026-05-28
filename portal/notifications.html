@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Notification Settings — Precision Salon OS</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:0.5px solid var(--border);}
+.toggle-row:last-child{border-bottom:none;}
+.toggle-label{font-size:14px;font-weight:500;}
+.toggle-desc{font-size:12px;color:var(--on-surface-variant);margin-top:2px;}
+.toggle{position:relative;width:44px;height:24px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.slider{position:absolute;cursor:pointer;inset:0;background:var(--surface-container);border-radius:var(--radius-full);transition:.2s;}
+.slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.2s;}
+input:checked+.slider{background:var(--primary);}
+input:checked+.slider:before{transform:translateX(20px);}
+</style>
+</head><body>
+<div class="app-layout">
+  <div class="sidebar">
+    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
+      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
+      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
+      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
+      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
+      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
+      <a class="nav-item active" href="member-profile.html"><span class="icon">👤</span>Profile</a>
+    </nav>
+    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <a href="account-settings.html" class="text-sm text-primary" style="text-decoration:none;">← Back to Account Settings</a>
+        <div class="page-title mt-4">Notification &amp; Privacy Settings</div>
+      </div>
+      <button class="btn btn-primary">Save Changes</button>
+    </div>
+
+    <div class="grid grid-2" style="gap:24px;max-width:900px;">
+      <!-- Booking Notifications -->
+      <div class="card">
+        <div class="card-title mb-4">📅 Booking Notifications</div>
+        <div class="card-subtitle mb-16">Reminders and updates for your appointments</div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Booking Confirmation</div><div class="toggle-desc">Receive confirmation when booking is made</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">24-Hour Reminder</div><div class="toggle-desc">Reminder the day before your appointment</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">2-Hour Reminder</div><div class="toggle-desc">Reminder 2 hours before appointment</div></div>
+          <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Cancellation Alerts</div><div class="toggle-desc">If your appointment is cancelled by the salon</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <!-- Marketing & Promotions -->
+      <div class="card">
+        <div class="card-title mb-4">📣 Marketing &amp; Promotions</div>
+        <div class="card-subtitle mb-16">Promotional offers and campaigns</div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">WhatsApp Marketing</div><div class="toggle-desc">Promotions and offers via WhatsApp</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Email Campaigns</div><div class="toggle-desc">Newsletters and promotional emails</div></div>
+          <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Birthday Offers</div><div class="toggle-desc">Special discount on your birthday</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Voucher Expiry Alerts</div><div class="toggle-desc">Reminder when vouchers are about to expire</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <!-- PDPA Consent -->
+      <div class="card" style="border:0.5px solid var(--warning);background:rgba(138,82,0,0.03);">
+        <div class="card-title mb-4">🔒 PDPA 2010 — Data Consent</div>
+        <div class="card-subtitle mb-16">Your privacy rights under Malaysia's Personal Data Protection Act</div>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Data Processing Consent</div>
+            <div class="toggle-desc">Required for account operation — cannot be disabled</div>
+          </div>
+          <label class="toggle"><input type="checkbox" checked disabled><span class="slider" style="background:var(--primary);opacity:0.5;cursor:not-allowed;"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Analytics &amp; Improvement</div><div class="toggle-desc">Help us improve services with anonymised usage data</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="mt-16 flex gap-8">
+          <a href="account-settings.html" class="btn btn-secondary btn-sm">📥 Request My Data</a>
+          <a href="account-settings.html" class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">🗑️ Delete Account</a>
+        </div>
+      </div>
+
+      <!-- Channel Preferences -->
+      <div class="card">
+        <div class="card-title mb-4">📱 Channel Preferences</div>
+        <div class="card-subtitle mb-16">How you prefer to receive notifications</div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">WhatsApp</div><div class="toggle-desc">OTP and transactional messages</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Email</div><div class="toggle-desc">Receipts, invoices, and confirmations</div></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">Preferred Language</div></div>
+          <select class="input select" style="width:120px;height:36px;font-size:13px;">
+            <option>English</option><option>Bahasa Malaysia</option><option>简体中文</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

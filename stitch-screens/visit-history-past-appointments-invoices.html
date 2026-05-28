@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Visit History - GLAMOUR PORTAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e3e2df",
+                        "ink-primary": "#1A1A18",
+                        "inverse-primary": "#a6c8ff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#1b1c19",
+                        "on-background": "#1b1c1a",
+                        "error": "#ba1a1a",
+                        "secondary": "#5f5f5a",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#dcdad5",
+                        "inverse-surface": "#30312e",
+                        "primary": "#004786",
+                        "surface-container-low": "#f5f4f0",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "success": "#2E7D52",
+                        "on-tertiary-fixed": "#271900",
+                        "inverse-on-surface": "#f2f1ed",
+                        "secondary-fixed": "#e4e2dd",
+                        "on-secondary-fixed-variant": "#474743",
+                        "border": "#E2E1DC",
+                        "surface-variant": "#e3e2df",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "outline": "#727782",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-surface-variant": "#424751",
+                        "tertiary": "#5e4100",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c2c6d3",
+                        "on-surface": "#1b1c1a",
+                        "on-tertiary-container": "#ffd184",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dbdad6",
+                        "silver": "#C0C0C0",
+                        "purple-mlm": "#4A3AB0",
+                        "bronze": "#CD7F32",
+                        "platinum": "#E5E4E2",
+                        "surface-container": "#efeeea",
+                        "tertiary-fixed": "#ffdeaa",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "surface-bright": "#faf9f5",
+                        "surface-tint": "#1a5fa8",
+                        "background": "#faf9f5",
+                        "surface-container-high": "#e9e8e4",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001c3a",
+                        "on-primary-container": "#c4daff",
+                        "on-primary-fixed-variant": "#004786",
+                        "warning": "#8A5200",
+                        "tertiary-container": "#7d5700",
+                        "surface": "#FFFFFF",
+                        "primary-container": "#1a5fa8",
+                        "on-secondary-container": "#5f5f5b",
+                        "danger": "#8A1F1F"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "24px",
+                        "touch-target-min": "56px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "tile-height-min": "80px",
+                        "margin-page": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "display-lg": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Libre Franklin"],
+                        "headline-md": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Libre Franklin', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-container flex justify-between items-center px-gutter w-full h-14 border-b border-border dark:border-outline-variant fixed top-0 left-0 z-50">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">GLAMOUR PORTAL</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95 duration-150">notifications</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-border">
+<img alt="User profile" data-alt="A close-up portrait of a sophisticated woman with styled hair, set against a blurred high-end salon background. The lighting is soft and flattering, emphasizing professional grooming. The overall aesthetic is clean and modern, consistent with a premium corporate service identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE5dFdVzbMCrgnXjQ6pboN0beuIaU1DrFgiHaSXhqfUyKcAzqE2AK0AunEO6hdMLU9BGa7D2K3bI1UzHGLW5nJH3Vx7qVkkmxj7_2daM-RyYERbi71f8FjMFLfTjL_Pd_dhnZ_XmzsviRFa1-cVOBSwfb9ODima8B16bblzErorAttdsl6gBGrJ315llQ-j_cBpYTrP6RY_NXtgCHWZhRyZcXdmunnN2EThggrcEC1e6RbGKumdfMUYP444HAnmGIvZbH_Gl20C7YM"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen py-stack-lg bg-surface-container-low dark:bg-surface-dim h-full w-64 fixed left-0 top-0 border-r border-border dark:border-outline-variant pt-20">
+<div class="px-gutter mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-primary">Premium Salon</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Customer Portal</p>
+</div>
+<nav class="flex flex-col gap-1 px-2">
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span> Book
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Wallet
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span> Affiliate Hub
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">payments</span> Vouchers
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md bg-primary-container text-on-primary-container font-bold border-r-4 border-primary transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span> Visit History
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 pt-20 pb-20 px-margin-page min-h-screen flex flex-col gap-stack-lg">
+<!-- Offline/Sync Banner (Conditional Visual) -->
+<div class="hidden w-full py-2 px-margin-page bg-primary text-white text-center font-label-sm text-label-sm transition-all duration-500" id="sync-banner">
+            Syncing your visit history...
+        </div>
+<!-- Page Header & Filters -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-ink-primary">Visit History</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">View and manage your past salon experiences.</p>
+</div>
+<div class="flex gap-stack-sm w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+<div class="relative group">
+<select class="appearance-none bg-surface border border-border rounded-lg px-4 py-2 pr-10 font-label-md text-label-md text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+<option>All Services</option>
+<option>Haircut</option>
+<option>Coloring</option>
+<option>Treatment</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<div class="relative group">
+<select class="appearance-none bg-surface border border-border rounded-lg px-4 py-2 pr-10 font-label-md text-label-md text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+<option>Year: 2024</option>
+<option>Year: 2023</option>
+<option>Year: 2022</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Timeline Section -->
+<div class="bg-surface rounded-xl border border-border overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant border-b border-border">DATE</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant border-b border-border">SERVICE</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant border-b border-border">STYLIST</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant border-b border-border">STATUS</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant border-b border-border">AMOUNT</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant border-b border-border text-right">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Entry 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-surface whitespace-nowrap">24 Oct 2024</td>
+<td class="p-4">
+<div class="font-body-md text-body-md font-bold text-ink-primary">Signature Keratin Treatment</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">90 Mins • Intensive Care</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-stack-sm">
+<img class="w-8 h-8 rounded-full border border-border" data-alt="A professional male hairstylist in a modern salon setting, smiling warmly. He wears a clean, black apron and is surrounded by high-end salon equipment. The image has a professional, business-tool aesthetic with bright, natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVz7HoCJc3Beg48hxFWR5Pj9yGvsWaRP3B4e2nHkmO7yAmzXp34IP1w8z6vqDHTOCJDRX-otnNaihVMMAXvXQc88xAgv-SUli-X449QZdQQh4ug68pFK6LvGyyrEpsNt2uhDEutkRlhvv5uYDJFPAfNjxpHZRJENNJvdQxq70PD0aXKWlbR4gHym9_vfJLnILsXQW8YaX2QRjyKnDIxWSMpIBRjzbEH3uE6k0xPo3drkBHT9Ow_6YpijaqkB5OfGWs4z8zxsYl9Dqr"/>
+<span class="font-body-md text-body-md">Marcus Chen</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-success/10 text-success text-label-sm font-bold rounded-full">Completed</span>
+</td>
+<td class="p-4 font-label-md text-label-md font-bold text-primary">RM 450.00</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white font-label-md text-label-md rounded-lg hover:bg-primary-container transition-colors active:scale-95">Re-book</button>
+</div>
+</td>
+</tr>
+<!-- Entry 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-surface whitespace-nowrap">15 Sep 2024</td>
+<td class="p-4">
+<div class="font-body-md text-body-md font-bold text-ink-primary">Gentleman's Cut &amp; Style</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">45 Mins • Classic Finish</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-stack-sm">
+<img class="w-8 h-8 rounded-full border border-border" data-alt="A talented female stylist focusing on her work in a high-density, professional salon. She has a sharp, focused expression, reflecting tactile precision and expertise. The lighting is crisp, highlighting the clean, minimalist interior of the salon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2pnKv3UvKn_67Msll4cWBXhxeo8ke5ttFRWP_ssQtB5RPnfz5kPDZt49ttX1C52m_Ovwpp4_3Vrx70ylXdWUoWoNm7-Dvkl40xeHn_ig51-fDmsxAC8PiVEU_xr4bVXf_Fyc23QCMBptWsj8eaY0dVQXVAWCfu8F5RFoataa5bVmplx15E501-fCwN05Vn0Ifh9kHULsUVrBkDQpfksEBDazakOX00y5O0_NmgdxJe8_XaHvhvwXz0WziO9VkDh0HFSUhiqys8U2g"/>
+<span class="font-body-md text-body-md">Sarah Jenkins</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-success/10 text-success text-label-sm font-bold rounded-full">Completed</span>
+</td>
+<td class="p-4 font-label-md text-label-md font-bold text-primary">RM 85.00</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white font-label-md text-label-md rounded-lg hover:bg-primary-container transition-colors active:scale-95">Re-book</button>
+</div>
+</td>
+</tr>
+<!-- Entry 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-surface whitespace-nowrap">02 Aug 2024</td>
+<td class="p-4">
+<div class="font-body-md text-body-md font-bold text-ink-primary">Balayage &amp; Toning</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">180 Mins • Premium Color</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-stack-sm">
+<img class="w-8 h-8 rounded-full border border-border" data-alt="A focused male colorist with a creative flair, working in a high-end salon with sleek, white surfaces and silver accents. The atmosphere is professional yet artistic, perfectly aligning with a luxury customer portal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoC8H7Aph0bmdkBKqkaJbbrbt3KmZGP6HCK8K3vIKzf39gU4bqVudB2OAD02F10r4Brj634qyjHtKIHVaKjy-kYfCyS9QIENHawylNmwu-oQsJtoTFsO31r1XENaBMPsjGX4bhlHvYMrQXiDQkYmlMozrLoPJbaSboz6YsqzaT7DkWpmhP0IcwmtF54pqp6D-Ld7Mg83GmIYxP7wH_E-N59bGn6vlobAoRsElRto2ER00Q6e2R3y1vbOorBDFpMRcZav0wAJR3yLif"/>
+<span class="font-body-md text-body-md">Marcus Chen</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-success/10 text-success text-label-sm font-bold rounded-full">Completed</span>
+</td>
+<td class="p-4 font-label-md text-label-md font-bold text-primary">RM 620.00</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white font-label-md text-label-md rounded-lg hover:bg-primary-container transition-colors active:scale-95">Re-book</button>
+</div>
+</td>
+</tr>
+<!-- Entry 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-surface whitespace-nowrap">12 Jul 2024</td>
+<td class="p-4">
+<div class="font-body-md text-body-md font-bold text-ink-primary">Deep Scalp Therapy</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">60 Mins • Restoration</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-stack-sm">
+<img class="w-8 h-8 rounded-full border border-border" data-alt="A calm and expert salon professional providing a therapeutic service. The lighting is low-contrast and serene, emphasizing a tranquil, high-end spa and salon experience. Pristine white and soft gray tones dominate the scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2jbxf157DK0vkxNC8pxGoPVqFJJAyqKOHnCAsLTwaXCn7V7Q7f7E48sF2H43MSzbHYf9x5rVBopMw-gWq8y0ox38lHwxa0ytUATlcVw6d1SSdySUOZN8TJeBcZ7XfgktcyPGDX6AxuK5JZTtMd1mAqbH4_SxAau5V_InULciXDk24XT4qUKtxIJRtrOt9XuiWFleSiPbRNrhu_kq5SBFmojMhS8aJ-lRbKu4eaiagXdbBcwxogwu3MpS8F5Eifi_6ZDYgE6KSE34N"/>
+<span class="font-body-md text-body-md">Elena Rodriguez</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-error/10 text-error text-label-sm font-bold rounded-full">No-show</span>
+</td>
+<td class="p-4 font-label-md text-label-md font-bold text-primary">RM 0.00</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-on-surface-variant text-label-sm px-2 italic">Cancelled Policy</span>
+<button class="px-4 py-2 bg-primary text-white font-label-md text-label-md rounded-lg hover:bg-primary-container transition-colors active:scale-95">Book New</button>
+</div>
+</td>
+</tr>
+<!-- Entry 5 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-surface whitespace-nowrap">10 Jun 2024</td>
+<td class="p-4">
+<div class="font-body-md text-body-md font-bold text-ink-primary">Scalp Detox &amp; Wash</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">30 Mins • Quick Refresh</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-stack-sm">
+<img class="w-8 h-8 rounded-full border border-border" data-alt="An action shot of a professional hair stylist's hands working with precision, using silver scissors and high-end products. The focus is on tactile precision and professional utility, set in a bright, modern salon environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPXhTDURCgSkv1lu7rMN_Fq1R-KCKdKFON1GzUFH5joRxTnIfaZQ805a5HJeJ7_qeoEMAWXF-hU1z-B-mqDfL6VM4_KqImYPuFn8FeYmzkNnCHWkiMPoXBxs9enXg5-G8_x1sWL6hiOZVp4zMVRLx_X8adKorNFDYJMqYft0ahiobytd8hebR1HGDwMZZL_SJkEUwXK1kqgrzb_Z88fjTtTNpWSjNdv1tZ4VnXdOU1qsd5r-6UCxHFsvdUW46FCY3mHxzJ_3mX7nTA"/>
+<span class="font-body-md text-body-md">Sarah Jenkins</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-success/10 text-success text-label-sm font-bold rounded-full">Completed</span>
+</td>
+<td class="p-4 font-label-md text-label-md font-bold text-primary">RM 120.00</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white font-label-md text-label-md rounded-lg hover:bg-primary-container transition-colors active:scale-95">Re-book</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Visit Insights (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<div class="bg-primary/5 p-gutter rounded-xl border border-primary/10 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-2">stars</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant">Top Service</h3>
+</div>
+<div class="mt-4">
+<p class="font-headline-md text-headline-md font-bold text-ink-primary">Signature Keratin</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">3 visits this year</p>
+</div>
+</div>
+<div class="bg-surface p-gutter rounded-xl border border-border flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary mb-2">payments</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant">Total Spent (2024)</h3>
+</div>
+<div class="mt-4">
+<p class="font-headline-md text-headline-md font-bold text-ink-primary">RM 1,275.00</p>
+<p class="font-body-sm text-body-sm text-success flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> 12% from 2023
+                    </p>
+</div>
+</div>
+<div class="bg-surface p-gutter rounded-xl border border-border flex flex-col justify-between relative overflow-hidden">
+<div class="z-10">
+<span class="material-symbols-outlined text-tertiary mb-2">loyalty</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant">Next Perk</h3>
+</div>
+<div class="mt-4 z-10">
+<p class="font-headline-md text-headline-md font-bold text-ink-primary">Free Wash</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Available after 1 more visit</p>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[80px]">card_giftcard</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="md:ml-64 bg-surface-container-high dark:bg-surface-container-lowest w-full py-stack-md border-t border-border dark:border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-page w-full gap-stack-md">
+<div class="font-label-md text-label-md text-on-surface">GLAMOUR PORTAL</div>
+<div class="flex gap-stack-md">
+<a class="font-body-sm text-body-sm text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Help Center</a>
+<a class="font-body-sm text-body-sm text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<div class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed">
+                © 2024 High-End Salon Professional. All rights reserved.
+            </div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-border flex justify-around items-center h-16 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-medium">Book</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="text-[10px] font-bold">History</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction: Periodic "Syncing" banner for atmospheric effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('sync-banner');
+            
+            // Randomly show sync status to simulate a "live" system
+            setTimeout(() => {
+                banner.classList.remove('hidden');
+                setTimeout(() => {
+                    banner.classList.add('bg-success');
+                    banner.innerText = 'Visit History Synced Successfully';
+                    setTimeout(() => {
+                        banner.classList.add('hidden');
+                    }, 3000);
+                }, 2000);
+            }, 1000);
+
+            // Add hover effects for table rows logic
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('click', () => {
+                    // Logic for opening detailed modal could go here
+                });
+            });
+        });
+    </script>
+</body></html>

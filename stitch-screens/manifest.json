@@ -1,0 +1,752 @@
+﻿[
+    {
+        "filename":  "affiliate-rank-thresholds-commission-engine-config.html",
+        "title":  "Affiliate Rank Thresholds - Commission Engine Config",
+        "name":  "projects/13741702629139798377/screens/3e26f5dc4a864c8a8cb09fc387e80016",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-commission-matrix-enterprise-refinement.html",
+        "title":  "Staff Commission Matrix - Enterprise Refinement",
+        "name":  "projects/13741702629139798377/screens/68f749accb924c8c9ff5a50d657f9221",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "stock-movement-history-inventory-audit-log.html",
+        "title":  "Stock Movement History - Inventory Audit Log",
+        "name":  "projects/13741702629139798377/screens/bd7748bda38246f38627a282257e7c6d",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-rank-thresholds-commission-engine-config.html",
+        "title":  "Affiliate Rank Thresholds - Commission Engine Config",
+        "name":  "projects/13741702629139798377/screens/efde536d0d0d414ebfcb222596cd4fab",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-refined-pricing-logic-tiers.html",
+        "title":  "Service Package Builder - Refined Pricing Logic \u0026 Tiers",
+        "name":  "projects/13741702629139798377/screens/63923be69647435bb1db692a08a401db",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "merchant-branding-settings-admin-portal.html",
+        "title":  "Merchant Branding Settings - Admin Portal",
+        "name":  "projects/13741702629139798377/screens/3509adee5d5a4f099210cdbd6333f14f",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "customer-booking-service-selection.html",
+        "title":  "Customer Booking - Service Selection",
+        "name":  "projects/13741702629139798377/screens/7a01b8deb9bd4b25bf4689ce50bb55ae",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "commission-engine-affiliate-rank-rules.html",
+        "title":  "Commission Engine - Affiliate \u0026 Rank Rules",
+        "name":  "projects/13741702629139798377/screens/07248bcbf4234f6f8803073374ef598e",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-performance-payouts-admin-dashboard.html",
+        "title":  "Staff Performance \u0026 Payouts - Admin Dashboard",
+        "name":  "projects/13741702629139798377/screens/11acc4c479d54005a9a87f74c5fbbd3d",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-builder-advanced-applicability-logic.html",
+        "title":  "Voucher Builder - Advanced Applicability Logic",
+        "name":  "projects/13741702629139798377/screens/e9a72e57be8a411f8282c6d634c82658",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "admin-dashboard-operational-overview.html",
+        "title":  "Admin Dashboard - Operational Overview",
+        "name":  "projects/13741702629139798377/screens/07a72d1c781b463285f3fecf2e22bd47",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-commission-editor-modal-stylist-configuration.html",
+        "title":  "Staff Commission Editor Modal - Stylist Configuration",
+        "name":  "projects/13741702629139798377/screens/952e50511c8146e1833e4b484a74ee9e",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-refined-downline-management.html",
+        "title":  "Affiliate Hub - Refined Downline Management",
+        "name":  "projects/13741702629139798377/screens/1c763e8815fd4440a890eb5e66a3daa0",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "visit-history-past-appointments-invoices.html",
+        "title":  "Visit History - Past Appointments \u0026 Invoices",
+        "name":  "projects/13741702629139798377/screens/0dad6887bb684c728987a61709395999",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-builder-refined-validity-usage-rules.html",
+        "title":  "Voucher Builder - Refined Validity \u0026 Usage Rules",
+        "name":  "projects/13741702629139798377/screens/db7debaae0f94e34b6a5379c541e1fd7",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "mlm-configuration-refined-commission-matrix-calculation-modes.html",
+        "title":  "MLM Configuration - Refined Commission Matrix \u0026 Calculation Modes",
+        "name":  "projects/13741702629139798377/screens/b6d37fa78aa5478dae31d63442a5ff8d",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-performance-payouts-dashboard.html",
+        "title":  "Staff Performance \u0026 Payouts Dashboard",
+        "name":  "projects/13741702629139798377/screens/2d146c186dee43e9ad41ddf373fe946c",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "commission-ledger-affiliate-management-hub.html",
+        "title":  "Commission Ledger - Affiliate Management Hub",
+        "name":  "projects/13741702629139798377/screens/6441a38b8a234dda94f41e7d78a32c71",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-performance-refined-dashboard-with-analytics.html",
+        "title":  "Staff Performance - Refined Dashboard with Analytics",
+        "name":  "projects/13741702629139798377/screens/55e1a9c3a35d41168734d6b1cd88cb72",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "mlm-configuration-advanced-performance-simulation-hub.html",
+        "title":  "MLM Configuration - Advanced Performance Simulation Hub",
+        "name":  "projects/13741702629139798377/screens/7bc714ccfd544735bc8b87667e55cfa0",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-dashboard-stats.html",
+        "title":  "Affiliate Hub - Dashboard \u0026 Stats",
+        "name":  "projects/13741702629139798377/screens/5b0bfabe61e0482099a1c285dacef314",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "stylist-profile-performance-management.html",
+        "title":  "Stylist Profile - Performance \u0026 Management",
+        "name":  "projects/13741702629139798377/screens/98235465d82743dd9b51484b9e774b1f",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-builder-multichannel-outreach.html",
+        "title":  "Marketing Campaign Builder - Multi-Channel Outreach",
+        "name":  "projects/13741702629139798377/screens/a8b3be48eb214a729ad22b501b0a3599",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "integrations-webhooks-system-config.html",
+        "title":  "Integrations \u0026 Webhooks - System Config",
+        "name":  "projects/13741702629139798377/screens/702807acc156484fae0fb3b090417a1f",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "onhold-orders-enhanced-alert-visibility.html",
+        "title":  "On-Hold Orders - Enhanced Alert Visibility",
+        "name":  "projects/13741702629139798377/screens/00f6f55f21744b0d9572eb69c2977cab",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "payout-queue-refined-enterprise-dashboard.html",
+        "title":  "Payout Queue - Refined Enterprise Dashboard",
+        "name":  "projects/13741702629139798377/screens/2e2b01f47f934610a963a048928817f7",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "autoreorder-rules-procurement-automation-management.html",
+        "title":  "Auto-Reorder Rules - Procurement Automation Management",
+        "name":  "projects/13741702629139798377/screens/66b236a5a3e54469b35dbbc69040551b",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "booking-calendar-stylist-schedule.html",
+        "title":  "Booking Calendar - Stylist Schedule",
+        "name":  "projects/13741702629139798377/screens/98a1d2db888948a1a03f35e703858577",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "members-crm-customer-management.html",
+        "title":  "Members CRM - Customer Management",
+        "name":  "projects/13741702629139798377/screens/52bb01eb70084803aae5ce07e2bfcc02",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "commission-payout-reports-financial-dashboard.html",
+        "title":  "Commission Payout Reports - Financial Dashboard",
+        "name":  "projects/13741702629139798377/screens/9a74ff14ba19434cabc53620915c5925",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "membership-tiers-loyalty-rewards.html",
+        "title":  "Membership \u0026 Tiers - Loyalty Rewards",
+        "name":  "projects/13741702629139798377/screens/29800f1e23c04fdc9483c2caa20babbc",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-commission-matrix-enterprise-refinement.html",
+        "title":  "Staff Commission Matrix - Enterprise Refinement",
+        "name":  "projects/13741702629139798377/screens/737ce420ace245668d87dc2d0a7f658e",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-builder-advanced-validity-usage-rules.html",
+        "title":  "Voucher Builder - Advanced Validity \u0026 Usage Rules",
+        "name":  "projects/13741702629139798377/screens/e02b05d6bac242c5898cf440427ee684",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-schedule-test-blast.html",
+        "title":  "Marketing Campaign - Schedule \u0026 Test Blast",
+        "name":  "projects/13741702629139798377/screens/7dd1e91e566a484d81ef8f323ac367a5",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "mlm-configuration-merchant-admin-hub.html",
+        "title":  "MLM Configuration - Merchant Admin Hub",
+        "name":  "projects/13741702629139798377/screens/275a82cc75d947b085adbc6300acb021",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-advanced-commission-ledger-payout-tracking.html",
+        "title":  "Affiliate Hub - Advanced Commission Ledger \u0026 Payout Tracking",
+        "name":  "projects/13741702629139798377/screens/228a64609de947e59554ef082f6f5f6a",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-redemption-stats-analytics-dashboard.html",
+        "title":  "Service Package Redemption Stats - Analytics Dashboard",
+        "name":  "projects/13741702629139798377/screens/bd0feb02fa5848d4b5a3996f427a26c8",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-package-builder-service-package-creator.html",
+        "title":  "Voucher \u0026 Package Builder - Service Package Creator",
+        "name":  "projects/13741702629139798377/screens/622ff5e751bf488693efb622f9c4cdd3",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-package-builder-service-package-creator.html",
+        "title":  "Voucher \u0026 Package Builder - Service Package Creator",
+        "name":  "projects/13741702629139798377/screens/20de1368ed414499b021c3a3efb571a4",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-rank-thresholds-refined-configuration-hub.html",
+        "title":  "Affiliate Rank Thresholds - Refined Configuration Hub",
+        "name":  "projects/13741702629139798377/screens/5177b24fa88d475ebb7e8718fee455dc",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-refined-validity-usage-rules.html",
+        "title":  "Service Package Builder - Refined Validity \u0026 Usage Rules",
+        "name":  "projects/13741702629139798377/screens/8ddfb1fb48d648ffa60c4f4cdc2266a8",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-template-builder-marketing-configuration.html",
+        "title":  "Voucher Template Builder - Marketing Configuration",
+        "name":  "projects/13741702629139798377/screens/2d3b8c7d54ba48c5a2592e965df049dc",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-advanced-recurrence-logic.html",
+        "title":  "Marketing Campaign - Advanced Recurrence Logic",
+        "name":  "projects/13741702629139798377/screens/2782eab7d01b429ea9d13ffa1a76471b",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-refined-commission-ledger.html",
+        "title":  "Affiliate Hub - Refined Commission Ledger",
+        "name":  "projects/13741702629139798377/screens/9f85799bd6eb46029a1329c32a414281",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "revenue-reports-financial-analytics-dashboard.html",
+        "title":  "Revenue Reports - Financial Analytics Dashboard",
+        "name":  "projects/13741702629139798377/screens/0aca093d5f6743aabf7eaabb663835a0",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-commission-matrix-enterprise-configuration.html",
+        "title":  "Staff Commission Matrix - Enterprise Configuration",
+        "name":  "projects/13741702629139798377/screens/55113d12869749f2bc8fd6c5539b2fca",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-advanced-event-triggers.html",
+        "title":  "Marketing Campaign - Advanced Event Triggers",
+        "name":  "projects/13741702629139798377/screens/d598dbfb7f10479ea93d1ebc80e14b83",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-builder-refined-message-templates-variables.html",
+        "title":  "Marketing Campaign Builder - Refined Message Templates \u0026 Variables",
+        "name":  "projects/13741702629139798377/screens/ccd8d241255543a58ea8676a684dea46",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "payment-checkout-updated-layout-with-taxes-and-pay-button.html",
+        "title":  "Payment \u0026 Checkout - Updated Layout with Taxes and Pay Button",
+        "name":  "projects/13741702629139798377/screens/9ad5736363e84c69a23dbc6bc524e0bd",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "vouchers-packages-active-rewards-progress.html",
+        "title":  "Vouchers \u0026 Packages - Active Rewards \u0026 Progress",
+        "name":  "projects/13741702629139798377/screens/b5854b100bc44a76b15db075137de17f",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-builder-advanced-audience-segmentation.html",
+        "title":  "Marketing Campaign Builder - Advanced Audience Segmentation",
+        "name":  "projects/13741702629139798377/screens/b58089a0aada42fb8eb1fa2a745bef63",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "commission-engine-affiliate-rank-rules.html",
+        "title":  "Commission Engine - Affiliate \u0026 Rank Rules",
+        "name":  "projects/13741702629139798377/screens/6783f3efaa85415486e9a8ad00de76f3",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-refined-pricing-logic.html",
+        "title":  "Service Package Builder - Refined Pricing Logic",
+        "name":  "projects/13741702629139798377/screens/a26f2cc568ef49ea9400f33d50e60298",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "lhdn-myinvois-advanced-rejection-resolution-hub.html",
+        "title":  "LHDN MyInvois - Advanced Rejection Resolution Hub",
+        "name":  "projects/13741702629139798377/screens/7275193013e647b8ba8f61038045a12e",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-package-builder-marketing-hub.html",
+        "title":  "Voucher \u0026 Package Builder - Marketing Hub",
+        "name":  "projects/13741702629139798377/screens/e49b7de6115544979ec5f52991708913",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "mlm-configuration-refined-rank-benefits-perk-assignment.html",
+        "title":  "MLM Configuration - Refined Rank Benefits \u0026 Perk Assignment",
+        "name":  "projects/13741702629139798377/screens/62cdae94cd09492ea149da66c1e44bf9",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-template-builder-marketing-configuration.html",
+        "title":  "Voucher Template Builder - Marketing Configuration",
+        "name":  "projects/13741702629139798377/screens/ecbcad8be6dd43e887fb7a97f0887d24",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "lhdn-myinvois-advanced-rejection-queue-resolution-hub.html",
+        "title":  "LHDN MyInvois - Advanced Rejection Queue \u0026 Resolution Hub",
+        "name":  "projects/13741702629139798377/screens/d1b3b75e90a845a5a833d72d0acb7315",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "mlm-configuration-refined-performance-simulation-hub.html",
+        "title":  "MLM Configuration - Refined Performance Simulation Hub",
+        "name":  "projects/13741702629139798377/screens/3c00ca26a6ac4c349bf29f46a7ba42c9",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "outlet-settings-refined-email-campaign-configuration.html",
+        "title":  "Outlet Settings - Refined Email Campaign Configuration",
+        "name":  "projects/13741702629139798377/screens/ea4c8d99649e4d71b16a759f0af1bc13",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "android-pos-home-order-builder.html",
+        "title":  "Android POS - Home \u0026 Order Builder",
+        "name":  "projects/13741702629139798377/screens/0ee89856631e40109b7e63d6e0635e41",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-commission-ledger.html",
+        "title":  "Affiliate Hub - Commission Ledger",
+        "name":  "projects/13741702629139798377/screens/6c83a7243ce146e2ade1a9173bba25c8",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "commission-engine-affiliate-rank-thresholds.html",
+        "title":  "Commission Engine - Affiliate Rank Thresholds",
+        "name":  "projects/13741702629139798377/screens/50c3f00984b449d6887ddfbf7dd50a96",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "outlet-settings-advanced-whatsapp-configuration.html",
+        "title":  "Outlet Settings - Advanced WhatsApp Configuration",
+        "name":  "projects/13741702629139798377/screens/c8d96cd00272455f802fab2fd7b528f1",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "android-pos-receipt-preview-digital-delivery.html",
+        "title":  "Android POS - Receipt Preview \u0026 Digital Delivery",
+        "name":  "projects/13741702629139798377/screens/098f320c974b4fe1b2d9324447c28e6a",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-refined-package-logic-details.html",
+        "title":  "Service Package Builder - Refined Package Logic Details",
+        "name":  "projects/13741702629139798377/screens/a5873909608a4b11b3ae2879d2acf86a",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "lhdn-myinvois-rejection-queue-details.html",
+        "title":  "LHDN MyInvois - Rejection Queue Details",
+        "name":  "projects/13741702629139798377/screens/164a28cd1ea94596a65ec12e14f9b832",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-builder-eventspecific-templates-automation.html",
+        "title":  "Marketing Campaign Builder - Event-Specific Templates \u0026 Automation",
+        "name":  "projects/13741702629139798377/screens/2589289d378040f6aee83d39a0c20408",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-enterprise-refinement.html",
+        "title":  "Service Package Builder - Enterprise Refinement",
+        "name":  "projects/13741702629139798377/screens/3847cba30a504c80be9748f1975116c1",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-template-builder-enterprise-refinement.html",
+        "title":  "Voucher Template Builder - Enterprise Refinement",
+        "name":  "projects/13741702629139798377/screens/4ec025e124b34c83bf2d92a0d0b87556",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "customer-web-portal-membership-loyalty-dashboard.html",
+        "title":  "Customer Web Portal - Membership \u0026 Loyalty Dashboard",
+        "name":  "projects/13741702629139798377/screens/31828843a65c4941a44bed9c6e1c1e16",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-admin-portal.html",
+        "title":  "Service Package Builder - Admin Portal",
+        "name":  "projects/13741702629139798377/screens/f3922c3dc19f4684ba91c61c67f4ccdf",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "onhold-orders-pos-management.html",
+        "title":  "On-Hold Orders - POS Management",
+        "name":  "projects/13741702629139798377/screens/8c3bd3545ae1464b83c830c4200490d4",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "android-pos-refined-offline-sync-status-hub.html",
+        "title":  "Android POS - Refined Offline Sync \u0026 Status Hub",
+        "name":  "projects/13741702629139798377/screens/b0b5bf79deba4321a62fd523b66600e0",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "reports-analytics-operational-dashboard.html",
+        "title":  "Reports \u0026 Analytics - Operational Dashboard",
+        "name":  "projects/13741702629139798377/screens/4fe89cc1032e4c49b71fc2ca01d4b6c4",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "revenue-reports-refined-revenue-trends-chart.html",
+        "title":  "Revenue Reports - Refined Revenue Trends Chart",
+        "name":  "projects/13741702629139798377/screens/e8601410c406467eb67203c0347cfe0d",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-enhanced-downline-performance-tracking.html",
+        "title":  "Affiliate Hub - Enhanced Downline Performance Tracking",
+        "name":  "projects/13741702629139798377/screens/2f3973a4151f4b659a8f7bd34fe052fa",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-refined-member-dashboard.html",
+        "title":  "Affiliate Hub - Refined Member Dashboard",
+        "name":  "projects/13741702629139798377/screens/6ce84f28cf794390933601727592cc92",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-rank-thresholds-refined-commission-matrix.html",
+        "title":  "Affiliate Rank Thresholds - Refined Commission Matrix",
+        "name":  "projects/13741702629139798377/screens/32eaf0a5b6534d488bd221fcbf3b93e1",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "wallet-topup-package-selection.html",
+        "title":  "Wallet Top-Up - Package Selection",
+        "name":  "projects/13741702629139798377/screens/ab0b4739196e43a592eb2d81395fe614",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-builder-advanced-segment-filters.html",
+        "title":  "Marketing Campaign Builder - Advanced Segment Filters",
+        "name":  "projects/13741702629139798377/screens/b32f5ec9fc2d4dbfbdaaa73e48057c31",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "admin-backend-bookings-schedule-management.html",
+        "title":  "Admin Backend - Bookings \u0026 Schedule Management",
+        "name":  "projects/13741702629139798377/screens/51279c99f0dc431b9d67b08ce9e2b3a2",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "inventory-reports-stock-analytics-movement.html",
+        "title":  "Inventory Reports - Stock Analytics \u0026 Movement",
+        "name":  "projects/13741702629139798377/screens/15fa70373caa4f25ba3c27223e4560c6",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-builder-refined-audience-segmentation.html",
+        "title":  "Marketing Campaign Builder - Refined Audience Segmentation",
+        "name":  "projects/13741702629139798377/screens/486e623d48b64532b24c0053a7153c95",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-refined-renewal-notifications.html",
+        "title":  "Service Package Builder - Refined Renewal Notifications",
+        "name":  "projects/13741702629139798377/screens/c2b3268b10e145ceb3482984d8fc309b",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-autorenewal-options.html",
+        "title":  "Service Package Builder - Auto-Renewal Options",
+        "name":  "projects/13741702629139798377/screens/141cbca9580a4c2fbaa27912db6e6260",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "mlm-tree-visualizer-affiliate-hierarchy.html",
+        "title":  "MLM Tree Visualizer - Affiliate Hierarchy",
+        "name":  "projects/13741702629139798377/screens/013a6a2b06d04f40b396a534bbcad08f",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "customer-booking-date-time-selection.html",
+        "title":  "Customer Booking - Date \u0026 Time Selection",
+        "name":  "projects/13741702629139798377/screens/2ac847550dac46ceb1b0385b3b0f2f82",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-marketing-toolkit.html",
+        "title":  "Affiliate Hub - Marketing Toolkit",
+        "name":  "projects/13741702629139798377/screens/500afdb80b0d466ca814badf78cba289",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-analytics-performance-dashboard.html",
+        "title":  "Marketing Campaign Analytics - Performance Dashboard",
+        "name":  "projects/13741702629139798377/screens/53348e548e284caca0382d648b12d1ed",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "customer-booking-confirmation.html",
+        "title":  "Customer Booking - Confirmation",
+        "name":  "projects/13741702629139798377/screens/89846135c3b54c878b10dc4d666d225a",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "payout-queue-refined-batch-approval-hub.html",
+        "title":  "Payout Queue - Refined Batch Approval Hub",
+        "name":  "projects/13741702629139798377/screens/5dc18b4772c54e97a14070c3aa546187",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "outlet-settings-configuration-operations.html",
+        "title":  "Outlet Settings - Configuration \u0026 Operations",
+        "name":  "projects/13741702629139798377/screens/a31f0ee1eed8426b849f10cce65b0cab",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-admin-portal.html",
+        "title":  "Service Package Builder - Admin Portal",
+        "name":  "projects/13741702629139798377/screens/359059e77dbd44a7a16cf43c16446da2",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-autorenewal-notifications.html",
+        "title":  "Service Package Builder - Auto-Renewal Notifications",
+        "name":  "projects/13741702629139798377/screens/1e738d3190dc421d8a4f4e734b57bdf6",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "lhdn-myinvois-commission-compliance-settings.html",
+        "title":  "LHDN MyInvois - Commission Compliance Settings",
+        "name":  "projects/13741702629139798377/screens/951d63c4118e4c98bd84cc6753bdb0de",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "inventory-management-stock-control-pos.html",
+        "title":  "Inventory Management - Stock Control \u0026 POs",
+        "name":  "projects/13741702629139798377/screens/445a04f5d6194836886b80c9fa888dcc",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "merchant-branding-social-media-settings.html",
+        "title":  "Merchant Branding - Social Media Settings",
+        "name":  "projects/13741702629139798377/screens/7d15db0f49d94d1981d0623e47ac0a33",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "revenue-reports-refined-channel-analytics.html",
+        "title":  "Revenue Reports - Refined Channel Analytics",
+        "name":  "projects/13741702629139798377/screens/989c53aede084e4987ab2ddad4045577",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "android-pos-refined-onhold-order-management-hub.html",
+        "title":  "Android POS - Refined On-Hold Order Management Hub",
+        "name":  "projects/13741702629139798377/screens/aa588395308a44b1bb2f5b9d00290ae9",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "mlm-tree-visualizer-affiliate-hierarchy.html",
+        "title":  "MLM Tree Visualizer - Affiliate Hierarchy",
+        "name":  "projects/13741702629139798377/screens/3eb005331e8b4452acd73f88b75ff3a0",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "commission-payout-reports-financial-dashboard.html",
+        "title":  "Commission Payout Reports - Financial Dashboard",
+        "name":  "projects/13741702629139798377/screens/fe5e061d6c4644b7bf4fe33f9419dc7b",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "wallet-dashboard-balances-history.html",
+        "title":  "Wallet Dashboard - Balances \u0026 History",
+        "name":  "projects/13741702629139798377/screens/3b5389381a5343d39a81a146472ea0bd",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "staff-commission-matrix-refined-enterprise-configuration.html",
+        "title":  "Staff Commission Matrix - Refined Enterprise Configuration",
+        "name":  "projects/13741702629139798377/screens/e05abcb7338c477b9625745254b2d616",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "bookings-overview-multioutlet-calendar.html",
+        "title":  "Bookings Overview - Multi-Outlet Calendar",
+        "name":  "projects/13741702629139798377/screens/50d0a236b2e34285ac473340ea384227",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "android-pos-offline-member-lookup-profile-view.html",
+        "title":  "Android POS - Offline Member Lookup \u0026 Profile View",
+        "name":  "projects/13741702629139798377/screens/5d291b71a76b4da2be2e1acc367eae23",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "service-package-builder-refined-service-guardrails.html",
+        "title":  "Service Package Builder - Refined Service Guardrails",
+        "name":  "projects/13741702629139798377/screens/fe069efbf63a48e4a1902e40b7d8057e",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-advanced-downline-filters.html",
+        "title":  "Affiliate Hub - Advanced Downline Filters",
+        "name":  "projects/13741702629139798377/screens/de9c632057024ed9a2e860b4151d2f28",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "marketing-campaign-builder-advanced-segment-filters.html",
+        "title":  "Marketing Campaign Builder - Advanced Segment Filters",
+        "name":  "projects/13741702629139798377/screens/35ed71c85dd34c8498dd6b194b332518",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "outlet-settings-expanded-marketing-toggles.html",
+        "title":  "Outlet Settings - Expanded Marketing Toggles",
+        "name":  "projects/13741702629139798377/screens/19a5cb4a30bd4d3280efe8ca32ec2972",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "customer-booking-stylist-selection.html",
+        "title":  "Customer Booking - Stylist Selection",
+        "name":  "projects/13741702629139798377/screens/8c9bed1ecd9241b9bc3e87f664e7f0d8",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-downline-management.html",
+        "title":  "Affiliate Hub - Downline Management",
+        "name":  "projects/13741702629139798377/screens/a2ced8439a2648cfb81ed5b10ecbe2e6",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "revenue-reports-refined-category-breakdown.html",
+        "title":  "Revenue Reports - Refined Category Breakdown",
+        "name":  "projects/13741702629139798377/screens/2722d78052164bfa92e246ee121cdfd6",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "payout-queue-affiliate-commission-management.html",
+        "title":  "Payout Queue - Affiliate Commission Management",
+        "name":  "projects/13741702629139798377/screens/8ec65a158b204a2098f0ef42b279ef84",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "payout-queue-advanced-batch-approval-workflow.html",
+        "title":  "Payout Queue - Advanced Batch Approval Workflow",
+        "name":  "projects/13741702629139798377/screens/957dde5f956c40d7b54c1e52150ff86f",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "lhdn-myinvois-credit-note-tracker-audit-hub.html",
+        "title":  "LHDN MyInvois - Credit Note Tracker \u0026 Audit Hub",
+        "name":  "projects/13741702629139798377/screens/265cf3c524c946f3be08d3d4fae00e7a",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "lhdn-myinvois-dashboard-compliance-submission-management.html",
+        "title":  "LHDN MyInvois Dashboard - Compliance \u0026 Submission Management",
+        "name":  "projects/13741702629139798377/screens/1018abca94a849729bb517b98e1d0142",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "pos-home-order-builder.html",
+        "title":  "POS Home - Order Builder",
+        "name":  "projects/13741702629139798377/screens/83437b627d7945a59a2151cf81332dff",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "member-profile-detailed-view.html",
+        "title":  "Member Profile - Detailed View",
+        "name":  "projects/13741702629139798377/screens/c3c0b2586817498e9609aee14e01b700",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-rank-thresholds-commission-engine-config.html",
+        "title":  "Affiliate Rank Thresholds - Commission Engine Config",
+        "name":  "projects/13741702629139798377/screens/e6aaf3200dd04399b8bbc5d46ad1805c",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-builder-advanced-validity-usage-rules.html",
+        "title":  "Voucher Builder - Advanced Validity \u0026 Usage Rules",
+        "name":  "projects/13741702629139798377/screens/02875d376282457fb336a2aa251406f7",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "voucher-template-builder-marketing-configuration.html",
+        "title":  "Voucher Template Builder - Marketing Configuration",
+        "name":  "projects/13741702629139798377/screens/6935f5a869e440ddb937095134a625d8",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "admin-backend-operational-dashboard-overview.html",
+        "title":  "Admin Backend - Operational Dashboard Overview",
+        "name":  "projects/13741702629139798377/screens/548a511354d44183adef0ff4824ffa8b",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "security-settings-account-privacy-control.html",
+        "title":  "Security \u0026 Settings - Account \u0026 Privacy Control",
+        "name":  "projects/13741702629139798377/screens/706a7eae52e44e859fe0409d8c6d3b82",
+        "deviceType":  "DESKTOP"
+    },
+    {
+        "filename":  "affiliate-hub-advanced-member-dashboard-refinement.html",
+        "title":  "Affiliate Hub - Advanced Member Dashboard Refinement",
+        "name":  "projects/13741702629139798377/screens/ac4fd03084ae43bd9a5fd9e01b89394f",
+        "deviceType":  "DESKTOP"
+    }
+]

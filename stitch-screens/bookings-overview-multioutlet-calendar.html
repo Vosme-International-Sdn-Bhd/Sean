@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Salon OS - Admin Calendar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f5f4f0",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#5f5f5b",
+                      "secondary": "#5f5f5a",
+                      "danger": "#8A1F1F",
+                      "surface-bright": "#faf9f5",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1b1c1a",
+                      "tertiary": "#5e4100",
+                      "surface-container-highest": "#e3e2df",
+                      "secondary-fixed-dim": "#c8c6c1",
+                      "on-primary-fixed-variant": "#004786",
+                      "platinum": "#E5E4E2",
+                      "tertiary-container": "#7d5700",
+                      "purple-mlm": "#4A3AB0",
+                      "on-background": "#1b1c1a",
+                      "inverse-surface": "#30312e",
+                      "error": "#ba1a1a",
+                      "background": "#faf9f5",
+                      "inverse-primary": "#a6c8ff",
+                      "inverse-on-surface": "#f2f1ed",
+                      "surface-tint": "#1a5fa8",
+                      "surface-dim": "#dbdad6",
+                      "surface-variant": "#e3e2df",
+                      "primary-fixed": "#d4e3ff",
+                      "primary": "#004786",
+                      "secondary-container": "#dcdad5",
+                      "warning": "#8A5200",
+                      "surface-container-high": "#e9e8e4",
+                      "surface-container": "#efeeea",
+                      "on-tertiary": "#ffffff",
+                      "silver": "#C0C0C0",
+                      "outline": "#727782",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#c4daff",
+                      "on-surface-variant": "#424751",
+                      "bronze": "#CD7F32",
+                      "tertiary-fixed": "#ffdeaa",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#1a5fa8",
+                      "on-secondary-fixed": "#1b1c19",
+                      "on-tertiary-fixed": "#271900",
+                      "ink-primary": "#1A1A18",
+                      "secondary-fixed": "#e4e2dd",
+                      "tertiary-fixed-dim": "#f3be5e",
+                      "success": "#2E7D52",
+                      "border": "#E2E1DC",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "on-primary-fixed": "#001c3a",
+                      "on-tertiary-container": "#ffd184",
+                      "surface": "#FFFFFF",
+                      "outline-variant": "#c2c6d3",
+                      "on-secondary-fixed-variant": "#474743"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "tile-height-min": "80px",
+                      "stack-sm": "8px",
+                      "touch-target-min": "56px",
+                      "gutter": "16px",
+                      "stack-md": "16px",
+                      "margin-page": "24px",
+                      "stack-lg": "24px"
+              },
+              "fontFamily": {
+                      "label-sm": ["JetBrains Mono"],
+                      "body-sm": ["Libre Franklin"],
+                      "body-md": ["Libre Franklin"],
+                      "headline-lg": ["Libre Franklin"],
+                      "display-lg": ["Libre Franklin"],
+                      "body-lg": ["Libre Franklin"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-md": ["Libre Franklin"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #faf9f5; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+            grid-auto-rows: minmax(60px, auto);
+        }
+        .time-label {
+            border-bottom: 0.5px solid #E2E1DC;
+            border-right: 0.5px solid #E2E1DC;
+        }
+        .calendar-cell {
+            border-bottom: 0.5px solid #E2E1DC;
+            border-right: 0.5px solid #E2E1DC;
+            position: relative;
+        }
+        .appointment-card {
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            cursor: grab;
+        }
+        .appointment-card:active {
+            cursor: grabbing;
+            transform: scale(0.98);
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c2c6d3; border-radius: 10px; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface overflow-hidden">
+<!-- Top Navigation -->
+<header class="bg-surface border-b border-border flex justify-between items-center w-full px-margin-page h-touch-target-min fixed top-0 z-50">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">Precision Salon OS</span>
+<div class="hidden md:flex ml-stack-lg gap-gutter">
+<nav class="flex gap-stack-md">
+<a class="text-on-surface-variant hover:bg-surface-container transition-colors px-3 py-1 rounded" href="#">Dashboard</a>
+<a class="text-primary font-bold px-3 py-1 rounded" href="#">Appointments</a>
+<a class="text-on-surface-variant hover:bg-surface-container transition-colors px-3 py-1 rounded" href="#">Staff</a>
+</nav>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border rounded-lg font-body-sm w-64 focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Search customer or stylist..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container p-2 rounded-full transition-colors">sync</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container p-2 rounded-full transition-colors">notifications</span>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-border">
+<img alt="Manager Profile" data-alt="A professional headshot of a salon manager in a clean, modern office setting. The lighting is soft and professional, highlighting a reliable and authoritative figure. The background features a blurred view of a high-end salon with warm wood accents and minimalist decor, reflecting the Precision Salon OS corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy_-fMzI1OkEIRPvDLA4d7x1yByAnhKjN8jHUlz-kI6IBPPwAzRybcCJWXyio6PmbHxHw8Gj_x8ys-Ydg5Yu29kgIg09kRh32DHdqeFu6mv-k3djN-iqfuelt97CaQeFLjpjIY1eaXApHx-UAxOwHo88yEfQ_YzT_n6_DE7WfXE6hojieNAsrDenNA8G7AFWOIJdFSfAIFBDhZ-S3_96QCZlazQEfj1G4AUZL9_9DoV7l6VRUnQCZO95ZCoO_mAB12cs7Jk2vbVBYx"/>
+</div>
+</div>
+</header>
+<div class="flex h-screen pt-touch-target-min">
+<!-- Sidebar Navigation -->
+<aside class="bg-surface-container-low border-r border-border h-full w-64 fixed left-0 flex flex-col py-stack-lg hidden md:flex">
+<div class="px-6 mb-stack-lg">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">content_cut</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Main Branch</div>
+<div class="text-[10px] uppercase tracking-wider text-on-secondary-container">Enterprise Admin</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<div class="text-on-secondary-container font-label-sm px-3 mb-2 uppercase opacity-60">Operations</div>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-secondary-container hover:bg-surface-container-high transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary-container text-on-primary-container border-r-2 border-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md text-label-md font-bold">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-secondary-container hover:bg-surface-container-high transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-secondary-container hover:bg-surface-container-high transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-secondary-container hover:bg-surface-container-high transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<div class="pt-6 text-on-secondary-container font-label-sm px-3 mb-2 uppercase opacity-60">Insights</div>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-secondary-container hover:bg-surface-container-high transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<div class="px-3 mt-auto space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-secondary-container hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-danger hover:bg-error-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-64 bg-background overflow-hidden flex flex-col">
+<!-- Calendar Toolbar -->
+<div class="p-gutter bg-surface border-b border-border flex flex-wrap gap-stack-md items-center justify-between">
+<div class="flex items-center gap-stack-md">
+<h1 class="font-headline-lg text-headline-lg text-primary">Booking Calendar</h1>
+<div class="flex bg-surface-container rounded-lg p-1 border border-border">
+<button class="px-4 py-1.5 rounded-md bg-surface shadow-sm font-label-md text-label-md text-primary font-bold">Day</button>
+<button class="px-4 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest">Week</button>
+<button class="px-4 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-highest">Month</button>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low border border-border rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+<select class="bg-transparent border-none focus:ring-0 font-label-md text-label-md cursor-pointer">
+<option>All Outlets</option>
+<option>KL Sentral</option>
+<option>Mid Valley</option>
+<option>Bangsar South</option>
+</select>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">add</span>
+                        New Booking
+                    </button>
+</div>
+</div>
+<!-- Stylist Headers (Horizontal) -->
+<div class="flex flex-col flex-1 overflow-hidden">
+<div class="flex bg-surface border-b border-border pl-20 overflow-x-auto" style="scrollbar-width: none;">
+<div class="min-w-[200px] flex-1 py-3 px-4 border-r border-border text-center">
+<div class="w-10 h-10 rounded-full mx-auto mb-1 border-2 border-primary p-0.5">
+<img alt="Sarah J." class="w-full h-full rounded-full object-cover" data-alt="Close-up portrait of a professional senior stylist with a stylish haircut, smiling warmly in a bright, modern hair salon environment with soft, high-key lighting and a palette of warm neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDohv_v4ZUiuGy_pGqYrHYc2GaBh8rQ7C16nE4PFaOmpnFNebbCMD-W2ww9tMPcZvzphx_8OVA3kdTeGb35Q79uU0wLCKLLdGD6zHKViYlhrcWuVzfQ8laybTjZWZ-vfZ94UcOVtCe3CT4Jf6aHs2Cezic3rcdvQ-njnuBf-nB-AvrLDVEeY16h0I_Q7hCtY8XT9GPgFk2yDScHGc-RQSyCZw9_2nthnj4J9rhPahYreNU6L1jdhvQs7kvQDpXsamNL4mWUkniLJo27"/>
+</div>
+<div class="font-label-md text-label-md font-bold">Sarah J.</div>
+<div class="text-[10px] text-success uppercase">Active</div>
+</div>
+<div class="min-w-[200px] flex-1 py-3 px-4 border-r border-border text-center">
+<div class="w-10 h-10 rounded-full mx-auto mb-1 border-2 border-border p-0.5">
+<img alt="Marcus T." class="w-full h-full rounded-full object-cover" data-alt="Professional male hairstylist in a high-end salon workspace. The image is bright and clean, emphasizing a corporate and professional vibe with focus on his skilled hands and modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs-_FjVlQ_mOPd4K6XoyD9oMwMo-GwTTHUvbRpsd4uSo1mXg8VV9nRgE6eLyEohaTagfoFpV0bzH6XyX_e3mcJ6_dfGBdF8Lvjicm_NAr4Ww8DQQCobwgcOXWwDMM90EoYgQ1kIucb289OJOV7nMwZD0wLZXEmqdJ9Cj7CwLnj8Tu1b6PaSWVQIXufHYMLy9XfLTQbDkqGUkBzrQMRDOK4PmpwTw2fBEtttPv1RJEyQAhpTXnP9AWgzVUIAm_IQ9Dx6bUiCCSyV9Lw"/>
+</div>
+<div class="font-label-md text-label-md font-bold">Marcus T.</div>
+<div class="text-[10px] text-success uppercase">Active</div>
+</div>
+<div class="min-w-[200px] flex-1 py-3 px-4 border-r border-border text-center">
+<div class="w-10 h-10 rounded-full mx-auto mb-1 border-2 border-border p-0.5">
+<img alt="Elena R." class="w-full h-full rounded-full object-cover" data-alt="Portrait of a creative hair professional in a brightly lit studio. The lighting is crisp and modern, matching the professional utility look of the brand. Neutral tones dominate the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGMNu63ZGA9oVb0r2OpgFnZCCa_QaSvg4PpSuJnQ6R_MLowqaSxqSNI8MXrWpNvbI--IXlZjOFUBsfby-rMy9n2vEdwmzIcwdcoUl2uzhd-3Zw0L7aNOnLCfR6tNT5tZ2bzRtLDQx69RFsddrvZxT0h7dNARN7V9tfs4EOApdHHIvI91hK1M7gz6j4v4RjRcXB8pRL_wviQFcGK-luOG2ccDU4JvPfTXQ_kvFUxl_IUda_VSQJkNN1qBop13OloiUebGRpYNd0FE0F"/>
+</div>
+<div class="font-label-md text-label-md font-bold">Elena R.</div>
+<div class="text-[10px] text-warning uppercase">Break</div>
+</div>
+<div class="min-w-[200px] flex-1 py-3 px-4 border-r border-border text-center">
+<div class="w-10 h-10 rounded-full mx-auto mb-1 border-2 border-border p-0.5">
+<img alt="David K." class="w-full h-full rounded-full object-cover" data-alt="Modern professional male hair artist with a precise grooming style, standing in a contemporary salon interior with high-quality equipment in the background. Bright, high-contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAzzFRDt8al7n12C_VlMkmmap0LWQ2E5kxBPJnY72GvjkpS15IlVlnP7GwEvuJJgNxau6nOlp6kV5vs0B30K6m98WTjaPAUek8FB9bOeMj7thDdOp9PpyqR8r8CqsPP2WeBwEO2HTkFlQbXZHlpBMG84U_rhAQBKQiWPIaX-JSbXg4z8RctpX6US51zWknQtLEVsZak4QOUAD56F_6EZosmK7ZedzxKfv2BvILFgfVLSWHFBxuN7rzIvEzjiFsGhwrLtqasmn84jJE"/>
+</div>
+<div class="font-label-md text-label-md font-bold">David K.</div>
+<div class="text-[10px] text-success uppercase">Active</div>
+</div>
+<div class="min-w-[200px] flex-1 py-3 px-4 border-r border-border text-center">
+<div class="w-10 h-10 rounded-full mx-auto mb-1 border-2 border-border p-0.5">
+<img alt="Chloe W." class="w-full h-full rounded-full object-cover" data-alt="Friendly professional stylist portrait with a clean, well-lit background of a sleek modern salon. The aesthetic is clean and corporate, focused on high-density information and professional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_KzsS-kNM_4tyf8lMzrC40aK4SziN7_ETTbqTW5O9NuV67dDqKQQYP-YJQqbdpLbQtizJrsGyM4ojQKgGmEA_uoNz-V3jq6F9S9C66mBth41WDVe64Rx_4hUSn_ukbwkRpGHWtxiksOm5RodsIGed7VZ_TEXj_qnqx7cocDjevXF725gR0BVEQBORtghM6kOHgy5eEaldnINaSqK-EvtWQDkoq7tOiBv7Wpj-xZULVZAq7pNtPrejRVKfOLXW1H4strk9mMlNq--j"/>
+</div>
+<div class="font-label-md text-label-md font-bold">Chloe W.</div>
+<div class="text-[10px] text-on-secondary-container uppercase">Off</div>
+</div>
+</div>
+<!-- Scrolling Calendar Body -->
+<div class="flex-1 overflow-y-auto overflow-x-auto relative">
+<div class="calendar-grid w-full">
+<!-- 09:00 Row -->
+<div class="time-label flex flex-col items-center justify-center bg-surface-container-low sticky left-0 z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">09:00</span>
+<span class="text-[10px] text-on-secondary-container uppercase opacity-50">AM</span>
+</div>
+<div class="calendar-cell min-w-[200px]">
+<!-- Appt: Sarah J @ 09:00 -->
+<div class="appointment-card absolute top-1 left-1 right-1 h-[110px] bg-primary-container/20 border-l-4 border-primary p-2 rounded-r-lg z-20 overflow-hidden shadow-sm" draggable="true">
+<div class="flex justify-between items-start mb-1">
+<div class="font-label-sm text-label-sm font-bold text-primary leading-tight">Alice Thompson</div>
+<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+</div>
+<div class="text-[11px] font-bold text-on-surface leading-tight mb-1">Balayage &amp; Trim</div>
+<div class="flex items-center gap-1 text-[10px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    09:00 - 11:00 (2h)
+                                </div>
+</div>
+</div>
+<div class="calendar-cell min-w-[200px]"></div>
+<div class="calendar-cell min-w-[200px]"></div>
+<div class="calendar-cell min-w-[200px]">
+<div class="appointment-card absolute top-2 left-1 right-1 h-[50px] bg-success/10 border-l-4 border-success p-2 rounded-r-lg z-20 overflow-hidden" draggable="true">
+<div class="font-label-sm text-label-sm font-bold text-success leading-tight">Ben Howard</div>
+<div class="text-[11px] font-medium text-on-surface truncate">Men's Cut</div>
+</div>
+</div>
+<div class="calendar-cell min-w-[200px] bg-surface-dim opacity-10"></div>
+<!-- 10:00 Row -->
+<div class="time-label flex flex-col items-center justify-center bg-surface-container-low sticky left-0 z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:00</span>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell">
+<div class="appointment-card absolute top-4 left-1 right-1 h-[80px] bg-warning/10 border-l-4 border-warning p-2 rounded-r-lg z-20 overflow-hidden" draggable="true">
+<div class="font-label-sm text-label-sm font-bold text-warning leading-tight">Siti Aminah</div>
+<div class="text-[11px] font-medium text-on-surface">Scalp Treatment</div>
+<div class="text-[10px] text-on-surface-variant">Status: Pending</div>
+</div>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell bg-surface-dim opacity-10"></div>
+<!-- 11:00 Row -->
+<div class="time-label flex flex-col items-center justify-center bg-surface-container-low sticky left-0 z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">11:00</span>
+</div>
+<div class="calendar-cell">
+<div class="appointment-card absolute top-2 left-1 right-1 h-[50px] bg-purple-mlm/10 border-l-4 border-purple-mlm p-2 rounded-r-lg z-20 overflow-hidden" draggable="true">
+<div class="font-label-sm text-label-sm font-bold text-purple-mlm leading-tight">Lim Wei Jen</div>
+<div class="text-[11px] font-medium text-on-surface">Wash &amp; Blow</div>
+</div>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell">
+<div class="appointment-card absolute top-1 left-1 right-1 h-[140px] bg-primary-container/20 border-l-4 border-primary p-2 rounded-r-lg z-20 overflow-hidden" draggable="true">
+<div class="font-label-sm text-label-sm font-bold text-primary leading-tight">Grace Chen</div>
+<div class="text-[11px] font-bold text-on-surface mb-1">Full Color &amp; Perm</div>
+<div class="flex items-center gap-1 text-[10px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    11:00 - 13:30
+                                </div>
+</div>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell bg-surface-dim opacity-10"></div>
+<!-- 12:00 Row -->
+<div class="time-label flex flex-col items-center justify-center bg-surface-container-low sticky left-0 z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">12:00</span>
+<span class="text-[10px] text-on-secondary-container uppercase opacity-50">PM</span>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell">
+<div class="h-full bg-surface-container-high/30 flex items-center justify-center">
+<span class="text-[10px] font-bold text-secondary-fixed-dim uppercase transform -rotate-45">Lunch Break</span>
+</div>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell bg-surface-dim opacity-10"></div>
+<!-- 13:00 Row -->
+<div class="time-label flex flex-col items-center justify-center bg-surface-container-low sticky left-0 z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">13:00</span>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell bg-surface-dim opacity-10"></div>
+<!-- 14:00 Row -->
+<div class="time-label flex flex-col items-center justify-center bg-surface-container-low sticky left-0 z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">14:00</span>
+</div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell"></div>
+<div class="calendar-cell bg-surface-dim opacity-10"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Side Panel: Quick Details -->
+<aside class="w-[350px] bg-surface border-l border-border h-full hidden xl:flex flex-col z-40">
+<div class="p-gutter border-b border-border flex justify-between items-center">
+<h3 class="font-label-md text-label-md font-bold text-primary uppercase">Quick Checkout</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">close</span>
+</div>
+<!-- Order Summary Concept -->
+<div class="p-gutter flex-1 overflow-y-auto space-y-gutter">
+<div class="bg-surface-container-low rounded-xl p-stack-md border border-border">
+<div class="flex gap-stack-md mb-stack-md">
+<div class="w-12 h-12 bg-surface rounded-lg border border-border flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div>
+<div class="font-body-md text-on-surface font-bold">Alice Thompson</div>
+<div class="text-[12px] text-on-surface-variant">Gold Member • 450 pts</div>
+</div>
+</div>
+<div class="space-y-stack-sm mb-stack-lg">
+<div class="flex justify-between items-start text-on-surface">
+<div class="font-body-sm">Balayage - Signature</div>
+<div class="font-label-md">RM 480.00</div>
+</div>
+<div class="flex justify-between items-start text-on-surface">
+<div class="font-body-sm">Deep Condition Mask</div>
+<div class="font-label-md">RM 120.00</div>
+</div>
+<div class="flex justify-between items-start text-on-surface">
+<div class="font-body-sm">Stylist: Sarah J.</div>
+<div class="text-[12px] font-bold text-primary">+ RM 50.00</div>
+</div>
+</div>
+<div class="border-t border-border pt-stack-sm space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-on-surface-variant">Subtotal</span>
+<span class="font-label-md">RM 650.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-on-surface-variant">Service Tax (6%)</span>
+<span class="font-label-md">RM 39.00</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="font-label-md font-bold text-primary">Total Amount</span>
+<span class="text-headline-md font-bold text-primary">RM 689.00</span>
+</div>
+</div>
+</div>
+<div class="space-y-stack-sm">
+<div class="font-label-sm text-label-sm uppercase text-on-surface-variant px-1">Payment Method</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex flex-col items-center justify-center p-3 rounded-lg border-2 border-primary bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-primary mb-1">payments</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">Cash</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-surface hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mb-1">credit_card</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Card</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-gutter bg-surface-container-highest border-t border-border">
+<button class="w-full py-4 bg-primary text-on-primary rounded-lg font-headline-md font-bold shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+                    Complete &amp; Invoice
+                    <span class="material-symbols-outlined">receipt_long</span>
+</button>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 py-2 border border-danger text-danger font-label-md rounded-lg hover:bg-error-container/20 transition-all">Void</button>
+<button class="flex-1 py-2 border border-border text-on-surface-variant font-label-md rounded-lg hover:bg-surface-container transition-all">Print Draft</button>
+</div>
+</div>
+</aside>
+</div>
+<!-- Mobile Navigation (Suppressed on large screens) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-border flex justify-around items-center px-gutter h-touch-target-min z-50">
+<a class="flex flex-col items-center justify-center text-on-secondary-container" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-label-sm text-label-sm">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container" href="#">
+<span class="material-symbols-outlined">stars</span>
+<span class="font-label-sm text-label-sm">Rewards</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</nav>
+<script>
+        // Simple drag and drop visual feedback
+        const cards = document.querySelectorAll('.appointment-card');
+        const cells = document.querySelectorAll('.calendar-cell');
+
+        cards.forEach(card => {
+            card.addEventListener('dragstart', () => {
+                card.style.opacity = '0.4';
+            });
+            card.addEventListener('dragend', () => {
+                card.style.opacity = '1';
+            });
+        });
+
+        cells.forEach(cell => {
+            cell.addEventListener('dragover', e => {
+                e.preventDefault();
+                cell.classList.add('bg-primary/5');
+            });
+            cell.addEventListener('dragleave', () => {
+                cell.classList.remove('bg-primary/5');
+            });
+            cell.addEventListener('drop', e => {
+                e.preventDefault();
+                cell.classList.remove('bg-primary/5');
+                // Real implementation would handle DOM move or state update
+            });
+        });
+
+        // Add a "current time" indicator line
+        function updateTimeLine() {
+            // Mock logic for the demo - just a visual pulse
+        }
+        setInterval(updateTimeLine, 1000);
+    </script>
+</body></html>

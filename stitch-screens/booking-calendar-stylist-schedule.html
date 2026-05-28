@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#dcdad5",
+                        "surface-tint": "#1a5fa8",
+                        "success": "#2E7D52",
+                        "inverse-on-surface": "#f2f1ed",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-background": "#1b1c1a",
+                        "inverse-primary": "#a6c8ff",
+                        "on-primary-container": "#c4daff",
+                        "background": "#faf9f5",
+                        "surface-container-low": "#f5f4f0",
+                        "on-error-container": "#93000a",
+                        "bronze": "#CD7F32",
+                        "ink-primary": "#1A1A18",
+                        "silver": "#C0C0C0",
+                        "on-secondary-fixed": "#1b1c19",
+                        "surface-container-high": "#e9e8e4",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#5f5f5b",
+                        "platinum": "#E5E4E2",
+                        "on-primary-fixed": "#001c3a",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-surface-variant": "#424751",
+                        "on-surface": "#1b1c1a",
+                        "outline-variant": "#c2c6d3",
+                        "border": "#E2E1DC",
+                        "primary": "#1A5FA8",
+                        "warning": "#8A5200",
+                        "surface-container-highest": "#e3e2df",
+                        "surface-dim": "#dbdad6",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "tertiary": "#5e4100",
+                        "inverse-surface": "#30312e",
+                        "surface-variant": "#e3e2df",
+                        "purple-mlm": "#4A3AB0",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#004786",
+                        "outline": "#727782",
+                        "surface-bright": "#faf9f5",
+                        "secondary-fixed": "#e4e2dd",
+                        "danger": "#8A1F1F",
+                        "surface-container": "#efeeea",
+                        "secondary": "#5f5f5a",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1a5fa8",
+                        "on-secondary-fixed-variant": "#474743",
+                        "surface": "#FFFFFF",
+                        "tertiary-container": "#7d5700",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#ffd184"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "touch-target-min": "56px",
+                        "stack-md": "16px",
+                        "tile-height-min": "80px",
+                        "stack-lg": "24px",
+                        "margin-page": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+            grid-auto-rows: 100px;
+        }
+        .time-label {
+            height: 100px;
+            display: flex;
+            align-items: start;
+            padding-top: 12px;
+            justify-content: center;
+        }
+        .calendar-slot {
+            border-right: 0.5px solid #E2E1DC;
+            border-bottom: 0.5px solid #E2E1DC;
+            position: relative;
+        }
+        .booking-card {
+            position: absolute;
+            left: 4px;
+            right: 4px;
+            z-index: 10;
+            transition: transform 0.1s ease;
+        }
+        .booking-card:active {
+            transform: scale(0.98);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F4F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E2E1DC;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed">
+<!-- Top Sync Banner (Contextual) -->
+<div class="bg-danger text-on-error h-10 flex items-center justify-center px-gutter transition-all duration-300" id="sync-banner">
+<span class="material-symbols-outlined mr-2 text-[20px]">cloud_off</span>
+<span class="font-label-md text-label-md">Offline - Syncing Pending...</span>
+</div>
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-gutter h-touch-target-min bg-surface border-b border-border">
+<div class="flex items-center gap-stack-md">
+<span class="text-headline-md font-headline-md font-bold text-primary">GlowPOS Salon</span>
+<div class="h-6 w-[1px] bg-border mx-2"></div>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined mr-2">store</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Main Branch</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-border rounded-lg pl-10 pr-4 h-10 w-64 focus:ring-2 focus:ring-primary outline-none text-body-sm transition-all" placeholder="Search appointments..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary">wifi</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary">sync</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary">settings</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-96px)] overflow-hidden">
+<!-- Side Navigation -->
+<aside class="flex flex-col h-full py-stack-lg bg-surface-container-low border-r border-border w-[280px] shrink-0">
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center px-4 py-3 text-secondary mx-2 hover:bg-secondary-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-4">point_of_sale</span>
+<span class="font-label-md text-label-md">POS Home</span>
+</a>
+<a class="flex items-center px-4 py-3 bg-primary-container text-on-primary-container mx-2 rounded-lg scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-4" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-label-md text-label-md font-bold">Bookings</span>
+</a>
+<a class="flex items-center px-4 py-3 text-secondary mx-2 hover:bg-secondary-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-4">group</span>
+<span class="font-label-md text-label-md">Members</span>
+</a>
+<a class="flex items-center px-4 py-3 text-secondary mx-2 hover:bg-secondary-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-4">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center px-4 py-3 text-secondary mx-2 hover:bg-secondary-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-4">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center px-4 py-3 text-secondary mx-2 hover:bg-secondary-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-4">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-4 border-t border-border flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border border-border" data-alt="Close-up professional headshot of a salon manager with a friendly smile, set in a brightly lit modern salon interior with a clean, high-key corporate aesthetic and soft blue color accents. The image conveys professional expertise and warm customer service in a high-end beauty establishment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ttpsTY-JW-k5jebqerUhTsrvfVKobbQFGgufz1t2QO4u3HAvmcCIwztedUDJIdGCGJrBWWiqdrVoIzprGP_lS_9A9npShapgVWzrNSEcH-laF0U3wM18nf9R8pyd6QWOW-zot5uoImG8fEMm3X3XZIl1dXZI_1w6m-EifQppIZaDnMQGELHRbDu5YFBkFbDMPF82xW2XOipKgu8i_BMBX4f2wgAbBjHOOfXidYeibkSDc8gmUCzVq-zmBnUCFi44xXHFcR4OtR3D"/>
+<div class="overflow-hidden">
+<p class="font-headline-sm text-label-md font-bold text-primary truncate">Main Branch</p>
+<p class="text-body-sm text-secondary truncate">Active Session</p>
+</div>
+</div>
+</aside>
+<!-- Main Calendar Workspace -->
+<main class="flex-1 flex flex-col bg-background overflow-hidden">
+<!-- Filter Bar -->
+<section class="h-16 border-b border-border bg-surface flex items-center justify-between px-6 shrink-0">
+<div class="flex items-center gap-4">
+<div class="flex bg-surface-container-high p-1 rounded-xl">
+<button class="px-6 py-1.5 rounded-lg bg-surface shadow-sm font-label-md text-label-md text-primary font-bold transition-all">Day</button>
+<button class="px-6 py-1.5 rounded-lg text-secondary font-label-md text-label-md hover:text-primary transition-all">Week</button>
+</div>
+<div class="h-8 w-[1px] bg-border mx-2"></div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 h-10 border border-border rounded-lg bg-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary">person</span>
+<span class="text-body-sm">All Stylists</span>
+<span class="material-symbols-outlined text-secondary">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 h-10 border border-border rounded-lg bg-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary">category</span>
+<span class="text-body-sm">All Services</span>
+<span class="material-symbols-outlined text-secondary">expand_more</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-10 w-10 border border-border rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary">chevron_left</span>
+</button>
+<span class="text-body-md font-bold min-w-[140px] text-center">Tue, Oct 24</span>
+<button class="h-10 w-10 border border-border rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary">chevron_right</span>
+</button>
+<button class="ml-4 h- touch-target-min px-6 bg-primary text-on-primary rounded-lg font-bold flex items-center gap-2 shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                        New Booking
+                    </button>
+</div>
+</section>
+<!-- Grid Header (Stylists) -->
+<div class="grid grid-cols-[80px_repeat(5,1fr)] bg-surface-container-low border-b border-border shrink-0">
+<div class="h-12 border-r border-border"></div>
+<div class="h-12 border-r border-border flex items-center justify-center gap-2 px-2">
+<img class="w-8 h-8 rounded-full border border-white" data-alt="A portrait of a male stylist with a sharp, professional appearance in a modern salon setting. Soft studio lighting highlights his focused but welcoming expression. The background is a minimalist salon with clean white walls and subtle blue decor elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWfvELTFXp2vBTPHrCviQ3eFDqGljLfhfrk3rGNF_b5WSPC1-dIMECz-3A-gg9JG11N2pPk0DxMVSa-JEF8WObizp-efcFjMjStw_mFXvaM8zPsxgt6poPuNUAp6eevhvqDZNLYPZzW_QJalETPQomRTRhFtOE6wrrrzYiDBMwxE2hDud5UoCRsEES58jFJi6-4jo_-X0A96769UyluEK0f5lilhC3I53u14d3edsJEK43ZwFlVxakRdDe1mNXYIvEMGfefQAH7SaM"/>
+<span class="text-label-md font-bold truncate">Marcus L.</span>
+</div>
+<div class="h-12 border-r border-border flex items-center justify-center gap-2 px-2">
+<img class="w-8 h-8 rounded-full border border-white" data-alt="A professional portrait of a female stylist with vibrant hair, smiling warmly in a high-end salon. The lighting is bright and clear, reflecting a modern corporate beauty environment. She wears a clean black professional apron." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKjC6vuXJLQ5NVXs3QA-EKg-PyxHzzi50PNL8FJ__P95MeftoLLajqiH6YZigRoi2PlFYzt4ZE-YFGtRjpCwBMWZSED82flxQXitSW8OhNUr1Z-m5B6xBcI_lCWa1aAOJdJ2E93ULNSVgfuJXZca5tKvF2AA-uoaXzdVBTjl1ghchr0DepV9tx6z8pD6eYszWn-NQttcIgKjsULNrFyRPr36tarAh-sv9NhvE2DIYr8OLkE1YUaLMvwwPdWZ2TzXIVwNF4JnyDFF1R"/>
+<span class="text-label-md font-bold truncate">Sarah W.</span>
+</div>
+<div class="h-12 border-r border-border flex items-center justify-center gap-2 px-2">
+<img class="w-8 h-8 rounded-full border border-white" data-alt="A professional headshot of a male senior stylist with a stylish beard and modern haircut. He is posing against a blurred background of a luxury hair salon with bright white lighting and a palette of neutral and blue tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMS8Z9jELtjrJoMVHaqxbsM_wHIP1aInagD_LBv833eJrepVbvkRSSefTuG455uTRA8Z7ZLCESqRqB0ZhUHy626CBK9EqeEc1mSVZqoyAfVBw9IUAWBhQEX-2QQkOL4huQ6jJdW5sQ2fWi5LlsF07wuzEFrmbXPxEJZ5taJCHpw1lgDgEqQYqqyN4epqJWiHhQYrfwb4tgyIQCU1XuvHY_iaoFOJXW4SXtHd1SrNjYo8-syJzP_1DkgcUswaVKKJCTFQIZcNEFjJxa"/>
+<span class="text-label-md font-bold truncate">Julian R.</span>
+</div>
+<div class="h-12 border-r border-border flex items-center justify-center gap-2 px-2">
+<img class="w-8 h-8 rounded-full border border-white" data-alt="Portrait of a young female stylist with a creative, modern aesthetic. She is working in a brightly lit salon with large windows. The overall mood is professional, high-energy, and artistically sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmIrxXwFygX0P09BEdC7jA1aemhudAdU4loLcvDRBe-s9drcPIgtsZqtnXbsQj5MChSb9fHhyQfT2NKTFiS-MBBlVyCJ7odc8G6FiV4PP9x2Ze6PEuz-KYWm6Ya0oZzNwjGjH15HMMRcOEG6t3ba2Up4xKf_GfOHLCebk_oAD0AGoMX-UVKYNaXi9_imWbKnDNqqEau_gTumhPtG_eN6MZLWpjgLBFtJNLwj793Sabya14_MF-A63Sq7T3coHorzLWtBr8rTR-BiB7"/>
+<span class="text-label-md font-bold truncate">Chloe T.</span>
+</div>
+<div class="h-12 flex items-center justify-center gap-2 px-2">
+<img class="w-8 h-8 rounded-full border border-white" data-alt="A professional portrait of a stylish female salon expert with glasses. The background shows a modern, high-tech salon interior with clean lines and soft blue accent lighting. The mood is welcoming and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3dCqzrZzo3qk6dRuh-f1zUqWOOavrMGE5iNwaGG7L8nU6d1kok_9HUhnkfhqewHDixpV7qcWEF5ekjz1hsCxIJN-UBbtc2leOQymQsQvRUqYKLI4XMSDLQ9_NVL46HFf6e_4MRhCiO8M45-e-YHaw2rXlwn_iZNvTUKkYfn6slj0k1v5E1OJiwDRw7jfMoneYJIRXQyuND_28P5NEhtSAMjVb-QbVCRsj5tOZ82ZmteH_yKPeHXgZYXs0vDccIDrwhEilFrR31MM"/>
+<span class="text-label-md font-bold truncate">Elena K.</span>
+</div>
+</div>
+<!-- Scrollable Calendar Content -->
+<div class="flex-1 overflow-y-auto relative bg-[#F5F4F0]">
+<!-- Time Indicator Line (Animated via JS) -->
+<div class="absolute left-0 right-0 h-0.5 bg-danger z-50 pointer-events-none opacity-50" id="time-indicator" style="top: 150px">
+<div class="absolute -left-1 -top-1 w-2.5 h-2.5 rounded-full bg-danger"></div>
+</div>
+<div class="calendar-grid">
+<!-- Hours -->
+<div class="time-label font-label-sm text-secondary">09:00</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="time-label font-label-sm text-secondary">10:00</div>
+<div class="calendar-slot">
+<!-- Booking: Marcus 10am -->
+<div class="booking-card top-4 h-[180px] bg-white border-l-4 border-success rounded-lg shadow-sm p-3 flex flex-col justify-between cursor-pointer border border-border">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-label-md font-bold leading-tight">Benjamin S.</h4>
+<span class="bg-success/10 text-success text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-tighter">Paid</span>
+</div>
+<p class="text-body-sm text-secondary leading-tight">Signature Fade + Beard Sculpt</p>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-[12px]">10:00 - 11:30</span>
+</div>
+<span class="font-label-md text-primary">$85</span>
+</div>
+</div>
+</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot">
+<!-- Booking: Julian 10:30am -->
+<div class="booking-card top-14 h-[120px] bg-white border-l-4 border-warning rounded-lg shadow-sm p-3 flex flex-col justify-between cursor-pointer border border-border">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-label-md font-bold leading-tight">Linda Chen</h4>
+<span class="bg-warning/10 text-warning text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-tighter">In Progress</span>
+</div>
+<p class="text-body-sm text-secondary leading-tight">Express Mani/Pedi</p>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-[12px]">10:30 - 11:30</span>
+</div>
+<span class="font-label-md text-primary">$60</span>
+</div>
+</div>
+</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="time-label font-label-sm text-secondary">11:00</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot">
+<!-- Booking: Sarah 11am -->
+<div class="booking-card top-0 h-[320px] bg-white border-l-4 border-primary rounded-lg shadow-sm p-3 flex flex-col justify-between cursor-pointer border border-border">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-label-md font-bold leading-tight">Victoria Reed</h4>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-tighter">Arriving</span>
+</div>
+<p class="text-body-sm text-secondary leading-tight">Full Balayage &amp; Tonal Gloss</p>
+<div class="mt-2 flex gap-1">
+<span class="bg-surface-container-high px-2 py-0.5 rounded text-[10px] text-secondary">Platinum Member</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-[12px]">11:00 - 14:00</span>
+</div>
+<span class="font-label-md text-primary">$320</span>
+</div>
+</div>
+</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="time-label font-label-sm text-secondary">12:00</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="time-label font-label-sm text-secondary">13:00</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="time-label font-label-sm text-secondary">14:00</div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+<div class="calendar-slot"></div>
+</div>
+</div>
+</main></div>
+<!-- Right Drawer (Hidden by default) -->
+<div class="fixed inset-y-0 right-0 w-[400px] bg-surface shadow-[0px_4px_20px_rgba(0,0,0,0.05)] translate-x-full transition-transform duration-300 z-[100] rounded-l-xl flex flex-col" id="booking-drawer">
+<div class="p-margin-page border-b border-border flex justify-between items-center">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Member Profile</h3>
+<p class="text-body-sm text-on-surface-variant">Platinum Tier</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-all" onclick="toggleDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 p-margin-page overflow-y-auto">
+<div class="text-center mb-8">
+<img class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-primary p-1" data-alt="A professional close-up profile image of a regular salon client. The lighting is soft and flattering, with a modern, high-key corporate salon aesthetic in the background. The style is clean, sharp, and business-focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClBIf_rCws53baZ1obUVTsY3K0PU9PiBCuBu4jQrzIP8K7Ql4b7Iodxe95XVt2Ls9uGoW2xuP1cl5D9iHoz1Toht5GoEctQSVWcF4WGoNbWtTMtdwQ-WMBld9e9SIydi2g6vdSk-drfDij0MmD70sUssMQzVnxMlOwx1GC3PdMSeeYAMtUdoYT4bEyeZbRTad3NlwcGjDBW_N46ytHg2JbdqQfHZRrEfXPJOkDYqEoEWiiDc_NjQuTbk9HfEoYjGShoLzw0IeRo4z-"/>
+<h2 class="text-headline-md font-headline-md">Victoria Reed</h2>
+<span class="text-label-md font-label-md text-platinum bg-primary-container px-3 py-1 rounded-full">Platinum Tier</span>
+</div>
+<div class="space-y-stack-lg">
+<div class="p-4 border border-border rounded-xl">
+<p class="text-label-sm font-label-sm text-secondary mb-2 uppercase tracking-widest">Contact Info</p>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">call</span>
+<span class="text-body-md">+60 12-345 6789</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">mail</span>
+<span class="text-body-md">v.reed@example.com</span>
+</div>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary mb-3 uppercase tracking-widest">Preferences</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-body-sm">Iced Latte</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-body-sm">Lukewarm water</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-body-sm">Organic dyes only</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-margin-page bg-surface-container-low border-t border-border">
+<button class="w-full h-touch-target-min bg-primary text-on-primary rounded-lg font-bold hover:opacity-90 transition-opacity">
+                Edit Profile
+            </button>
+</div>
+</div>
+<script>
+        // Toggle Offline Banner Logic (Atmospheric Simulation)
+        const banner = document.getElementById('sync-banner');
+        setTimeout(() => {
+            banner.classList.add('bg-primary-container', 'text-on-primary-container');
+            banner.classList.remove('bg-danger', 'text-on-error');
+            banner.innerHTML = '<span class="material-symbols-outlined mr-2 text-[20px] animate-spin">sync</span><span class="font-label-md text-label-md">Synchronizing Workspace...</span>';
+            
+            setTimeout(() => {
+                banner.style.height = '0';
+                banner.style.opacity = '0';
+                banner.style.overflow = 'hidden';
+            }, 3000);
+        }, 5000);
+
+        // Simple Drawer Logic
+        function toggleDrawer() {
+            const drawer = document.getElementById('booking-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        // Add event listeners to booking cards
+        document.querySelectorAll('.booking-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleDrawer();
+            });
+        });
+
+        // Time indicator movement simulation
+        let timePos = 150;
+        setInterval(() => {
+            timePos += 0.1;
+            document.getElementById('time-indicator').style.top = timePos + 'px';
+        }, 1000);
+    </script>
+</body></html>

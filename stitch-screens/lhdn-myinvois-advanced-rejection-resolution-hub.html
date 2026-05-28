@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "danger": "#8A1F1F",
+                    "surface-container-low": "#f5f4f0",
+                    "surface-bright": "#faf9f5",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#1a5fa8",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1b1c1a",
+                    "border": "#E2E1DC",
+                    "on-surface-variant": "#424751",
+                    "warning": "#8A5200",
+                    "inverse-surface": "#30312e",
+                    "surface": "#FFFFFF",
+                    "on-background": "#1b1c1a",
+                    "silver": "#C0C0C0",
+                    "success": "#2E7D52",
+                    "outline": "#727782",
+                    "surface-dim": "#dbdad6",
+                    "outline-variant": "#c2c6d3",
+                    "tertiary-container": "#7d5700",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "platinum": "#E5E4E2",
+                    "tertiary": "#5e4100",
+                    "on-secondary-fixed-variant": "#474743",
+                    "primary-fixed": "#d4e3ff",
+                    "ink-primary": "#1A1A18",
+                    "on-secondary-container": "#5f5f5b",
+                    "on-primary-container": "#c4daff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-tertiary-container": "#ffd184",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "inverse-on-surface": "#f2f1ed",
+                    "surface-variant": "#e3e2df",
+                    "surface-container-high": "#e9e8e4",
+                    "on-primary-fixed-variant": "#004786",
+                    "secondary-fixed": "#e4e2dd",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "on-primary-fixed": "#001c3a",
+                    "secondary": "#5f5f5a",
+                    "on-tertiary-fixed": "#271900",
+                    "on-secondary-fixed": "#1b1c19",
+                    "surface-container-highest": "#e3e2df",
+                    "bronze": "#CD7F32",
+                    "surface-container": "#efeeea",
+                    "purple-mlm": "#4A3AB0",
+                    "background": "#faf9f5",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#a6c8ff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#004786",
+                    "secondary-container": "#dcdad5",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdeaa",
+                    "primary-container": "#1a5fa8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "56px",
+                    "gutter": "16px",
+                    "tile-height-min": "80px",
+                    "margin-page": "24px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["JetBrains Mono"],
+                    "body-sm": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["Libre Franklin"],
+                    "headline-lg": ["Libre Franklin"],
+                    "display-lg": ["Libre Franklin"],
+                    "body-md": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Libre Franklin', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 border-r border-border bg-surface-bright flex flex-col py-6 px-4 shrink-0 overflow-y-auto">
+<div class="mb-10 px-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">account_balance</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">MyInvois Admin</h1>
+<p class="font-label-sm text-label-sm text-secondary opacity-70">Enterprise Financial</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Invoices -->
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Invoices</span>
+</a>
+<!-- Rejection Queue (ACTIVE) -->
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg bg-primary-container text-on-primary-container border-r-4 border-primary font-bold scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-label-md text-label-md">Rejection Queue</span>
+</a>
+<!-- Suppliers -->
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Suppliers</span>
+</a>
+<!-- Customers -->
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<!-- System Settings -->
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">System Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-border pt-4 space-y-1">
+<button class="w-full flex items-center gap-3 px-3 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">sync</span>
+<span class="font-label-md text-label-md">Sync Records</span>
+</button>
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-3 h-12 rounded-lg text-danger hover:bg-error-container transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 bg-surface-container-low overflow-hidden">
+<!-- TopNavBar Anchor -->
+<header class="flex justify-between items-center w-full px-6 h-16 bg-surface border-b border-border shrink-0">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative max-w-md w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container-lowest border border-border rounded-lg font-body-sm text-body-sm focus:outline-none focus:border-primary transition-all" placeholder="Search invoices or customer IDs..." type="text"/>
+</div>
+<div class="h-6 w-px bg-border"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">store</span>
+<span class="font-label-md text-label-md text-secondary">Outlet: HQ - Kuala Lumpur</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="h-10 px-4 flex items-center gap-2 text-primary font-label-md text-label-md hover:bg-surface-container-low rounded-lg transition-all">
+<span class="material-symbols-outlined">download</span>
+                    Export CSV
+                </button>
+<button class="h-10 px-6 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold shadow-sm hover:brightness-110 active:scale-95 transition-all">
+                    Create New Invoice
+                </button>
+<div class="flex gap-2 mx-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-outline">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-outline">sync</span>
+</button>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a modern financial administrator in a corporate setting. The lighting is crisp and high-key, emphasizing a clean and trustworthy atmosphere. The image uses a minimalist, light-mode aesthetic with neutral colors, reflecting high-end business professionalism and technological precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6XZ0m5VtW_Y3DBzRFPQLv3stkk-EVbrS9Mnn2iUjJdb2AY9aGJATq7Xl2jpqqRLnnx3ti3dMb6WYvC27EDk5DRhNF5In-VqsOwnNbwMjoUrSUl1leLAaga1DJPVQmugAWdvzmDpyOtdWXvA-K0rpVXsEAnEmLw3mdccM-KGckE_s6CAErtpNY6ECzRDn3HNZwZ12OFfEcynsXIWo6YXVDtKHhnsj1kVhy6zS0gCb7g8wlRg2vda95zMz2O_OFnQqHFRDQsTrC47vw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<div class="flex-1 p-margin-page overflow-y-auto">
+<div class="max-w-7xl mx-auto space-y-stack-lg">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-ink-primary">Rejection Queue</h2>
+<p class="font-body-md text-body-md text-secondary mt-1 flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-danger"></span>
+                            Action required for 12 failed submissions
+                        </p>
+</div>
+<div class="flex gap-3">
+<button class="h-10 px-4 bg-surface border border-border rounded-lg flex items-center gap-2 font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+                            Advanced Filters
+                        </button>
+<button class="h-10 px-4 bg-surface border border-border rounded-lg flex items-center gap-2 font-label-md text-label-md text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">refresh</span>
+  Bulk Retry
+</button>
+</div>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-surface p-4 rounded-xl border border-border shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<div>
+<p class="text-label-sm text-outline">Pending Review</p>
+<p class="text-headline-md font-bold text-on-surface">08</p>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-xl border border-border shadow-sm flex items-center gap-4 border-l-4 border-l-danger">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-danger">
+<span class="material-symbols-outlined">priority_high</span>
+</div>
+<div>
+<p class="text-label-sm text-outline">Critical Errors (LHDN)</p>
+<p class="text-headline-md font-bold text-danger">04</p>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-xl border border-border shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center text-success">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-label-sm text-outline">Resubmission Ready</p>
+<p class="text-headline-md font-bold text-success">12</p>
+</div>
+</div>
+</div>
+<!-- Filters Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-surface p-4 rounded-xl border border-border shadow-sm">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-outline px-1">Date Range</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">calendar_today</span>
+<select class="w-full h-10 pl-10 pr-4 bg-surface-container-lowest border border-border rounded-lg font-body-sm text-body-sm appearance-none focus:border-primary">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+<option>Custom Range</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-outline px-1">Outlet</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">location_on</span>
+<select class="w-full h-10 pl-10 pr-4 bg-surface-container-lowest border border-border rounded-lg font-body-sm text-body-sm appearance-none focus:border-primary">
+<option>All Outlets</option>
+<option>HQ - Kuala Lumpur</option>
+<option>Damansara Branch</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-outline px-1">Error Category</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">error</span>
+<select class="w-full h-10 pl-10 pr-4 bg-surface-container-lowest border border-border rounded-lg font-body-sm text-body-sm appearance-none focus:border-primary">
+<option>All Categories</option>
+<option>Schema Error</option>
+<option>Signature Failure</option>
+<option>Logic Violation</option>
+</select>
+</div>
+</div>
+<div class="flex items-end">
+<button class="w-full h-10 bg-surface-container-high text-on-surface font-label-md text-label-md font-bold rounded-lg hover:bg-secondary-container transition-all">
+                            Apply Selection
+                        </button>
+</div>
+</div>
+<!-- Main Table Content -->
+<div class="flex gap-6">
+<div class="flex-1 bg-surface rounded-xl border border-border overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-high border-b border-border">
+<tr>
+<th class="px-4 py-4 w-12"><input class="rounded border-outline text-primary" type="checkbox"/></th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary">Invoice Ref</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary">LHDN Error Code</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary">Status</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<tr class="bg-danger/5 hover:bg-danger/10 transition-colors group">
+<td class="px-4 py-5"><input class="rounded border-outline text-primary" type="checkbox"/></td>
+<td class="px-6 py-5"><div class="font-label-md text-primary font-bold">INV-2023-001</div>
+<div class="flex flex-col gap-0.5 mt-1">
+<span class="text-[10px] text-outline uppercase tracking-wider font-medium">Submitted: 2023-10-24 14:30</span>
+<span class="text-[10px] text-secondary">Outlet: HQ - Kuala Lumpur</span>
+</div>
+<button class="flex items-center gap-1 text-[10px] text-primary hover:underline mt-1 font-medium">
+<span class="material-symbols-outlined text-[12px]">history</span> View Audit History
+</button></td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-label-md font-bold text-danger">LHDN-001</span>
+<span class="text-body-sm text-secondary">Invalid Tax ID format</span>
+<span class="mt-2 text-[11px] font-bold text-success flex items-center gap-1 bg-success/5 px-2 py-1 rounded w-fit border border-success/20">
+<span class="material-symbols-outlined text-[14px]">build</span> Quick Fix: Update member TIN in CRM
+</span></div>
+</td>
+<td class="px-6 py-5"><span class="px-2 py-1 bg-danger text-white rounded text-[10px] font-bold uppercase tracking-widest shadow-sm">Critical</span></td>
+<td class="px-6 py-5 text-right flex justify-end gap-2">
+<button class="p-2 hover:bg-surface-container rounded-lg text-outline" title="View JSON"><span class="material-symbols-outlined text-[20px]">code</span></button>
+<button class="p-2 hover:bg-surface-container rounded-lg text-outline" title="Edit Info"><span class="material-symbols-outlined text-[20px]">edit_note</span></button>
+<button class="h-9 px-4 bg-primary text-on-primary font-label-sm font-bold rounded-lg">Retry</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-5"><input class="rounded border-outline text-primary" type="checkbox"/></td>
+<td class="px-6 py-5"><div class="font-label-md text-primary font-bold">INV-2023-004</div>
+<div class="flex flex-col gap-0.5 mt-1">
+<span class="text-[10px] text-outline uppercase tracking-wider font-medium">Submitted: 2023-10-25 09:15</span>
+<span class="text-[10px] text-secondary">Outlet: Damansara Branch</span>
+</div>
+<button class="flex items-center gap-1 text-[10px] text-primary hover:underline mt-1 font-medium">
+<span class="material-symbols-outlined text-[12px]">history</span> View Audit History
+</button></td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-label-md font-bold text-warning">LHDN-402</span>
+<span class="text-body-sm text-secondary">Signature validation failed</span>
+<span class="mt-2 text-[11px] font-bold text-success flex items-center gap-1 bg-success/5 px-2 py-1 rounded w-fit border border-success/20">
+<span class="material-symbols-outlined text-[14px]">sync</span> Quick Fix: Re-sync API Credentials
+</span></div>
+</td>
+<td class="px-6 py-5"><span class="px-2 py-1 bg-warning text-white rounded text-[10px] font-bold uppercase tracking-widest shadow-sm">Review</span></td>
+<td class="px-6 py-5 text-right flex justify-end gap-2">
+<button class="p-2 hover:bg-surface-container rounded-lg text-outline" title="View JSON"><span class="material-symbols-outlined text-[20px]">code</span></button>
+<button class="p-2 hover:bg-surface-container rounded-lg text-outline" title="Edit Info"><span class="material-symbols-outlined text-[20px]">edit_note</span></button>
+<button class="h-9 px-4 bg-primary text-on-primary font-label-sm font-bold rounded-lg">Retry</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="bg-primary text-on-primary px-6 py-4 flex items-center justify-between sticky bottom-0 z-10 shadow-lg">
+<div class="flex items-center gap-4">
+<span class="font-label-md font-bold">2 Items Selected</span>
+<button class="text-white/70 hover:text-white underline text-label-sm">Clear</button>
+</div>
+<div class="flex gap-3">
+<button class="h-9 px-4 bg-white/10 border border-white/20 rounded-lg text-white font-label-md">Batch Ignore</button>
+<button class="h-9 px-4 bg-white text-primary rounded-lg font-label-md font-bold shadow-sm">Resubmit 2 Items (est. 45s)</button>
+</div>
+</div>
+</div>
+<div class="w-80 space-y-4 shrink-0">
+<div class="bg-surface p-5 rounded-xl border border-border">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+<h3 class="font-label-md font-bold">Common Resolutions</h3>
+</div>
+<div class="space-y-3"><div class="p-4 bg-surface-container-low rounded-xl border border-border group">
+<p class="text-label-sm font-bold text-primary">LHDN-001</p>
+<p class="text-body-sm mt-1 text-on-surface-variant">Verify TIN via MyInvois Portal and update customer record.</p>
+<button class="w-full mt-3 py-1.5 bg-primary text-on-primary rounded-lg text-label-sm font-bold flex items-center justify-center gap-2 hover:brightness-110">
+<span class="material-symbols-outlined text-sm">open_in_new</span> Apply Fix in CRM
+  </button>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-border group">
+<p class="text-label-sm font-bold text-primary">LHDN-402</p>
+<p class="text-body-sm mt-1 text-on-surface-variant">Refresh digital signature cert or re-sync outlet tokens.</p>
+<button class="w-full mt-3 py-1.5 bg-primary text-on-primary rounded-lg text-label-sm font-bold flex items-center justify-center gap-2 hover:brightness-110">
+<span class="material-symbols-outlined text-sm">refresh</span> Re-sync Tokens
+  </button>
+</div>
+<button class="w-full py-3 text-primary font-label-sm text-center border-t border-border mt-2 flex items-center justify-center gap-2">
+  View LHDN Documentation <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button></div>
+</div>
+</div>
+</div>
+<!-- Information Card -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg">
+<div class="bg-primary/5 border border-primary/20 p-5 rounded-xl flex gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">info</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-primary">Schema Validation</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Ensure all Mandatory fields in LHDN Schema 1.0 are present before re-submitting.</p>
+</div>
+</div>
+<div class="bg-warning/5 border border-warning/20 p-5 rounded-xl flex gap-4">
+<span class="material-symbols-outlined text-warning text-3xl">verified_user</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-warning">Signature Check</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Check your digital certificate expiry if Signature Failures persist across all outlets.</p>
+</div>
+</div>
+<div class="bg-danger/5 border border-danger/20 p-5 rounded-xl flex gap-4">
+<span class="material-symbols-outlined text-danger text-3xl">bolt</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-danger">Auto-Retry Log</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">System automatically retries "Timeout" errors every 30 minutes. 4 currently in queue.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button for Emergency Contact -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all group">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface px-3 py-1 rounded-lg font-label-sm text-label-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Contact Tech Support</span>
+</button>
+<script>
+        // Simple micro-interaction for button feedback
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                let ripple = document.createElement('div');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Stock Movement History - Precision Salon OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "warning": "#8A5200",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "surface-container": "#efeeea",
+                        "primary-fixed": "#d4e3ff",
+                        "success": "#2E7D52",
+                        "danger": "#8A1F1F",
+                        "tertiary-container": "#7d5700",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#c4daff",
+                        "on-tertiary-fixed": "#271900",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-surface-variant": "#424751",
+                        "purple-mlm": "#4A3AB0",
+                        "surface": "#FFFFFF",
+                        "surface-container-highest": "#e3e2df",
+                        "border": "#E2E1DC",
+                        "secondary-container": "#dcdad5",
+                        "surface-container-high": "#e9e8e4",
+                        "surface-bright": "#faf9f5",
+                        "on-primary": "#ffffff",
+                        "primary": "#004786",
+                        "primary-container": "#1a5fa8",
+                        "silver": "#C0C0C0",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#1b1c19",
+                        "inverse-surface": "#30312e",
+                        "secondary": "#5f5f5a",
+                        "tertiary": "#5e4100",
+                        "surface-dim": "#dbdad6",
+                        "ink-primary": "#1A1A18",
+                        "bronze": "#CD7F32",
+                        "on-secondary-container": "#5f5f5b",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf9f5",
+                        "platinum": "#E5E4E2",
+                        "on-background": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#474743",
+                        "outline": "#727782",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2df",
+                        "surface-tint": "#1a5fa8",
+                        "secondary-fixed": "#e4e2dd",
+                        "inverse-primary": "#a6c8ff",
+                        "outline-variant": "#c2c6d3",
+                        "surface-container-low": "#f5f4f0",
+                        "on-tertiary-container": "#ffd184",
+                        "on-surface": "#1b1c1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "tile-height-min": "80px",
+                        "gutter": "16px",
+                        "touch-target-min": "56px",
+                        "stack-md": "16px",
+                        "margin-page": "24px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "headline-md": ["Libre Franklin"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-lg": ["Libre Franklin"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-lg": ["Libre Franklin"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Tactical Precision Overrides */
+        .touch-target { min-height: 56px; }
+        .data-table-row { min-height: 56px; border-bottom: 0.5px solid #E2E1DC; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden h-screen flex">
+<!-- Sidebar Navigation Shell -->
+<aside class="flex flex-col h-full py-stack-lg px-stack-md bg-surface-container-low border-r border-border w-64 shrink-0 transition-all duration-150 ease-in-out">
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Inventory Pro</h1>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Main Warehouse</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 h-12 text-secondary hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 h-12 bg-primary-container text-on-primary-container font-bold rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 h-12 text-secondary hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md">Sales</span>
+</a>
+<a class="flex items-center gap-3 px-4 h-12 text-secondary hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 h-12 text-secondary hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md">Reports</span>
+</a>
+</nav>
+<button class="w-full h- touch-target-min bg-primary text-on-primary font-bold rounded-lg flex items-center justify-center gap-2 mb-8 shadow-sm">
+<span class="material-symbols-outlined">add</span>
+<span class="">Add Stock</span>
+</button>
+<div class="pt-4 border-t border-border space-y-1">
+<a class="flex items-center gap-3 px-4 h-12 text-secondary hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 h-12 text-secondary hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background h-full">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-margin-page h-touch-target-min bg-surface border-b border-border">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Precision Salon OS</h2>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-0 rounded-full pl-10 h-10 focus:ring-2 focus:ring-primary text-body-sm" placeholder="Global search..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+<div class="h-8 w-px bg-border"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="font-label-md font-bold text-primary leading-tight">Admin User</p>
+<p class="text-[10px] text-secondary uppercase tracking-widest">General Manager</p>
+</div>
+<img alt="User profile" class="w-10 h-10 rounded-full border border-border object-cover" data-alt="A professional headshot of a mature salon manager in a clean-cut white shirt, looking directly at the camera with a confident smile. The background is a blurred, high-end salon interior with warm golden lighting and modern decor, emphasizing a corporate and professional business atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8VyrgAE5EBDs56uuLXAMH4PNpEs-GqDtziextyS7ujSHkuHLTedHasEZEyyXw1GNo9mElmtTmjFEbDGIaLuhueYHZ8nLFomeC3Lbv98nqTJ-rv9XJcRi1xc5XTesOfvxL4ffsO0dPCXa6EfE6bhiCb29RvCqg7znuRxhC9pIBotd5zvnaqq_G0tASYKqksk8mfNr_9zNBBBcFDThJ_SMUOW1abX8oJ26boXMYN7hTQkwmsCP88bxxYbr1fmaIV-IuEYPMExIW9oIg">
+</div>
+</div>
+</header>
+<!-- Context Header & Filters -->
+<div class="p-margin-page pb-0">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-stack-lg">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-ink-primary">Stock Movement History</h3>
+<p class="text-secondary font-body-sm">Audit trail for all inventory fluctuations</p>
+</div>
+<div class="flex items-center gap-3"><div class="flex items-center h-touch-target-min bg-surface border border-border rounded-lg px-4 gap-2">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+<span class="font-label-md">Oct 01, 2023 - Oct 31, 2023</span>
+<span class="material-symbols-outlined text-outline ml-2">expand_more</span>
+</div>
+<button class="h-touch-target-min px-6 border border-border bg-surface text-primary font-bold rounded-lg flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">download</span>
+<span class="">Export CSV</span>
+</button></div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface border border-border p-4 rounded-xl flex flex-wrap items-center gap-4 mb-stack-lg shadow-sm">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full border-0 bg-surface-container-low rounded-lg pl-10 h-12 focus:ring-2 focus:ring-primary text-body-md" placeholder="Search Product Name or SKU..." type="text">
+</div>
+<div class="flex items-center gap-3">
+<div class="relative group">
+<label class="absolute -top-2 left-2 px-1 bg-surface text-[10px] text-outline font-bold uppercase tracking-wider">Category</label>
+<select class="h-12 w-48 border border-border rounded-lg bg-surface px-3 text-body-sm focus:ring-2 focus:ring-primary appearance-none cursor-pointer">
+<option>All Categories</option>
+<option>Hair Care</option>
+<option>Skin Care</option>
+<option>Tools</option>
+<option>Chemicals</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<div class="relative group">
+<label class="absolute -top-2 left-2 px-1 bg-surface text-[10px] text-outline font-bold uppercase tracking-wider">Movement Type</label>
+<select class="h-12 w-48 border border-border rounded-lg bg-surface px-3 text-body-sm focus:ring-2 focus:ring-primary appearance-none cursor-pointer">
+<option>All Types</option>
+<option>Restock</option>
+<option>Sale</option>
+<option>Service Use</option>
+<option>Adjustment</option>
+<option>Return</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<button class="h-12 px-4 text-secondary hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-md">Clear Filters</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="flex-1 overflow-hidden px-margin-page pb-margin-page">
+<div class="h-full bg-surface border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-y-auto no-scrollbar flex-1">
+<table class="w-full border-collapse text-left">
+<thead class="sticky top-0 bg-surface-container-low z-10 border-b border-border">
+<tr>
+<th class="px-6 py-4 font-label-md text-secondary uppercase tracking-widest text-[11px]">Date &amp; Time</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase tracking-widest text-[11px]">Product</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase tracking-widest text-[11px]">Category</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase tracking-widest text-[11px]">Type</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase tracking-widest text-[11px] text-right">Change</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase tracking-widest text-[11px] text-right">Stock Balance</th>
+<th class="px-6 py-4 font-label-md text-secondary uppercase tracking-widest text-[11px]">Performed By</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Entry 1: Restock -->
+<tr class="hover:bg-surface-container-lowest transition-colors data-table-row">
+<td class="px-6 py-4">
+<p class="font-body-sm text-ink-primary">24 Oct 2023</p>
+<p class="font-label-sm text-outline">09:15 AM</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">sanitizer</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-ink-primary leading-tight">L'Oreal Serioxyl</p>
+<p class="font-label-sm text-primary">LP-992-B</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-sm text-secondary">Hair Care</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase bg-success/10 text-success border border-success/20">
+                                        Restock
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md text-success font-bold">+12</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md font-bold">48</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border border-border flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="text-body-sm">Jane Doe</span>
+</div>
+</td>
+</tr>
+<!-- Entry 2: Sale -->
+<tr class="hover:bg-surface-container-lowest transition-colors data-table-row">
+<td class="px-6 py-4">
+<p class="font-body-sm text-ink-primary">24 Oct 2023</p>
+<p class="font-label-sm text-outline">11:42 AM</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">flare</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-ink-primary leading-tight">Kerastase Elixir</p>
+<p class="font-label-sm text-primary">KS-ULT-01</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-sm text-secondary">Hair Care</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase bg-primary/10 text-primary border border-primary/20">
+                                        Sale
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md text-danger font-bold">-1</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md font-bold">22</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border border-border flex items-center justify-center text-[10px] font-bold">ML</div>
+<span class="text-body-sm">Marcus Lim</span>
+</div>
+</td>
+</tr>
+<!-- Entry 3: Service Use -->
+<tr class="hover:bg-surface-container-lowest transition-colors data-table-row">
+<td class="px-6 py-4">
+<p class="font-body-sm text-ink-primary">24 Oct 2023</p>
+<p class="font-label-sm text-outline">02:15 PM</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">palette</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-ink-primary leading-tight">Wella Koleston 7/0</p>
+<p class="font-label-sm text-primary">WL-COL-70</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-sm text-secondary">Chemicals</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase bg-warning/10 text-warning border border-warning/20">
+                                        Service Use
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md text-danger font-bold">-1</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md font-bold">114</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border border-border flex items-center justify-center text-[10px] font-bold">SR</div>
+<span class="text-body-sm">Sarah Rosli</span>
+</div>
+</td>
+</tr>
+<!-- Entry 4: Adjustment -->
+<tr class="hover:bg-surface-container-lowest transition-colors data-table-row">
+<td class="px-6 py-4">
+<p class="font-body-sm text-ink-primary">23 Oct 2023</p>
+<p class="font-label-sm text-outline">05:30 PM</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">content_cut</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-ink-primary leading-tight">Titanium Shears 6"</p>
+<p class="font-label-sm text-primary">TL-SHR-60</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-sm text-secondary">Tools</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase bg-secondary/10 text-secondary border border-secondary/20">
+                                        Adjustment
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md text-secondary font-bold">-2</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md font-bold">8</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border border-border flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="text-body-sm">Jane Doe</span>
+</div>
+</td>
+</tr>
+<!-- Entry 5: Return -->
+<tr class="hover:bg-surface-container-lowest transition-colors data-table-row">
+<td class="px-6 py-4">
+<p class="font-body-sm text-ink-primary">23 Oct 2023</p>
+<p class="font-label-sm text-outline">10:05 AM</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">face_retouching_natural</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-ink-primary leading-tight">Skin Vitality Serum</p>
+<p class="font-label-sm text-primary">SV-SER-50</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-sm text-secondary">Skin Care</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase bg-purple-mlm/10 text-purple-mlm border border-purple-mlm/20">
+                                        Return
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md text-success font-bold">+1</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-label-md font-bold">34</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border border-border flex items-center justify-center text-[10px] font-bold">AL</div>
+<span class="text-body-sm">Alex Low</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 h-16 border-t border-border flex items-center justify-between bg-surface">
+<p class="text-body-sm text-secondary">Showing <span class="font-bold text-ink-primary">1-50</span> of <span class="font-bold text-ink-primary">1,284</span> movements</p>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-border hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors">2</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors">3</button>
+<span class="px-2 text-secondary">...</span>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors">26</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-border hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sync Banner (State: Active/Hidden) -->
+<div class="hidden h-10 bg-primary-container text-on-primary-container items-center justify-center gap-3 transition-all duration-300" id="syncBanner">
+<span class="material-symbols-outlined animate-spin text-sm">sync</span>
+<span class="font-label-md">Synchronizing changes with central server...</span>
+</div>
+</main>
+<script>
+        // Simple Interaction logic
+        const syncBtn = document.querySelector('[data-icon="sync"]');
+        const banner = document.getElementById('syncBanner');
+        
+        syncBtn?.addEventListener('click', () => {
+            banner.style.display = 'flex';
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 3000);
+        });
+
+        // Search highlight logic (Visual effect only)
+        const searchInput = document.querySelector('input[placeholder*="SKU"]');
+        searchInput?.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput?.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+
+
+</body></html>

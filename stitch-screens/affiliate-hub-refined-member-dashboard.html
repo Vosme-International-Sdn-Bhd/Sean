@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Affiliate Hub - SalonPortal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "platinum": "#E5E4E2",
+                    "on-primary-fixed": "#001c3a",
+                    "on-secondary-container": "#5f5f5b",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-surface-variant": "#424751",
+                    "on-surface": "#1b1c1a",
+                    "outline-variant": "#c2c6d3",
+                    "on-primary-container": "#c4daff",
+                    "background": "#faf9f5",
+                    "surface-container-low": "#f5f4f0",
+                    "on-background": "#1b1c1a",
+                    "inverse-primary": "#a6c8ff",
+                    "on-error-container": "#93000a",
+                    "bronze": "#CD7F32",
+                    "surface-tint": "#1a5fa8",
+                    "success": "#2E7D52",
+                    "secondary-container": "#dcdad5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "tertiary-fixed": "#ffdeaa",
+                    "silver": "#C0C0C0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#1b1c19",
+                    "surface-container-high": "#e9e8e4",
+                    "ink-primary": "#1A1A18",
+                    "surface-bright": "#faf9f5",
+                    "secondary-fixed": "#e4e2dd",
+                    "danger": "#8A1F1F",
+                    "on-tertiary-fixed": "#271900",
+                    "surface-container": "#efeeea",
+                    "secondary": "#5f5f5a",
+                    "outline": "#727782",
+                    "tertiary-container": "#7d5700",
+                    "surface": "#FFFFFF",
+                    "on-tertiary-container": "#ffd184",
+                    "primary-fixed": "#d4e3ff",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1a5fa8",
+                    "on-secondary-fixed-variant": "#474743",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "tertiary": "#5e4100",
+                    "secondary-fixed-dim": "#c8c6c1",
+                    "primary": "#004786",
+                    "border": "#E2E1DC",
+                    "surface-dim": "#dbdad6",
+                    "warning": "#8A5200",
+                    "surface-container-highest": "#e3e2df",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#004786",
+                    "tertiary-fixed-dim": "#f3be5e",
+                    "surface-variant": "#e3e2df",
+                    "purple-mlm": "#4A3AB0",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#30312e",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "56px",
+                    "stack-md": "16px",
+                    "gutter": "16px",
+                    "stack-lg": "24px",
+                    "tile-height-min": "80px",
+                    "stack-sm": "8px",
+                    "margin-page": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Libre Franklin"],
+                    "display-lg": ["Libre Franklin"],
+                    "body-sm": ["Libre Franklin"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Libre Franklin"],
+                    "headline-md": ["Libre Franklin"],
+                    "headline-lg": ["Libre Franklin"],
+                    "label-md": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .affiliate-gradient {
+            background: linear-gradient(135deg, #4A3AB0 0%, #1a5fa8 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c2c6d3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim flex justify-between items-center px-gutter w-full h-16 sticky top-0 z-50 border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">SalonPortal</span>
+</div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="text-on-surface-variant dark:text-outline hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Book</a>
+<a class="text-on-surface-variant dark:text-outline hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Wallet</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary px-3 py-2 font-body-md text-body-md cursor-pointer active:opacity-80" href="#">Affiliate Hub</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80 p-2 rounded-full hover:bg-surface-container">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80 p-2 rounded-full hover:bg-surface-container">settings</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a person with a clean, friendly expression, set against a soft-focus office background. The lighting is bright and even, reflecting a high-key corporate aesthetic with natural skin tones and a sharp, modern photographic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5TnV0k_o7X5wb4_o-T7IWOPlYqwz7QLqxDjVyoduRP5QKL8P_SbcP6TB6-11dgb6dcj2eqKe8SkYl05MRgVMmDAEr5g8U0XhZBDNf8qgmAk7Kod47hj64zClv7y6AbG8Rri8zekGuo9BWuKk7w8FgJFaOkv1ZlexxZhnjyV7bVFr57ghut3sd7lUVa6MasoinPDr_sVN4V5Bt0gXjlLI9QqzojAXkWKIEBLHpXrvpP1GKN1pzZ5ATrAANsWtIhlwhj9ktxSu1gSJt"/>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 relative">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline p-stack-md z-40 pt-20">
+<div class="flex items-center gap-stack-sm mb-stack-lg px-2">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">content_cut</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary dark:text-primary-fixed font-bold">Main Branch</p>
+<p class="text-xs text-on-surface-variant">Premium Tier</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-touch-target-min text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-touch-target-min text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span> Book
+                </a>
+<a class="flex items-center gap-3 px-3 py-touch-target-min text-on-surface-variant dark:text-outline-variant hover:bg-secondary-container dark:hover:bg-secondary transition-all rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Wallet
+                </a>
+<a class="flex items-center gap-3 px-3 py-touch-target-min bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary rounded-lg cursor-pointer active:scale-95 font-label-md text-label-md font-bold" href="#">
+<span class="material-symbols-outlined">groups</span> Affiliate Hub
+                </a>
+</nav>
+<div class="pt-stack-lg border-t border-outline-variant mt-stack-lg space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help</span> Support
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-margin-page">
+<div class="max-w-6xl mx-auto space-y-stack-lg">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-stack-md mb-stack-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-ink-primary">Affiliate Hub</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Grow with us and earn exclusive rewards for every referral.</p>
+</div>
+<div class="flex items-center gap-stack-sm bg-surface p-2 rounded-xl border border-border shadow-sm">
+<span class="material-symbols-outlined text-purple-mlm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<div class="pr-4">
+<p class="text-[10px] font-label-md text-on-surface-variant uppercase tracking-wider">Current Tier</p>
+<p class="font-label-md text-label-md text-purple-mlm font-bold">SILVER PARTNER</p>
+</div>
+</div>
+</header>
+<!-- Top Section: Promo & Link -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Referral Link & QR Card -->
+<section class="lg:col-span-8 bg-surface border border-border rounded-xl p-stack-lg flex flex-col md:flex-row gap-stack-lg overflow-hidden relative group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-purple-mlm opacity-5 rounded-bl-full -mr-10 -mt-10"></div>
+<div class="flex-1 space-y-stack-md">
+<div class="flex items-center gap-stack-sm">
+<span class="p-2 bg-purple-mlm/10 text-purple-mlm rounded-lg material-symbols-outlined">share</span>
+<h2 class="font-headline-md text-headline-md text-ink-primary">Your Referral Link</h2>
+</div>
+<p class="text-on-surface-variant font-body-md">Share this link with your friends. When they sign up and book their first service, you both receive a RM20 credit.</p>
+<div class="flex flex-col sm:flex-row items-stretch gap-stack-sm pt-2">
+<div class="flex-1 bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-label-md text-label-md flex items-center justify-between group-hover:border-purple-mlm transition-colors">
+<span class="truncate">salonportal.my/ref/SARAH_G772</span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" title="Copy link">content_copy</button>
+</div>
+<button class="bg-primary text-on-primary px-stack-lg py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">send</span> Share Now
+                                </button>
+</div>
+</div>
+<div class="w-full md:w-48 flex flex-col items-center justify-center bg-surface-container p-stack-md rounded-lg border border-outline-variant"><div class="bg-white p-2 rounded border border-border mb-2">
+<img alt="QR Code" class="w-32 h-32" data-alt="A clean, minimalist QR code centered on a white card." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-bold">In-salon QR Code</p>
+<button class="mt-3 flex items-center gap-2 bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-full font-label-sm text-label-sm hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span> Download Kit
+</button></div>
+</section>
+<!-- Rank Progress Card -->
+<section class="lg:col-span-4 bg-surface border border-border rounded-xl p-stack-lg flex flex-col justify-between"><div class="space-y-stack-md">
+<div class="flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface-variant font-bold uppercase tracking-widest">Rank Progress</h3>
+<span class="px-2 py-0.5 bg-silver/20 text-on-surface-variant rounded text-[10px] font-bold">GOLD NEXT</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative flex items-center justify-center">
+<svg class="w-24 h-24 transform -rotate-90">
+<circle class="text-surface-container-high" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-purple-mlm" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="70.3" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-headline-md font-display-lg">72%</span>
+</div>
+<div>
+<p class="text-body-sm text-on-surface-variant">Current: <span class="font-bold">Silver</span></p>
+<p class="text-body-sm text-on-surface-variant">Target: <span class="font-bold text-primary">Gold</span></p>
+</div>
+</div>
+<div class="p-3 bg-tertiary-fixed/20 rounded-lg border border-tertiary-fixed/30">
+<p class="font-label-sm text-label-sm text-on-tertiary-fixed-variant font-bold flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> Benefits for Gold Rank
+</p>
+<ul class="text-[11px] space-y-1 text-on-tertiary-fixed-variant">
+<li>• 7% commission on all referrals</li>
+<li>• VIP early access to new collections</li>
+</ul>
+</div>
+</div>
+<div class="mt-4">
+<p class="text-xs text-on-surface-variant font-body-sm italic">Need 8 more signups for Gold status.</p>
+<div class="mt-stack-md grid grid-cols-2 gap-2">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<p class="text-[10px] text-on-surface-variant uppercase">Progress</p>
+<p class="font-label-md text-label-md font-bold">22 / 30</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<p class="text-[10px] text-on-surface-variant uppercase">Commission</p>
+<p class="font-label-md text-label-md font-bold text-success">5% ↑</p>
+</div>
+</div>
+</div></section>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-stack-lg">
+<!-- Stat 1 -->
+<div class="bg-surface border border-border rounded-xl p-stack-lg space-y-2 hover:border-purple-mlm/30 transition-colors"><div class="flex items-center justify-between mb-2">
+<span class="p-2 bg-primary/10 text-primary rounded-xl material-symbols-outlined">ads_click</span>
+<div class="text-right">
+<span class="text-success font-label-sm text-label-sm font-bold flex items-center justify-end">+12% <span class="material-symbols-outlined text-[14px]">trending_up</span></span>
+<p class="text-[10px] text-outline">vs last month</p>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Total Link Clicks</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">1,284</p>
+</div></div>
+<!-- Stat 2 -->
+<div class="bg-surface border border-border rounded-xl p-stack-lg space-y-2 hover:border-purple-mlm/30 transition-colors"><div class="flex items-center justify-between mb-2">
+<span class="p-2 bg-success/10 text-success rounded-xl material-symbols-outlined">person_add</span>
+<div class="text-right">
+<span class="text-success font-label-sm text-label-sm font-bold flex items-center justify-end">+4 <span class="material-symbols-outlined text-[14px]">person</span></span>
+<p class="text-[10px] text-outline">New this week</p>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Total Signups</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">42</p>
+</div></div>
+<!-- Stat 3 -->
+<div class="bg-surface border border-border rounded-xl p-stack-lg space-y-2 hover:border-purple-mlm/30 transition-colors"><div class="flex items-center justify-between mb-2">
+<span class="p-2 bg-purple-mlm/10 text-purple-mlm rounded-xl material-symbols-outlined">payments</span>
+<div class="text-right">
+<span class="text-on-surface font-label-sm text-label-sm font-bold">Oct 2024</span>
+<p class="text-[10px] text-outline">Active period</p>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Earned Commission</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">RM 840.50</p>
+</div></div>
+<!-- Stat 4 -->
+<div class="bg-surface border border-border rounded-xl p-stack-lg space-y-2 hover:border-purple-mlm/30 transition-colors">
+<div class="flex items-center justify-between">
+<span class="p-2 bg-orange-50 text-warning rounded-lg material-symbols-outlined">military_tech</span>
+<span class="text-purple-mlm font-label-sm text-label-sm font-bold">SILVER</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase">Affiliate Rank</p>
+<p class="text-headline-lg font-headline-lg text-ink-primary">Partner</p>
+</div>
+</div>
+</div>
+<!-- Rewards Grid / List -->
+<section class="bg-surface border border-border rounded-xl overflow-hidden">
+<div class="px-stack-lg py-4 border-b border-border flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-ink-primary">Recent Conversions</h3>
+<button class="text-primary font-label-md text-label-md font-bold flex items-center gap-1">
+                            View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Customer</th>
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Reward</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-stack-lg py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-bold text-xs">LW</div>
+<div>
+<p class="font-body-md text-body-md font-bold">Lee Wei</p>
+<p class="text-xs text-on-surface-variant">Hair Coloring</p>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant">24 Oct, 2024</td>
+<td class="px-stack-lg py-4">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-success/10 text-success border border-success/20 rounded-full text-[10px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 bg-success rounded-full"></span> Paid
+                                        </span>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-right font-bold text-purple-mlm">+RM 20.00</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-stack-lg py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-bold text-xs">AA</div>
+<div>
+<p class="font-body-md text-body-md font-bold">Amirul Ariff</p>
+<p class="text-xs text-on-surface-variant">Scalp Treatment</p>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant">22 Oct, 2024</td>
+<td class="px-stack-lg py-4">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-yellow-100 text-warning rounded-full text-[10px] font-bold uppercase tracking-wider border">
+<span class="w-1.5 h-1.5 bg-warning rounded-full"></span> Pending
+                                        </span>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-right font-bold text-on-surface-variant">+RM 20.00</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-stack-lg py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-bold text-xs">SK</div>
+<div>
+<p class="font-body-md text-body-md font-bold">Siti Khadijah</p>
+<p class="text-xs text-on-surface-variant">Signature Cut</p>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-on-surface-variant">20 Oct, 2024</td>
+<td class="px-stack-lg py-4">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-success/10 text-success border border-success/20 rounded-full text-[10px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 bg-success rounded-full"></span> Paid
+                                        </span>
+</td>
+<td class="px-stack-lg py-4 font-label-md text-label-md text-right font-bold text-purple-mlm">+RM 20.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline py-stack-lg px-margin-page w-full mt-auto flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<div class="text-center md:text-left">
+<p class="font-label-md text-label-md font-bold text-on-surface">SalonPortal Malaysia</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 SalonPortal Malaysia. All rights reserved.</p>
+</div>
+<div class="flex gap-stack-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-opacity hover:opacity-90" href="#">Refund Policy</a>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for copy link button
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.querySelector('.material-symbols-outlined')?.textContent === 'content_copy') {
+                    const originalIcon = this.querySelector('.material-symbols-outlined').textContent;
+                    this.querySelector('.material-symbols-outlined').textContent = 'check';
+                    this.classList.add('text-success');
+                    setTimeout(() => {
+                        this.querySelector('.material-symbols-outlined').textContent = originalIcon;
+                        this.classList.remove('text-success');
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body></html>

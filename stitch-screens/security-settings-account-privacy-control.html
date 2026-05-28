@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SalonPortal | Security &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#a6c8ff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-tint": "#1a5fa8",
+                        "inverse-surface": "#30312e",
+                        "error": "#ba1a1a",
+                        "background": "#faf9f5",
+                        "tertiary-container": "#7d5700",
+                        "on-background": "#1b1c1a",
+                        "purple-mlm": "#4A3AB0",
+                        "surface-container-highest": "#e3e2df",
+                        "secondary-fixed-dim": "#c8c6c1",
+                        "on-primary-fixed-variant": "#004786",
+                        "platinum": "#E5E4E2",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#5e4100",
+                        "on-surface": "#1b1c1a",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "danger": "#8A1F1F",
+                        "secondary": "#5f5f5a",
+                        "on-secondary-container": "#5f5f5b",
+                        "surface-bright": "#faf9f5",
+                        "surface-container-low": "#f5f4f0",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c2c6d3",
+                        "on-secondary-fixed-variant": "#474743",
+                        "on-tertiary-container": "#ffd184",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-primary-fixed": "#001c3a",
+                        "border": "#E2E1DC",
+                        "surface": "#FFFFFF",
+                        "secondary-fixed": "#e4e2dd",
+                        "success": "#2E7D52",
+                        "tertiary-fixed-dim": "#f3be5e",
+                        "on-surface-variant": "#424751",
+                        "bronze": "#CD7F32",
+                        "on-tertiary-fixed": "#271900",
+                        "ink-primary": "#1A1A18",
+                        "primary-container": "#1a5fa8",
+                        "on-secondary-fixed": "#1b1c19",
+                        "tertiary-fixed": "#ffdeaa",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "on-error-container": "#93000a",
+                        "outline": "#727782",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#c4daff",
+                        "surface-container": "#efeeea",
+                        "warning": "#8A5200",
+                        "surface-container-high": "#e9e8e4",
+                        "silver": "#C0C0C0",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "surface-variant": "#e3e2df",
+                        "surface-dim": "#dbdad6",
+                        "secondary-container": "#dcdad5",
+                        "primary": "#004786"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-page": "24px",
+                        "stack-lg": "24px",
+                        "touch-target-min": "56px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "tile-height-min": "80px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Libre Franklin"],
+                        "display-lg": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "headline-lg": ["Libre Franklin"],
+                        "body-sm": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            background-color: #faf9f5;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .custom-toggle:checked + .toggle-bg {
+            background-color: #1a5fa8;
+        }
+        .custom-toggle:checked + .toggle-bg .toggle-dot {
+            transform: translateX(100%);
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface flex min-h-screen overflow-hidden">
+
+    <!-- SideNavBar -->
+    <aside class="fixed left-0 top-0 h-full w-64 flex flex-col p-stack-md bg-surface-container-low border-r border-outline-variant z-50">
+        <div class="mb-stack-lg flex items-center gap-3 px-2">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+                <span class="material-symbols-outlined" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+            </div>
+            <div>
+                <h2 class="font-headline-md text-headline-md text-primary font-bold">SalonPortal</h2>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">Main Branch • Premium</p>
+            </div>
+        </div>
+
+        <nav class="flex-1 space-y-1 overflow-y-auto hide-scrollbar">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md group">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md">
+                <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Book
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md">
+                <span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+                Wallet
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md">
+                <span class="material-symbols-outlined" data-icon="groups">groups</span>
+                Affiliate Hub
+            </a>
+            <div class="pt-4 mt-4 border-t border-outline-variant">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-label-md text-label-md">
+                    <span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+                    Settings
+                </a>
+            </div>
+        </nav>
+
+        <div class="mt-auto space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-container transition-all rounded-lg font-label-md text-label-md">
+                <span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-danger hover:bg-error-container/20 transition-all rounded-lg font-label-md text-label-md">
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Shell -->
+    <main class="ml-64 flex-1 flex flex-col h-screen overflow-y-auto hide-scrollbar relative">
+        
+        <!-- TopNavBar -->
+        <header class="sticky top-0 z-40 w-full h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-page">
+            <div class="flex items-center gap-4">
+                <h1 class="font-headline-md text-headline-md font-bold text-primary">Security & Settings</h1>
+            </div>
+            
+            <div class="flex items-center gap-stack-md">
+                <div class="relative group">
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                    </button>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+                </div>
+                <div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" 
+                         data-alt="A high-quality professional studio portrait of a modern woman with a warm, confident expression. She is set against a clean, soft-lit neutral background that matches a premium light-mode UI aesthetic. The lighting is soft and flattering, highlighting her features with a clean, corporate-ready professional look suitable for a luxury salon customer portal."
+                         alt="User Profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant">
+                    <div class="hidden lg:block text-right">
+                        <p class="font-label-md text-label-md text-on-surface">Elena Tan</p>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant">Platinum Member</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Canvas -->
+        <div class="p-margin-page space-y-stack-lg max-w-6xl mx-auto w-full">
+            
+            <!-- Bento Layout Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+                
+                <!-- Account Settings (Bento Item) -->
+                <section class="lg:col-span-7 bg-surface p-stack-lg rounded-xl border border-border shadow-sm">
+                    <div class="flex justify-between items-start mb-stack-lg">
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface mb-1">Account Profile</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Update your personal information and presence</p>
+                        </div>
+                        <button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg hover:opacity-90 transition-opacity">Save Changes</button>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-stack-lg items-center mb-stack-lg">
+                        <div class="relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300&auto=format&fit=crop" 
+                                 data-alt="A focused close-up of a professional woman with a clean, elegant look. The lighting is bright and modern, creating a clear and high-contrast profile image. The background is a soft, warm beige that complements the salon's sophisticated brand palette. The image conveys trust and personal care."
+                                 alt="User Profile Large" class="w-32 h-32 rounded-full object-cover border-4 border-surface-container">
+                            <div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="material-symbols-outlined text-white" data-icon="photo_camera">photo_camera</span>
+                            </div>
+                        </div>
+                        <div class="flex-1 space-y-4 w-full">
+                            <div>
+                                <label class="font-label-md text-label-md text-on-surface-variant block mb-1">Full Name</label>
+                                <input type="text" value="Elena Tan" class="w-full bg-surface border border-border rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md">
+                            </div>
+                            <div>
+                                <label class="font-label-md text-label-md text-on-surface-variant block mb-1">Preferred Name</label>
+                                <input type="text" placeholder="Elena" class="w-full bg-surface border border-border rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Security & Verification (Bento Item) -->
+                <section class="lg:col-span-5 bg-surface p-stack-lg rounded-xl border border-border shadow-sm flex flex-col">
+                    <div class="mb-stack-lg">
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-1">Security</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Manage your credentials and access</p>
+                    </div>
+
+                    <div class="space-y-4 flex-1">
+                        <!-- Phone -->
+                        <div class="p-4 rounded-lg bg-surface-container-low border border-border flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                    <span class="material-symbols-outlined" data-icon="phone_iphone">phone_iphone</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-sm text-label-sm text-on-surface-variant">Phone Number</p>
+                                    <p class="font-label-md text-label-md text-on-surface">+60 12-345 6789</p>
+                                </div>
+                            </div>
+                            <button class="text-primary font-label-md text-label-md px-3 py-1 hover:bg-primary/5 rounded transition-colors">Change</button>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="p-4 rounded-lg bg-surface-container-low border border-border">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center text-success">
+                                        <span class="material-symbols-outlined" data-icon="mail">mail</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant">Email Address</p>
+                                        <p class="font-label-md text-label-md text-on-surface">elena.tan@example.com</p>
+                                    </div>
+                                </div>
+                                <span class="bg-success/10 text-success text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-wider">Verified</span>
+                            </div>
+                            <div class="mt-2 text-right">
+                                <button class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors">Resend Verification</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Linked Socials -->
+                <section class="lg:col-span-4 bg-surface p-stack-lg rounded-xl border border-border shadow-sm">
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Linked Accounts</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 border border-border rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" class="w-6 h-6">
+                                <span class="font-body-md text-body-md text-on-surface">Google</span>
+                            </div>
+                            <button class="font-label-md text-label-md text-primary hover:underline">Disconnect</button>
+                        </div>
+                        <div class="flex items-center justify-between p-3 border border-border rounded-lg bg-surface-container-low opacity-60">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-6 h-6 text-[#1877F2]" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                <span class="font-body-md text-body-md text-on-surface">Facebook</span>
+                            </div>
+                            <button class="font-label-md text-label-md text-primary hover:underline">Connect</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Activity -->
+                <section class="lg:col-span-8 bg-surface p-stack-lg rounded-xl border border-border shadow-sm">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-headline-md text-headline-md text-on-surface">Recent Login Activity</h3>
+                        <button class="text-danger font-label-md text-label-md hover:bg-error-container/20 px-3 py-1 rounded transition-colors">Sign Out All Devices</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="border-b border-border">
+                                <tr class="font-label-sm text-label-sm text-on-surface-variant">
+                                    <th class="py-3 px-2">DEVICE</th>
+                                    <th class="py-3 px-2">LOCATION</th>
+                                    <th class="py-3 px-2">TIME</th>
+                                    <th class="py-3 px-2">STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-border">
+                                <tr class="font-body-sm text-body-sm">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined text-on-surface-variant" data-icon="laptop">laptop</span>
+                                            <span>MacBook Pro 14" • Chrome</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2">Kuala Lumpur, MY</td>
+                                    <td class="py-4 px-2">Active now</td>
+                                    <td class="py-4 px-2">
+                                        <span class="flex items-center gap-1.5 text-success">
+                                            <span class="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+                                            Current
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="font-body-sm text-body-sm text-on-surface-variant">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined" data-icon="phone_iphone">phone_iphone</span>
+                                            <span>iPhone 15 Pro • Safari</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2">Petaling Jaya, MY</td>
+                                    <td class="py-4 px-2">Oct 24, 2023 • 09:45 AM</td>
+                                    <td class="py-4 px-2">Logged out</td>
+                                </tr>
+                                <tr class="font-body-sm text-body-sm text-on-surface-variant">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined" data-icon="tablet_mac">tablet_mac</span>
+                                            <span>iPad Pro • Salon App</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2">Kuala Lumpur, MY</td>
+                                    <td class="py-4 px-2">Oct 22, 2023 • 02:15 PM</td>
+                                    <td class="py-4 px-2">Session expired</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Privacy & Marketing -->
+                <section class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+                    <!-- Marketing Toggles -->
+                    <div class="bg-surface p-stack-lg rounded-xl border border-border shadow-sm">
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary" data-icon="campaign">campaign</span>
+                            PDPA & Marketing Preferences
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-body-md text-body-md font-medium text-on-surface">WhatsApp Communications</p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">Receive appointment reminders and promotions via WhatsApp</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only custom-toggle">
+                                    <div class="w-11 h-6 bg-surface-container-highest rounded-full transition-colors toggle-bg flex items-center px-1">
+                                        <div class="w-4 h-4 bg-white rounded-full transition-transform toggle-dot"></div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-body-md text-body-md font-medium text-on-surface">Third-party Personalization</p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">Allow us to tailor offers based on your service history</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only custom-toggle">
+                                    <div class="w-11 h-6 bg-surface-container-highest rounded-full transition-colors toggle-bg flex items-center px-1">
+                                        <div class="w-4 h-4 bg-white rounded-full transition-transform toggle-dot"></div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Management -->
+                    <div class="bg-surface p-stack-lg rounded-xl border border-border shadow-sm">
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary" data-icon="database">database</span>
+                            Data & Privacy Tools
+                        </h3>
+                        <div class="space-y-4">
+                            <button class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-border rounded-lg hover:bg-surface-container-high transition-colors text-left group">
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">Export Personal Data</p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">Download a JSON copy of your salon history and profile</p>
+                                </div>
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="download">download</span>
+                            </button>
+                            <button class="w-full flex items-center justify-between p-4 bg-error-container/10 border border-error/20 rounded-lg hover:bg-error-container/20 transition-colors text-left group">
+                                <div>
+                                    <p class="font-label-md text-label-md text-danger">Request Data Deletion</p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">Permanently remove your account and all associated records</p>
+                                </div>
+                                <span class="material-symbols-outlined text-danger" data-icon="delete_forever">delete_forever</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-auto w-full py-stack-lg px-margin-page bg-surface-container-high border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <span class="font-label-md text-label-md font-bold text-on-surface">SalonPortal</span>
+                <nav class="flex gap-6">
+                    <a href="#" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="#" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">Refund Policy</a>
+                </nav>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 SalonPortal Malaysia. All rights reserved.</p>
+        </footer>
+
+        <!-- Floating Sync Banner (Conditional) -->
+        <div id="syncBanner" class="hidden fixed top-0 left-64 right-0 h-10 bg-primary text-white flex items-center justify-center gap-2 z-[60] animate-slide-down">
+            <span class="material-symbols-outlined text-[18px] animate-spin" data-icon="sync">sync</span>
+            <span class="font-label-md text-label-md">Syncing changes to server...</span>
+        </div>
+
+    </main>
+
+    <script>
+        // Micro-interaction for the Save Changes button
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText === 'Save Changes') {
+                btn.addEventListener('click', () => {
+                    const banner = document.getElementById('syncBanner');
+                    banner.classList.remove('hidden');
+                    btn.disabled = true;
+                    btn.innerText = 'Saving...';
+                    
+                    setTimeout(() => {
+                        banner.classList.add('hidden');
+                        btn.disabled = false;
+                        btn.innerText = 'Saved!';
+                        btn.classList.add('bg-success');
+                        
+                        setTimeout(() => {
+                            btn.innerText = 'Save Changes';
+                            btn.classList.remove('bg-success');
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+        });
+
+        // Add active state to nav items logic simulation
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => {
+                    l.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    l.classList.add('text-on-surface-variant');
+                });
+                link.classList.add('bg-primary-container', 'text-on-primary-container');
+                link.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body>
+</html></style></head><body></body></html>
