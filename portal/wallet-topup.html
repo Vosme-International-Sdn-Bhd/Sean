@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Top Up Wallet — Precision Salon OS</title>
 <link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/shop.css">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 .amount-chip{padding:12px 20px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;text-align:center;font-weight:600;font-family:var(--font-mono);background:#fff;transition:all .15s;}
@@ -10,21 +11,32 @@
 </head><body>
 <div style="background:#faf9f5;border-bottom:0.5px solid #E2E1DC;padding:8px 24px;"><a href="../index.html" style="font-size:11px;color:#1a5fa8;text-decoration:none;font-family:JetBrains Mono,monospace;letter-spacing:0.02em;">&#8592; Precision Salon OS — GUI Overview</a></div>
 
-<div class="app-layout">
-  <div class="sidebar">
-    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
-    <nav class="sidebar-nav">
-      <a class="nav-item" href="home.html"><span class="icon">🏠</span>Home</a>
-      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
-      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
-      <a class="nav-item active" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
-      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
-      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
-      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
-    </nav>
-    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+<div class="ec-announce-bar">Book services, shop products and manage your account</div>
+<header class="ec-header">
+  <div class="ec-header-inner">
+    <a class="ec-logo" href="home.html">Precision<span>Salon</span></a>
+    <div class="ec-search-bar"><input type="text" class="ec-search-input" placeholder="Search services, products..."><button class="ec-search-btn">Search</button></div>
+    <div class="ec-header-actions">
+      <a class="ec-action-btn" href="home.html">Home</a>
+      <a class="ec-action-btn" href="shop.html">Shop</a>
+      <a class="ec-action-btn" href="member-profile.html">Account</a>
+      <a class="ec-action-btn cart-action" href="cart.html">Cart<span class="cart-badge">0</span></a>
+    </div>
   </div>
-  <main class="main-content" style="max-width:640px;">
+</header>
+<div style="background:#fff;border-bottom:0.5px solid #E2E1DC;padding:0 24px;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:0;">
+    <a href="my-bookings.html" style="padding:12px 16px;font-size:13px;font-weight:600;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;">My Bookings</a>
+    <a href="wallet-dashboard.html" style="padding:12px 16px;font-size:13px;font-weight:600;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;">Wallet</a>
+    <a href="vouchers-packages.html" style="padding:12px 16px;font-size:13px;font-weight:600;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;">Vouchers</a>
+    <a href="membership-loyalty.html" style="padding:12px 16px;font-size:13px;font-weight:600;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;">Membership</a>
+    <a href="affiliate-dashboard.html" style="padding:12px 16px;font-size:13px;font-weight:600;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;">Affiliate</a>
+    <a href="visit-history.html" style="padding:12px 16px;font-size:13px;font-weight:600;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;">History</a>
+    <a href="member-profile.html" style="padding:12px 16px;font-size:13px;font-weight:600;color:#6b7280;text-decoration:none;border-bottom:2px solid transparent;">Profile</a>
+  </div>
+</div>
+<main>
+<div style="max-width:800px;margin:0 auto;padding:28px 24px 56px;">
     <div class="page-header">
       <div>
         <a href="wallet-dashboard.html" class="text-sm text-primary" style="text-decoration:none;">← Wallet</a>
@@ -84,5 +96,16 @@
 <script>
 function selectAmt(el,val){document.querySelectorAll('.amount-chip').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');document.getElementById('custom-amt').value='';}
 function selectPay(el){document.querySelectorAll('.payment-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');}
+</script>
+<script>
+(function(){
+  var p = window.location.pathname.split('/').pop();
+  document.querySelectorAll('[style*="border-bottom:2px solid transparent"]').forEach(function(a){
+    if(a.href && a.href.indexOf(p) !== -1){
+      a.style.color = '#1a5fa8';
+      a.style.borderBottomColor = '#1a5fa8';
+    }
+  });
+})();
 </script>
 </body></html>
