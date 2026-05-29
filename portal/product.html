@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moroccanoil Treatment Oil 100ml — Precision Salon</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/shop.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.product-main-layout { display:grid; grid-template-columns:1fr 480px; gap:32px; max-width:1200px; margin:0 auto; padding:0 24px 40px; }
+.gallery-col {}
+.gallery-main { width:100%; aspect-ratio:1; background:#f5f4ef; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:100px; margin-bottom:12px; border:0.5px solid var(--border); overflow:hidden; position:relative; }
+.gallery-main img { width:100%; height:100%; object-fit:cover; }
+.gallery-badge-row { position:absolute; top:12px; left:12px; display:flex; flex-direction:column; gap:6px; }
+.gallery-thumbs { display:flex; gap:8px; }
+.gallery-thumb { width:72px; height:72px; border-radius:8px; border:1.5px solid transparent; background:#f5f4ef; display:flex; align-items:center; justify-content:center; font-size:28px; cursor:pointer; transition:border-color .15s; flex-shrink:0; }
+.gallery-thumb.active, .gallery-thumb:hover { border-color:var(--primary); }
+.info-col { position:sticky; top:80px; align-self:start; }
+.product-brand-tag { font-size:11px; color:var(--primary); font-family:'JetBrains Mono',monospace; letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px; }
+.product-title-lg { font-size:22px; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:10px; }
+.product-meta-row { display:flex; align-items:center; gap:16px; margin-bottom:14px; flex-wrap:wrap; }
+.rating-stars-lg { color:#f59e0b; font-size:15px; letter-spacing:1px; }
+.review-count-link { font-size:13px; color:var(--primary); text-decoration:none; }
+.sold-chip { font-size:11px; color:#6b7280; font-family:'JetBrains Mono',monospace; }
+.price-block { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
+.price-now { font-size:28px; font-weight:800; color:var(--primary); }
+.price-was { font-size:15px; color:#9ca3af; text-decoration:line-through; }
+.price-save { font-size:12px; background:#fef3c7; color:#d97706; border-radius:20px; padding:2px 9px; font-weight:600; }
+.sku-row { font-size:11px; color:#9ca3af; font-family:'JetBrains Mono',monospace; margin-bottom:20px; }
+
+/* Variant sections */
+.variant-section { margin-bottom:20px; }
+.variant-label { font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.variant-selected-val { font-weight:400; color:#6b7280; text-transform:none; letter-spacing:0; }
+.variant-btns { display:flex; flex-wrap:wrap; gap:8px; }
+.variant-btn { padding:7px 16px; border:1.5px solid var(--border); border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; transition:all .15s; background:#fff; color:var(--text); }
+.variant-btn:hover { border-color:var(--primary); color:var(--primary); }
+.variant-btn.active { border-color:var(--primary); background:var(--primary); color:#fff; }
+.variant-btn.out { opacity:.45; cursor:not-allowed; position:relative; }
+.variant-btn.out::after { content:''; position:absolute; inset:50% 0 auto; height:1px; background:#9ca3af; transform:rotate(-10deg); }
+.color-swatch-row { display:flex; flex-wrap:wrap; gap:10px; }
+.color-swatch { width:34px; height:34px; border-radius:50%; border:2px solid transparent; cursor:pointer; position:relative; outline:2px solid transparent; outline-offset:2px; transition:outline-color .15s; }
+.color-swatch:hover, .color-swatch.active { outline-color:var(--primary); }
+.color-swatch.active::after { content:'✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5); }
+
+/* Qty */
+.qty-label { font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; }
+.qty-row { display:flex; align-items:center; gap:12px; }
+.qty-selector { display:flex; align-items:center; border:1.5px solid var(--border); border-radius:8px; overflow:hidden; }
+.qty-btn { width:38px; height:38px; border:none; background:#f9f8f3; cursor:pointer; font-size:18px; font-weight:500; display:flex; align-items:center; justify-content:center; transition:background .12s; }
+.qty-btn:hover { background:#e8e7e0; }
+.qty-num { width:44px; text-align:center; font-size:15px; font-weight:600; font-family:'JetBrains Mono',monospace; border:none; background:#fff; outline:none; }
+.stock-note { font-size:12px; color:#6b7280; }
+.stock-note.low { color:#d97706; font-weight:600; }
+
+/* CTA */
+.cta-row { display:flex; gap:10px; margin-bottom:16px; }
+.btn-cart-main { flex:1; background:var(--primary); color:#fff; border:none; border-radius:8px; padding:13px 0; font-size:15px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .15s; }
+.btn-cart-main:hover { background:#1554a0; }
+.btn-buynow-main { flex:1; background:#fff; color:var(--primary); border:1.5px solid var(--primary); border-radius:8px; padding:13px 0; font-size:15px; font-weight:700; cursor:pointer; transition:all .15s; }
+.btn-buynow-main:hover { background:var(--primary); color:#fff; }
+.btn-wishlist-lg { width:46px; height:46px; border:1.5px solid var(--border); border-radius:8px; background:#fff; cursor:pointer; font-size:20px; display:flex; align-items:center; justify-content:center; transition:all .15s; flex-shrink:0; }
+.btn-wishlist-lg:hover { border-color:#ef4444; }
+
+/* Trust badges */
+.trust-strip { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+.trust-badge { display:flex; align-items:center; gap:6px; font-size:11px; color:#6b7280; }
+.trust-badge .icon { font-size:15px; }
+
+/* Delivery */
+.delivery-box { background:#f9f8f3; border:0.5px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:20px; }
+.delivery-box .d-row { display:flex; align-items:flex-start; gap:10px; padding:6px 0; }
+.delivery-box .d-row:not(:last-child) { border-bottom:0.5px solid var(--border); }
+.delivery-box .d-icon { font-size:16px; width:20px; flex-shrink:0; margin-top:1px; }
+.delivery-box .d-text { font-size:12px; color:var(--text); }
+.delivery-box .d-text strong { font-weight:600; }
+
+/* Tabs */
+.product-tabs-nav { display:flex; border-bottom:0.5px solid var(--border); margin-bottom:24px; }
+.product-tab-btn { padding:12px 20px; font-size:13px; font-weight:600; color:#6b7280; border:none; background:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all .15s; }
+.product-tab-btn.active { color:var(--primary); border-bottom-color:var(--primary); }
+.product-tab-panel { display:none; }
+.product-tab-panel.active { display:block; }
+
+/* Description tab */
+.desc-body { font-size:14px; line-height:1.8; color:var(--text); }
+.desc-body h4 { font-size:14px; font-weight:700; margin:20px 0 8px; color:var(--text); }
+.desc-body ul { padding-left:20px; margin:0 0 14px; }
+.desc-body ul li { margin-bottom:6px; }
+
+/* Ingredients tab */
+.ingredients-list { font-size:12px; color:#6b7280; line-height:2; font-family:'JetBrains Mono',monospace; }
+
+/* Reviews tab */
+.review-summary-grid { display:grid; grid-template-columns:160px 1fr; gap:24px; align-items:center; margin-bottom:28px; padding-bottom:28px; border-bottom:0.5px solid var(--border); }
+.review-big-score { text-align:center; }
+.review-big-num { font-size:48px; font-weight:800; color:var(--text); line-height:1; }
+.review-big-stars { font-size:20px; color:#f59e0b; margin:6px 0; }
+.review-big-count { font-size:12px; color:#6b7280; }
+.review-bars { display:flex; flex-direction:column; gap:8px; }
+.review-bar-row { display:flex; align-items:center; gap:10px; }
+.review-bar-label { font-size:12px; color:#6b7280; width:36px; text-align:right; flex-shrink:0; }
+.review-bar-track { flex:1; height:8px; background:#f3f4f6; border-radius:4px; overflow:hidden; }
+.review-bar-fill { height:100%; background:#f59e0b; border-radius:4px; }
+.review-bar-pct { font-size:11px; color:#9ca3af; width:30px; font-family:'JetBrains Mono',monospace; }
+.review-card { padding:20px 0; border-bottom:0.5px solid var(--border); }
+.review-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:10px; }
+.reviewer-name { font-size:14px; font-weight:600; color:var(--text); }
+.reviewer-badge { font-size:10px; background:#e0eefc; color:var(--primary); border-radius:20px; padding:2px 7px; font-weight:600; margin-left:8px; }
+.review-date { font-size:11px; color:#9ca3af; font-family:'JetBrains Mono',monospace; }
+.review-stars { color:#f59e0b; font-size:14px; margin-bottom:8px; }
+.review-variant-tag { font-size:11px; color:#6b7280; background:#f3f4f6; border-radius:20px; padding:2px 8px; display:inline-block; margin-bottom:8px; }
+.review-text { font-size:13px; color:var(--text); line-height:1.7; }
+.review-imgs { display:flex; gap:8px; margin-top:10px; }
+.review-img { width:56px; height:56px; border-radius:6px; background:#f5f4ef; border:0.5px solid var(--border); font-size:22px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.review-helpful { font-size:12px; color:#9ca3af; margin-top:10px; }
+.review-helpful span { color:var(--primary); cursor:pointer; font-weight:600; }
+
+/* Related */
+.related-section { max-width:1200px; margin:0 auto; padding:0 24px 48px; }
+.related-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:16px; }
+
+/* Breadcrumb */
+.breadcrumb-bar { background:#faf9f5; border-bottom:0.5px solid var(--border); padding:10px 0; }
+.breadcrumb-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; align-items:center; gap:6px; font-size:12px; color:#9ca3af; }
+.breadcrumb-inner a { color:#6b7280; text-decoration:none; }
+.breadcrumb-inner a:hover { color:var(--primary); }
+.breadcrumb-inner .sep { color:#d1d5db; }
+
+@media(max-width:900px) {
+  .product-main-layout { grid-template-columns:1fr; }
+  .info-col { position:static; }
+  .related-grid { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+<!-- Back link -->
+<div style="background:#faf9f5;border-bottom:0.5px solid #E2E1DC;padding:8px 24px;"><a href="../index.html" style="font-size:11px;color:#1a5fa8;text-decoration:none;font-family:JetBrains Mono,monospace;letter-spacing:0.02em;">&#8592; Precision Salon OS — GUI Overview</a></div>
+
+<!-- EC Header -->
+<div class="ec-announce-bar">🚚 Free delivery above RM120 &nbsp;|&nbsp; 💳 0% instalment with Maybank &nbsp;|&nbsp; 🎁 Gift wrap available</div>
+<header class="ec-header">
+  <div class="ec-header-inner">
+    <a class="ec-logo" href="home.html">Precision<span>Salon</span></a>
+    <div class="ec-search-bar">
+      <input type="text" class="ec-search-input" placeholder="Search products, services, brands…" value="Moroccanoil Treatment">
+      <button class="ec-search-btn">🔍</button>
+    </div>
+    <div class="ec-header-actions">
+      <a class="ec-action-btn" href="home.html"><span>🏠</span>Home</a>
+      <a class="ec-action-btn" href="shop.html"><span>🛍️</span>Shop</a>
+      <a class="ec-action-btn" href="member-profile.html"><span>👤</span>Account</a>
+      <a class="ec-action-btn cart-action" href="cart.html"><span>🛒</span>Cart<span class="cart-badge" id="cart-count">2</span></a>
+    </div>
+  </div>
+</header>
+<nav class="ec-cat-nav">
+  <div class="ec-cat-nav-inner">
+    <a href="shop.html?cat=services" class="ec-cat-link">✂️ Services</a>
+    <a href="shop.html?cat=haircare" class="ec-cat-link active">💆 Hair Care</a>
+    <a href="shop.html?cat=skincare" class="ec-cat-link">✨ Skin Care</a>
+    <a href="shop.html?cat=nails" class="ec-cat-link">💅 Nails</a>
+    <a href="shop.html?cat=colour" class="ec-cat-link">🎨 Colour</a>
+    <a href="shop.html?cat=tools" class="ec-cat-link">🪮 Tools</a>
+    <a href="shop.html?cat=packages" class="ec-cat-link">📦 Packages</a>
+    <a href="shop.html?cat=vouchers" class="ec-cat-link">🎁 Vouchers</a>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+  <div class="breadcrumb-inner">
+    <a href="home.html">Home</a><span class="sep">›</span>
+    <a href="shop.html">Shop</a><span class="sep">›</span>
+    <a href="shop.html?cat=haircare">Hair Care</a><span class="sep">›</span>
+    <a href="shop.html?cat=haircare&sub=treatment">Treatment Oils</a><span class="sep">›</span>
+    <span>Moroccanoil Treatment Oil</span>
+  </div>
+</div>
+
+<!-- Product Main -->
+<div class="product-main-layout" style="margin-top:28px;">
+  <!-- Gallery -->
+  <div class="gallery-col">
+    <div class="gallery-main" id="main-img">
+      <div class="gallery-badge-row">
+        <span class="badge badge-sale">-23%</span>
+        <span class="badge badge-best">Bestseller</span>
+      </div>
+      💆
+    </div>
+    <div class="gallery-thumbs">
+      <div class="gallery-thumb active" onclick="setThumb(this,'💆')">💆</div>
+      <div class="gallery-thumb" onclick="setThumb(this,'🧴')">🧴</div>
+      <div class="gallery-thumb" onclick="setThumb(this,'✨')">✨</div>
+      <div class="gallery-thumb" onclick="setThumb(this,'📦')">📦</div>
+      <div class="gallery-thumb" onclick="setThumb(this,'🎁')">🎁</div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="info-col">
+    <div class="product-brand-tag">Moroccanoil · Professional Hair</div>
+    <div class="product-title-lg">Moroccanoil Treatment Oil — Argan Repair &amp; Shine Serum</div>
+
+    <div class="product-meta-row">
+      <span class="rating-stars-lg">★★★★★</span>
+      <a href="#reviews" class="review-count-link" onclick="switchTab('reviews')">4.9 (847 reviews)</a>
+      <span class="sold-chip">3,214 sold</span>
+    </div>
+
+    <div class="price-block">
+      <span class="price-now" id="price-display">RM 89.00</span>
+      <span class="price-was" id="price-was">RM 115.00</span>
+      <span class="price-save" id="price-save">Save RM 26</span>
+    </div>
+
+    <div class="sku-row">SKU: <span id="sku-val">MO-TREAT-100-CLR</span> · In stock</div>
+
+    <!-- Size/Volume -->
+    <div class="variant-section">
+      <div class="variant-label">Volume <span class="variant-selected-val" id="vol-selected">— 100ml</span></div>
+      <div class="variant-btns">
+        <button class="variant-btn" onclick="selectVariant(this,'vol','25ml','RM 38.00','RM 49.00','Save RM 11','MO-TREAT-25-CLR')">25ml</button>
+        <button class="variant-btn" onclick="selectVariant(this,'vol','50ml','RM 58.00','RM 75.00','Save RM 17','MO-TREAT-50-CLR')">50ml</button>
+        <button class="variant-btn active" onclick="selectVariant(this,'vol','100ml','RM 89.00','RM 115.00','Save RM 26','MO-TREAT-100-CLR')">100ml</button>
+        <button class="variant-btn" onclick="selectVariant(this,'vol','200ml','RM 155.00','RM 199.00','Save RM 44','MO-TREAT-200-CLR')">200ml</button>
+        <button class="variant-btn out" title="Out of stock" onclick="return false">500ml</button>
+      </div>
+    </div>
+
+    <!-- Scent/Formula -->
+    <div class="variant-section">
+      <div class="variant-label">Formula <span class="variant-selected-val" id="scent-selected">— Original (All Hair)</span></div>
+      <div class="variant-btns">
+        <button class="variant-btn active" onclick="selectScent(this,'Original (All Hair)')">Original</button>
+        <button class="variant-btn" onclick="selectScent(this,'Light (Fine Hair)')">Light</button>
+        <button class="variant-btn" onclick="selectScent(this,'Intense (Extra Dry)')">Intense</button>
+        <button class="variant-btn" onclick="selectScent(this,'Curl Defining')">Curls</button>
+      </div>
+    </div>
+
+    <!-- Shade/Colour swatches -->
+    <div class="variant-section">
+      <div class="variant-label">Shade <span class="variant-selected-val" id="shade-selected">— Amber Gold</span></div>
+      <div class="color-swatch-row">
+        <div class="color-swatch active" style="background:linear-gradient(135deg,#c8922a,#f5c842);" title="Amber Gold (Original)" onclick="selectShade(this,'Amber Gold')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#e8d5a3,#f5ebb0);" title="Champagne (Light)" onclick="selectShade(this,'Champagne')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#7c4a1a,#b07030);" title="Copper Rich (Intense)" onclick="selectShade(this,'Copper Rich')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#5a3e8a,#8b68cc);" title="Violet (Purple Toning)" onclick="selectShade(this,'Violet Toning')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#2d7d52,#4aad7a);" title="Scalp Relief" onclick="selectShade(this,'Scalp Relief')"></div>
+        <div class="color-swatch" style="background:linear-gradient(135deg,#e87070,#f5a0a0);" title="Rose Colour Protection" onclick="selectShade(this,'Rose Colour')"></div>
+      </div>
+    </div>
+
+    <!-- Quantity -->
+    <div class="variant-section">
+      <div class="qty-label">Quantity</div>
+      <div class="qty-row">
+        <div class="qty-selector">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <input type="number" class="qty-num" id="qty-input" value="1" min="1" max="10" readonly>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+        <span class="stock-note low">Only 8 left</span>
+      </div>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="trust-strip">
+      <span class="trust-badge"><span class="icon">✅</span>Authentic Product</span>
+      <span class="trust-badge"><span class="icon">↩️</span>7-Day Return</span>
+      <span class="trust-badge"><span class="icon">🔒</span>Secure Payment</span>
+      <span class="trust-badge"><span class="icon">🏪</span>Salon-Grade</span>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="cta-row">
+      <button class="btn-cart-main" onclick="addToCart()">🛒 Add to Cart</button>
+      <button class="btn-buynow-main" onclick="window.location='checkout.html'">⚡ Buy Now</button>
+      <button class="btn-wishlist-lg" id="wish-btn" onclick="toggleWish()" title="Add to Wishlist">🤍</button>
+    </div>
+
+    <!-- Delivery box -->
+    <div class="delivery-box">
+      <div class="d-row">
+        <span class="d-icon">🚚</span>
+        <span class="d-text"><strong>Standard Delivery</strong> — RM 8 · Arrives 2–4 Jun (est.)<br>Free delivery on orders above RM 120</span>
+      </div>
+      <div class="d-row">
+        <span class="d-icon">🏪</span>
+        <span class="d-text"><strong>In-Store Pickup</strong> — Free · Ready tomorrow at your chosen outlet</span>
+      </div>
+      <div class="d-row">
+        <span class="d-icon">🔁</span>
+        <span class="d-text"><strong>Returns</strong> — 7 days, unopened original packaging</span>
+      </div>
+    </div>
+
+    <!-- Points -->
+    <div style="background:#f0f7ff;border:0.5px solid #c3d9f5;border-radius:8px;padding:12px 14px;font-size:12px;color:#1a5fa8;">
+      🌟 Earn <strong>89 loyalty points</strong> (RM 0.89 value) for this purchase · <a href="member-profile.html" style="color:var(--primary);font-weight:600;">View Tiers</a>
+    </div>
+  </div>
+</div>
+
+<!-- Tabs Section -->
+<div style="max-width:1200px;margin:0 auto;padding:0 24px 48px;">
+  <div class="product-tabs-nav">
+    <button class="product-tab-btn active" onclick="switchTab('desc')">Description</button>
+    <button class="product-tab-btn" onclick="switchTab('howto')">How To Use</button>
+    <button class="product-tab-btn" onclick="switchTab('ingredients')">Ingredients</button>
+    <button class="product-tab-btn" onclick="switchTab('reviews')">Reviews (847)</button>
+  </div>
+
+  <!-- Description -->
+  <div class="product-tab-panel active" id="tab-desc">
+    <div class="desc-body">
+      <p>The award-winning Moroccanoil Treatment is a universal multi-use product that can be used as a conditioning, styling and finishing tool. Infused with argan oil, this lightweight, non-greasy formula detangles hair, boosts shine and conditions from root to tip.</p>
+      <h4>Key Benefits</h4>
+      <ul>
+        <li>Conditions, detangles and strengthens hair</li>
+        <li>Boosts shine and smooths frizz</li>
+        <li>Speeds up drying time by up to 40%</li>
+        <li>Builds hair's natural resilience over time</li>
+        <li>Suitable for all hair types</li>
+      </ul>
+      <h4>About the Brand</h4>
+      <p>Moroccanoil is a professional salon brand distributed in over 60 countries, known for introducing argan oil to the beauty industry. Used and trusted by professional stylists at Precision Salon outlets nationwide.</p>
+      <h4>Certifications</h4>
+      <ul>
+        <li>Suitable for Colour-Treated Hair</li>
+        <li>Silicone-Free Formula (Light version)</li>
+        <li>Dermatologically Tested</li>
+        <li>No Animal Testing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- How to Use -->
+  <div class="product-tab-panel" id="tab-howto">
+    <div class="desc-body">
+      <h4>Application — Styling</h4>
+      <ul>
+        <li>Apply 1–2 pumps to damp hair before blowdrying or styling</li>
+        <li>Work evenly through mid-lengths to ends</li>
+        <li>Style as desired — blowdry, curl, or straighten</li>
+      </ul>
+      <h4>Application — Finishing</h4>
+      <ul>
+        <li>Apply a small amount to dry, styled hair to eliminate frizz and add shine</li>
+        <li>Start with a small amount — a little goes a long way</li>
+      </ul>
+      <h4>Application — Scalp Nourishment</h4>
+      <ul>
+        <li>For deep conditioning, apply to dry hair from mid-length to ends</li>
+        <li>Leave for 10–15 minutes, then shampoo as normal</li>
+      </ul>
+      <h4>Pro Tip</h4>
+      <p>Layer with Moroccanoil Hydrating Shampoo and Hydrating Mask for amplified results. Available in our outlet and online store.</p>
+    </div>
+  </div>
+
+  <!-- Ingredients -->
+  <div class="product-tab-panel" id="tab-ingredients">
+    <div class="desc-body">
+      <h4>Full Ingredient List (INCI)</h4>
+      <div class="ingredients-list">
+        Cyclopentasiloxane, Dimethicone, Argania Spinosa Kernel Oil, Butylphenyl Methylpropional, Hexyl Cinnamal, Linalool, Limonene, Citronellol, Geraniol, Fragrance (Parfum), Tocopheryl Acetate, Panthenol, Laminaria Saccharina Extract, Hydrolyzed Vegetable Protein, Sodium PCA, Glycerin, Aqua/Water/Eau, Phenoxyethanol, Caprylyl Glycol, Potassium Sorbate, CI 26100, CI 47000.
+      </div>
+      <h4 style="margin-top:20px;">Key Actives</h4>
+      <ul>
+        <li><strong>Argania Spinosa Kernel Oil</strong> — Argan oil. Rich in Vitamin E and fatty acids; nourishes and adds shine</li>
+        <li><strong>Tocopheryl Acetate</strong> — Vitamin E; antioxidant protection against UV and heat</li>
+        <li><strong>Panthenol (Pro-Vitamin B5)</strong> — Deep conditioning; improves elasticity and moisture retention</li>
+        <li><strong>Hydrolyzed Vegetable Protein</strong> — Strengthens hair shaft; reduces breakage</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Reviews -->
+  <div class="product-tab-panel" id="tab-reviews">
+    <div id="reviews">
+      <div class="review-summary-grid">
+        <div class="review-big-score">
+          <div class="review-big-num">4.9</div>
+          <div class="review-big-stars">★★★★★</div>
+          <div class="review-big-count">847 reviews</div>
+        </div>
+        <div class="review-bars">
+          <div class="review-bar-row"><span class="review-bar-label">5★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:88%;"></div></div><span class="review-bar-pct">88%</span></div>
+          <div class="review-bar-row"><span class="review-bar-label">4★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:9%;"></div></div><span class="review-bar-pct">9%</span></div>
+          <div class="review-bar-row"><span class="review-bar-label">3★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:2%;"></div></div><span class="review-bar-pct">2%</span></div>
+          <div class="review-bar-row"><span class="review-bar-label">2★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:1%;"></div></div><span class="review-bar-pct">1%</span></div>
+          <div class="review-bar-row"><span class="review-bar-label">1★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:0%;"></div></div><span class="review-bar-pct">0%</span></div>
+        </div>
+      </div>
+
+      <!-- Individual reviews -->
+      <div class="review-card">
+        <div class="review-header">
+          <div><span class="reviewer-name">Aisha Binti Rahman</span><span class="reviewer-badge">Verified Purchase</span></div>
+          <span class="review-date">2026-05-12</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-variant-tag">100ml · Original · Amber Gold</div>
+        <div class="review-text">This is genuinely a game-changer for my hair. I have thick, frizzy Malaysian hair and the humidity here is a nightmare. One pump of this before blowdrying and my hair is smooth for the entire day. Will definitely repurchase!</div>
+        <div class="review-imgs">
+          <div class="review-img">📸</div>
+          <div class="review-img">📸</div>
+        </div>
+        <div class="review-helpful">Helpful? <span>👍 42</span></div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div><span class="reviewer-name">Priya Nair</span><span class="reviewer-badge">Gold Member</span></div>
+          <span class="review-date">2026-05-08</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-variant-tag">200ml · Intense · Copper Rich</div>
+        <div class="review-text">Bought the 200ml for better value. My stylist at Precision Salon recommended this and I trust her recommendations completely. After 2 weeks of use, my hair feels so much healthier. The Intense formula is perfect for my coloured, over-processed hair.</div>
+        <div class="review-helpful">Helpful? <span>👍 28</span></div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div><span class="reviewer-name">Tan Li Mei</span><span class="reviewer-badge">Verified Purchase</span></div>
+          <span class="review-date">2026-04-30</span>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-variant-tag">50ml · Light · Champagne</div>
+        <div class="review-text">Good product but 50ml goes quite fast if you use it daily. Consider getting 100ml or above for better cost per use. The Light formula is great for my fine hair — doesn't weigh it down at all.</div>
+        <div class="review-helpful">Helpful? <span>👍 15</span></div>
+      </div>
+
+      <div style="margin-top:20px;">
+        <button class="btn btn-secondary btn-sm">Load more reviews (844)</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Related Products -->
+<div class="related-section">
+  <div class="section-header" style="margin-bottom:20px;">
+    <div class="section-title">Frequently Bought Together</div>
+    <a href="shop.html?cat=haircare" class="section-link">See all Hair Care →</a>
+  </div>
+  <div class="related-grid">
+    <div class="product-card">
+      <div class="product-img">🧴<button class="wishlist-btn">🤍</button></div>
+      <div class="product-info">
+        <div class="product-brand">Moroccanoil</div>
+        <div class="product-name">Hydrating Shampoo 250ml</div>
+        <div class="product-price"><span class="price-current">RM 68.00</span><span class="price-original">RM 85.00</span></div>
+        <button class="btn-add-cart" onclick="showToast('Added to cart!')">+ Cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🫙<button class="wishlist-btn">🤍</button></div>
+      <div class="product-info">
+        <div class="product-brand">Moroccanoil</div>
+        <div class="product-name">Hydrating Mask 250ml</div>
+        <div class="product-price"><span class="price-current">RM 105.00</span><span class="price-original">RM 128.00</span></div>
+        <button class="btn-add-cart" onclick="showToast('Added to cart!')">+ Cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">💆<span class="badge badge-new" style="position:absolute;top:8px;left:8px;">New</span><button class="wishlist-btn">🤍</button></div>
+      <div class="product-info">
+        <div class="product-brand">Kerastase</div>
+        <div class="product-name">Elixir Ultime Hair Oil 100ml</div>
+        <div class="product-price"><span class="price-current">RM 148.00</span></div>
+        <button class="btn-add-cart" onclick="showToast('Added to cart!')">+ Cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🔥<span class="badge badge-sale" style="position:absolute;top:8px;left:8px;">-15%</span><button class="wishlist-btn">🤍</button></div>
+      <div class="product-info">
+        <div class="product-brand">Wella</div>
+        <div class="product-name">Oil Reflections Luminous Serum 30ml</div>
+        <div class="product-price"><span class="price-current">RM 72.00</span><span class="price-original">RM 85.00</span></div>
+        <button class="btn-add-cart" onclick="showToast('Added to cart!')">+ Cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">✂️<button class="wishlist-btn">🤍</button><span class="badge badge-pkg" style="position:absolute;top:8px;left:8px;">Bundle</span></div>
+      <div class="product-info">
+        <div class="product-brand">Precision Salon</div>
+        <div class="product-name">Hair Treatment Package (Service + Products)</div>
+        <div class="product-price"><span class="price-current">RM 199.00</span><span class="price-original">RM 268.00</span></div>
+        <a href="service-detail.html" class="btn-add-cart">View</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Toast -->
+<div class="cart-toast" id="cart-toast">🛒 Added to cart! <a href="cart.html" style="color:#fbbf24;font-weight:700;margin-left:8px;">View Cart →</a></div>
+
+<script>
+let qty = 1;
+let isWished = false;
+let cartCount = 2;
+
+function setThumb(el, emoji) {
+  document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const main = document.getElementById('main-img');
+  main.childNodes[1].textContent = emoji; // update emoji (skip badge div)
+  // find text node
+  for(let node of main.childNodes) {
+    if(node.nodeType === 3) { node.textContent = emoji; break; }
+    if(node.tagName === 'DIV' && !node.id) continue;
+  }
+  main.innerHTML = main.innerHTML.replace(/>(💆|🧴|✨|📦|🎁)</, '>'+emoji+'<').replace(/>([^<]{1,3})<\/div>$/, '>'+emoji+'</div>');
+}
+
+function selectVariant(btn, group, label, price, was, save, sku) {
+  document.querySelectorAll('.variant-btn').forEach(b => {
+    if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+group+"'")) b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  document.getElementById('vol-selected').textContent = '— ' + label;
+  document.getElementById('price-display').textContent = price;
+  document.getElementById('price-was').textContent = was;
+  document.getElementById('price-save').textContent = save;
+  document.getElementById('sku-val').textContent = sku;
+}
+
+function selectScent(btn, label) {
+  document.querySelectorAll('[onclick^="selectScent"]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('scent-selected').textContent = '— ' + label;
+}
+
+function selectShade(el, label) {
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('shade-selected').textContent = '— ' + label;
+}
+
+function changeQty(delta) {
+  const inp = document.getElementById('qty-input');
+  qty = Math.max(1, Math.min(10, qty + delta));
+  inp.value = qty;
+}
+
+function addToCart() {
+  cartCount++;
+  document.getElementById('cart-count').textContent = cartCount;
+  showToast('Added to cart!');
+}
+
+function toggleWish() {
+  isWished = !isWished;
+  document.getElementById('wish-btn').textContent = isWished ? '❤️' : '🤍';
+}
+
+function showToast(msg) {
+  const t = document.getElementById('cart-toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function switchTab(id) {
+  document.querySelectorAll('.product-tab-btn').forEach((b,i) => {
+    const ids = ['desc','howto','ingredients','reviews'];
+    b.classList.toggle('active', ids[i] === id);
+  });
+  document.querySelectorAll('.product-tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-'+id);
+  });
+  if(id === 'reviews') document.getElementById('reviews').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

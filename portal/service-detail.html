@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precision Haircut + Blowdry — Precision Salon</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/shop.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.date-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
+.date-btn { aspect-ratio:1; border:1.5px solid #E2E1DC; border-radius:var(--radius); font-size:12px; cursor:pointer; background:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; line-height:1.2; transition:all 0.15s; }
+.date-btn .d-num { font-size:14px; font-weight:600; font-family:var(--font-mono); }
+.date-btn .d-day { font-size:9px; color:var(--outline); }
+.date-btn:hover { border-color:var(--primary); }
+.date-btn.selected { background:var(--primary); color:#fff; border-color:var(--primary); }
+.date-btn.selected .d-day { color:rgba(255,255,255,0.7); }
+.date-btn.unavailable { background:#f5f5f5; color:#ccc; cursor:not-allowed; }
+.time-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.time-btn { padding:8px; border:1.5px solid #E2E1DC; border-radius:var(--radius-sm); font-size:12px; font-family:var(--font-mono); cursor:pointer; background:#fff; text-align:center; transition:all 0.15s; }
+.time-btn:hover { border-color:var(--primary); color:var(--primary); }
+.time-btn.selected { background:var(--primary); color:#fff; border-color:var(--primary); }
+.time-btn.unavailable { background:#f5f5f5; color:#ccc; cursor:not-allowed; text-decoration:line-through; }
+.outlet-select { display:flex; flex-direction:column; gap:8px; }
+.outlet-opt { display:flex; align-items:center; gap:12px; padding:10px 14px; border:1.5px solid #E2E1DC; border-radius:var(--radius); cursor:pointer; transition:all 0.15s; }
+.outlet-opt:hover,.outlet-opt.selected { border-color:var(--primary); background:rgba(26,95,168,0.03); }
+.outlet-opt input { accent-color:var(--primary); }
+.outlet-opt-name { font-size:13px; font-weight:500; flex:1; }
+.outlet-opt-avail { font-size:11px; color:var(--success); font-family:var(--font-mono); }
+</style>
+</head>
+<body class="ec-page">
+
+<!-- Header -->
+<header class="ec-header">
+  <div class="ec-announce">🎉 Members earn <strong>2× points</strong> this weekend · Free delivery above RM150</div>
+  <div class="ec-header-main">
+    <a href="home.html" class="ec-logo"><span class="ec-logo-name">Precision Salon</span><span class="ec-logo-sub">Beauty & Wellness</span></a>
+    <div class="ec-search"><input type="text" placeholder="Search services, products..."><button class="ec-search-btn">🔍</button></div>
+    <div class="ec-header-actions">
+      <a href="wishlist.html" class="ec-action-btn"><span class="ec-action-icon">🤍</span><span>Wishlist</span></a>
+      <a href="cart.html" class="ec-action-btn" style="position:relative;"><span class="ec-action-icon">🛒</span><span>Cart</span><span class="ec-cart-badge">3</span></a>
+      <a href="member-profile.html" class="ec-account-pill"><div class="ec-account-avatar">SL</div><div style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:12px;font-weight:600;line-height:1;">Sarah Lim</span><span class="tier-badge tier-bronze" style="font-size:9px;padding:1px 5px;">Bronze</span></div></a>
+    </div>
+  </div>
+  <nav class="ec-nav">
+    <a href="home.html">🏠 Home</a>
+    <a href="shop.html?cat=services" class="active">✂️ Services</a>
+    <a href="shop.html?cat=products">🛍️ Products</a>
+    <a href="shop.html?cat=packages">📦 Packages</a>
+    <a href="shop.html?cat=vouchers">🎁 Gift Vouchers</a>
+    <a href="my-bookings.html">📋 My Bookings</a>
+    <a href="wallet-dashboard.html">💳 Wallet · RM150</a>
+  </nav>
+</header>
+
+<!-- Breadcrumb -->
+<div class="ec-breadcrumb">
+  <a href="home.html">Home</a><span class="ec-breadcrumb-sep">›</span>
+  <a href="shop.html?cat=services">Services</a><span class="ec-breadcrumb-sep">›</span>
+  <a href="shop.html?cat=haircut">Hair Cut &amp; Style</a><span class="ec-breadcrumb-sep">›</span>
+  <span class="ec-breadcrumb-current">Precision Haircut + Blowdry</span>
+</div>
+
+<!-- Product Detail Layout -->
+<div class="product-detail-layout">
+
+  <!-- Gallery -->
+  <div class="product-gallery">
+    <div class="product-main-img" id="mainImg">✂️</div>
+    <div class="product-thumbs">
+      <div class="product-thumb active" onclick="setImg(this,'✂️')">✂️</div>
+      <div class="product-thumb" onclick="setImg(this,'💇‍♀️')">💇‍♀️</div>
+      <div class="product-thumb" onclick="setImg(this,'🪞')">🪞</div>
+      <div class="product-thumb" onclick="setImg(this,'⭐')">⭐</div>
+    </div>
+    <div style="margin-top:16px;padding:14px;background:#f9f9f9;border-radius:var(--radius);border:0.5px solid #E2E1DC;">
+      <div style="font-size:12px;font-weight:600;margin-bottom:8px;">Service Info</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:var(--outline);">⏱ Duration</span><span class="mono">45–90 min</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:var(--outline);">📍 Outlets</span><span>KLCC, Bangsar, Mont Kiara</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:var(--outline);">📅 Booking</span><span class="mono">Up to 30 days ahead</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:var(--outline);">❌ Cancellation</span><span>Free up to 24h before</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Info & Booking -->
+  <div class="product-detail-info">
+    <div>
+      <div class="product-detail-brand">Hair Cut &amp; Style · Precision Salon</div>
+      <h1 class="product-detail-name">Precision Haircut + Blowdry</h1>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+        <div class="product-rating" style="gap:6px;">
+          <span class="stars" style="font-size:16px;">★★★★★</span>
+          <span style="font-size:14px;font-weight:600;">4.9</span>
+          <span class="rating-count" style="font-size:12px;">(312 reviews)</span>
+        </div>
+        <span class="green-chip">✓ 1,842 bookings done</span>
+      </div>
+    </div>
+
+    <!-- Price (dynamic based on hair length) -->
+    <div style="padding:14px;background:#f0f5ff;border-radius:var(--radius);border:0.5px solid #b3c9e8;">
+      <div class="product-detail-price-row">
+        <span class="product-detail-price" id="currentPrice">RM 68</span>
+        <span class="product-detail-orig" id="origPrice"></span>
+        <span class="product-detail-saving" id="saving" style="display:none;"></span>
+      </div>
+      <div style="font-size:11px;color:var(--outline);margin-top:4px;font-family:var(--font-mono);">Price varies by hair length selection below</div>
+    </div>
+
+    <!-- Hair Length Option -->
+    <div class="variant-section">
+      <div class="variant-title">Hair Length <span class="variant-selected" id="lengthLabel">— Short selected</span></div>
+      <div class="variant-options" id="lengthOptions">
+        <button class="variant-btn active" onclick="selectLength(this,'Short','RM 68','')">Short<br><small style="font-size:10px;color:inherit;font-family:var(--font-mono);">RM 68</small></button>
+        <button class="variant-btn" onclick="selectLength(this,'Shoulder','RM 88','')">Shoulder<br><small style="font-size:10px;color:inherit;font-family:var(--font-mono);">RM 88</small></button>
+        <button class="variant-btn" onclick="selectLength(this,'Long','RM 108','')">Long<br><small style="font-size:10px;color:inherit;font-family:var(--font-mono);">RM 108</small></button>
+        <button class="variant-btn" onclick="selectLength(this,'Extra Long','RM 128','')">Extra Long<br><small style="font-size:10px;color:inherit;font-family:var(--font-mono);">RM 128</small></button>
+      </div>
+    </div>
+
+    <!-- Add-ons -->
+    <div class="variant-section">
+      <div class="variant-title">Add-On Services <span class="variant-selected">(optional)</span></div>
+      <div class="addons-list">
+        <label class="addon-item" onclick="this.classList.toggle('selected')">
+          <input type="checkbox" style="accent-color:var(--primary);">
+          <span class="addon-name">Deep Conditioning Mask</span>
+          <span style="font-size:11px;color:var(--outline);font-family:var(--font-mono);">+15 min</span>
+          <span class="addon-price">+RM 30</span>
+        </label>
+        <label class="addon-item" onclick="this.classList.toggle('selected')">
+          <input type="checkbox" style="accent-color:var(--primary);">
+          <span class="addon-name">Scalp Massage (10 min)</span>
+          <span style="font-size:11px;color:var(--outline);font-family:var(--font-mono);">+10 min</span>
+          <span class="addon-price">+RM 20</span>
+        </label>
+        <label class="addon-item" onclick="this.classList.toggle('selected')">
+          <input type="checkbox" style="accent-color:var(--primary);">
+          <span class="addon-name">Olaplex Bond Building Treatment</span>
+          <span style="font-size:11px;color:var(--outline);font-family:var(--font-mono);">+20 min</span>
+          <span class="addon-price">+RM 55</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Stylist Selection -->
+    <div class="variant-section">
+      <div class="variant-title">Choose Stylist</div>
+      <div class="stylist-grid">
+        <div class="stylist-card selected" onclick="selectStyled(this)">
+          <div class="stylist-avatar" style="background:#6b7280;font-size:11px;">ANY</div>
+          <div class="stylist-name">Any Available</div>
+          <div class="stylist-avail">Best availability</div>
+        </div>
+        <div class="stylist-card" onclick="selectStyled(this)">
+          <div class="stylist-avatar" style="background:#b8892e;">AR</div>
+          <div class="stylist-name">Aishah</div>
+          <div class="stylist-rating">★ 4.9</div>
+          <div class="stylist-avail">Available</div>
+        </div>
+        <div class="stylist-card" onclick="selectStyled(this)">
+          <div class="stylist-avatar" style="background:#4A3AB0;">NA</div>
+          <div class="stylist-name">Nurul</div>
+          <div class="stylist-rating">★ 4.8</div>
+          <div class="stylist-avail">Available</div>
+        </div>
+        <div class="stylist-card" onclick="selectStyled(this)">
+          <div class="stylist-avatar" style="background:#2E7D52;">PN</div>
+          <div class="stylist-name">Priya</div>
+          <div class="stylist-rating">★ 4.7</div>
+          <div class="stylist-avail" style="color:var(--warning);">1 slot left</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outlet Selection -->
+    <div class="variant-section">
+      <div class="variant-title">Select Outlet</div>
+      <div class="outlet-select">
+        <label class="outlet-opt selected" onclick="document.querySelectorAll('.outlet-opt').forEach(o=>o.classList.remove('selected'));this.classList.add('selected')">
+          <input type="radio" name="outlet" checked style="accent-color:var(--primary);">
+          <div style="flex:1;">
+            <div class="outlet-opt-name">KLCC Branch</div>
+            <div style="font-size:11px;color:var(--outline);">Level 2, Suria KLCC, Jalan Ampang</div>
+          </div>
+          <span class="outlet-opt-avail">✓ Available today</span>
+        </label>
+        <label class="outlet-opt" onclick="document.querySelectorAll('.outlet-opt').forEach(o=>o.classList.remove('selected'));this.classList.add('selected')">
+          <input type="radio" name="outlet" style="accent-color:var(--primary);">
+          <div style="flex:1;">
+            <div class="outlet-opt-name">Bangsar Branch</div>
+            <div style="font-size:11px;color:var(--outline);">No.12, Jalan Telawi 3, Bangsar</div>
+          </div>
+          <span class="outlet-opt-avail">✓ Available today</span>
+        </label>
+        <label class="outlet-opt" onclick="document.querySelectorAll('.outlet-opt').forEach(o=>o.classList.remove('selected'));this.classList.add('selected')">
+          <input type="radio" name="outlet" style="accent-color:var(--primary);">
+          <div style="flex:1;">
+            <div class="outlet-opt-name">Mont Kiara Branch</div>
+            <div style="font-size:11px;color:var(--outline);">Solaris Mont Kiara, KL</div>
+          </div>
+          <span class="outlet-opt-avail" style="color:var(--warning);">Next available: Tomorrow</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Date Picker -->
+    <div class="variant-section">
+      <div class="variant-title">Select Date</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <span style="font-size:14px;font-weight:600;">June 2026</span>
+        <div style="display:flex;gap:6px;">
+          <button style="padding:4px 10px;border:1px solid #E2E1DC;border-radius:4px;background:#fff;cursor:pointer;">‹</button>
+          <button style="padding:4px 10px;border:1px solid #E2E1DC;border-radius:4px;background:#fff;cursor:pointer;">›</button>
+        </div>
+      </div>
+      <div class="date-grid" style="margin-bottom:6px;">
+        <div style="text-align:center;font-size:10px;font-family:var(--font-mono);color:var(--outline);padding:4px 0;">SUN</div>
+        <div style="text-align:center;font-size:10px;font-family:var(--font-mono);color:var(--outline);padding:4px 0;">MON</div>
+        <div style="text-align:center;font-size:10px;font-family:var(--font-mono);color:var(--outline);padding:4px 0;">TUE</div>
+        <div style="text-align:center;font-size:10px;font-family:var(--font-mono);color:var(--outline);padding:4px 0;">WED</div>
+        <div style="text-align:center;font-size:10px;font-family:var(--font-mono);color:var(--outline);padding:4px 0;">THU</div>
+        <div style="text-align:center;font-size:10px;font-family:var(--font-mono);color:var(--outline);padding:4px 0;">FRI</div>
+        <div style="text-align:center;font-size:10px;font-family:var(--font-mono);color:var(--outline);padding:4px 0;">SAT</div>
+      </div>
+      <div class="date-grid" id="dateGrid">
+        <div></div>
+        <div class="date-btn" onclick="selectDate(this,'2')"><span class="d-num">2</span><span class="d-day">MON</span></div>
+        <div class="date-btn" onclick="selectDate(this,'3')"><span class="d-num">3</span><span class="d-day">TUE</span></div>
+        <div class="date-btn selected" onclick="selectDate(this,'4')"><span class="d-num">4</span><span class="d-day">WED</span></div>
+        <div class="date-btn" onclick="selectDate(this,'5')"><span class="d-num">5</span><span class="d-day">THU</span></div>
+        <div class="date-btn" onclick="selectDate(this,'6')"><span class="d-num">6</span><span class="d-day">FRI</span></div>
+        <div class="date-btn" onclick="selectDate(this,'7')"><span class="d-num">7</span><span class="d-day">SAT</span></div>
+        <div class="date-btn" onclick="selectDate(this,'8')"><span class="d-num">8</span><span class="d-day">SUN</span></div>
+        <div class="date-btn" onclick="selectDate(this,'9')"><span class="d-num">9</span><span class="d-day">MON</span></div>
+        <div class="date-btn unavailable"><span class="d-num">10</span><span class="d-day">TUE</span></div>
+        <div class="date-btn" onclick="selectDate(this,'11')"><span class="d-num">11</span><span class="d-day">WED</span></div>
+        <div class="date-btn" onclick="selectDate(this,'12')"><span class="d-num">12</span><span class="d-day">THU</span></div>
+        <div class="date-btn" onclick="selectDate(this,'13')"><span class="d-num">13</span><span class="d-day">FRI</span></div>
+        <div class="date-btn" onclick="selectDate(this,'14')"><span class="d-num">14</span><span class="d-day">SAT</span></div>
+      </div>
+    </div>
+
+    <!-- Time Picker -->
+    <div class="variant-section">
+      <div class="variant-title">Select Time Slot <span class="variant-selected" id="timeLabel">— 10:00 AM selected</span></div>
+      <div style="font-size:11px;color:var(--outline);margin-bottom:8px;font-family:var(--font-mono);">Showing slots for Wed, 4 Jun · KLCC Branch</div>
+      <div class="time-grid">
+        <button class="time-btn" onclick="selectTime(this,'9:00 AM')">9:00 AM</button>
+        <button class="time-btn" onclick="selectTime(this,'9:30 AM')">9:30 AM</button>
+        <button class="time-btn selected" onclick="selectTime(this,'10:00 AM')">10:00 AM</button>
+        <button class="time-btn" onclick="selectTime(this,'10:30 AM')">10:30 AM</button>
+        <button class="time-btn unavailable">11:00 AM</button>
+        <button class="time-btn unavailable">11:30 AM</button>
+        <button class="time-btn" onclick="selectTime(this,'12:00 PM')">12:00 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'12:30 PM')">12:30 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'2:00 PM')">2:00 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'2:30 PM')">2:30 PM</button>
+        <button class="time-btn unavailable">3:00 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'3:30 PM')">3:30 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'4:00 PM')">4:00 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'4:30 PM')">4:30 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'5:00 PM')">5:00 PM</button>
+        <button class="time-btn" onclick="selectTime(this,'5:30 PM')">5:30 PM</button>
+      </div>
+    </div>
+
+    <!-- Booking Summary & CTA -->
+    <div style="background:#f0f5ff;border:1px solid #b3c9e8;border-radius:var(--radius-md);padding:16px;">
+      <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Booking Summary</div>
+      <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;margin-bottom:14px;">
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--outline);">Service</span><span>Precision Haircut + Blowdry</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--outline);">Hair Length</span><span id="summaryLength">Short</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--outline);">Date & Time</span><span class="mono">Wed, 4 Jun · 10:00 AM</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--outline);">Outlet</span><span>KLCC Branch</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;border-top:0.5px solid #b3c9e8;margin-top:6px;padding-top:8px;"><span>Total</span><span class="mono" id="summaryPrice" style="color:var(--primary);">RM 68</span></div>
+      </div>
+      <div class="product-cta">
+        <a href="cart.html" class="btn-buy-now" style="text-align:center;text-decoration:none;">Book Now · Add to Cart</a>
+        <button class="btn-wishlist-lg" onclick="this.textContent='❤️'">🤍</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;font-size:11px;color:var(--outline);justify-content:center;flex-wrap:wrap;">
+        <span>✓ Free cancellation up to 24h</span>
+        <span>·</span>
+        <span>✓ Instant confirmation</span>
+        <span>·</span>
+        <span>✓ Earn 68 points</span>
+      </div>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+      <div class="trust-badge">🔒 Secure checkout</div>
+      <div class="trust-badge">✅ Certified stylists</div>
+      <div class="trust-badge">⭐ Satisfaction guarantee</div>
+    </div>
+  </div>
+</div>
+
+<!-- Product Tabs (Description, How it Works, Reviews) -->
+<div style="padding:0 32px 40px;">
+  <div class="product-tabs" id="tabs">
+    <button class="product-tab active" onclick="switchTab('desc',this)">Description</button>
+    <button class="product-tab" onclick="switchTab('how',this)">How It Works</button>
+    <button class="product-tab" onclick="switchTab('reviews',this)">Reviews (312)</button>
+    <button class="product-tab" onclick="switchTab('policy',this)">Policy</button>
+  </div>
+
+  <!-- Description tab -->
+  <div id="tab-desc" style="padding:24px 0;">
+    <p style="font-size:14px;line-height:1.7;color:var(--on-surface-variant);max-width:700px;">Our Precision Haircut is a bespoke service tailored to your face shape, lifestyle, and hair texture. Your stylist will consult with you to understand your desired look before the cut. The Blowdry finish uses professional heat protectant and styling products to leave your hair smooth, voluminous, and long-lasting.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;">
+      <div style="padding:14px;background:#fff;border:0.5px solid #E2E1DC;border-radius:var(--radius);">
+        <div style="font-size:20px;margin-bottom:6px;">⏱</div>
+        <div style="font-size:12px;font-weight:600;">Duration</div>
+        <div style="font-size:12px;color:var(--outline);">45–90 min depending on length</div>
+      </div>
+      <div style="padding:14px;background:#fff;border:0.5px solid #E2E1DC;border-radius:var(--radius);">
+        <div style="font-size:20px;margin-bottom:6px;">🧴</div>
+        <div style="font-size:12px;font-weight:600;">Products Used</div>
+        <div style="font-size:12px;color:var(--outline);">Kerastase or L'Oréal Professionnel</div>
+      </div>
+      <div style="padding:14px;background:#fff;border:0.5px solid #E2E1DC;border-radius:var(--radius);">
+        <div style="font-size:20px;margin-bottom:6px;">✂️</div>
+        <div style="font-size:12px;font-weight:600;">Consultation</div>
+        <div style="font-size:12px;color:var(--outline);">10-min consultation included</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews tab (hidden by default) -->
+  <div id="tab-reviews" style="padding:24px 0;display:none;">
+    <div class="review-summary">
+      <div class="review-avg">
+        <div class="review-avg-num">4.9</div>
+        <div class="review-avg-stars">★★★★★</div>
+        <div class="review-avg-count">312 reviews</div>
+      </div>
+      <div class="review-bars">
+        <div class="review-bar-row"><span style="width:16px;">5★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:88%;"></div></div><span style="width:30px;text-align:right;font-family:var(--font-mono);">88%</span></div>
+        <div class="review-bar-row"><span style="width:16px;">4★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:9%;"></div></div><span style="width:30px;text-align:right;font-family:var(--font-mono);">9%</span></div>
+        <div class="review-bar-row"><span style="width:16px;">3★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:2%;"></div></div><span style="width:30px;text-align:right;font-family:var(--font-mono);">2%</span></div>
+        <div class="review-bar-row"><span style="width:16px;">2★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:1%;"></div></div><span style="width:30px;text-align:right;font-family:var(--font-mono);">1%</span></div>
+        <div class="review-bar-row"><span style="width:16px;">1★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:0%;"></div></div><span style="width:30px;text-align:right;font-family:var(--font-mono);">0%</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="reviewer-info"><div class="reviewer-avatar">AL</div><div><div class="reviewer-name">Amirah L.</div><div class="review-date">2 days ago</div></div></div>
+        <div class="review-stars">★★★★★</div>
+      </div>
+      <div class="review-text">"Amazing experience! Aishah did such a clean precise cut. The blowdry lasted 3 days. Booking was super easy and the slot was confirmed instantly. Will definitely be back monthly!"</div>
+      <span class="review-service-tag">Short · Aishah · KLCC Branch</span>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="reviewer-info"><div class="reviewer-avatar" style="background:#ffd184;color:#5e4100;">PL</div><div><div class="reviewer-name">Priscilla L.</div><div class="review-date">1 week ago</div></div></div>
+        <div class="review-stars">★★★★★</div>
+      </div>
+      <div class="review-text">"Got the long hair option with Olaplex add-on. My hair has never felt this good! Worth every penny. The stylist listened carefully to what I wanted."</div>
+      <span class="review-service-tag">Long + Olaplex · Nurul · Bangsar</span>
+    </div>
+  </div>
+
+  <div id="tab-how" style="padding:24px 0;display:none;">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:600px;">
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">1</div>
+        <div><div style="font-size:13px;font-weight:600;">Select your options above</div><div style="font-size:12px;color:var(--outline);">Hair length, stylist, outlet, date &amp; time</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">2</div>
+        <div><div style="font-size:13px;font-weight:600;">Add to Cart &amp; Checkout</div><div style="font-size:12px;color:var(--outline);">Pay securely via Wallet, FPX, DuitNow, or card</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">3</div>
+        <div><div style="font-size:13px;font-weight:600;">Receive instant confirmation</div><div style="font-size:12px;color:var(--outline);">WhatsApp + email confirmation with your booking QR code</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">4</div>
+        <div><div style="font-size:13px;font-weight:600;">Show up &amp; enjoy your service</div><div style="font-size:12px;color:var(--outline);">Show QR code at reception. Earn loyalty points automatically.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-policy" style="padding:24px 0;display:none;">
+    <div style="max-width:600px;font-size:13px;line-height:1.7;color:var(--on-surface-variant);">
+      <p><strong>Cancellation:</strong> Free cancellation up to 24 hours before your appointment. Cancellations within 24 hours incur a 50% cancellation fee.</p>
+      <p style="margin-top:10px;"><strong>Rescheduling:</strong> Free rescheduling up to 4 hours before appointment, subject to slot availability.</p>
+      <p style="margin-top:10px;"><strong>Late Arrival:</strong> Arriving more than 15 minutes late may result in a shortened service or rebooking.</p>
+      <p style="margin-top:10px;"><strong>Refunds:</strong> Paid bookings that are cancelled within the free window are refunded to your wallet within 1–3 business days.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Related Services -->
+<div style="background:#fff;border-top:0.5px solid #E2E1DC;border-bottom:0.5px solid #E2E1DC;padding:32px;">
+  <div class="ec-section-header" style="margin-bottom:20px;">
+    <div><div class="ec-section-title">You May Also Like</div></div>
+    <a href="shop.html?cat=services" class="ec-view-all">View all →</a>
+  </div>
+  <div class="product-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img product-img-service"><div class="product-img-inner">🎨</div></div>
+      <div class="product-info">
+        <div class="product-brand">Hair Colour</div>
+        <div class="product-name">Global Colour + Toner</div>
+        <div class="product-price-row"><span class="product-price-from">from </span><span class="product-price">RM 150</span></div>
+      </div>
+      <div class="product-footer"><a href="service-detail.html" class="btn-book-now">Book</a></div>
+    </div>
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img product-img-service"><div class="product-img-inner">💆‍♀️</div></div>
+      <div class="product-info">
+        <div class="product-brand">Treatment</div>
+        <div class="product-name">Keratin Smoothing</div>
+        <div class="product-price-row"><span class="product-price-from">from </span><span class="product-price">RM 220</span></div>
+      </div>
+      <div class="product-footer"><a href="service-detail.html" class="btn-book-now">Book</a></div>
+    </div>
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product"><div class="product-img-inner">🧴</div></div>
+      <div class="product-info">
+        <div class="product-brand">Kerastase</div>
+        <div class="product-name">Nutritive Shampoo 250ml</div>
+        <div class="product-price-row"><span class="product-price">RM 89</span></div>
+      </div>
+      <div class="product-footer"><button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button></div>
+    </div>
+    <div class="product-card" onclick="location.href='product.html?type=package'">
+      <div class="product-img product-img-package"><div class="product-img-inner">📦</div></div>
+      <div class="product-info">
+        <div class="product-brand">Package</div>
+        <div class="product-name">5× Wash + Blowdry Bundle</div>
+        <div class="product-price-row"><span class="product-price">RM 250</span><span class="product-price-orig">RM 312</span></div>
+      </div>
+      <div class="product-footer"><button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Toast -->
+<div class="cart-toast" id="cartToast">
+  <span class="cart-toast-icon">🛒</span>
+  <div class="cart-toast-text"><div class="cart-toast-title">Added to cart!</div><div class="cart-toast-sub">Cart updated · 4 items</div></div>
+  <a href="cart.html" class="cart-toast-btn">View Cart</a>
+</div>
+
+<script>
+function selectLength(el, name, price, orig) {
+  document.querySelectorAll('#lengthOptions .variant-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('currentPrice').textContent = price;
+  document.getElementById('lengthLabel').textContent = '— ' + name + ' selected';
+  document.getElementById('summaryLength').textContent = name;
+  document.getElementById('summaryPrice').textContent = price;
+}
+function selectStyled(el) {
+  document.querySelectorAll('.stylist-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectDate(el, d) {
+  document.querySelectorAll('.date-btn:not(.unavailable)').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectTime(el, t) {
+  document.querySelectorAll('.time-btn:not(.unavailable)').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('timeLabel').textContent = '— ' + t + ' selected';
+}
+function setImg(el, emoji) {
+  document.getElementById('mainImg').textContent = emoji;
+  document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+function switchTab(name, el) {
+  ['desc','reviews','how','policy'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === name ? 'block' : 'none';
+  });
+  document.querySelectorAll('.product-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+function showToast() {
+  const t = document.getElementById('cartToast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>

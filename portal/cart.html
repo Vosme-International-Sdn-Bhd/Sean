@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart (3 items) — Precision Salon</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/shop.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.cart-page { max-width:1200px; margin:0 auto; padding:28px 24px 60px; }
+.cart-page-title { font-size:22px; font-weight:800; color:var(--text); margin-bottom:6px; }
+.cart-page-sub { font-size:13px; color:#6b7280; margin-bottom:28px; }
+.cart-layout { display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:start; }
+
+/* Cart items column */
+.cart-items-col {}
+.cart-section-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#9ca3af; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.cart-section-label::after { content:''; flex:1; height:0.5px; background:var(--border); }
+.cart-item { display:grid; grid-template-columns:80px 1fr auto; gap:16px; padding:18px 0; border-bottom:0.5px solid var(--border); }
+.cart-item:last-child { border-bottom:none; }
+.cart-item-img { width:80px; height:80px; border-radius:8px; background:#f5f4ef; border:0.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:32px; flex-shrink:0; position:relative; }
+.cart-item-type-tag { position:absolute; top:-6px; right:-6px; font-size:9px; background:var(--primary); color:#fff; border-radius:20px; padding:2px 5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+.cart-item-body {}
+.cart-item-brand { font-size:10px; color:var(--primary); font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px; }
+.cart-item-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px; line-height:1.3; }
+.cart-item-variants { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+.cart-item-variant-tag { font-size:11px; background:#f3f4f6; color:#6b7280; border-radius:20px; padding:2px 8px; }
+.cart-item-booking-info { background:#f0f7ff; border:0.5px solid #c3d9f5; border-radius:6px; padding:7px 10px; font-size:11px; color:#1a5fa8; margin-bottom:8px; }
+.cart-item-actions { display:flex; align-items:center; gap:12px; }
+.cart-item-remove { font-size:11px; color:#9ca3af; cursor:pointer; text-decoration:none; }
+.cart-item-remove:hover { color:#ef4444; }
+.cart-item-save { font-size:11px; color:var(--primary); cursor:pointer; }
+.cart-item-price-col { display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; min-width:90px; }
+.cart-item-price { font-size:16px; font-weight:800; color:var(--text); }
+.cart-item-price-orig { font-size:11px; color:#9ca3af; text-decoration:line-through; }
+.cart-item-qty { display:flex; align-items:center; border:1.5px solid var(--border); border-radius:6px; overflow:hidden; }
+.cart-qty-btn { width:28px; height:28px; border:none; background:#f9f8f3; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; }
+.cart-qty-num { width:30px; text-align:center; font-size:13px; font-weight:700; font-family:'JetBrains Mono',monospace; border:none; background:#fff; }
+
+/* Promo code */
+.promo-row { display:flex; gap:8px; margin-bottom:20px; }
+.promo-input { flex:1; padding:10px 14px; border:1.5px solid var(--border); border-radius:8px; font-size:13px; font-family:'Libre Franklin',sans-serif; outline:none; }
+.promo-input:focus { border-color:var(--primary); }
+.btn-apply-promo { padding:10px 18px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap; }
+.promo-success { font-size:12px; color:#059669; margin-top:-12px; margin-bottom:16px; display:none; }
+.promo-success.show { display:block; }
+
+/* Order summary */
+.order-summary-card { background:#fff; border:0.5px solid var(--border); border-radius:12px; padding:24px; position:sticky; top:80px; }
+.summary-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:20px; }
+.summary-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:13px; color:#6b7280; }
+.summary-row .val { color:var(--text); font-weight:600; }
+.summary-row .val.green { color:#059669; }
+.summary-row.total { font-size:16px; font-weight:800; color:var(--text); border-top:0.5px solid var(--border); padding-top:14px; margin-top:4px; }
+.summary-row.total .val { color:var(--primary); font-size:20px; }
+.summary-divider { border:none; border-top:0.5px solid var(--border); margin:14px 0; }
+.btn-checkout { width:100%; padding:15px; background:var(--primary); color:#fff; border:none; border-radius:10px; font-size:16px; font-weight:800; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .15s; margin-top:16px; text-decoration:none; }
+.btn-checkout:hover { background:#1554a0; }
+.btn-checkout-continue { width:100%; padding:11px; background:#fff; color:#6b7280; border:0.5px solid var(--border); border-radius:10px; font-size:13px; font-weight:600; cursor:pointer; margin-top:8px; text-decoration:none; display:block; text-align:center; }
+.btn-checkout-continue:hover { border-color:var(--primary); color:var(--primary); }
+.payment-icons { display:flex; gap:8px; justify-content:center; margin-top:16px; }
+.payment-icon { background:#f9f8f3; border:0.5px solid var(--border); border-radius:4px; padding:4px 10px; font-size:10px; color:#6b7280; font-weight:600; }
+
+/* Saved for later */
+.saved-later { margin-top:32px; }
+.saved-item { display:grid; grid-template-columns:60px 1fr auto; gap:12px; padding:14px 0; border-bottom:0.5px solid var(--border); opacity:.7; }
+.saved-item:last-child { border-bottom:none; }
+
+/* Points preview */
+.points-preview { background:#f0f7ff; border:0.5px solid #c3d9f5; border-radius:8px; padding:12px 14px; font-size:12px; color:#1a5fa8; margin-bottom:16px; }
+
+/* Empty cart */
+.empty-cart { text-align:center; padding:60px 20px; }
+.empty-cart-icon { font-size:64px; margin-bottom:20px; }
+.empty-cart-title { font-size:20px; font-weight:700; color:var(--text); margin-bottom:8px; }
+.empty-cart-sub { font-size:14px; color:#6b7280; margin-bottom:28px; }
+
+/* Cart steps breadcrumb */
+.cart-steps { display:flex; align-items:center; gap:0; margin-bottom:28px; }
+.cart-step { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; }
+.cart-step-num { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; }
+.cart-step.active .cart-step-num { background:var(--primary); color:#fff; }
+.cart-step.done .cart-step-num { background:#059669; color:#fff; }
+.cart-step.pending .cart-step-num { background:#e5e7eb; color:#9ca3af; }
+.cart-step.active { color:var(--primary); }
+.cart-step.done { color:#059669; }
+.cart-step.pending { color:#9ca3af; }
+.cart-step-line { width:40px; height:1px; background:var(--border); margin:0 8px; }
+
+@media(max-width:900px) {
+  .cart-layout { grid-template-columns:1fr; }
+  .order-summary-card { position:static; }
+}
+</style>
+</head>
+<body>
+<!-- Back link -->
+<div style="background:#faf9f5;border-bottom:0.5px solid #E2E1DC;padding:8px 24px;"><a href="../index.html" style="font-size:11px;color:#1a5fa8;text-decoration:none;font-family:JetBrains Mono,monospace;letter-spacing:0.02em;">&#8592; Precision Salon OS — GUI Overview</a></div>
+
+<!-- EC Header -->
+<div class="ec-announce-bar">🚚 Free delivery above RM120 &nbsp;|&nbsp; 💳 0% instalment with Maybank &nbsp;|&nbsp; 🎁 Gift wrap available</div>
+<header class="ec-header">
+  <div class="ec-header-inner">
+    <a class="ec-logo" href="home.html">Precision<span>Salon</span></a>
+    <div class="ec-search-bar">
+      <input type="text" class="ec-search-input" placeholder="Search products, services, brands…">
+      <button class="ec-search-btn">🔍</button>
+    </div>
+    <div class="ec-header-actions">
+      <a class="ec-action-btn" href="home.html"><span>🏠</span>Home</a>
+      <a class="ec-action-btn" href="shop.html"><span>🛍️</span>Shop</a>
+      <a class="ec-action-btn" href="member-profile.html"><span>👤</span>Account</a>
+      <a class="ec-action-btn cart-action" href="cart.html" style="color:var(--primary);font-weight:700;"><span>🛒</span>Cart<span class="cart-badge">3</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Cart Page -->
+<div class="cart-page">
+  <!-- Steps -->
+  <div class="cart-steps">
+    <div class="cart-step active"><div class="cart-step-num">1</div> Cart</div>
+    <div class="cart-step-line"></div>
+    <div class="cart-step pending"><div class="cart-step-num">2</div> Checkout</div>
+    <div class="cart-step-line"></div>
+    <div class="cart-step pending"><div class="cart-step-num">3</div> Confirmation</div>
+  </div>
+
+  <div class="cart-page-title">My Cart <span style="font-size:16px;color:#6b7280;font-weight:500;">(3 items)</span></div>
+  <div class="cart-page-sub">Review your items before checkout. Service bookings and products ship/book separately.</div>
+
+  <div class="cart-layout">
+    <!-- Items Column -->
+    <div class="cart-items-col">
+
+      <!-- Bookings section -->
+      <div class="cart-section-label">📅 Service Bookings (1)</div>
+
+      <!-- Service booking item -->
+      <div class="cart-item">
+        <div class="cart-item-img">✂️<span class="cart-item-type-tag">Service</span></div>
+        <div class="cart-item-body">
+          <div class="cart-item-brand">Precision Salon · KL Pavilion</div>
+          <div class="cart-item-name">Precision Haircut + Blowdry</div>
+          <div class="cart-item-variants">
+            <span class="cart-item-variant-tag">Long Hair · +RM108</span>
+            <span class="cart-item-variant-tag">Add-on: Deep Conditioning +RM30</span>
+            <span class="cart-item-variant-tag">Stylist: Aishah</span>
+          </div>
+          <div class="cart-item-booking-info">📅 2 Jun 2026 · 11:00 AM · Estimated 90 min</div>
+          <div class="cart-item-actions">
+            <a class="cart-item-remove" onclick="removeItem(this)">Remove</a>
+            <a class="cart-item-save">Save for later</a>
+            <a href="service-detail.html" class="cart-item-save">Edit booking</a>
+          </div>
+        </div>
+        <div class="cart-item-price-col">
+          <div>
+            <div class="cart-item-price">RM 138.00</div>
+            <div style="font-size:10px;color:#6b7280;text-align:right;">1× session</div>
+          </div>
+          <!-- Bookings don't have qty selector, always 1 -->
+          <div style="font-size:10px;color:#059669;font-weight:600;">✓ Slot confirmed</div>
+        </div>
+      </div>
+
+      <!-- Products section -->
+      <div class="cart-section-label" style="margin-top:16px;">🛍️ Products (2)</div>
+
+      <!-- Physical product item 1 -->
+      <div class="cart-item">
+        <div class="cart-item-img">💆<span class="cart-item-type-tag">Product</span></div>
+        <div class="cart-item-body">
+          <div class="cart-item-brand">Moroccanoil</div>
+          <div class="cart-item-name">Moroccanoil Treatment Oil</div>
+          <div class="cart-item-variants">
+            <span class="cart-item-variant-tag">100ml</span>
+            <span class="cart-item-variant-tag">Original Formula</span>
+            <span class="cart-item-variant-tag">Amber Gold</span>
+          </div>
+          <div class="cart-item-actions">
+            <a class="cart-item-remove" onclick="removeItem(this)">Remove</a>
+            <a class="cart-item-save">Save for later</a>
+            <a href="product.html" class="cart-item-save">View product</a>
+          </div>
+        </div>
+        <div class="cart-item-price-col">
+          <div>
+            <div class="cart-item-price" id="prod1-price">RM 89.00</div>
+            <div class="cart-item-price-orig">RM 115.00</div>
+          </div>
+          <div class="cart-item-qty">
+            <button class="cart-qty-btn" onclick="cartChangeQty('p1',-1)">−</button>
+            <input class="cart-qty-num" id="p1-qty" value="1" readonly>
+            <button class="cart-qty-btn" onclick="cartChangeQty('p1',1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Physical product item 2 -->
+      <div class="cart-item">
+        <div class="cart-item-img">🧴<span class="cart-item-type-tag">Product</span></div>
+        <div class="cart-item-body">
+          <div class="cart-item-brand">Moroccanoil</div>
+          <div class="cart-item-name">Hydrating Shampoo</div>
+          <div class="cart-item-variants">
+            <span class="cart-item-variant-tag">250ml</span>
+            <span class="cart-item-variant-tag">Normal Hair</span>
+          </div>
+          <div class="cart-item-actions">
+            <a class="cart-item-remove" onclick="removeItem(this)">Remove</a>
+            <a class="cart-item-save">Save for later</a>
+          </div>
+        </div>
+        <div class="cart-item-price-col">
+          <div>
+            <div class="cart-item-price" id="prod2-price">RM 68.00</div>
+            <div class="cart-item-price-orig">RM 85.00</div>
+          </div>
+          <div class="cart-item-qty">
+            <button class="cart-qty-btn" onclick="cartChangeQty('p2',-1)">−</button>
+            <input class="cart-qty-num" id="p2-qty" value="1" readonly>
+            <button class="cart-qty-btn" onclick="cartChangeQty('p2',1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo code -->
+      <div style="margin-top:24px;">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;">🏷️ Promo Code</div>
+        <div class="promo-row">
+          <input class="promo-input" id="promo-input" type="text" placeholder="Enter promo code (e.g. GOLD20)">
+          <button class="btn-apply-promo" onclick="applyPromo()">Apply</button>
+        </div>
+        <div class="promo-success" id="promo-success">✅ Promo <strong>GOLD20</strong> applied — RM 29.00 off!</div>
+      </div>
+
+      <!-- Delivery note for mixed cart -->
+      <div style="background:#fffbeb;border:0.5px solid #f59e0b;border-radius:8px;padding:14px 16px;margin-top:24px;font-size:12px;color:#92400e;">
+        <div style="font-weight:700;margin-bottom:6px;">📦 Mixed Cart — Delivery Note</div>
+        <div>Your booking is confirmed separately. Physical products (Moroccanoil items) will be shipped to your delivery address. Standard delivery: RM 8 or free above RM 120.</div>
+      </div>
+
+      <!-- Saved for later -->
+      <div class="saved-later">
+        <div class="cart-section-label">💾 Saved for Later (1)</div>
+        <div class="saved-item">
+          <div class="cart-item-img" style="width:60px;height:60px;font-size:24px;">🎁</div>
+          <div class="cart-item-body">
+            <div class="cart-item-brand">Precision Salon</div>
+            <div class="cart-item-name">Gift Voucher RM 100</div>
+            <div class="cart-item-variants"><span class="cart-item-variant-tag">E-Voucher · Valid 12 months</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;">
+            <div class="cart-item-price" style="font-size:14px;">RM 100.00</div>
+            <button class="btn btn-secondary btn-sm" onclick="moveToCart(this)">Move to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div>
+      <div class="order-summary-card">
+        <div class="summary-title">Order Summary</div>
+
+        <div class="summary-row"><span>Subtotal (3 items)</span><span class="val">RM 295.00</span></div>
+        <div class="summary-row"><span>Service booking</span><span class="val">RM 138.00</span></div>
+        <div class="summary-row"><span>Product subtotal</span><span class="val">RM 157.00</span></div>
+        <div class="summary-row"><span>Product discount</span><span class="val green">−RM 43.00</span></div>
+        <div class="summary-row" id="promo-row" style="display:none;"><span>Promo (GOLD20)</span><span class="val green" id="promo-val">−RM 29.00</span></div>
+        <hr class="summary-divider">
+        <div class="summary-row"><span>Delivery</span><span class="val">RM 8.00</span></div>
+        <div class="summary-row"><span>SST (8%)</span><span class="val">RM 12.56</span></div>
+        <hr class="summary-divider">
+        <div class="summary-row total"><span>Total</span><span class="val" id="total-display">RM 252.56</span></div>
+
+        <div class="points-preview">🌟 You'll earn <strong>252 loyalty points</strong> (RM 2.52 value) on this order</div>
+
+        <!-- Wallet option preview -->
+        <div style="background:#f9f8f3;border:0.5px solid var(--border);border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;">
+          <div style="font-weight:700;margin-bottom:6px;">💳 Wallet Balance</div>
+          <div class="summary-row" style="margin-bottom:4px;font-size:12px;"><span style="color:#6b7280;">Available</span><span style="color:var(--primary);font-weight:700;">RM 85.00</span></div>
+          <div style="color:#6b7280;font-size:11px;">Remaining RM 167.56 payable via FPX/DuitNow/Card</div>
+        </div>
+
+        <a href="checkout.html" class="btn-checkout">Proceed to Checkout →</a>
+        <a href="shop.html" class="btn-checkout-continue">← Continue Shopping</a>
+
+        <div class="payment-icons">
+          <span class="payment-icon">FPX</span>
+          <span class="payment-icon">DuitNow</span>
+          <span class="payment-icon">Visa</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">TnG</span>
+        </div>
+      </div>
+
+      <!-- Trust mini -->
+      <div style="margin-top:16px;background:#f9f8f3;border:0.5px solid var(--border);border-radius:10px;padding:16px;">
+        <div style="font-size:11px;font-weight:700;color:#6b7280;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em;">Why Shop With Us</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text);"><span>🔒</span>Secure SSL payment — Fiuu Gateway</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text);"><span>✅</span>Authentic salon-grade products only</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text);"><span>↩️</span>7-day return on unopened products</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text);"><span>🧾</span>LHDN e-Invoice available on request</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const prices = { p1: 89, p2: 68 };
+const qtys = { p1: 1, p2: 1 };
+let promoApplied = false;
+
+function cartChangeQty(id, delta) {
+  qtys[id] = Math.max(1, Math.min(10, qtys[id] + delta));
+  document.getElementById(id+'-qty').value = qtys[id];
+  recalc();
+}
+
+function recalc() {
+  const prodSub = prices.p1 * qtys.p1 + prices.p2 * qtys.p2;
+  const service = 138;
+  const delivery = prodSub >= 112 ? 0 : 8; // free above 120 (after discount applied)
+  const promo = promoApplied ? 29 : 0;
+  const sub = prodSub + service - promo;
+  const sst = Math.round((sub + delivery) * 0.08 * 100) / 100;
+  const total = sub + delivery + sst;
+  document.getElementById('total-display').textContent = 'RM ' + total.toFixed(2);
+}
+
+function applyPromo() {
+  const val = document.getElementById('promo-input').value.trim().toUpperCase();
+  if(val === 'GOLD20' || val === 'MEMBER' || val === 'PROMO') {
+    promoApplied = true;
+    document.getElementById('promo-success').classList.add('show');
+    document.getElementById('promo-row').style.display = 'flex';
+    recalc();
+  } else {
+    document.getElementById('promo-input').style.borderColor = '#ef4444';
+    setTimeout(() => document.getElementById('promo-input').style.borderColor = '', 1500);
+  }
+}
+
+function removeItem(btn) {
+  const item = btn.closest('.cart-item');
+  item.style.opacity = '0';
+  item.style.transform = 'translateX(20px)';
+  item.style.transition = 'all .3s';
+  setTimeout(() => { item.remove(); recalc(); }, 300);
+}
+
+function moveToCart(btn) {
+  const item = btn.closest('.saved-item');
+  item.style.opacity = '0';
+  setTimeout(() => item.remove(), 300);
+}
+</script>
+</body>
+</html>

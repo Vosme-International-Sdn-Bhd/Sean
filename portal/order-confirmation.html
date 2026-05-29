@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — Precision Salon</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/shop.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.confirm-page { max-width:900px; margin:0 auto; padding:40px 24px 60px; }
+
+/* Steps */
+.checkout-steps { display:flex; align-items:center; margin-bottom:40px; }
+.co-step { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; }
+.co-step-num { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; }
+.co-step.done .co-step-num { background:#059669; color:#fff; }
+.co-step.active .co-step-num { background:var(--primary); color:#fff; }
+.co-step.done { color:#059669; }
+.co-step.active { color:var(--primary); }
+.co-step-line { flex:1; height:1px; background:#059669; margin:0 12px; }
+
+/* Hero success */
+.confirm-hero { text-align:center; padding:48px 24px; background:linear-gradient(135deg,#f0fff4,#e8f5ff); border:0.5px solid #6ee7b7; border-radius:16px; margin-bottom:32px; }
+.confirm-check { font-size:72px; margin-bottom:16px; animation:popIn .5s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes popIn { 0%{transform:scale(0);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+.confirm-title { font-size:28px; font-weight:800; color:#065f46; margin-bottom:8px; }
+.confirm-sub { font-size:15px; color:#6b7280; margin-bottom:20px; }
+.order-num-box { display:inline-flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #059669; border-radius:10px; padding:10px 20px; }
+.order-num-label { font-size:12px; color:#6b7280; text-transform:uppercase; letter-spacing:.06em; }
+.order-num-val { font-size:20px; font-weight:800; color:#059669; font-family:'JetBrains Mono',monospace; }
+.copy-btn { font-size:14px; cursor:pointer; padding:4px 8px; background:#f0fff4; border:0.5px solid #6ee7b7; border-radius:5px; color:#059669; font-size:11px; font-weight:700; }
+
+/* Main grid */
+.confirm-grid { display:grid; grid-template-columns:1fr 340px; gap:24px; }
+
+/* Left column */
+/* QR / Booking card */
+.booking-qr-card { background:#fff; border:0.5px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:20px; }
+.card-head { padding:14px 20px; background:#f0f7ff; border-bottom:0.5px solid #c3d9f5; display:flex; align-items:center; justify-content:space-between; }
+.card-head-title { font-size:14px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:8px; }
+.card-head-pill { font-size:11px; background:#059669; color:#fff; border-radius:20px; padding:2px 9px; font-weight:700; }
+.card-body { padding:20px; }
+
+/* QR box */
+.qr-booking-layout { display:flex; gap:20px; align-items:flex-start; }
+.qr-code-box { width:120px; height:120px; background:#fff; border:3px solid var(--text); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:52px; flex-shrink:0; }
+.qr-booking-details { flex:1; }
+.booking-detail-row { display:flex; align-items:center; gap:8px; padding:5px 0; font-size:13px; }
+.booking-detail-row .icon { width:18px; text-align:center; flex-shrink:0; }
+.booking-detail-row .label { color:#6b7280; min-width:70px; }
+.booking-detail-row .val { font-weight:600; color:var(--text); }
+.qr-note { margin-top:14px; font-size:11px; color:#6b7280; background:#f9f8f3; border-radius:6px; padding:8px 12px; line-height:1.6; }
+
+/* Order items */
+.order-items-card { background:#fff; border:0.5px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:20px; }
+.order-item-row { display:flex; align-items:flex-start; gap:14px; padding:14px 20px; border-bottom:0.5px solid var(--border); }
+.order-item-row:last-child { border-bottom:none; }
+.order-item-img { width:52px; height:52px; border-radius:8px; background:#f5f4ef; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.order-item-info { flex:1; }
+.order-item-type { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px; }
+.order-item-type.service { color:var(--primary); }
+.order-item-type.product { color:#7c3aed; }
+.order-item-name { font-size:13px; font-weight:700; color:var(--text); margin-bottom:3px; }
+.order-item-vars { font-size:11px; color:#9ca3af; }
+.order-item-price { font-size:14px; font-weight:800; color:var(--text); flex-shrink:0; }
+
+/* Tracking */
+.tracking-card { background:#fff; border:0.5px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:20px; }
+.tracking-timeline { padding:20px; }
+.track-step { display:flex; gap:14px; position:relative; }
+.track-step:not(:last-child)::after { content:''; position:absolute; left:15px; top:32px; bottom:-4px; width:1.5px; background:var(--border); }
+.track-dot { width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+.track-dot.done { background:#d1fae5; border:1.5px solid #059669; }
+.track-dot.active { background:#dbeafe; border:1.5px solid var(--primary); }
+.track-dot.pending { background:#f3f4f6; border:1.5px solid #d1d5db; }
+.track-info { padding-bottom:22px; flex:1; }
+.track-title { font-size:13px; font-weight:700; color:var(--text); margin-bottom:2px; }
+.track-sub { font-size:11px; color:#6b7280; }
+.track-time { font-size:10px; color:#9ca3af; font-family:'JetBrains Mono',monospace; }
+
+/* Points earned */
+.points-earned-card { background:linear-gradient(135deg,#1a5fa8,#2563eb); border-radius:12px; padding:20px; color:#fff; margin-bottom:20px; }
+.points-earned-title { font-size:13px; font-weight:600; opacity:.85; margin-bottom:8px; }
+.points-earned-val { font-size:36px; font-weight:800; line-height:1; margin-bottom:4px; }
+.points-earned-sub { font-size:12px; opacity:.75; margin-bottom:16px; }
+.points-tier-bar { height:8px; background:rgba(255,255,255,.2); border-radius:4px; margin-bottom:6px; overflow:hidden; }
+.points-tier-fill { height:100%; background:#fbbf24; border-radius:4px; }
+.points-tier-info { display:flex; justify-content:space-between; font-size:10px; opacity:.75; }
+
+/* Right column */
+.confirm-summary-card { background:#fff; border:0.5px solid var(--border); border-radius:12px; padding:22px; position:sticky; top:80px; }
+.cs-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:18px; }
+.cs-row { display:flex; justify-content:space-between; font-size:12px; color:#6b7280; margin-bottom:9px; }
+.cs-row .v { color:var(--text); font-weight:600; }
+.cs-row .v.g { color:#059669; }
+.cs-divider { border:none; border-top:0.5px solid var(--border); margin:12px 0; }
+.cs-total { display:flex; justify-content:space-between; font-size:15px; font-weight:800; }
+.cs-total .v { color:var(--primary); font-size:19px; }
+.payment-badge { display:flex; align-items:center; gap:8px; background:#f9f8f3; border:0.5px solid var(--border); border-radius:8px; padding:10px 14px; margin-top:16px; font-size:12px; }
+.payment-badge .pm-icon { font-size:18px; }
+
+/* Action buttons */
+.confirm-actions { display:flex; flex-direction:column; gap:10px; margin-top:20px; }
+.btn-action-primary { padding:13px; background:var(--primary); color:#fff; border:none; border-radius:9px; font-size:14px; font-weight:700; cursor:pointer; text-align:center; text-decoration:none; display:block; transition:background .15s; }
+.btn-action-primary:hover { background:#1554a0; }
+.btn-action-secondary { padding:11px; background:#fff; color:#6b7280; border:0.5px solid var(--border); border-radius:9px; font-size:13px; font-weight:600; text-align:center; text-decoration:none; display:block; transition:all .15s; }
+.btn-action-secondary:hover { border-color:var(--primary); color:var(--primary); }
+
+/* Whatsapp / receipt */
+.wa-sent-banner { background:#f0fff4; border:0.5px solid #6ee7b7; border-radius:8px; padding:12px 14px; font-size:12px; color:#065f46; display:flex; align-items:center; gap:10px; margin-top:16px; }
+
+/* Referral banner */
+.referral-banner { background:linear-gradient(135deg,#fef3c7,#fffbeb); border:0.5px solid #f59e0b; border-radius:12px; padding:20px; margin-top:20px; }
+.referral-title { font-size:14px; font-weight:700; color:#92400e; margin-bottom:6px; }
+.referral-sub { font-size:12px; color:#92400e; margin-bottom:12px; }
+.referral-code-row { display:flex; gap:8px; }
+.referral-code-input { flex:1; padding:9px 14px; border:1.5px solid #f59e0b; border-radius:7px; font-size:14px; font-weight:700; font-family:'JetBrains Mono',monospace; color:#92400e; background:#fff; }
+.btn-share-ref { padding:9px 16px; background:#f59e0b; color:#fff; border:none; border-radius:7px; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap; }
+
+@media(max-width:900px) {
+  .confirm-grid { grid-template-columns:1fr; }
+  .confirm-summary-card { position:static; }
+  .qr-booking-layout { flex-direction:column; align-items:center; text-align:center; }
+}
+</style>
+</head>
+<body>
+<!-- Back link -->
+<div style="background:#faf9f5;border-bottom:0.5px solid #E2E1DC;padding:8px 24px;"><a href="../index.html" style="font-size:11px;color:#1a5fa8;text-decoration:none;font-family:JetBrains Mono,monospace;letter-spacing:0.02em;">&#8592; Precision Salon OS — GUI Overview</a></div>
+
+<!-- EC Header (minimal post-checkout) -->
+<div class="ec-announce-bar">✅ Order confirmed! Check your WhatsApp for booking details.</div>
+<header class="ec-header">
+  <div class="ec-header-inner">
+    <a class="ec-logo" href="home.html">Precision<span>Salon</span></a>
+    <div style="flex:1;max-width:400px;font-size:13px;color:#6b7280;text-align:center;"></div>
+    <div class="ec-header-actions">
+      <a class="ec-action-btn" href="my-bookings.html"><span>📅</span>My Bookings</a>
+      <a class="ec-action-btn" href="member-profile.html"><span>👤</span>Account</a>
+      <a class="ec-action-btn" href="home.html"><span>🏠</span>Home</a>
+    </div>
+  </div>
+</header>
+
+<div class="confirm-page">
+  <!-- Steps -->
+  <div class="checkout-steps">
+    <div class="co-step done"><div class="co-step-num">✓</div> Cart</div>
+    <div class="co-step-line"></div>
+    <div class="co-step done"><div class="co-step-num">✓</div> Checkout</div>
+    <div class="co-step-line"></div>
+    <div class="co-step active"><div class="co-step-num">3</div> Confirmed</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="confirm-hero">
+    <div class="confirm-check">🎉</div>
+    <div class="confirm-title">Booking &amp; Order Confirmed!</div>
+    <div class="confirm-sub">Payment received · Confirmation sent to aisha.rahman@email.com &amp; WhatsApp +60 12-345 6789</div>
+    <div class="order-num-box">
+      <div>
+        <div class="order-num-label">Order Number</div>
+        <div class="order-num-val" id="order-num">PSO-2026-00847</div>
+      </div>
+      <button class="copy-btn" onclick="copyOrder()">📋 Copy</button>
+    </div>
+  </div>
+
+  <div class="confirm-grid">
+    <!-- Left column -->
+    <div>
+
+      <!-- Booking QR Card -->
+      <div class="booking-qr-card">
+        <div class="card-head">
+          <div class="card-head-title">📅 Booking Confirmation</div>
+          <span class="card-head-pill">✓ Slot Secured</span>
+        </div>
+        <div class="card-body">
+          <div class="qr-booking-layout">
+            <div class="qr-code-box">🔲</div>
+            <div class="qr-booking-details">
+              <div class="booking-detail-row"><span class="icon">✂️</span><span class="label">Service</span><span class="val">Precision Haircut + Blowdry</span></div>
+              <div class="booking-detail-row"><span class="icon">📅</span><span class="label">Date</span><span class="val">Mon, 2 Jun 2026</span></div>
+              <div class="booking-detail-row"><span class="icon">⏰</span><span class="label">Time</span><span class="val">11:00 AM (~90 min)</span></div>
+              <div class="booking-detail-row"><span class="icon">💇</span><span class="label">Stylist</span><span class="val">Aishah (4.9 ★)</span></div>
+              <div class="booking-detail-row"><span class="icon">🏪</span><span class="label">Outlet</span><span class="val">KL Pavilion, Lot 3.09 L3</span></div>
+              <div class="booking-detail-row"><span class="icon">💆</span><span class="label">Add-ons</span><span class="val">Deep Cond · Scalp Massage</span></div>
+            </div>
+          </div>
+          <div class="qr-note">
+            📱 Show this QR code or quote order number <strong>PSO-2026-00847</strong> at the counter on arrival. Please arrive 5 minutes early. Free cancellation up to 24 hours before appointment.
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Items -->
+      <div class="order-items-card">
+        <div class="card-head">
+          <div class="card-head-title">🛍️ Order Items (3)</div>
+          <span style="font-size:11px;color:#6b7280;">Ref: PSO-2026-00847</span>
+        </div>
+
+        <div class="order-item-row">
+          <div class="order-item-img">✂️</div>
+          <div class="order-item-info">
+            <div class="order-item-type service">Service Booking</div>
+            <div class="order-item-name">Precision Haircut + Blowdry</div>
+            <div class="order-item-vars">Long Hair · +Deep Conditioning +RM30 · +Scalp Massage +RM20 · Aishah · 2 Jun 11:00 AM</div>
+          </div>
+          <div class="order-item-price">RM 138.00</div>
+        </div>
+
+        <div class="order-item-row">
+          <div class="order-item-img">💆</div>
+          <div class="order-item-info">
+            <div class="order-item-type product">Physical Product</div>
+            <div class="order-item-name">Moroccanoil Treatment Oil</div>
+            <div class="order-item-vars">100ml · Original Formula · Amber Gold · × 1</div>
+          </div>
+          <div class="order-item-price">RM 89.00</div>
+        </div>
+
+        <div class="order-item-row">
+          <div class="order-item-img">🧴</div>
+          <div class="order-item-info">
+            <div class="order-item-type product">Physical Product</div>
+            <div class="order-item-name">Moroccanoil Hydrating Shampoo</div>
+            <div class="order-item-vars">250ml · Normal Hair · × 1</div>
+          </div>
+          <div class="order-item-price">RM 68.00</div>
+        </div>
+
+        <!-- Delivery info for products -->
+        <div style="margin:0 20px 16px;background:#f9f8f3;border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:12px;color:#6b7280;">
+          <strong style="color:var(--text);">🚚 Product Delivery</strong> — Standard shipping to Unit 12A, Plaza Damas, 50480 KL<br>
+          Estimated arrival: <strong>2–4 Jun 2026</strong> · Tracking will be sent via WhatsApp once dispatched
+        </div>
+      </div>
+
+      <!-- Delivery Tracking Timeline -->
+      <div class="tracking-card">
+        <div class="card-head">
+          <div class="card-head-title">📦 Product Delivery Status</div>
+          <span style="font-size:11px;color:var(--primary);font-weight:600;cursor:pointer;">Track Order</span>
+        </div>
+        <div class="tracking-timeline">
+          <div class="track-step">
+            <div class="track-dot done">✓</div>
+            <div class="track-info">
+              <div class="track-title">Order Placed &amp; Payment Confirmed</div>
+              <div class="track-sub track-time">29 May 2026 · 15:42 MYT</div>
+            </div>
+          </div>
+          <div class="track-step">
+            <div class="track-dot active">📦</div>
+            <div class="track-info">
+              <div class="track-title">Preparing Your Order</div>
+              <div class="track-sub">Products being packed at KL Pavilion store · Ready for dispatch</div>
+            </div>
+          </div>
+          <div class="track-step">
+            <div class="track-dot pending">🚚</div>
+            <div class="track-info">
+              <div class="track-title">Out for Delivery</div>
+              <div class="track-sub" style="color:#d1d5db;">Est. 2–4 Jun 2026</div>
+            </div>
+          </div>
+          <div class="track-step">
+            <div class="track-dot pending">🎉</div>
+            <div class="track-info">
+              <div class="track-title">Delivered</div>
+              <div class="track-sub" style="color:#d1d5db;">Pending</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loyalty Points Earned -->
+      <div class="points-earned-card">
+        <div class="points-earned-title">🌟 Loyalty Points Earned</div>
+        <div class="points-earned-val">+252 pts</div>
+        <div class="points-earned-sub">= RM 2.52 in wallet credit · Auto-credited within 24 hours</div>
+        <div style="font-size:12px;margin-bottom:10px;opacity:.85;">Silver Tier — Progress to Gold (need 348 more pts)</div>
+        <div class="points-tier-bar"><div class="points-tier-fill" style="width:61%;"></div></div>
+        <div class="points-tier-info"><span>1,652 pts (Silver)</span><span>2,000 pts (Gold)</span></div>
+      </div>
+
+      <!-- Referral banner -->
+      <div class="referral-banner">
+        <div class="referral-title">🎁 Share &amp; Earn</div>
+        <div class="referral-sub">Refer friends — you earn RM 15 wallet credit when they complete their first booking</div>
+        <div class="referral-code-row">
+          <input class="referral-code-input" type="text" value="AISHA-REF2026" readonly>
+          <button class="btn-share-ref" onclick="shareRef()">📤 Share</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Summary -->
+    <div>
+      <div class="confirm-summary-card">
+        <div class="cs-title">Payment Summary</div>
+
+        <div class="cs-row"><span>Subtotal</span><span class="v">RM 295.00</span></div>
+        <div class="cs-row"><span>Product discount</span><span class="v g">−RM 43.00</span></div>
+        <div class="cs-row"><span>Wallet applied</span><span class="v g">−RM 85.00</span></div>
+        <div class="cs-row"><span>Delivery</span><span class="v">RM 8.00</span></div>
+        <div class="cs-row"><span>SST (8%)</span><span class="v">RM 12.56</span></div>
+        <hr class="cs-divider">
+        <div class="cs-total"><span>Total Paid</span><span class="v">RM 167.56</span></div>
+
+        <div class="payment-badge">
+          <span class="pm-icon">🏦</span>
+          <div>
+            <div style="font-weight:700;font-size:12px;">FPX — Maybank2u</div>
+            <div style="font-size:10px;color:#6b7280;font-family:'JetBrains Mono',monospace;">Txn: MB2U-20260529-1542</div>
+          </div>
+        </div>
+
+        <div class="wa-sent-banner">
+          <span style="font-size:18px;">📱</span>
+          <div>Confirmation sent to <strong>+60 12-345 6789</strong> via WhatsApp</div>
+        </div>
+
+        <div class="confirm-actions">
+          <a href="my-bookings.html" class="btn-action-primary">📅 View My Bookings</a>
+          <a href="#" class="btn-action-secondary" onclick="downloadReceipt()">🧾 Download Receipt (PDF)</a>
+          <a href="shop.html" class="btn-action-secondary">🛍️ Continue Shopping</a>
+          <a href="home.html" class="btn-action-secondary">🏠 Back to Home</a>
+        </div>
+
+        <!-- LHDN e-Invoice note -->
+        <div style="margin-top:16px;background:#fffbeb;border:0.5px solid #f59e0b;border-radius:8px;padding:10px 12px;font-size:11px;color:#92400e;">
+          🧾 <strong>LHDN e-Invoice</strong> will be issued within 72 hours. Available in <a href="visit-history.html" style="color:#92400e;font-weight:700;">Purchase History</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function copyOrder() {
+  const num = document.getElementById('order-num').textContent;
+  navigator.clipboard.writeText(num).catch(() => {});
+  const btn = document.querySelector('.copy-btn');
+  btn.textContent = '✓ Copied';
+  setTimeout(() => btn.textContent = '📋 Copy', 2000);
+}
+function downloadReceipt() {
+  alert('Receipt PDF download would trigger here in production (generated server-side with LHDN e-Invoice details).');
+}
+function shareRef() {
+  const text = 'Get salon services + products at Precision Salon! Use my code AISHA-REF2026 for a welcome bonus. Book at: https://precision-salon.com';
+  if(navigator.share) {
+    navigator.share({ title: 'Precision Salon Referral', text });
+  } else {
+    navigator.clipboard.writeText(text).catch(() => {});
+    const btn = document.querySelector('.btn-share-ref');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '📤 Share', 2000);
+  }
+}
+</script>
+</body>
+</html>

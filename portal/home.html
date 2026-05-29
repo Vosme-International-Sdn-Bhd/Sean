@@ -1,128 +1,680 @@
-﻿<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Home — Precision Salon OS</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precision Salon — Beauty & Wellness</title>
 <link rel="stylesheet" href="../assets/styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="../assets/shop.css">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-</head><body>
-<div style="background:#faf9f5;border-bottom:0.5px solid #E2E1DC;padding:8px 24px;"><a href="../index.html" style="font-size:11px;color:#1a5fa8;text-decoration:none;font-family:JetBrains Mono,monospace;letter-spacing:0.02em;">&#8592; Precision Salon OS — GUI Overview</a></div>
+</head>
+<body class="ec-page">
 
-<div class="app-layout">
-  <div class="sidebar">
-    <div class="sidebar-logo">Precision Salon OS<span>CUSTOMER PORTAL</span></div>
-    <nav class="sidebar-nav">
-      <a class="nav-item active" href="home.html"><span class="icon">🏠</span>Home</a>
-      <a class="nav-item" href="booking-service.html"><span class="icon">📅</span>Book Appointment</a>
-      <a class="nav-item" href="my-bookings.html"><span class="icon">📋</span>My Bookings</a>
-      <a class="nav-item" href="wallet-dashboard.html"><span class="icon">💳</span>Wallet</a>
-      <a class="nav-item" href="vouchers-packages.html"><span class="icon">🎟️</span>Vouchers &amp; Packages</a>
-      <a class="nav-item" href="affiliate-dashboard.html"><span class="icon">🤝</span>Affiliate Hub</a>
-      <a class="nav-item" href="member-profile.html"><span class="icon">👤</span>Profile</a>
-    </nav>
-    <div class="sidebar-footer">Sarah Lim · <span class="tier-badge tier-bronze">Bronze</span></div>
+<!-- E-Commerce Header -->
+<header class="ec-header">
+  <div class="ec-announce">
+    🎉 Members earn <strong>2× points</strong> this weekend · Free delivery on orders above RM150 ·
+    <a href="vouchers-packages.html">Redeem vouchers →</a>
   </div>
-  <main class="main-content">
-    <div class="page-header">
-      <div><div class="page-title">Good morning, Sarah 👋</div><div class="page-subtitle">Welcome back to Precision Salon OS</div></div>
-      <div class="flex items-center gap-12">
-        <span class="tier-badge tier-bronze">Bronze Member</span>
-        <a href="notifications.html" class="btn btn-secondary btn-sm">🔔 Notifications</a>
-      </div>
+  <div class="ec-header-main">
+    <a href="home.html" class="ec-logo">
+      <span class="ec-logo-name">Precision Salon</span>
+      <span class="ec-logo-sub">Beauty & Wellness</span>
+    </a>
+    <div class="ec-search">
+      <input type="text" placeholder="Search services, products, packages...">
+      <button class="ec-search-btn">🔍</button>
     </div>
-
-    <!-- Quick Actions -->
-    <div class="grid grid-3 mb-24">
-      <a href="booking-service.html" class="card" style="background:var(--primary);color:#fff;text-decoration:none;cursor:pointer;">
-        <div style="font-size:28px;margin-bottom:8px;">📅</div>
-        <div class="font-600" style="font-size:16px;">Book Appointment</div>
-        <div style="font-size:13px;opacity:0.85;margin-top:4px;">Schedule your next visit</div>
+    <div class="ec-header-actions">
+      <a href="wishlist.html" class="ec-action-btn">
+        <span class="ec-action-icon">🤍</span>
+        <span>Wishlist</span>
       </a>
-      <a href="wallet-dashboard.html" class="stat-card" style="text-decoration:none;">
-        <div class="stat-label">My Wallet</div>
-        <div class="stat-value">RM 150.00</div>
-        <div class="stat-sub">+ RM 20.00 bonus balance</div>
-        <div class="mt-8"><a href="wallet-topup.html" class="btn btn-secondary btn-sm">Top Up</a></div>
+      <a href="cart.html" class="ec-action-btn" style="position:relative;">
+        <span class="ec-action-icon">🛒</span>
+        <span>Cart</span>
+        <span class="ec-cart-badge">3</span>
       </a>
-      <div class="stat-card">
-        <div class="stat-label">Loyalty Points</div>
-        <div class="stat-value">1,240</div>
-        <div class="stat-sub">Expires Dec 2026</div>
-      </div>
-    </div>
-
-    <!-- Upcoming Appointments -->
-    <div class="card mb-24">
-      <div class="flex justify-between items-center mb-16">
-        <div class="card-title">Upcoming Appointments</div>
-        <a href="my-bookings.html" class="btn btn-ghost btn-sm">View all →</a>
-      </div>
-      <div class="flex flex-col gap-12">
-        <!-- Booking 1 -->
-        <div style="border:0.5px solid var(--border);border-radius:var(--radius);padding:16px;">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="font-600" style="font-size:15px;">Hair Colour + Trim</div>
-              <div class="text-sm text-muted mt-4">Aishah Binti Rahmat · KLCC Branch</div>
-              <div class="mono text-sm mt-4" style="color:var(--primary);">Thu 29 May 2026 · 2:00 PM</div>
-            </div>
-            <div class="flex flex-col items-center gap-8">
-              <span class="pill pill-success">Confirmed</span>
-              <div class="flex gap-8">
-                <a href="reschedule.html" class="btn btn-secondary btn-sm">Reschedule</a>
-                <a href="cancel-booking.html" class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Cancel</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Booking 2 -->
-        <div style="border:0.5px solid var(--border);border-radius:var(--radius);padding:16px;">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="font-600" style="font-size:15px;">Manicure + Pedicure</div>
-              <div class="text-sm text-muted mt-4">Nurul Aisyah · Bangsar Branch</div>
-              <div class="mono text-sm mt-4" style="color:var(--primary);">Sat 1 Jun 2026 · 11:00 AM</div>
-            </div>
-            <div class="flex flex-col items-center gap-8">
-              <span class="pill pill-warning">Pending</span>
-              <div class="flex gap-8">
-                <a href="reschedule.html" class="btn btn-secondary btn-sm">Reschedule</a>
-                <a href="cancel-booking.html" class="btn btn-sm" style="color:var(--danger);border:0.5px solid var(--danger);background:transparent;">Cancel</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tier Progress -->
-    <div class="grid grid-2 mb-24">
-      <div class="card">
-        <div class="card-title mb-8">Your Rewards Status</div>
-        <div class="flex justify-between text-sm text-muted mb-8">
-          <span>Bronze</span><span>Silver (RM 500)</span>
-        </div>
-        <div class="progress-wrap mb-8"><div class="progress-bar" style="width:68%;"></div></div>
-        <div class="text-sm">Spend <strong>RM 160 more</strong> to reach Silver &amp; unlock 3% discount</div>
-        <div class="mt-16 flex gap-8">
-          <a href="vouchers-packages.html" class="btn btn-secondary btn-sm">🎟️ 3 Active Vouchers</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title mb-16">Recent Transactions</div>
+      <a href="member-profile.html" class="ec-account-pill">
+        <div class="ec-account-avatar">SL</div>
         <div style="display:flex;flex-direction:column;gap:1px;">
-          <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:0.5px solid var(--border);">
-            <div><div class="text-sm font-600">ORD-20260525-0042</div><div class="text-xs text-muted">25 May 2026</div></div>
-            <span class="pill pill-success">RM 85.00</span>
-          </div>
-          <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:0.5px solid var(--border);">
-            <div><div class="text-sm font-600">ORD-20260518-0031</div><div class="text-xs text-muted">18 May 2026</div></div>
-            <span class="pill pill-success">RM 120.00</span>
-          </div>
-          <div class="flex justify-between items-center" style="padding:10px 0;">
-            <div><div class="text-sm font-600">ORD-20260510-0019</div><div class="text-xs text-muted">10 May 2026</div></div>
-            <span class="pill pill-success">RM 55.00</span>
-          </div>
+          <span style="font-size:12px;font-weight:600;line-height:1;">Sarah Lim</span>
+          <span class="tier-badge tier-bronze" style="font-size:9px;padding:1px 5px;">Bronze</span>
         </div>
+      </a>
+    </div>
+  </div>
+  <nav class="ec-nav">
+    <a href="home.html" class="active">🏠 Home</a>
+    <a href="shop.html?cat=services">✂️ Services</a>
+    <a href="shop.html?cat=products">🛍️ Products</a>
+    <a href="shop.html?cat=packages">📦 Packages</a>
+    <a href="shop.html?cat=vouchers">🎁 Gift Vouchers</a>
+    <a href="my-bookings.html">📋 My Bookings</a>
+    <a href="wallet-dashboard.html">💳 Wallet · RM150</a>
+    <a href="membership-loyalty.html">🏅 Membership</a>
+  </nav>
+</header>
+
+<!-- Hero Banner -->
+<section class="ec-hero">
+  <div class="ec-hero-slide">
+    <div class="ec-hero-content">
+      <div class="ec-hero-eyebrow">✨ Limited Time Offer</div>
+      <h1 class="ec-hero-title">Transform Your Look This Weekend</h1>
+      <p class="ec-hero-sub">Book any hair colour service and get <strong>10% off</strong> when you pay with wallet. Professional stylists, premium products, lasting results.</p>
+      <div class="ec-hero-actions">
+        <a href="shop.html?cat=services" class="ec-hero-btn-primary">Book Now</a>
+        <a href="shop.html" class="ec-hero-btn-outline">Browse All Services</a>
       </div>
     </div>
-  </main>
+    <div class="ec-hero-visual">💇‍♀️</div>
+  </div>
+  <div class="ec-hero-dots">
+    <div class="ec-dot active"></div>
+    <div class="ec-dot"></div>
+    <div class="ec-dot"></div>
+  </div>
+</section>
+
+<!-- Category Quick Access -->
+<section class="ec-section" style="padding-bottom:0;">
+  <div class="ec-section-header">
+    <div>
+      <div class="ec-section-title">Shop by Category</div>
+      <div class="ec-section-sub">What are you looking for today?</div>
+    </div>
+  </div>
+  <div class="category-grid">
+    <a href="shop.html?cat=haircut" class="category-card">
+      <div class="category-icon" style="background:#e8f0fb;">✂️</div>
+      <span class="category-name">Hair Cut &amp; Style</span>
+    </a>
+    <a href="shop.html?cat=colour" class="category-card">
+      <div class="category-icon" style="background:#fce4e4;">🎨</div>
+      <span class="category-name">Hair Colour</span>
+    </a>
+    <a href="shop.html?cat=treatment" class="category-card">
+      <div class="category-icon" style="background:#e8f5e9;">💆‍♀️</div>
+      <span class="category-name">Hair Treatment</span>
+    </a>
+    <a href="shop.html?cat=nails" class="category-card">
+      <div class="category-icon" style="background:#fce8f5;">💅</div>
+      <span class="category-name">Nail Services</span>
+    </a>
+    <a href="shop.html?cat=facial" class="category-card">
+      <div class="category-icon" style="background:#f3e8fc;">✨</div>
+      <span class="category-name">Facial &amp; Skin</span>
+    </a>
+    <a href="shop.html?cat=products" class="category-card">
+      <div class="category-icon" style="background:#fff3e0;">🧴</div>
+      <span class="category-name">Retail Products</span>
+    </a>
+    <a href="shop.html?cat=packages" class="category-card">
+      <div class="category-icon" style="background:#e8f5e9;">📦</div>
+      <span class="category-name">Packages</span>
+    </a>
+    <a href="shop.html?cat=vouchers" class="category-card">
+      <div class="category-icon" style="background:#fff9e0;">🎁</div>
+      <span class="category-name">Gift Vouchers</span>
+    </a>
+  </div>
+</section>
+
+<!-- Featured Services -->
+<section class="ec-section">
+  <div class="ec-section-header">
+    <div>
+      <div class="ec-section-title">Featured Services</div>
+      <div class="ec-section-sub">Book and pay online — guaranteed slots</div>
+    </div>
+    <a href="shop.html?cat=services" class="ec-view-all">View all services →</a>
+  </div>
+  <div class="product-grid" style="grid-template-columns:repeat(4,1fr);">
+
+    <!-- Service 1 -->
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img product-img-service">
+        <div class="product-img-inner">✂️</div>
+        <div class="product-badge"><span class="badge-best">POPULAR</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Hair Services</div>
+        <div class="product-name">Precision Haircut + Blowdry</div>
+        <div class="product-variant-hint">4 length options · Any stylist</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.9 (312)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price-from">from </span>
+          <span class="product-price">RM 68</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <a href="service-detail.html" class="btn-book-now">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img product-img-service">
+        <div class="product-img-inner">🎨</div>
+        <div class="product-badge"><span class="badge-sale">SAVE RM30</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Hair Colour</div>
+        <div class="product-name">Global Colour + Toner Treatment</div>
+        <div class="product-variant-hint">3 length options · Colour choice</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.8 (196)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price-from">from </span>
+          <span class="product-price">RM 150</span>
+          <span class="product-price-orig">RM 180</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <a href="service-detail.html" class="btn-book-now">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Service 3 -->
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img product-img-service">
+        <div class="product-img-inner">💆‍♀️</div>
+        <div class="product-badge"><span class="badge-new">NEW</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Treatment</div>
+        <div class="product-name">Keratin Smoothing Treatment</div>
+        <div class="product-variant-hint">3 length options · Add-ons available</div>
+        <div class="product-rating">
+          <span class="stars">★★★★½</span>
+          <span class="rating-count">4.7 (84)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price-from">from </span>
+          <span class="product-price">RM 220</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <a href="service-detail.html" class="btn-book-now">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Service 4 -->
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img" style="background:linear-gradient(135deg,#fce8f5,#f5c4eb);">
+        <div class="product-img-inner">💅</div>
+        <div class="product-badge"><span class="badge-best">TOP RATED</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Nail Services</div>
+        <div class="product-name">Gelish Manicure + Nail Art Design</div>
+        <div class="product-variant-hint">Nail art design selection</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.9 (441)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price-from">from </span>
+          <span class="product-price">RM 88</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <a href="service-detail.html" class="btn-book-now">Book Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Promo Banners -->
+<div class="promo-strip">
+  <a href="shop.html?cat=packages" class="promo-card promo-card-a">
+    <div class="promo-content">
+      <div class="promo-eyebrow">Service Packages</div>
+      <div class="promo-title">Prepaid Packages<br>Save Up to 20%</div>
+      <div class="promo-sub">Buy a 5-session package and get 1 free. Redeem anytime.</div>
+      <span class="promo-btn">Shop Packages →</span>
+    </div>
+    <div class="promo-emoji">📦</div>
+  </a>
+  <a href="shop.html?cat=vouchers" class="promo-card promo-card-b">
+    <div class="promo-content">
+      <div class="promo-eyebrow">Gift Vouchers</div>
+      <div class="promo-title">Give the Gift<br>of Beauty</div>
+      <div class="promo-sub">Digital gift vouchers delivered instantly. RM50–RM500.</div>
+      <span class="promo-btn">Buy Voucher →</span>
+    </div>
+    <div class="promo-emoji">🎁</div>
+  </a>
 </div>
-</body></html>
+
+<!-- Bestselling Products -->
+<section class="ec-section" style="background:#fff;border-top:0.5px solid #E2E1DC;border-bottom:0.5px solid #E2E1DC;">
+  <div class="ec-section-header">
+    <div>
+      <div class="ec-section-title">Bestselling Products</div>
+      <div class="ec-section-sub">Professional haircare available for purchase</div>
+    </div>
+    <a href="shop.html?cat=products" class="ec-view-all">View all products →</a>
+  </div>
+  <div class="product-grid" style="grid-template-columns:repeat(5,1fr);">
+
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product">
+        <div class="product-img-inner">🧴</div>
+        <div class="product-badge"><span class="badge-best">BESTSELLER</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Kerastase</div>
+        <div class="product-name">Nutritive Bain Satin Shampoo</div>
+        <div class="product-variant-hint">250ml / 500ml / 1000ml</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.8 (203)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 89</span>
+          <span class="product-price-orig">RM 110</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product">
+        <div class="product-img-inner">🫧</div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Olaplex</div>
+        <div class="product-name">No.3 Hair Perfector Treatment</div>
+        <div class="product-variant-hint">100ml · One size</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.9 (387)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 149</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product">
+        <div class="product-img-inner">💊</div>
+        <div class="product-badge"><span class="badge-new">NEW</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">L'Oréal Professionnel</div>
+        <div class="product-name">Absolut Repair Molecular Hair Mask</div>
+        <div class="product-variant-hint">250ml / 500ml</div>
+        <div class="product-rating">
+          <span class="stars">★★★★½</span>
+          <span class="rating-count">4.7 (142)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 98</span>
+          <span class="product-price-orig">RM 120</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product">
+        <div class="product-img-inner">💧</div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Moroccanoil</div>
+        <div class="product-name">Argan Oil Treatment Serum</div>
+        <div class="product-variant-hint">25ml / 100ml</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.9 (521)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 65</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product">
+        <div class="product-img-inner">🌸</div>
+        <div class="product-badge"><span class="badge-sale">-20%</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Davines</div>
+        <div class="product-name">OI Shampoo — Roucou Oil Enriched</div>
+        <div class="product-variant-hint">3 scents · 280ml / 1000ml</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.8 (98)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 76</span>
+          <span class="product-price-orig">RM 95</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Service Packages -->
+<section class="ec-section">
+  <div class="ec-section-header">
+    <div>
+      <div class="ec-section-title">Service Packages</div>
+      <div class="ec-section-sub">Prepaid bundles — save up to 20% vs single bookings</div>
+    </div>
+    <a href="shop.html?cat=packages" class="ec-view-all">View all packages →</a>
+  </div>
+  <div class="product-grid" style="grid-template-columns:repeat(3,1fr);">
+
+    <div class="product-card" onclick="location.href='product.html?type=package'">
+      <div class="product-img product-img-package">
+        <div class="product-img-inner">✂️</div>
+        <div class="product-badge"><span class="badge-pkg">PACKAGE</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Hair Care Package</div>
+        <div class="product-name">5× Wash &amp; Blowdry + 1 Free</div>
+        <div class="product-variant-hint">6 sessions · 6-month validity · Any outlet</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.9 (187)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 250</span>
+          <span class="product-price-orig">RM 312</span>
+          <span class="badge-sale" style="font-size:10px;padding:2px 6px;">SAVE 20%</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Package</button>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="location.href='product.html?type=package'">
+      <div class="product-img product-img-package">
+        <div class="product-img-inner">🌟</div>
+        <div class="product-badge"><span class="badge-best">POPULAR</span><span class="badge-pkg">PACKAGE</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Bridal Package</div>
+        <div class="product-name">Complete Bridal Glam Package</div>
+        <div class="product-variant-hint">Hair + Makeup + Nails · 1 day · 3 pax max</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">5.0 (43)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 680</span>
+          <span class="product-price-orig">RM 820</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Package</button>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="location.href='product.html?type=package'">
+      <div class="product-img product-img-package">
+        <div class="product-img-inner">💆‍♀️</div>
+        <div class="product-badge"><span class="badge-pkg">PACKAGE</span></div>
+        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Monthly Plan</div>
+        <div class="product-name">Monthly Hair Care Membership</div>
+        <div class="product-variant-hint">1 cut + 2 washes + 1 treatment per month</div>
+        <div class="product-rating">
+          <span class="stars">★★★★½</span>
+          <span class="rating-count">4.7 (92)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">RM 180<span style="font-size:12px;font-weight:400;">/mo</span></span>
+          <span class="product-price-orig">RM 280</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Gift Vouchers -->
+<section class="ec-section" style="background:#fff8e6;border-top:0.5px solid #E2E1DC;border-bottom:0.5px solid #E2E1DC;">
+  <div class="ec-section-header">
+    <div>
+      <div class="ec-section-title">🎁 Gift Vouchers</div>
+      <div class="ec-section-sub">Digital vouchers delivered instantly · Valid 12 months</div>
+    </div>
+    <a href="shop.html?cat=vouchers" class="ec-view-all">View all vouchers →</a>
+  </div>
+  <div class="product-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=50'">
+      <div class="product-img product-img-voucher">
+        <div class="product-img-inner">🎟️</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Gift Voucher</div>
+        <div class="product-name">RM 50 Gift Voucher</div>
+        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
+        <div class="product-price-row">
+          <span class="product-price">RM 50</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
+      </div>
+    </div>
+    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=100'">
+      <div class="product-img product-img-voucher">
+        <div class="product-img-inner">🎫</div>
+        <div class="product-badge"><span class="badge-best">POPULAR</span></div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Gift Voucher</div>
+        <div class="product-name">RM 100 Gift Voucher</div>
+        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
+        <div class="product-price-row">
+          <span class="product-price">RM 100</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
+      </div>
+    </div>
+    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=200'">
+      <div class="product-img product-img-voucher">
+        <div class="product-img-inner">🏷️</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Gift Voucher</div>
+        <div class="product-name">RM 200 Gift Voucher</div>
+        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
+        <div class="product-price-row">
+          <span class="product-price">RM 200</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
+      </div>
+    </div>
+    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=500'">
+      <div class="product-img product-img-voucher">
+        <div class="product-img-inner">👑</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Premium Gift</div>
+        <div class="product-name">RM 500 Premium Gift Voucher</div>
+        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
+        <div class="product-price-row">
+          <span class="product-price">RM 500</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recently Viewed -->
+<section class="ec-section">
+  <div class="ec-section-header">
+    <div>
+      <div class="ec-section-title">Recently Viewed</div>
+    </div>
+    <a href="visit-history.html" class="ec-view-all">View history →</a>
+  </div>
+  <div class="product-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img product-img-service">
+        <div class="product-img-inner">💇‍♀️</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Hair Services</div>
+        <div class="product-name">Highlights — Balayage Technique</div>
+        <div class="product-price-row"><span class="product-price-from">from </span><span class="product-price">RM 280</span></div>
+      </div>
+      <div class="product-footer"><a href="service-detail.html" class="btn-book-now">Book</a></div>
+    </div>
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product">
+        <div class="product-img-inner">💜</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Schwarzkopf</div>
+        <div class="product-name">BC Bonacure Color Freeze Conditioner</div>
+        <div class="product-price-row"><span class="product-price">RM 72</span><span class="product-price-orig">RM 90</span></div>
+      </div>
+      <div class="product-footer"><button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button></div>
+    </div>
+    <div class="product-card" onclick="location.href='service-detail.html'">
+      <div class="product-img" style="background:linear-gradient(135deg,#e8f5e9,#c4f0cc);">
+        <div class="product-img-inner">🌿</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Facial</div>
+        <div class="product-name">Deep Cleansing Facial + LED Therapy</div>
+        <div class="product-price-row"><span class="product-price-from">from </span><span class="product-price">RM 168</span></div>
+      </div>
+      <div class="product-footer"><a href="service-detail.html" class="btn-book-now">Book</a></div>
+    </div>
+    <div class="product-card" onclick="location.href='product.html'">
+      <div class="product-img product-img-product">
+        <div class="product-img-inner">✨</div>
+        <div class="product-badge"><span class="badge-new">NEW</span></div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">GHD</div>
+        <div class="product-name">Platinum+ Styler Heat Protectant Spray</div>
+        <div class="product-price-row"><span class="product-price">RM 55</span></div>
+      </div>
+      <div class="product-footer"><button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="ec-footer">
+  <div class="ec-footer-grid">
+    <div>
+      <div class="ec-footer-logo">Precision Salon</div>
+      <p class="ec-footer-desc">Malaysia's premier multi-outlet beauty salon chain. Professional services, premium products, delivered with precision.</p>
+      <div class="ec-footer-social">
+        <a href="#">f</a>
+        <a href="#">📸</a>
+        <a href="#">💬</a>
+        <a href="#">▶</a>
+      </div>
+    </div>
+    <div class="ec-footer-col">
+      <div class="ec-footer-col-title">Services</div>
+      <a href="shop.html?cat=haircut">Hair Cut &amp; Style</a>
+      <a href="shop.html?cat=colour">Hair Colour</a>
+      <a href="shop.html?cat=treatment">Treatments</a>
+      <a href="shop.html?cat=nails">Nail Services</a>
+      <a href="shop.html?cat=facial">Facial &amp; Skin</a>
+    </div>
+    <div class="ec-footer-col">
+      <div class="ec-footer-col-title">Account</div>
+      <a href="member-profile.html">My Profile</a>
+      <a href="my-bookings.html">My Bookings</a>
+      <a href="wallet-dashboard.html">My Wallet</a>
+      <a href="vouchers-packages.html">Vouchers</a>
+      <a href="affiliate-dashboard.html">Affiliate Program</a>
+    </div>
+    <div class="ec-footer-col">
+      <div class="ec-footer-col-title">Help</div>
+      <a href="#">How to Book</a>
+      <a href="#">Cancellation Policy</a>
+      <a href="#">Delivery Info</a>
+      <a href="#">Returns Policy</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="ec-footer-bottom">
+    <span>© 2026 Precision Salon OS · Vosme International Sdn Bhd</span>
+    <span>SST Reg: W10-1808-32018008 · PDPA Compliant</span>
+    <span>🇲🇾 Serving Kuala Lumpur, Bangsar, Mont Kiara, Petaling Jaya</span>
+  </div>
+</footer>
+
+<!-- Cart Toast Notification -->
+<div class="cart-toast" id="cartToast">
+  <span class="cart-toast-icon">🛒</span>
+  <div class="cart-toast-text">
+    <div class="cart-toast-title">Added to cart!</div>
+    <div class="cart-toast-sub">Cart updated · 3 items</div>
+  </div>
+  <a href="cart.html" class="cart-toast-btn">View Cart</a>
+</div>
+
+<script>
+function showToast() {
+  const t = document.getElementById('cartToast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+// Active nav highlighting on scroll
+document.querySelectorAll('.ec-nav a').forEach(a => {
+  if (a.getAttribute('href') === 'home.html') a.classList.add('active');
+});
+</script>
+</body>
+</html>

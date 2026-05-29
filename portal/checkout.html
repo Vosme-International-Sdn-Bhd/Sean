@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Precision Salon</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/shop.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.checkout-page { max-width:1100px; margin:0 auto; padding:28px 24px 60px; }
+
+/* Steps */
+.checkout-steps { display:flex; align-items:center; margin-bottom:32px; }
+.co-step { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; }
+.co-step-num { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; }
+.co-step.done .co-step-num { background:#059669; color:#fff; }
+.co-step.active .co-step-num { background:var(--primary); color:#fff; }
+.co-step.pending .co-step-num { background:#e5e7eb; color:#9ca3af; }
+.co-step.done { color:#059669; }
+.co-step.active { color:var(--primary); }
+.co-step.pending { color:#9ca3af; }
+.co-step-line { flex:1; height:1px; background:var(--border); margin:0 12px; }
+.co-step-line.done { background:#059669; }
+
+/* Layout */
+.checkout-layout { display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:start; }
+
+/* Form cards */
+.co-card { background:#fff; border:0.5px solid var(--border); border-radius:12px; margin-bottom:20px; overflow:hidden; }
+.co-card-header { padding:16px 20px; border-bottom:0.5px solid var(--border); background:#faf9f5; display:flex; align-items:center; justify-content:space-between; }
+.co-card-title { font-size:15px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:8px; }
+.co-card-edit { font-size:12px; color:var(--primary); cursor:pointer; font-weight:600; }
+.co-card-body { padding:20px; }
+
+/* Form fields */
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.form-row.full { grid-template-columns:1fr; }
+.form-row.three { grid-template-columns:1fr 1fr 1fr; }
+.form-group { display:flex; flex-direction:column; gap:5px; }
+.form-label { font-size:11px; font-weight:600; color:#6b7280; text-transform:uppercase; letter-spacing:.05em; }
+.form-input { padding:10px 13px; border:1.5px solid var(--border); border-radius:7px; font-size:13px; font-family:'Libre Franklin',sans-serif; outline:none; transition:border-color .15s; background:#fff; }
+.form-input:focus { border-color:var(--primary); }
+.form-select { padding:10px 13px; border:1.5px solid var(--border); border-radius:7px; font-size:13px; font-family:'Libre Franklin',sans-serif; outline:none; background:#fff; color:var(--text); cursor:pointer; }
+.form-select:focus { border-color:var(--primary); }
+
+/* Delivery toggle */
+.delivery-toggle { display:flex; gap:12px; margin-bottom:20px; }
+.delivery-opt { flex:1; border:1.5px solid var(--border); border-radius:8px; padding:12px 16px; cursor:pointer; display:flex; align-items:center; gap:10px; font-size:13px; font-weight:600; transition:all .15s; }
+.delivery-opt.active { border-color:var(--primary); background:#f0f7ff; color:var(--primary); }
+.delivery-opt input { accent-color:var(--primary); }
+
+/* Payment methods */
+.payment-method-list { display:flex; flex-direction:column; gap:10px; }
+.payment-method-card { border:1.5px solid var(--border); border-radius:10px; padding:14px 16px; cursor:pointer; display:flex; align-items:flex-start; gap:12px; transition:all .15s; }
+.payment-method-card:hover { border-color:var(--primary); }
+.payment-method-card.active { border-color:var(--primary); background:#f0f7ff; }
+.payment-method-card input[type="radio"] { margin-top:2px; accent-color:var(--primary); flex-shrink:0; }
+.pm-icon { font-size:22px; flex-shrink:0; }
+.pm-body { flex:1; }
+.pm-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:2px; }
+.pm-desc { font-size:11px; color:#6b7280; }
+.pm-balance { font-size:13px; font-weight:700; color:#059669; }
+.pm-sub-form { display:none; margin-top:14px; padding-top:14px; border-top:0.5px solid var(--border); }
+.pm-sub-form.show { display:block; }
+.pm-bank-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; }
+.pm-bank-btn { border:1.5px solid var(--border); border-radius:6px; padding:8px 6px; font-size:11px; font-weight:600; cursor:pointer; background:#fff; text-align:center; transition:all .15s; }
+.pm-bank-btn:hover, .pm-bank-btn.active { border-color:var(--primary); background:#f0f7ff; color:var(--primary); }
+
+/* QR Code area */
+.qr-area { text-align:center; padding:20px; background:#f9f8f3; border-radius:8px; margin-top:10px; }
+.qr-box { width:140px; height:140px; margin:0 auto 12px; background:#fff; border:3px solid var(--text); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:60px; }
+.qr-expire { font-size:11px; color:#6b7280; }
+
+/* Card form */
+.card-input-group { position:relative; }
+.card-icon { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:16px; }
+.card-row { display:grid; grid-template-columns:2fr 1fr 1fr; gap:10px; }
+
+/* Order summary (sidebar) */
+.co-order-summary { background:#fff; border:0.5px solid var(--border); border-radius:12px; padding:24px; position:sticky; top:80px; }
+.co-summary-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:16px; }
+.co-item-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; padding-bottom:12px; border-bottom:0.5px solid var(--border); }
+.co-item-row:last-of-type { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.co-item-img { width:44px; height:44px; border-radius:6px; background:#f5f4ef; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.co-item-info { flex:1; }
+.co-item-name { font-size:12px; font-weight:600; color:var(--text); line-height:1.3; }
+.co-item-var { font-size:10px; color:#9ca3af; }
+.co-item-price { font-size:13px; font-weight:800; color:var(--text); flex-shrink:0; }
+.co-divider { border:none; border-top:0.5px solid var(--border); margin:14px 0; }
+.co-row { display:flex; justify-content:space-between; font-size:12px; color:#6b7280; margin-bottom:8px; }
+.co-row .v { color:var(--text); font-weight:600; }
+.co-row .v.g { color:#059669; }
+.co-total-row { display:flex; justify-content:space-between; font-size:16px; font-weight:800; color:var(--text); border-top:0.5px solid var(--border); padding-top:14px; margin-top:6px; }
+.co-total-row .v { color:var(--primary); font-size:20px; }
+.btn-place-order { width:100%; padding:15px; background:var(--primary); color:#fff; border:none; border-radius:10px; font-size:15px; font-weight:800; cursor:pointer; margin-top:20px; transition:background .15s; display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; }
+.btn-place-order:hover { background:#1554a0; }
+.order-terms { font-size:10px; color:#9ca3af; text-align:center; margin-top:10px; line-height:1.6; }
+
+/* Wallet partial usage indicator */
+.wallet-bar { background:#f0f7ff; border:0.5px solid #c3d9f5; border-radius:8px; padding:12px; margin-bottom:14px; }
+.wallet-bar-label { font-size:11px; color:#1a5fa8; font-weight:700; margin-bottom:8px; display:flex; justify-content:space-between; }
+.wallet-bar-track { height:8px; background:#e0eefc; border-radius:4px; overflow:hidden; }
+.wallet-bar-fill { height:100%; background:var(--primary); border-radius:4px; }
+
+@media(max-width:900px){
+  .checkout-layout { grid-template-columns:1fr; }
+  .co-order-summary { position:static; }
+  .form-row { grid-template-columns:1fr; }
+  .form-row.three { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<!-- Back link -->
+<div style="background:#faf9f5;border-bottom:0.5px solid #E2E1DC;padding:8px 24px;"><a href="../index.html" style="font-size:11px;color:#1a5fa8;text-decoration:none;font-family:JetBrains Mono,monospace;letter-spacing:0.02em;">&#8592; Precision Salon OS — GUI Overview</a></div>
+
+<!-- EC Header (simplified for checkout) -->
+<div class="ec-announce-bar">🔒 Secure Checkout — SSL Encrypted · Powered by Fiuu Payment Gateway</div>
+<header class="ec-header">
+  <div class="ec-header-inner">
+    <a class="ec-logo" href="home.html">Precision<span>Salon</span></a>
+    <div style="flex:1;max-width:400px;font-size:13px;color:#6b7280;text-align:center;">🔒 Secure Checkout</div>
+    <div class="ec-header-actions">
+      <a class="ec-action-btn" href="cart.html"><span>🛒</span>Back to Cart</a>
+      <a class="ec-action-btn" href="member-profile.html"><span>👤</span>Account</a>
+    </div>
+  </div>
+</header>
+
+<div class="checkout-page">
+  <!-- Steps -->
+  <div class="checkout-steps">
+    <div class="co-step done"><div class="co-step-num">✓</div> Cart</div>
+    <div class="co-step-line done"></div>
+    <div class="co-step active"><div class="co-step-num">2</div> Checkout</div>
+    <div class="co-step-line"></div>
+    <div class="co-step pending"><div class="co-step-num">3</div> Confirmation</div>
+  </div>
+
+  <div class="checkout-layout">
+    <!-- Left: Form column -->
+    <div>
+
+      <!-- Contact Info -->
+      <div class="co-card">
+        <div class="co-card-header">
+          <div class="co-card-title">👤 Contact Information</div>
+          <span class="co-card-edit">Logged in as Aisha Rahman</span>
+        </div>
+        <div class="co-card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input class="form-input" type="text" value="Aisha">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input class="form-input" type="text" value="Rahman">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-input" type="email" value="aisha.rahman@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input class="form-input" type="tel" value="+60 12-345 6789">
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label" style="display:flex;align-items:center;gap:6px;"><input type="checkbox" checked style="accent-color:var(--primary);"> Receive booking confirmation &amp; receipt via WhatsApp</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery method toggle (for products) -->
+      <div class="co-card">
+        <div class="co-card-header">
+          <div class="co-card-title">🚚 Product Delivery Method</div>
+          <span style="font-size:11px;color:#6b7280;">Applies to: Moroccanoil Treatment Oil, Hydrating Shampoo</span>
+        </div>
+        <div class="co-card-body">
+          <div class="delivery-toggle">
+            <div class="delivery-opt active" onclick="setDelivery(this,'ship')">
+              <input type="radio" name="delivery" checked>
+              <div>
+                <div style="font-size:13px;font-weight:700;">🚚 Standard Delivery</div>
+                <div style="font-size:11px;color:#6b7280;">RM 8 · Est. 2–4 Jun 2026</div>
+              </div>
+            </div>
+            <div class="delivery-opt" onclick="setDelivery(this,'pickup')">
+              <input type="radio" name="delivery">
+              <div>
+                <div style="font-size:13px;font-weight:700;">🏪 In-Store Pickup</div>
+                <div style="font-size:11px;color:#6b7280;">Free · Ready tomorrow · At your booked outlet</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping address (shown when delivery selected) -->
+          <div id="ship-address">
+            <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:12px;">Delivery Address</div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label class="form-label">Address Line 1</label>
+                <input class="form-input" type="text" value="Unit 12A, Plaza Damas" placeholder="Street address">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label class="form-label">Address Line 2</label>
+                <input class="form-input" type="text" placeholder="Apartment, suite, etc. (optional)">
+              </div>
+            </div>
+            <div class="form-row three">
+              <div class="form-group">
+                <label class="form-label">City</label>
+                <input class="form-input" type="text" value="Kuala Lumpur">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Postcode</label>
+                <input class="form-input" type="text" value="50480">
+              </div>
+              <div class="form-group">
+                <label class="form-label">State</label>
+                <select class="form-select">
+                  <option selected>Kuala Lumpur</option>
+                  <option>Selangor</option>
+                  <option>Penang</option>
+                  <option>Johor</option>
+                  <option>Perak</option>
+                  <option>Negeri Sembilan</option>
+                  <option>Melaka</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pickup info (hidden initially) -->
+          <div id="pickup-info" style="display:none;">
+            <div style="background:#f0fff4;border:0.5px solid #6ee7b7;border-radius:8px;padding:12px 14px;font-size:12px;color:#065f46;">
+              🏪 <strong>Pickup at Precision Salon KL Pavilion</strong><br>
+              Ready by tomorrow 10:00 AM · Bring your order confirmation<br>
+              <span style="color:#6b7280;">Lot 3.09, Level 3, Pavilion KL, Jalan Bukit Bintang, 55100 KL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking confirmation info -->
+      <div class="co-card">
+        <div class="co-card-header">
+          <div class="co-card-title">📅 Booking Details</div>
+          <a href="service-detail.html" class="co-card-edit">Edit</a>
+        </div>
+        <div class="co-card-body">
+          <div style="background:#f0f7ff;border:0.5px solid #c3d9f5;border-radius:8px;padding:14px 16px;">
+            <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">Precision Haircut + Blowdry</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:#6b7280;">
+              <div>📅 Date: <strong style="color:var(--text);">2 Jun 2026</strong></div>
+              <div>⏰ Time: <strong style="color:var(--text);">11:00 AM</strong></div>
+              <div>💇 Stylist: <strong style="color:var(--text);">Aishah</strong></div>
+              <div>🏪 Outlet: <strong style="color:var(--text);">KL Pavilion</strong></div>
+              <div>💆 Type: <strong style="color:var(--text);">Long Hair</strong></div>
+              <div>⏱️ Duration: <strong style="color:var(--text);">~90 min</strong></div>
+            </div>
+            <div style="margin-top:10px;padding-top:10px;border-top:0.5px solid #c3d9f5;font-size:11px;color:#6b7280;">
+              Add-ons: Deep Conditioning +RM30 · Scalp Massage +RM20
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="co-card">
+        <div class="co-card-header">
+          <div class="co-card-title">💳 Payment Method</div>
+        </div>
+        <div class="co-card-body">
+
+          <!-- Wallet partial use indicator -->
+          <div class="wallet-bar">
+            <div class="wallet-bar-label"><span>💰 Wallet Balance Available</span><span>RM 85.00 / RM 252.56</span></div>
+            <div class="wallet-bar-track"><div class="wallet-bar-fill" style="width:33.7%;"></div></div>
+            <div style="font-size:10px;color:#6b7280;margin-top:6px;">Use wallet to offset RM 85.00 — pay remaining RM 167.56 via another method</div>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:#1a5fa8;margin-top:8px;cursor:pointer;font-weight:600;"><input type="checkbox" id="use-wallet" checked style="accent-color:var(--primary);"> Apply RM 85.00 wallet balance</label>
+          </div>
+
+          <div class="payment-method-list">
+
+            <!-- FPX -->
+            <div class="payment-method-card active" onclick="selectPM(this,'fpx')">
+              <input type="radio" name="pm" checked>
+              <span class="pm-icon">🏦</span>
+              <div class="pm-body">
+                <div class="pm-name">FPX — Online Banking</div>
+                <div class="pm-desc">Maybank2u, CIMB Clicks, Public Bank, RHB &amp; more</div>
+                <div class="pm-sub-form show" id="fpx-form">
+                  <div class="pm-bank-grid">
+                    <button class="pm-bank-btn active" onclick="selectBank(event,this)">Maybank</button>
+                    <button class="pm-bank-btn" onclick="selectBank(event,this)">CIMB</button>
+                    <button class="pm-bank-btn" onclick="selectBank(event,this)">Public Bank</button>
+                    <button class="pm-bank-btn" onclick="selectBank(event,this)">RHB</button>
+                    <button class="pm-bank-btn" onclick="selectBank(event,this)">HLB</button>
+                    <button class="pm-bank-btn" onclick="selectBank(event,this)">AmBank</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DuitNow QR -->
+            <div class="payment-method-card" onclick="selectPM(this,'duitnow')">
+              <input type="radio" name="pm">
+              <span class="pm-icon">📱</span>
+              <div class="pm-body">
+                <div class="pm-name">DuitNow QR</div>
+                <div class="pm-desc">Scan QR with any Malaysian banking app or e-wallet</div>
+                <div class="pm-sub-form" id="duitnow-form">
+                  <div class="qr-area">
+                    <div class="qr-box">🔲</div>
+                    <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Scan to pay RM 167.56</div>
+                    <div class="qr-expire">QR expires in <strong>10:00</strong> · Refresh if expired</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Credit/Debit Card -->
+            <div class="payment-method-card" onclick="selectPM(this,'card')">
+              <input type="radio" name="pm">
+              <span class="pm-icon">💳</span>
+              <div class="pm-body">
+                <div class="pm-name">Credit / Debit Card</div>
+                <div class="pm-desc">Visa, Mastercard, American Express · 0% fee</div>
+                <div class="pm-sub-form" id="card-form">
+                  <div class="form-group" style="margin-bottom:10px;">
+                    <label class="form-label">Card Number</label>
+                    <div class="card-input-group">
+                      <input class="form-input" type="text" placeholder="1234 5678 9012 3456" maxlength="19" style="width:100%;box-sizing:border-box;padding-right:40px;">
+                      <span class="card-icon">💳</span>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin-bottom:10px;">
+                    <label class="form-label">Cardholder Name</label>
+                    <input class="form-input" type="text" placeholder="Name as on card" style="width:100%;box-sizing:border-box;">
+                  </div>
+                  <div class="card-row">
+                    <div class="form-group">
+                      <label class="form-label">Expiry</label>
+                      <input class="form-input" type="text" placeholder="MM / YY">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">CVV</label>
+                      <input class="form-input" type="text" placeholder="123" maxlength="4">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Instalment</label>
+                      <select class="form-select"><option>Full Payment</option><option>3 months</option><option>6 months</option><option>12 months</option></select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Touch 'n Go -->
+            <div class="payment-method-card" onclick="selectPM(this,'tng')">
+              <input type="radio" name="pm">
+              <span class="pm-icon">🟢</span>
+              <div class="pm-body">
+                <div class="pm-name">Touch 'n Go eWallet</div>
+                <div class="pm-desc">Pay instantly via TnG app — redirect to confirm</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- LHDN e-Invoice option -->
+          <div style="margin-top:20px;padding-top:16px;border-top:0.5px solid var(--border);">
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;">
+              <input type="checkbox" id="need-invoice" style="accent-color:var(--primary);margin-top:2px;" onchange="toggleInvoice()">
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);">🧾 Request LHDN e-Invoice</div>
+                <div style="font-size:11px;color:#6b7280;">For business / company expense claims. TIN required.</div>
+              </div>
+            </label>
+            <div id="invoice-form" style="display:none;margin-top:14px;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Company Name</label>
+                  <input class="form-input" type="text" placeholder="Syarikat / Company name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">TIN / Company Reg No.</label>
+                  <input class="form-input" type="text" placeholder="C12345678">
+                </div>
+              </div>
+              <div class="form-row full">
+                <div class="form-group">
+                  <label class="form-label">SST Registration No. (optional)</label>
+                  <input class="form-input" type="text" placeholder="W10-XXXXX-32000000-X">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div>
+      <div class="co-order-summary">
+        <div class="co-summary-title">Order Review</div>
+
+        <div class="co-item-row">
+          <div class="co-item-img">✂️</div>
+          <div class="co-item-info">
+            <div class="co-item-name">Precision Haircut + Blowdry</div>
+            <div class="co-item-var">Long Hair · Aishah · 2 Jun 11:00 AM</div>
+          </div>
+          <div class="co-item-price">RM 138.00</div>
+        </div>
+
+        <div class="co-item-row">
+          <div class="co-item-img">💆</div>
+          <div class="co-item-info">
+            <div class="co-item-name">Moroccanoil Treatment Oil</div>
+            <div class="co-item-var">100ml · Original · Amber Gold × 1</div>
+          </div>
+          <div class="co-item-price">RM 89.00</div>
+        </div>
+
+        <div class="co-item-row">
+          <div class="co-item-img">🧴</div>
+          <div class="co-item-info">
+            <div class="co-item-name">Hydrating Shampoo</div>
+            <div class="co-item-var">250ml · Normal × 1</div>
+          </div>
+          <div class="co-item-price">RM 68.00</div>
+        </div>
+
+        <hr class="co-divider">
+
+        <div class="co-row"><span>Subtotal</span><span class="v">RM 295.00</span></div>
+        <div class="co-row"><span>Product discount</span><span class="v g">−RM 43.00</span></div>
+        <div class="co-row"><span>Wallet applied</span><span class="v g">−RM 85.00</span></div>
+        <div class="co-row"><span>Delivery (standard)</span><span class="v">RM 8.00</span></div>
+        <div class="co-row"><span>SST (8%)</span><span class="v">RM 12.56</span></div>
+        <hr class="co-divider">
+        <div class="co-row"><span>Balance to pay</span><span class="v" style="color:#6b7280;">(wallet offset)</span></div>
+        <div class="co-total-row"><span>Total Due</span><span class="v">RM 167.56</span></div>
+
+        <a href="order-confirmation.html" class="btn-place-order">🔒 Place Order</a>
+
+        <div class="order-terms">
+          By placing your order, you agree to our <a href="#" style="color:var(--primary);">Terms of Service</a> and <a href="#" style="color:var(--primary);">Privacy Policy (PDPA)</a>. Booking is confirmed upon payment.
+        </div>
+
+        <div class="payment-icons" style="display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+          <span class="payment-icon">FPX</span>
+          <span class="payment-icon">DuitNow</span>
+          <span class="payment-icon">Visa</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">TnG</span>
+          <span class="payment-icon" style="background:#ffe;color:#d97706;border-color:#f59e0b;">LHDN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function selectPM(card, id) {
+  document.querySelectorAll('.payment-method-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  card.querySelector('input[type="radio"]').checked = true;
+  document.querySelectorAll('.pm-sub-form').forEach(f => f.classList.remove('show'));
+  const form = document.getElementById(id+'-form');
+  if(form) form.classList.add('show');
+}
+function selectBank(e, btn) {
+  e.stopPropagation();
+  document.querySelectorAll('.pm-bank-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function setDelivery(el, type) {
+  document.querySelectorAll('.delivery-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+  el.querySelector('input').checked = true;
+  document.getElementById('ship-address').style.display = type === 'ship' ? 'block' : 'none';
+  document.getElementById('pickup-info').style.display = type === 'pickup' ? 'block' : 'none';
+}
+function toggleInvoice() {
+  const show = document.getElementById('need-invoice').checked;
+  document.getElementById('invoice-form').style.display = show ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
