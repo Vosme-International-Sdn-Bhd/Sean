@@ -1,4 +1,4 @@
-/* Precision Salon OS — Design System */
+﻿/* Precision Salon OS — Design System */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
@@ -286,3 +286,44 @@ tr:hover td { background: var(--surface-low); }
 .system-metric { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 20px; border-left: 3px solid var(--primary); }
 .system-metric.warn { border-left-color: var(--warning); }
 .system-metric.danger { border-left-color: var(--danger); }
+
+/* ─── Skeleton / Loading ───────────────────────────────────────────── */
+@keyframes ps-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.ps-skel {
+  background: linear-gradient(90deg, #f0eeea 25%, #e8e6e1 50%, #f0eeea 75%);
+  background-size: 800px 100%;
+  animation: ps-shimmer 1.4s infinite;
+  border-radius: 4px;
+}
+@keyframes ps-spin {
+  to { transform: rotate(360deg); }
+}
+.ps-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid #E2E1DC;
+  border-top-color: #1a5fa8;
+  border-radius: 50%;
+  animation: ps-spin .7s linear infinite;
+}
+
+/* ─── Error / Empty States ─────────────────────────────────────────── */
+.ps-empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 14px; padding: 64px 24px; text-align: center;
+}
+.ps-empty-icon  { font-size: 56px; line-height: 1; }
+.ps-empty-title { font-size: 18px; font-weight: 700; color: var(--text, #1b1c1a); }
+.ps-empty-sub   { font-size: 14px; color: #6b7280; max-width: 320px; line-height: 1.6; }
+
+/* ─── Field Error ──────────────────────────────────────────────────── */
+.ps-field-error { color: #ef4444; font-size: 11px; margin-top: 4px; }
+input.error, select.error, textarea.error { border-color: #ef4444 !important; }
+
+/* ─── Disabled / Loading Btn ───────────────────────────────────────── */
+.btn-loading { opacity: 0.7; pointer-events: none; cursor: not-allowed; }
+.btn-loading::after {
+  content: ' …';
+}

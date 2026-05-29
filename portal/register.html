@@ -15,54 +15,65 @@
     <div class="auth-logo">Precision Salon OS</div>
     <div class="auth-sub">Create your member account</div>
 
+    <form id="reg-form" novalidate>
     <div class="grid grid-2 mb-16" style="gap:12px;">
       <div>
         <label class="field-label">First Name</label>
-        <input type="text" class="input" placeholder="Sarah">
+        <input type="text" id="reg-fname" name="fname" class="input" placeholder="Sarah"
+          data-required data-error-msg="First name is required">
       </div>
       <div>
         <label class="field-label">Last Name</label>
-        <input type="text" class="input" placeholder="Lim">
+        <input type="text" id="reg-lname" name="lname" class="input" placeholder="Lim"
+          data-required data-error-msg="Last name is required">
       </div>
     </div>
 
     <div class="mb-16">
       <label class="field-label">WhatsApp Number</label>
       <div class="flex gap-8">
-        <input type="text" class="input" value="+60" style="width:72px;flex-shrink:0;">
-        <input type="tel" class="input" placeholder="12-345 6789" style="flex:1;">
+        <input type="text" class="input" value="+60" style="width:72px;flex-shrink:0;" readonly>
+        <input type="tel" id="reg-phone" name="phone" class="input" placeholder="12-345 6789" style="flex:1;"
+          data-required data-error-msg="Enter your WhatsApp number">
       </div>
       <div class="text-xs text-muted mt-4">Used for booking notifications &amp; OTP login</div>
     </div>
 
     <div class="mb-16">
       <label class="field-label">Email Address</label>
-      <input type="email" class="input" placeholder="you@example.com">
+      <input type="email" id="reg-email" name="email" class="input" placeholder="you@example.com"
+        data-required data-email data-error-msg="Enter a valid email address">
     </div>
 
     <div class="mb-16">
       <label class="field-label">Password</label>
-      <input type="password" class="input" placeholder="Min. 8 characters">
+      <div style="position:relative;">
+        <input type="password" id="reg-pw" name="password" class="input" placeholder="Min. 8 characters"
+          data-required data-error-msg="Password must be at least 8 characters" style="padding-right:44px;">
+        <button type="button" onclick="togglePw('reg-pw',this)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:#9ca3af;">👁</button>
+      </div>
     </div>
 
     <div class="mb-20">
       <label class="field-label">Confirm Password</label>
-      <input type="password" class="input" placeholder="Re-enter password">
+      <input type="password" id="reg-pw2" name="confirm" class="input" placeholder="Re-enter password"
+        data-required data-error-msg="Please confirm your password">
     </div>
 
     <div class="mb-16" style="background:var(--surface-low);border:0.5px solid var(--border);border-radius:8px;padding:14px;">
       <div class="text-sm font-600 mb-8">📋 PDPA 2010 Data Consent</div>
       <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:8px;">
-        <input type="checkbox" style="margin-top:2px;flex-shrink:0;">
-        <span class="text-sm">I consent to Precision Salon OS collecting and processing my personal data for appointment management, marketing, and service delivery as described in the <a href="#" style="color:var(--primary);">Privacy Policy</a>.</span>
+        <input type="checkbox" id="reg-pdpa" style="margin-top:2px;flex-shrink:0;accent-color:#1a5fa8;">
+        <span class="text-sm">I consent to Precision Salon OS collecting and processing my personal data for appointment management, marketing, and service delivery as described in the <a href="#" style="color:var(--primary);">Privacy Policy</a>. <span style="color:#ef4444;">*</span></span>
       </label>
       <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
-        <input type="checkbox" style="margin-top:2px;flex-shrink:0;">
+        <input type="checkbox" id="reg-marketing" style="margin-top:2px;flex-shrink:0;accent-color:#1a5fa8;">
         <span class="text-sm">I agree to receive promotional messages via WhatsApp &amp; email (optional)</span>
       </label>
     </div>
 
-    <a href="home.html" class="btn btn-primary btn-full mb-12">Create Account</a>
+    <button type="submit" class="btn btn-primary btn-full mb-12" id="reg-btn">Create Account</button>
+    </form>
     <div class="text-center text-sm text-muted">
       Already have an account? <a href="login.html" style="color:var(--primary);">Sign In</a>
     </div>
@@ -72,4 +83,56 @@
     </div>
   </div>
 </div>
+
+<script src="../assets/app.js"></script>
+<script>
+function togglePw(id, btn) {
+  const inp = document.getElementById(id);
+  inp.type = inp.type === 'text' ? 'password' : 'text';
+  btn.textContent = inp.type === 'text' ? '🙈' : '👁';
+}
+
+document.getElementById('reg-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  const fname = document.getElementById('reg-fname');
+  const lname = document.getElementById('reg-lname');
+  const phone = document.getElementById('reg-phone');
+  const email = document.getElementById('reg-email');
+  const pw    = document.getElementById('reg-pw');
+  const pw2   = document.getElementById('reg-pw2');
+  const pdpa  = document.getElementById('reg-pdpa');
+
+  if (!fname.value.trim()) { Validate.showError(fname, 'First name is required'); valid = false; } else Validate.clearError(fname);
+  if (!lname.value.trim()) { Validate.showError(lname, 'Last name is required'); valid = false; } else Validate.clearError(lname);
+  if (!phone.value.trim()) { Validate.showError(phone, 'Phone number is required'); valid = false; } else Validate.clearError(phone);
+  if (!email.value.trim()) { Validate.showError(email, 'Email is required'); valid = false; }
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { Validate.showError(email, 'Enter a valid email address'); valid = false; }
+  else Validate.clearError(email);
+  if (!pw.value || pw.value.length < 8) { Validate.showError(pw, 'Password must be at least 8 characters'); valid = false; } else Validate.clearError(pw);
+  if (!pw2.value) { Validate.showError(pw2, 'Please confirm your password'); valid = false; }
+  else if (pw2.value !== pw.value) { Validate.showError(pw2, 'Passwords do not match'); valid = false; }
+  else Validate.clearError(pw2);
+  if (!pdpa.checked) {
+    let err = pdpa.closest('label').nextElementSibling;
+    if (!err || !err.classList.contains('ps-field-error')) {
+      err = document.createElement('div'); err.className = 'ps-field-error';
+      err.style.cssText = 'color:#ef4444;font-size:11px;margin-top:6px;';
+      pdpa.closest('.mb-16, div').appendChild(err);
+    }
+    err.textContent = 'You must agree to the Privacy Policy to continue';
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  const btn = document.getElementById('reg-btn');
+  btn.textContent = 'Creating account…'; btn.disabled = true;
+  Session.login(fname.value.trim() + ' ' + lname.value.trim());
+  setTimeout(() => {
+    window.location.href = 'home.html';
+  }, 900);
+});
+</script>
 </body></html>

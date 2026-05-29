@@ -498,6 +498,71 @@ function toggleInvoice() {
   const show = document.getElementById('need-invoice').checked;
   document.getElementById('invoice-form').style.display = show ? 'block' : 'none';
 }
+
+/* ─── Place Order ─────────────────────────────────────────────────── */
+document.querySelector('.btn-place-order').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  // Validate required contact fields
+  let valid = true;
+  const required = [
+    { id: null, sel: '#co-first-name',  msg: 'First name is required' },
+    { id: null, sel: '#co-last-name',   msg: 'Last name is required' },
+    { id: null, sel: '#co-email',       msg: 'Email is required' },
+    { id: null, sel: '#co-phone',       msg: 'Phone number is required' }
+  ];
+  // Also validate delivery address if standard delivery selected
+  const isDelivery = document.querySelector('.delivery-opt.active [type="radio"]')?.value !== 'pickup';
+
+  required.forEach(r => {
+    const el = document.querySelector(r.sel);
+    if (!el) return;
+    if (!el.value.trim()) { Validate.showError(el, r.msg); valid = false; }
+    else Validate.clearError(el);
+  });
+
+  // Check email format
+  const emailEl = document.querySelector('#co-email');
+  if (emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+    Validate.showError(emailEl, 'Enter a valid email address'); valid = false;
+  }
+
+  // Validate payment method has a bank selected (FPX)
+  const activePM = document.querySelector('.payment-method-card.active');
+  if (!activePM) { Toast.show('❌ Please select a payment method', 'error'); valid = false; }
+
+  if (!valid) {
+    Toast.show('❌ Please fix the errors above', 'error');
+    // Scroll to first error
+    const firstErr = document.querySelector('.ps-field-error');
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Simulate processing
+  const btn = this;
+  btn.textContent = '⏳ Processing payment…';
+  btn.style.background = '#6b7280';
+  btn.style.pointerEvents = 'none';
+
+  Loading.show();
+
+  // 80% success, 20% failure simulation (always succeed in demo)
+  setTimeout(() => {
+    Cart.clear();
+    window.location.href = 'order-confirmation.html';
+  }, 1200);
+});
+</script>
+<script src="../assets/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  Cart.updateBadges();
+  // Add IDs to contact fields for validation
+  const inputs = document.querySelectorAll('.co-card-body input[type="text"], .co-card-body input[type="email"], .co-card-body input[type="tel"]');
+  const ids = ['co-first-name','co-last-name','co-email','co-phone'];
+  inputs.forEach((inp, i) => { if (ids[i]) inp.id = ids[i]; });
+});
 </script>
 </body>
 </html>

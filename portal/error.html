@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error — Precision Salon</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/shop.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.error-page { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; background: var(--bg, #faf9f5); }
+.error-card { background: #fff; border: 0.5px solid var(--border, #E2E1DC); border-radius: 16px; padding: 48px 40px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.error-icon  { font-size: 72px; margin-bottom: 16px; display: block; animation: errorBounce .6s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes errorBounce { 0%{transform:scale(0);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+.error-code  { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #9ca3af; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+.error-title { font-size: 24px; font-weight: 800; color: #1b1c1a; margin-bottom: 10px; }
+.error-msg   { font-size: 14px; color: #6b7280; line-height: 1.7; margin-bottom: 28px; }
+.error-actions { display: flex; flex-direction: column; gap: 10px; }
+.btn-error-primary   { padding: 13px; background: #1a5fa8; color: #fff; border: none; border-radius: 9px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; display: block; font-family: 'Libre Franklin', sans-serif; transition: background .15s; }
+.btn-error-primary:hover { background: #1554a0; }
+.btn-error-secondary { padding: 11px; background: #fff; color: #6b7280; border: 0.5px solid #E2E1DC; border-radius: 9px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; display: block; font-family: 'Libre Franklin', sans-serif; transition: all .15s; }
+.btn-error-secondary:hover { border-color: #1a5fa8; color: #1a5fa8; }
+.error-detail { font-size: 11px; color: #9ca3af; font-family: 'JetBrains Mono', monospace; margin-top: 20px; padding-top: 16px; border-top: 0.5px solid #E2E1DC; }
+</style>
+</head>
+<body>
+<div class="error-page">
+  <div style="margin-bottom:24px;">
+    <a href="home.html" style="font-size:13px;color:#1a5fa8;text-decoration:none;font-weight:600;">← Precision Salon</a>
+  </div>
+  <div class="error-card" id="error-card">
+    <!-- Content injected by JS -->
+  </div>
+</div>
+
+<script>
+const configs = {
+  '404': {
+    icon: '🔍',
+    code: 'ERROR 404',
+    title: 'Page Not Found',
+    msg: "We couldn't find the page you're looking for. It may have been moved, deleted, or the link is incorrect.",
+    actions: [
+      { label: '🏠 Go to Homepage', href: 'home.html', primary: true },
+      { label: '🛍️ Browse Shop', href: 'shop.html' },
+      { label: '← Go Back', onclick: 'history.back()' }
+    ]
+  },
+  'session': {
+    icon: '🔐',
+    code: 'SESSION EXPIRED',
+    title: 'Your Session Has Expired',
+    msg: 'For your security, you have been logged out after a period of inactivity. Please log in again to continue.',
+    actions: [
+      { label: '🔐 Log In Again', href: 'login.html', primary: true },
+      { label: '🏠 Go to Homepage', href: 'home.html' }
+    ]
+  },
+  'payment': {
+    icon: '❌',
+    code: 'PAYMENT FAILED',
+    title: 'Payment Unsuccessful',
+    msg: 'Your payment could not be processed. This may be due to insufficient funds, an incorrect card number, or a temporary issue with your bank.',
+    actions: [
+      { label: '🔄 Try Again', href: 'checkout.html', primary: true },
+      { label: '🛒 Back to Cart', href: 'cart.html' },
+      { label: '💬 Contact Support', href: 'mailto:support@precision-salon.com' }
+    ],
+    detail: 'Error code: PAY_DECLINED · If your account was charged, it will be refunded within 3–5 business days.'
+  },
+  'offline': {
+    icon: '📡',
+    code: 'NO CONNECTION',
+    title: 'No Internet Connection',
+    msg: 'It looks like you are offline. Please check your network connection and try again.',
+    actions: [
+      { label: '🔄 Retry', onclick: 'window.location.reload()', primary: true },
+      { label: '🏠 Go to Homepage', href: 'home.html' }
+    ]
+  },
+  'maintenance': {
+    icon: '🔧',
+    code: 'MAINTENANCE',
+    title: 'Under Maintenance',
+    msg: 'We are performing scheduled maintenance to improve your experience. We will be back online shortly.',
+    actions: [
+      { label: '🔄 Check Again', onclick: 'window.location.reload()', primary: true }
+    ],
+    detail: 'Estimated completion: 30 minutes · Follow @PrecisionSalon for updates'
+  }
+};
+
+function render() {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get('type') || '404';
+  const cfg = configs[type] || configs['404'];
+  const card = document.getElementById('error-card');
+
+  let actionsHtml = cfg.actions.map(a => {
+    if (a.onclick) return `<button onclick="${a.onclick}" class="${a.primary ? 'btn-error-primary' : 'btn-error-secondary'}">${a.label}</button>`;
+    return `<a href="${a.href}" class="${a.primary ? 'btn-error-primary' : 'btn-error-secondary'}">${a.label}</a>`;
+  }).join('');
+
+  card.innerHTML = `
+    <span class="error-icon">${cfg.icon}</span>
+    <div class="error-code">${cfg.code}</div>
+    <div class="error-title">${cfg.title}</div>
+    <p class="error-msg">${cfg.msg}</p>
+    <div class="error-actions">${actionsHtml}</div>
+    ${cfg.detail ? `<div class="error-detail">${cfg.detail}</div>` : ''}`;
+
+  document.title = cfg.title + ' — Precision Salon';
+}
+render();
+</script>
+<script src="../assets/app.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>Cart.updateBadges());</script>
+</body>
+</html>

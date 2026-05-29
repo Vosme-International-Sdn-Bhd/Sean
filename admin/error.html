@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error — Precision Salon Admin</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f3ef;margin:0;font-family:'Libre Franklin',sans-serif;">
+<div style="background:#fff;border:0.5px solid #E2E1DC;border-radius:16px;padding:48px 40px;max-width:460px;width:100%;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.06);margin:20px;">
+  <div id="err-icon" style="font-size:64px;margin-bottom:16px;"></div>
+  <div id="err-code" style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#9ca3af;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;"></div>
+  <div id="err-title" style="font-size:22px;font-weight:800;color:#1b1c1a;margin-bottom:10px;"></div>
+  <div id="err-msg" style="font-size:14px;color:#6b7280;line-height:1.7;margin-bottom:28px;"></div>
+  <div id="err-actions" style="display:flex;flex-direction:column;gap:10px;"></div>
+</div>
+<script src="../assets/app.js"></script>
+<script>
+const configs = {
+  '404':    { icon:'🔍', code:'ERROR 404',       title:'Page Not Found',           msg:'The admin page you requested does not exist or has been moved.', primary:{label:'← Admin Dashboard', href:'dashboard.html'} },
+  'access': { icon:'🔒', code:'ACCESS DENIED',   title:'Insufficient Permissions',  msg:'You do not have permission to view this section. Contact your system administrator.', primary:{label:'← Back to Dashboard', href:'dashboard.html'} },
+  'session':{ icon:'🔐', code:'SESSION EXPIRED', title:'Session Expired',           msg:'Your admin session has expired. Please log in again to continue.', primary:{label:'🔐 Admin Login', href:'../portal/login.html?role=admin'} },
+  'error':  { icon:'⚠️', code:'SERVER ERROR',    title:'Something Went Wrong',      msg:'An unexpected error occurred. If this persists, contact technical support.', primary:{label:'🔄 Try Again', onclick:'window.location.reload()'}, secondary:{label:'← Dashboard', href:'dashboard.html'} }
+};
+const p = new URLSearchParams(window.location.search).get('type') || '404';
+const c = configs[p] || configs['404'];
+document.getElementById('err-icon').textContent = c.icon;
+document.getElementById('err-code').textContent = c.code;
+document.getElementById('err-title').textContent = c.title;
+document.getElementById('err-msg').textContent = c.msg;
+document.title = c.title + ' — Admin';
+const actEl = document.getElementById('err-actions');
+[c.primary, c.secondary].filter(Boolean).forEach((a, i) => {
+  const el = a.onclick ? document.createElement('button') : document.createElement('a');
+  if (a.onclick) el.onclick = new Function(a.onclick);
+  else el.href = a.href;
+  el.textContent = a.label;
+  el.style.cssText = i===0
+    ? 'padding:12px;background:#1a5fa8;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit;'
+    : 'padding:10px;background:#fff;color:#6b7280;border:0.5px solid #E2E1DC;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;font-family:inherit;';
+  actEl.appendChild(el);
+});
+</script>
+</body>
+</html>

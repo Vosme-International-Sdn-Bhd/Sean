@@ -113,4 +113,51 @@
     </div>
   </main>
 </div>
+<script src="../assets/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Highlight active nav item
+  const p = window.location.pathname.split('/').pop();
+  document.querySelectorAll('.nav-item').forEach(a => {
+    if (a.getAttribute('href') === p) a.classList.add('active');
+  });
+
+  // Wire all buttons with no href to show toast or navigate
+  document.querySelectorAll('button:not([onclick])').forEach(btn => {
+    const txt = btn.textContent.trim();
+    if (txt.includes('Save') || txt.includes('Update') || txt.includes('Submit')) {
+      btn.addEventListener('click', () => Toast.show('✅ Changes saved successfully', 'success'));
+    }
+    if (txt.includes('Delete') || txt.includes('Remove') || txt.includes('Purge')) {
+      btn.addEventListener('click', () => {
+        Modal.show({
+          icon: '⚠️', title: 'Confirm Delete',
+          message: 'This action cannot be undone. Are you sure you want to proceed?',
+          confirmLabel: 'Delete', cancelLabel: 'Cancel', danger: true,
+          onConfirm: () => Toast.show('🗑️ Item deleted', 'error')
+        });
+      });
+    }
+    if (txt.includes('Export') || txt.includes('Download')) {
+      btn.addEventListener('click', () => Toast.show('📥 Export started — file will download shortly', 'info'));
+    }
+    if (txt.includes('Sync') || txt.includes('Refresh')) {
+      btn.addEventListener('click', function() {
+        this.textContent = '⏳ Syncing…'; this.disabled = true;
+        setTimeout(() => { this.textContent = txt; this.disabled = false; Toast.show('✅ Sync complete', 'success'); }, 1200);
+      });
+    }
+  });
+
+  // Wire table action buttons
+  document.querySelectorAll('table button').forEach(btn => {
+    const txt = btn.textContent.trim();
+    if (!btn.onclick) {
+      if (txt === 'Manage' || txt === 'Edit' || txt === 'View') {
+        btn.addEventListener('click', () => Toast.show('ℹ️ Detail view — open in full screen for editing', 'info'));
+      }
+    }
+  });
+});
+</script>
 </body></html>

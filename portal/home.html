@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -676,5 +676,7 @@ document.querySelectorAll('.ec-nav a').forEach(a => {
   if (a.getAttribute('href') === 'home.html') a.classList.add('active');
 });
 </script>
+<script src="../assets/app.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>Cart.updateBadges());</script>
 </body>
 </html>

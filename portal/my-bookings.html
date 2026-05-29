@@ -149,4 +149,31 @@
   });
 })();
 </script>
+<script>
+/* ─── My Bookings wiring ─────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  // Wire "Reschedule" buttons
+  document.querySelectorAll('[href="reschedule.html"], a').forEach(a => {
+    if (a.textContent.trim().includes('Reschedule')) {
+      a.href = 'reschedule.html'; a.onclick = null;
+    }
+    if (a.textContent.trim().includes('Cancel')) {
+      a.href = 'cancel-booking.html'; a.onclick = null;
+    }
+    if (a.textContent.trim() === '+ New Booking') a.href = 'shop.html?cat=services';
+  });
+
+  // Empty state button
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      tabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+</script>
+<script src="../assets/app.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>Cart.updateBadges());</script>
 </body></html>

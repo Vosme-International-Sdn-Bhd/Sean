@@ -357,8 +357,53 @@ function removeItem(btn) {
 function moveToCart(btn) {
   const item = btn.closest('.saved-item');
   item.style.opacity = '0';
-  setTimeout(() => item.remove(), 300);
+  setTimeout(() => { item.remove(); recalc(); }, 300);
+  Cart.add(1);
 }
+
+/* ─── Empty state check ──────────────────────────────────────────── */
+function checkEmpty() {
+  const items = document.querySelectorAll('.cart-item');
+  const saved = document.querySelectorAll('.saved-item');
+  const col   = document.querySelector('.cart-items-col');
+  if (items.length === 0 && saved.length === 0) {
+    col.innerHTML = `
+      <div class="ps-empty-state">
+        <div class="ps-empty-icon">🛒</div>
+        <div class="ps-empty-title">Your cart is empty</div>
+        <div class="ps-empty-sub">Looks like you haven't added anything yet. Browse our services and products to get started!</div>
+        <a href="shop.html" style="margin-top:12px;padding:12px 28px;background:#1a5fa8;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;">🛍️ Browse Shop</a>
+      </div>`;
+    document.querySelector('.order-summary-card').style.opacity = '0.4';
+    document.querySelector('.order-summary-card').style.pointerEvents = 'none';
+    document.querySelector('.btn-checkout').style.pointerEvents = 'none';
+    document.querySelector('.btn-checkout').style.opacity = '0.5';
+    document.querySelector('.btn-checkout').textContent = 'Cart is empty';
+  }
+}
+
+/* ─── Override removeItem to also check empty ───────────────────── */
+const _origRemove = removeItem;
+function removeItem(btn) {
+  const item = btn.closest('.cart-item');
+  item.style.opacity = '0';
+  item.style.transform = 'translateX(20px)';
+  item.style.transition = 'all .3s';
+  Cart.remove(1);
+  setTimeout(() => { item.remove(); recalc(); checkEmpty(); }, 300);
+}
+
+/* ─── Checkout button ─────────────────────────────────────────────── */
+document.querySelector('.btn-checkout').addEventListener('click', function(e) {
+  e.preventDefault();
+  const items = document.querySelectorAll('.cart-item');
+  if (items.length === 0) { Toast.show('❌ Your cart is empty', 'error'); return; }
+  Loading.navigate('checkout.html');
+});
+</script>
+<script src="../assets/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => { Cart.updateBadges(); });
 </script>
 </body>
 </html>

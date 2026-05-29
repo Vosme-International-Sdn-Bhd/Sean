@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -577,5 +577,7 @@ function switchTab(id) {
   if(id === 'reviews') document.getElementById('reviews').scrollIntoView({behavior:'smooth'});
 }
 </script>
+<script src="../assets/app.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>Cart.updateBadges());</script>
 </body>
 </html>
