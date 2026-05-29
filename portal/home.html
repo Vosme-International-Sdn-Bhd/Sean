@@ -1,682 +1,602 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Precision Salon — Beauty & Wellness</title>
-<link rel="stylesheet" href="../assets/styles.css">
-<link rel="stylesheet" href="../assets/shop.css">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Precision Salon — Premium Hair &amp; Beauty in Malaysia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --ink: #08091a; --ink-soft: #3a3f5c; --ink-muted: #6b7194;
+  --surface: #fff; --surface-low: #f4f6ff;
+  --primary: #1a5fa8; --pv: #2d7cf0; --pglow: rgba(45,124,240,0.22);
+  --gold: #c49a3c; --gold-bg: rgba(196,154,60,0.12);
+  --border: rgba(8,9,26,0.09); --bl: rgba(255,255,255,0.11);
+  --r: 12px; --rl: 20px;
+  --eo: cubic-bezier(0.25,1,0.5,1); --ee: cubic-bezier(0.16,1,0.3,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Libre Franklin', system-ui, sans-serif; background: var(--surface); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV ── */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 68px; display: flex; align-items: center; gap: 20px; padding: 0 40px; transition: background .5s var(--eo), backdrop-filter .5s, box-shadow .5s; }
+.nav.scrolled { background: rgba(7,9,22,0.84); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); box-shadow: 0 1px 0 var(--bl), 0 8px 40px rgba(0,0,0,0.35); }
+.nav-logo { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.03em; flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(.7); } }
+.nav-search { flex: 1; max-width: 420px; display: flex; align-items: center; background: rgba(255,255,255,0.08); border: 1px solid var(--bl); border-radius: 100px; padding: 0 16px 0 14px; gap: 8px; transition: background .2s, border-color .2s; }
+.nav-search:focus-within { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.28); }
+.nav-search input { flex: 1; border: none; background: transparent; color: #fff; font-size: 13px; font-family: inherit; padding: 10px 0; outline: none; }
+.nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+.nav-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.nav-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 100px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); cursor: pointer; transition: background .2s, color .2s; white-space: nowrap; }
+.nav-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.nav-cart { background: var(--pv); color: #fff; font-weight: 700; position: relative; }
+.nav-cart:hover { background: #2170e0; color: #fff; }
+.nav-badge { position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); color: #000; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: #07080f; padding: 0 24px; text-align: center; }
+.hero-mesh { position: absolute; inset: 0; background: radial-gradient(ellipse 72% 62% at 18% 18%, rgba(45,124,240,0.3) 0%, transparent 60%), radial-gradient(ellipse 52% 52% at 82% 82%, rgba(139,92,246,0.23) 0%, transparent 55%), radial-gradient(ellipse 62% 42% at 62% 8%, rgba(196,154,60,0.16) 0%, transparent 50%); animation: meshpulse 12s ease-in-out infinite alternate; }
+@keyframes meshpulse { 0% { opacity:.8; } 100% { opacity:1; } }
+.hero-grid { position: absolute; inset: 0; opacity: .05; background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+.orbs { position: absolute; inset: 0; pointer-events: none; }
+.orb { position: absolute; border-radius: 50%; filter: blur(65px); opacity: .36; }
+.o1 { width: 420px; height: 420px; background: radial-gradient(circle, rgba(45,124,240,0.65), transparent 70%); top: -120px; left: -100px; animation: of1 16s ease-in-out infinite; }
+.o2 { width: 340px; height: 340px; background: radial-gradient(circle, rgba(139,92,246,0.55), transparent 70%); bottom: -60px; right: -80px; animation: of2 19s ease-in-out infinite; }
+.o3 { width: 220px; height: 220px; background: radial-gradient(circle, rgba(196,154,60,0.6), transparent 70%); top: 32%; right: 14%; animation: of3 12s ease-in-out infinite; }
+@keyframes of1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(45px,-35px) scale(1.06)} 66%{transform:translate(-20px,25px) scale(.95)} }
+@keyframes of2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-55px,-45px)} }
+@keyframes of3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(22px,-22px) scale(1.12)} }
+.floaters { position: absolute; inset: 0; pointer-events: none; perspective: 900px; }
+.fl { position: absolute; opacity: 0; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.45)); font-size: 42px; }
+.fl1{top:15%;left:8%;font-size:52px;animation:fa 8s 3s ease-in-out infinite}
+.fl2{top:20%;right:10%;font-size:38px;animation:fb 10s 3.5s ease-in-out infinite}
+.fl3{bottom:26%;left:11%;font-size:46px;animation:fc 9s 4s ease-in-out infinite}
+.fl4{bottom:22%;right:8%;font-size:40px;animation:fa 11s 2.5s ease-in-out infinite}
+.fl5{top:50%;left:4%;font-size:30px;animation:fb 7s 5s ease-in-out infinite}
+.fl6{top:46%;right:5%;font-size:35px;animation:fc 12s 1.5s ease-in-out infinite}
+@keyframes fa { 0%{opacity:0;transform:translateY(22px) translateZ(-20px) rotate(-5deg)} 15%{opacity:.7} 50%{transform:translateY(-12px) translateZ(12px) rotate(3deg);opacity:.8} 100%{transform:translateY(22px) translateZ(-20px) rotate(-5deg);opacity:.7} }
+@keyframes fb { 0%{opacity:0;transform:translateY(-15px) translateZ(5px) rotate(4deg)} 15%{opacity:.65} 50%{transform:translateY(16px) translateZ(-10px) rotate(-3deg);opacity:.75} 100%{transform:translateY(-15px) translateZ(5px) rotate(4deg);opacity:.65} }
+@keyframes fc { 0%{opacity:0;transform:translateY(0) translateZ(15px) rotate(-2deg)} 15%{opacity:.7} 50%{transform:translateY(-20px) translateZ(-5px) rotate(5deg);opacity:.8} 100%{transform:translateY(0) translateZ(15px) rotate(-2deg);opacity:.7} }
+.hero-content { position: relative; z-index: 2; max-width: 760px; }
+.hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid var(--bl); border-radius: 100px; padding: 6px 18px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 28px; backdrop-filter: blur(12px); opacity: 0; transform: translateY(20px); }
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.hero-h1 { font-size: clamp(2.8rem,5.5vw,5.2rem); font-weight: 900; line-height: 1.04; color: #fff; letter-spacing: -0.04em; text-wrap: balance; margin-bottom: 22px; opacity: 0; transform: translateY(30px); }
+.hero-h1 em { font-style: normal; color: var(--gold); }
+.hero-sub { font-size: clamp(1rem,1.5vw,1.15rem); color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; margin: 0 auto 36px; opacity: 0; transform: translateY(20px); }
+.hero-ctas { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; opacity: 0; transform: translateY(20px); }
+.btn-hp { display: inline-flex; align-items: center; gap: 8px; background: var(--pv); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 100px; border: none; cursor: pointer; transition: transform .2s var(--eo), box-shadow .2s, background .2s; font-family: inherit; }
+.btn-hp:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 40px var(--pglow), 0 0 0 4px rgba(45,124,240,0.18); background: #2574e8; }
+.btn-hs { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.82); font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 100px; border: 1px solid var(--bl); cursor: pointer; transition: background .2s, border-color .2s, transform .2s; backdrop-filter: blur(10px); font-family: inherit; }
+.btn-hs:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+.hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; z-index: 2; }
+.scroll-txt { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: .12em; text-transform: uppercase; }
+.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent); animation: sl 1.8s ease-in-out infinite; }
+@keyframes sl { 0%,100%{transform:scaleY(1) translateY(0);opacity:1} 50%{transform:scaleY(.5) translateY(12px);opacity:.4} }
+
+/* ── STATS ── */
+.stats { background: #07080f; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 28px 40px; display: flex; justify-content: center; }
+.stat { flex: 1; max-width: 220px; text-align: center; padding: 0 32px; position: relative; opacity: 0; transform: translateY(20px); }
+.stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px; background: rgba(255,255,255,0.1); }
+.stat-n { font-size: 2.5rem; font-weight: 900; color: #fff; letter-spacing: -0.04em; line-height: 1; }
+.stat-u { color: var(--gold); }
+.stat-l { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; letter-spacing: .05em; text-transform: uppercase; }
+
+/* ── CATS ── */
+.cats { background: var(--surface-low); border-bottom: 1px solid var(--border); padding: 0 40px; overflow-x: auto; scrollbar-width: none; }
+.cats::-webkit-scrollbar { display: none; }
+.cats-in { display: flex; gap: 4px; padding: 16px 0; max-width: 1240px; margin: 0 auto; }
+.cat { display: inline-flex; align-items: center; gap: 7px; padding: 8px 18px; border-radius: 100px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; color: var(--ink-soft); background: var(--surface); cursor: pointer; white-space: nowrap; transition: all .2s var(--eo); }
+.cat:hover { border-color: var(--pv); color: var(--pv); background: #eef4ff; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(45,124,240,0.14); }
+.cat.on { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 16px rgba(26,95,168,0.3); }
+
+/* ── SECTIONS ── */
+.sec { padding: 96px 40px; }
+.sec-in { max-width: 1240px; margin: 0 auto; }
+.sec-eye { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; color: var(--pv); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+.sec-eye-line { width: 24px; height: 1.5px; background: var(--pv); }
+.sec-h2 { font-size: clamp(1.9rem,3vw,2.9rem); font-weight: 800; color: var(--ink); letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; margin-bottom: 12px; }
+.sec-sub { font-size: 15px; color: var(--ink-muted); line-height: 1.6; max-width: 560px; }
+.sec-hdr { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
+.sec-lnk { font-size: 13px; font-weight: 700; color: var(--pv); white-space: nowrap; display: flex; align-items: center; gap: 4px; transition: gap .2s var(--eo); flex-shrink: 0; padding-bottom: 4px; }
+.sec-lnk:hover { gap: 9px; }
+
+/* ── SERVICE CARDS ── */
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.svc-card { position: relative; overflow: hidden; border-radius: var(--rl); background: #0c1228; cursor: pointer; transform-style: preserve-3d; transition: box-shadow .3s var(--eo); opacity: 0; transform: translateY(30px); }
+.svc-card:hover { box-shadow: 0 28px 64px rgba(0,0,0,0.42), 0 0 0 1px rgba(255,255,255,0.07); }
+.svc-glow { position: absolute; inset: 0; }
+.svc-shine { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .2s; }
+.svc-card:hover .svc-shine { opacity: 1; }
+.svc-in { position: relative; z-index: 1; padding: 28px; }
+.svc-em { font-size: 48px; margin-bottom: 20px; display: block; transition: transform .4s var(--ee); }
+.svc-card:hover .svc-em { transform: translateZ(40px) scale(1.12); }
+.svc-bdg { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+.b-feat { background: rgba(196,154,60,0.15); color: var(--gold); border: 1px solid rgba(196,154,60,0.3); }
+.b-pop  { background: rgba(45,124,240,0.15); color: #78b4ff; border: 1px solid rgba(45,124,240,0.3); }
+.b-new  { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
+.svc-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+.svc-desc { font-size: 13px; color: rgba(255,255,255,0.46); line-height: 1.6; margin-bottom: 20px; }
+.svc-meta { display: flex; align-items: center; justify-content: space-between; }
+.svc-from { font-size: 10px; color: rgba(255,255,255,0.36); display: block; margin-bottom: 2px; }
+.svc-price { font-size: 22px; font-weight: 800; color: #fff; }
+.svc-dur { font-size: 11px; color: rgba(255,255,255,0.38); }
+.btn-book { display: block; width: 100%; margin-top: 20px; padding: 11px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; font-size: 13px; font-weight: 700; text-align: center; cursor: pointer; transition: background .2s, border-color .2s, transform .15s; font-family: inherit; }
+.btn-book:hover { background: var(--pv); border-color: var(--pv); transform: translateY(-1px); }
+
+/* ── PROMO ── */
+.promo-wrap { padding: 0 40px 72px; }
+.promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1240px; margin: 0 auto; }
+.promo { border-radius: var(--rl); padding: 40px 36px; position: relative; overflow: hidden; min-height: 200px; display: flex; flex-direction: column; justify-content: flex-end; cursor: pointer; transition: transform .35s var(--eo), box-shadow .35s; opacity: 0; transform: translateY(20px); }
+.promo:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 28px 64px rgba(0,0,0,0.22); }
+.p-pkg { background: linear-gradient(135deg, #0f1629 0%, #1a2550 55%, #0f2040 100%); }
+.p-vch { background: linear-gradient(135deg, #1a0f08 0%, #3d2208 55%, #2a1505 100%); }
+.promo-dots { position: absolute; inset: 0; opacity: .1; background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.7) 1px, transparent 0); background-size: 28px 28px; }
+.promo-orb { position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; border-radius: 50%; transition: transform .5s var(--ee); }
+.promo:hover .promo-orb { transform: scale(1.35) translate(-22px, 22px); }
+.p-pkg .promo-orb { background: radial-gradient(circle, rgba(45,124,240,0.22), transparent 70%); }
+.p-vch .promo-orb { background: radial-gradient(circle, rgba(196,154,60,0.28), transparent 70%); }
+.promo-body { position: relative; z-index: 1; }
+.promo-tag { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+.t-blue { background: rgba(45,124,240,0.2); color: #78b4ff; border: 1px solid rgba(45,124,240,0.3); }
+.t-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(196,154,60,0.3); }
+.promo-h { font-size: 1.65rem; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.02em; }
+.promo-p { font-size: 13px; color: rgba(255,255,255,0.47); margin-bottom: 20px; line-height: 1.55; }
+.btn-promo { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 100px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; transition: transform .2s, box-shadow .2s; font-family: inherit; }
+.btn-pb { background: var(--pv); color: #fff; }
+.btn-pb:hover { transform: translateY(-1px); box-shadow: 0 6px 22px var(--pglow); }
+.btn-pg { background: var(--gold); color: #1a0f00; }
+.btn-pg:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(196,154,60,0.35); }
+
+/* ── PRODUCTS ── */
+.prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.prod-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; cursor: pointer; transition: transform .35s var(--ee), box-shadow .35s; opacity: 0; transform: translateY(40px); }
+.prod-card:hover { transform: translateY(-6px); box-shadow: 0 22px 52px rgba(8,9,26,0.12); border-color: transparent; }
+.prod-img { aspect-ratio: 1; background: var(--surface-low); display: flex; align-items: center; justify-content: center; font-size: 58px; position: relative; overflow: hidden; }
+.prod-img-in { transition: transform .4s var(--ee); }
+.prod-card:hover .prod-img-in { transform: scale(1.1); }
+.prod-bdg { position: absolute; top: 12px; left: 12px; padding: 3px 9px; border-radius: 100px; font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+.b-sale { background: #fee2e2; color: #dc2626; }
+.b-best { background: #fef9c3; color: #a16207; }
+.prod-body { padding: 16px; }
+.prod-brand { font-size: 10px; font-weight: 700; color: var(--pv); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+.prod-name { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 10px; }
+.prod-prices { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+.prod-price { font-size: 18px; font-weight: 800; color: var(--ink); }
+.prod-orig { font-size: 12px; color: var(--ink-muted); text-decoration: line-through; }
+.btn-atc { width: 100%; padding: 9px; background: var(--ink); color: #fff; border: none; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s, transform .15s; font-family: inherit; }
+.btn-atc:hover { background: var(--pv); transform: scale(1.02); }
+
+/* ── VOUCHERS ── */
+.vch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.vch { border-radius: var(--rl); padding: 28px 24px; position: relative; overflow: hidden; cursor: pointer; transition: transform .35s var(--ee), box-shadow .35s; opacity: 0; transform: translateY(40px) scale(.97); }
+.vch:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 22px 52px rgba(0,0,0,0.17); }
+.v50  { background: linear-gradient(135deg, #e8f4fd, #d0e9fb); }
+.v100 { background: linear-gradient(135deg, #e0f0e8, #c6e3d0); }
+.v200 { background: linear-gradient(135deg, #fdf3e3, #f9e4c0); }
+.v500 { background: linear-gradient(135deg, #1a5fa8, #0e3d78); }
+.vch-orb { position: absolute; top: -60px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.16); transition: transform .5s var(--ee); }
+.vch:hover .vch-orb { transform: scale(1.45) translate(-20px, 20px); }
+.vch-tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; opacity: .65; }
+.vch-amt { font-size: 3.2rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
+.v50 .vch-amt, .v100 .vch-amt, .v200 .vch-amt { color: var(--ink); }
+.v500 .vch-amt { color: #fff; }
+.vch-desc { font-size: 12px; color: var(--ink-muted); margin-bottom: 20px; }
+.v500 .vch-desc { color: rgba(255,255,255,0.58); }
+.btn-vch { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; transition: transform .2s, box-shadow .2s; font-family: inherit; }
+.v50 .btn-vch, .v100 .btn-vch, .v200 .btn-vch { background: var(--ink); color: #fff; }
+.v500 .btn-vch { background: #fff; color: var(--ink); }
+.btn-vch:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(0,0,0,0.22); }
+
+/* ── FOOTER ── */
+.footer { background: var(--ink); padding: 64px 40px 32px; color: rgba(255,255,255,0.55); }
+.footer-in { max-width: 1240px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 12px; }
+.footer-desc { font-size: 13px; line-height: 1.75; max-width: 260px; }
+.f-col-h { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; }
+.f-a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); padding: 5px 0; transition: color .15s; }
+.f-a:hover { color: #fff; }
+.footer-bot { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+.f-badges { display: flex; gap: 8px; }
+.f-badge { padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.07); font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: .04em; }
+
+/* ── TOAST ── */
+#toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); z-index: 600; padding: 13px 24px; border-radius: 100px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: transform .4s var(--ee), opacity .3s; opacity: 0; pointer-events: none; white-space: nowrap; }
+#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ── DEV BACK ── */
+.dev-back { position: fixed; bottom: 20px; right: 20px; background: rgba(7,9,22,0.9); color: rgba(255,255,255,0.65); font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 7px 14px; border-radius: 8px; backdrop-filter: blur(12px); z-index: 600; border: 1px solid rgba(255,255,255,0.1); transition: color .15s; }
+.dev-back:hover { color: #fff; }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .o1,.o2,.o3,.fl1,.fl2,.fl3,.fl4,.fl5,.fl6,.hero-mesh,.nav-dot,.scroll-line { animation: none; }
+  .fl1,.fl2,.fl3,.fl4,.fl5,.fl6 { opacity: .6; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav { padding: 0 20px; } .nav-search { display: none; }
+  .sec { padding: 64px 20px; } .promo-wrap { padding: 0 20px 56px; }
+  .promo-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stats { padding: 24px 20px; } .cats { padding: 0 20px; }
+}
+@media (max-width: 600px) {
+  .stats { flex-direction: column; gap: 24px; } .stat::after { display: none; }
+  .footer-top { grid-template-columns: 1fr; }
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .btn-hp, .btn-hs { justify-content: center; }
+}
+</style>
 </head>
-<body class="ec-page">
+<body>
+<a class="dev-back" href="../index.html">&#8592; GUI Overview</a>
 
-<!-- E-Commerce Header -->
-<header class="ec-header">
-  <div class="ec-announce">
-    🎉 Members earn <strong>2× points</strong> this weekend · Free delivery on orders above RM150 ·
-    <a href="vouchers-packages.html">Redeem vouchers →</a>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="home.html"><div class="nav-dot"></div>Precision Salon</a>
+  <div class="nav-search">
+    <span style="font-size:14px;opacity:.5">&#128269;</span>
+    <input type="text" placeholder="Search services, products, brands&#8230;" aria-label="Search">
   </div>
-  <div class="ec-header-main">
-    <a href="home.html" class="ec-logo">
-      <span class="ec-logo-name">Precision Salon</span>
-      <span class="ec-logo-sub">Beauty & Wellness</span>
-    </a>
-    <div class="ec-search">
-      <input type="text" placeholder="Search services, products, packages...">
-      <button class="ec-search-btn">🔍</button>
-    </div>
-    <div class="ec-header-actions">
-      <a href="wishlist.html" class="ec-action-btn">
-        <span class="ec-action-icon">🤍</span>
-        <span>Wishlist</span>
-      </a>
-      <a href="cart.html" class="ec-action-btn" style="position:relative;">
-        <span class="ec-action-icon">🛒</span>
-        <span>Cart</span>
-        <span class="ec-cart-badge">3</span>
-      </a>
-      <a href="member-profile.html" class="ec-account-pill">
-        <div class="ec-account-avatar">SL</div>
-        <div style="display:flex;flex-direction:column;gap:1px;">
-          <span style="font-size:12px;font-weight:600;line-height:1;">Sarah Lim</span>
-          <span class="tier-badge tier-bronze" style="font-size:9px;padding:1px 5px;">Bronze</span>
-        </div>
-      </a>
-    </div>
+  <div class="nav-actions">
+    <a class="nav-btn" href="shop.html">Shop</a>
+    <a class="nav-btn" href="my-bookings.html">Bookings</a>
+    <a class="nav-btn" href="member-profile.html">Account</a>
+    <a class="nav-btn nav-cart" href="cart.html">&#128722; Cart<span class="nav-badge cart-badge" id="cart-count">0</span></a>
   </div>
-  <nav class="ec-nav">
-    <a href="home.html" class="active">🏠 Home</a>
-    <a href="shop.html?cat=services">✂️ Services</a>
-    <a href="shop.html?cat=products">🛍️ Products</a>
-    <a href="shop.html?cat=packages">📦 Packages</a>
-    <a href="shop.html?cat=vouchers">🎁 Gift Vouchers</a>
-    <a href="my-bookings.html">📋 My Bookings</a>
-    <a href="wallet-dashboard.html">💳 Wallet · RM150</a>
-    <a href="membership-loyalty.html">🏅 Membership</a>
-  </nav>
-</header>
+</nav>
 
-<!-- Hero Banner -->
-<section class="ec-hero">
-  <div class="ec-hero-slide">
-    <div class="ec-hero-content">
-      <div class="ec-hero-eyebrow">✨ Limited Time Offer</div>
-      <h1 class="ec-hero-title">Transform Your Look This Weekend</h1>
-      <p class="ec-hero-sub">Book any hair colour service and get <strong>10% off</strong> when you pay with wallet. Professional stylists, premium products, lasting results.</p>
-      <div class="ec-hero-actions">
-        <a href="shop.html?cat=services" class="ec-hero-btn-primary">Book Now</a>
-        <a href="shop.html" class="ec-hero-btn-outline">Browse All Services</a>
-      </div>
-    </div>
-    <div class="ec-hero-visual">💇‍♀️</div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-mesh" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="orbs" aria-hidden="true">
+    <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
   </div>
-  <div class="ec-hero-dots">
-    <div class="ec-dot active"></div>
-    <div class="ec-dot"></div>
-    <div class="ec-dot"></div>
+  <div class="floaters" aria-hidden="true">
+    <div class="fl fl1">&#9988;&#65039;</div>
+    <div class="fl fl2">&#128134;</div>
+    <div class="fl fl3">&#128133;</div>
+    <div class="fl fl4">&#129326;</div>
+    <div class="fl fl5">&#10024;</div>
+    <div class="fl fl6">&#127800;</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-pill" id="hp"><div class="pill-dot"></div>Malaysia&#8217;s Premier Salon Network &#183; 5 States &#183; 134 Outlets</div>
+    <h1 class="hero-h1" id="hh">Look Your Best.<br><em>Feel Extraordinary.</em></h1>
+    <p class="hero-sub" id="hs">Book expert hair, skin, and nail services &#8212; or shop salon-grade products delivered to your door. All in one place.</p>
+    <div class="hero-ctas" id="hc">
+      <a class="btn-hp" href="shop.html?cat=services">&#9988;&#65039; Book a Service</a>
+      <a class="btn-hs" href="shop.html">&#128722; Browse Products</a>
+    </div>
+  </div>
+  <div class="hero-scroll" id="hscroll" aria-hidden="true">
+    <span class="scroll-txt">Scroll</span>
+    <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- Category Quick Access -->
-<section class="ec-section" style="padding-bottom:0;">
-  <div class="ec-section-header">
-    <div>
-      <div class="ec-section-title">Shop by Category</div>
-      <div class="ec-section-sub">What are you looking for today?</div>
-    </div>
-  </div>
-  <div class="category-grid">
-    <a href="shop.html?cat=haircut" class="category-card">
-      <div class="category-icon" style="background:#e8f0fb;">✂️</div>
-      <span class="category-name">Hair Cut &amp; Style</span>
-    </a>
-    <a href="shop.html?cat=colour" class="category-card">
-      <div class="category-icon" style="background:#fce4e4;">🎨</div>
-      <span class="category-name">Hair Colour</span>
-    </a>
-    <a href="shop.html?cat=treatment" class="category-card">
-      <div class="category-icon" style="background:#e8f5e9;">💆‍♀️</div>
-      <span class="category-name">Hair Treatment</span>
-    </a>
-    <a href="shop.html?cat=nails" class="category-card">
-      <div class="category-icon" style="background:#fce8f5;">💅</div>
-      <span class="category-name">Nail Services</span>
-    </a>
-    <a href="shop.html?cat=facial" class="category-card">
-      <div class="category-icon" style="background:#f3e8fc;">✨</div>
-      <span class="category-name">Facial &amp; Skin</span>
-    </a>
-    <a href="shop.html?cat=products" class="category-card">
-      <div class="category-icon" style="background:#fff3e0;">🧴</div>
-      <span class="category-name">Retail Products</span>
-    </a>
-    <a href="shop.html?cat=packages" class="category-card">
-      <div class="category-icon" style="background:#e8f5e9;">📦</div>
-      <span class="category-name">Packages</span>
-    </a>
-    <a href="shop.html?cat=vouchers" class="category-card">
-      <div class="category-icon" style="background:#fff9e0;">🎁</div>
-      <span class="category-name">Gift Vouchers</span>
-    </a>
-  </div>
-</section>
-
-<!-- Featured Services -->
-<section class="ec-section">
-  <div class="ec-section-header">
-    <div>
-      <div class="ec-section-title">Featured Services</div>
-      <div class="ec-section-sub">Book and pay online — guaranteed slots</div>
-    </div>
-    <a href="shop.html?cat=services" class="ec-view-all">View all services →</a>
-  </div>
-  <div class="product-grid" style="grid-template-columns:repeat(4,1fr);">
-
-    <!-- Service 1 -->
-    <div class="product-card" onclick="location.href='service-detail.html'">
-      <div class="product-img product-img-service">
-        <div class="product-img-inner">✂️</div>
-        <div class="product-badge"><span class="badge-best">POPULAR</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Hair Services</div>
-        <div class="product-name">Precision Haircut + Blowdry</div>
-        <div class="product-variant-hint">4 length options · Any stylist</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.9 (312)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price-from">from </span>
-          <span class="product-price">RM 68</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <a href="service-detail.html" class="btn-book-now">Book Now</a>
-      </div>
-    </div>
-
-    <!-- Service 2 -->
-    <div class="product-card" onclick="location.href='service-detail.html'">
-      <div class="product-img product-img-service">
-        <div class="product-img-inner">🎨</div>
-        <div class="product-badge"><span class="badge-sale">SAVE RM30</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Hair Colour</div>
-        <div class="product-name">Global Colour + Toner Treatment</div>
-        <div class="product-variant-hint">3 length options · Colour choice</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.8 (196)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price-from">from </span>
-          <span class="product-price">RM 150</span>
-          <span class="product-price-orig">RM 180</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <a href="service-detail.html" class="btn-book-now">Book Now</a>
-      </div>
-    </div>
-
-    <!-- Service 3 -->
-    <div class="product-card" onclick="location.href='service-detail.html'">
-      <div class="product-img product-img-service">
-        <div class="product-img-inner">💆‍♀️</div>
-        <div class="product-badge"><span class="badge-new">NEW</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Treatment</div>
-        <div class="product-name">Keratin Smoothing Treatment</div>
-        <div class="product-variant-hint">3 length options · Add-ons available</div>
-        <div class="product-rating">
-          <span class="stars">★★★★½</span>
-          <span class="rating-count">4.7 (84)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price-from">from </span>
-          <span class="product-price">RM 220</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <a href="service-detail.html" class="btn-book-now">Book Now</a>
-      </div>
-    </div>
-
-    <!-- Service 4 -->
-    <div class="product-card" onclick="location.href='service-detail.html'">
-      <div class="product-img" style="background:linear-gradient(135deg,#fce8f5,#f5c4eb);">
-        <div class="product-img-inner">💅</div>
-        <div class="product-badge"><span class="badge-best">TOP RATED</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Nail Services</div>
-        <div class="product-name">Gelish Manicure + Nail Art Design</div>
-        <div class="product-variant-hint">Nail art design selection</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.9 (441)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price-from">from </span>
-          <span class="product-price">RM 88</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <a href="service-detail.html" class="btn-book-now">Book Now</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Promo Banners -->
-<div class="promo-strip">
-  <a href="shop.html?cat=packages" class="promo-card promo-card-a">
-    <div class="promo-content">
-      <div class="promo-eyebrow">Service Packages</div>
-      <div class="promo-title">Prepaid Packages<br>Save Up to 20%</div>
-      <div class="promo-sub">Buy a 5-session package and get 1 free. Redeem anytime.</div>
-      <span class="promo-btn">Shop Packages →</span>
-    </div>
-    <div class="promo-emoji">📦</div>
-  </a>
-  <a href="shop.html?cat=vouchers" class="promo-card promo-card-b">
-    <div class="promo-content">
-      <div class="promo-eyebrow">Gift Vouchers</div>
-      <div class="promo-title">Give the Gift<br>of Beauty</div>
-      <div class="promo-sub">Digital gift vouchers delivered instantly. RM50–RM500.</div>
-      <span class="promo-btn">Buy Voucher →</span>
-    </div>
-    <div class="promo-emoji">🎁</div>
-  </a>
+<!-- STATS -->
+<div class="stats" id="stats">
+  <div class="stat"><div class="stat-n"><span class="cu" data-t="134">0</span><span class="stat-u">+</span></div><div class="stat-l">Outlets Nationwide</div></div>
+  <div class="stat"><div class="stat-n"><span class="cu" data-t="28">0</span><span class="stat-u">K</span></div><div class="stat-l">Registered Members</div></div>
+  <div class="stat"><div class="stat-n"><span class="cu" data-t="98">0</span><span class="stat-u">%</span></div><div class="stat-l">Satisfaction Rate</div></div>
+  <div class="stat"><div class="stat-n"><span class="cu" data-t="4.9">0</span><span class="stat-u">&#9733;</span></div><div class="stat-l">Average Rating</div></div>
 </div>
 
-<!-- Bestselling Products -->
-<section class="ec-section" style="background:#fff;border-top:0.5px solid #E2E1DC;border-bottom:0.5px solid #E2E1DC;">
-  <div class="ec-section-header">
-    <div>
-      <div class="ec-section-title">Bestselling Products</div>
-      <div class="ec-section-sub">Professional haircare available for purchase</div>
-    </div>
-    <a href="shop.html?cat=products" class="ec-view-all">View all products →</a>
+<!-- CATEGORY STRIP -->
+<div class="cats">
+  <div class="cats-in">
+    <a class="cat on" href="shop.html">&#10024; All</a>
+    <a class="cat" href="shop.html?cat=services">&#9988;&#65039; Services</a>
+    <a class="cat" href="shop.html?cat=haircare">&#128134; Hair Care</a>
+    <a class="cat" href="shop.html?cat=skincare">&#129717; Skin Care</a>
+    <a class="cat" href="shop.html?cat=nails">&#128133; Nails</a>
+    <a class="cat" href="shop.html?cat=colour">&#127912; Colour</a>
+    <a class="cat" href="shop.html?cat=tools">&#129326; Tools</a>
+    <a class="cat" href="shop.html?cat=packages">&#128230; Packages</a>
+    <a class="cat" href="shop.html?cat=vouchers">&#127873; Vouchers</a>
   </div>
-  <div class="product-grid" style="grid-template-columns:repeat(5,1fr);">
+</div>
 
-    <div class="product-card" onclick="location.href='product.html'">
-      <div class="product-img product-img-product">
-        <div class="product-img-inner">🧴</div>
-        <div class="product-badge"><span class="badge-best">BESTSELLER</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+<!-- SERVICES -->
+<section class="sec" id="svcs">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye"><div class="sec-eye-line"></div>Book Now</div>
+        <h2 class="sec-h2">Signature Services</h2>
+        <p class="sec-sub">Expert stylists, premium products, guaranteed results. Book your slot in seconds.</p>
       </div>
-      <div class="product-info">
-        <div class="product-brand">Kerastase</div>
-        <div class="product-name">Nutritive Bain Satin Shampoo</div>
-        <div class="product-variant-hint">250ml / 500ml / 1000ml</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.8 (203)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 89</span>
-          <span class="product-price-orig">RM 110</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
-      </div>
+      <a class="sec-lnk" href="shop.html?cat=services">View all services &#8594;</a>
     </div>
+    <div class="svc-grid" id="svc-grid">
 
-    <div class="product-card" onclick="location.href='product.html'">
-      <div class="product-img product-img-product">
-        <div class="product-img-inner">🫧</div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Olaplex</div>
-        <div class="product-name">No.3 Hair Perfector Treatment</div>
-        <div class="product-variant-hint">100ml · One size</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.9 (387)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 149</span>
+      <div class="svc-card" data-tilt>
+        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(45,124,240,0.25) 0%,transparent 55%)"></div>
+        <div class="svc-shine"></div>
+        <div class="svc-in">
+          <span class="svc-em">&#9988;&#65039;</span>
+          <span class="svc-bdg b-feat">Featured</span>
+          <div class="svc-name">Precision Cut + Blowdry</div>
+          <div class="svc-desc">Expert scissor technique with moisture-seal blowdry. Results that last all week.</div>
+          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 68</span></div><div class="svc-dur">&#9201; 60&#8211;90 min</div></div>
+          <a class="btn-book" href="service-detail.html">Book this service</a>
         </div>
       </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
+
+      <div class="svc-card" data-tilt style="background:linear-gradient(135deg,#1a0e2e,#2d1a4a 60%,#180e2e)">
+        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(139,92,246,0.3) 0%,transparent 55%)"></div>
+        <div class="svc-shine"></div>
+        <div class="svc-in">
+          <span class="svc-em">&#127912;</span>
+          <span class="svc-bdg b-pop">Popular</span>
+          <div class="svc-name">Balayage + Toning</div>
+          <div class="svc-desc">Hand-painted highlights with professional toning for a natural, sun-kissed finish.</div>
+          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 288</span></div><div class="svc-dur">&#9201; 2.5&#8211;4 hrs</div></div>
+          <a class="btn-book" href="service-detail.html">Book this service</a>
+        </div>
       </div>
+
+      <div class="svc-card" data-tilt style="background:linear-gradient(135deg,#0e1f1a,#143028 60%,#0e2018)">
+        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(34,197,94,0.22) 0%,transparent 55%)"></div>
+        <div class="svc-shine"></div>
+        <div class="svc-in">
+          <span class="svc-em">&#128134;</span>
+          <span class="svc-bdg b-new">New</span>
+          <div class="svc-name">Deep Scalp Treatment</div>
+          <div class="svc-desc">Therapeutic scalp massage with active serum infusion. For hair density and growth.</div>
+          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 128</span></div><div class="svc-dur">&#9201; 45 min</div></div>
+          <a class="btn-book" href="service-detail.html">Book this service</a>
+        </div>
+      </div>
+
+      <div class="svc-card" data-tilt style="background:linear-gradient(135deg,#1f100e,#321808 60%,#200e0e)">
+        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(196,154,60,0.28) 0%,transparent 55%)"></div>
+        <div class="svc-shine"></div>
+        <div class="svc-in">
+          <span class="svc-em">&#128133;</span>
+          <span class="svc-bdg b-feat">Featured</span>
+          <div class="svc-name">Luxury Nail Studio</div>
+          <div class="svc-desc">Gel, acrylic, nail art, and manicure services with professional-grade products.</div>
+          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 58</span></div><div class="svc-dur">&#9201; 60 min</div></div>
+          <a class="btn-book" href="service-detail.html">Book this service</a>
+        </div>
+      </div>
+
     </div>
-
-    <div class="product-card" onclick="location.href='product.html'">
-      <div class="product-img product-img-product">
-        <div class="product-img-inner">💊</div>
-        <div class="product-badge"><span class="badge-new">NEW</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">L'Oréal Professionnel</div>
-        <div class="product-name">Absolut Repair Molecular Hair Mask</div>
-        <div class="product-variant-hint">250ml / 500ml</div>
-        <div class="product-rating">
-          <span class="stars">★★★★½</span>
-          <span class="rating-count">4.7 (142)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 98</span>
-          <span class="product-price-orig">RM 120</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="location.href='product.html'">
-      <div class="product-img product-img-product">
-        <div class="product-img-inner">💧</div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Moroccanoil</div>
-        <div class="product-name">Argan Oil Treatment Serum</div>
-        <div class="product-variant-hint">25ml / 100ml</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.9 (521)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 65</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="location.href='product.html'">
-      <div class="product-img product-img-product">
-        <div class="product-img-inner">🌸</div>
-        <div class="product-badge"><span class="badge-sale">-20%</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Davines</div>
-        <div class="product-name">OI Shampoo — Roucou Oil Enriched</div>
-        <div class="product-variant-hint">3 scents · 280ml / 1000ml</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.8 (98)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 76</span>
-          <span class="product-price-orig">RM 95</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- Service Packages -->
-<section class="ec-section">
-  <div class="ec-section-header">
-    <div>
-      <div class="ec-section-title">Service Packages</div>
-      <div class="ec-section-sub">Prepaid bundles — save up to 20% vs single bookings</div>
+<!-- PROMO -->
+<div class="promo-wrap">
+  <div class="promo-grid" id="promo-grid">
+    <div class="promo p-pkg">
+      <div class="promo-dots"></div><div class="promo-orb"></div>
+      <div class="promo-body">
+        <span class="promo-tag t-blue">Bundle &amp; Save</span>
+        <h3 class="promo-h">Service Packages</h3>
+        <p class="promo-p">Stack your appointments. Save up to 30% on monthly treatment bundles.</p>
+        <a class="btn-promo btn-pb" href="shop.html?cat=packages">Explore packages &#8594;</a>
+      </div>
     </div>
-    <a href="shop.html?cat=packages" class="ec-view-all">View all packages →</a>
+    <div class="promo p-vch">
+      <div class="promo-dots"></div><div class="promo-orb"></div>
+      <div class="promo-body">
+        <span class="promo-tag t-gold">Gift Someone</span>
+        <h3 class="promo-h">Gift Vouchers</h3>
+        <p class="promo-p">Give the gift of a great hair day. Available in RM50 to RM500 denominations.</p>
+        <a class="btn-promo btn-pg" href="shop.html?cat=vouchers">Shop vouchers &#8594;</a>
+      </div>
+    </div>
   </div>
-  <div class="product-grid" style="grid-template-columns:repeat(3,1fr);">
+</div>
 
-    <div class="product-card" onclick="location.href='product.html?type=package'">
-      <div class="product-img product-img-package">
-        <div class="product-img-inner">✂️</div>
-        <div class="product-badge"><span class="badge-pkg">PACKAGE</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+<!-- PRODUCTS -->
+<section class="sec" style="background:var(--surface-low)" id="prods">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye"><div class="sec-eye-line"></div>Shop</div>
+        <h2 class="sec-h2">Bestselling Products</h2>
+        <p class="sec-sub">Salon-grade hair and skin care, delivered to your door. Used by our stylists, available for you.</p>
       </div>
-      <div class="product-info">
-        <div class="product-brand">Hair Care Package</div>
-        <div class="product-name">5× Wash &amp; Blowdry + 1 Free</div>
-        <div class="product-variant-hint">6 sessions · 6-month validity · Any outlet</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.9 (187)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 250</span>
-          <span class="product-price-orig">RM 312</span>
-          <span class="badge-sale" style="font-size:10px;padding:2px 6px;">SAVE 20%</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Package</button>
-      </div>
+      <a class="sec-lnk" href="shop.html?cat=haircare">View all products &#8594;</a>
     </div>
-
-    <div class="product-card" onclick="location.href='product.html?type=package'">
-      <div class="product-img product-img-package">
-        <div class="product-img-inner">🌟</div>
-        <div class="product-badge"><span class="badge-best">POPULAR</span><span class="badge-pkg">PACKAGE</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+    <div class="prod-grid" id="prod-grid">
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img"><div class="prod-img-in">&#128134;</div><span class="prod-bdg b-best">Bestseller</span></div>
+        <div class="prod-body"><div class="prod-brand">Moroccanoil</div><div class="prod-name">Treatment Oil &#8212; Argan Repair &amp; Shine</div><div class="prod-prices"><span class="prod-price">RM 89</span><span class="prod-orig">RM 115</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Moroccanoil Treatment Oil')">Add to cart</button></div>
       </div>
-      <div class="product-info">
-        <div class="product-brand">Bridal Package</div>
-        <div class="product-name">Complete Bridal Glam Package</div>
-        <div class="product-variant-hint">Hair + Makeup + Nails · 1 day · 3 pax max</div>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">5.0 (43)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 680</span>
-          <span class="product-price-orig">RM 820</span>
-        </div>
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img"><div class="prod-img-in">&#129717;</div><span class="prod-bdg b-sale">-20%</span></div>
+        <div class="prod-body"><div class="prod-brand">Kerastase</div><div class="prod-name">Elixir Ultime Hair Oil 100ml</div><div class="prod-prices"><span class="prod-price">RM 118</span><span class="prod-orig">RM 148</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Kerastase Elixir Ultime')">Add to cart</button></div>
       </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Package</button>
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img"><div class="prod-img-in">&#10024;</div></div>
+        <div class="prod-body"><div class="prod-brand">Wella Professionals</div><div class="prod-name">Oil Reflections Luminous Serum 30ml</div><div class="prod-prices"><span class="prod-price">RM 72</span><span class="prod-orig">RM 85</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Wella Oil Reflections')">Add to cart</button></div>
       </div>
-    </div>
-
-    <div class="product-card" onclick="location.href='product.html?type=package'">
-      <div class="product-img product-img-package">
-        <div class="product-img-inner">💆‍♀️</div>
-        <div class="product-badge"><span class="badge-pkg">PACKAGE</span></div>
-        <button class="product-wishlist" onclick="event.stopPropagation();">🤍</button>
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img"><div class="prod-img-in">&#128139;</div><span class="prod-bdg b-best">Top Rated</span></div>
+        <div class="prod-body"><div class="prod-brand">Moroccanoil</div><div class="prod-name">Hydrating Mask 250ml</div><div class="prod-prices"><span class="prod-price">RM 105</span><span class="prod-orig">RM 128</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Moroccanoil Hydrating Mask')">Add to cart</button></div>
       </div>
-      <div class="product-info">
-        <div class="product-brand">Monthly Plan</div>
-        <div class="product-name">Monthly Hair Care Membership</div>
-        <div class="product-variant-hint">1 cut + 2 washes + 1 treatment per month</div>
-        <div class="product-rating">
-          <span class="stars">★★★★½</span>
-          <span class="rating-count">4.7 (92)</span>
-        </div>
-        <div class="product-price-row">
-          <span class="product-price">RM 180<span style="font-size:12px;font-weight:400;">/mo</span></span>
-          <span class="product-price-orig">RM 280</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Subscribe</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Gift Vouchers -->
-<section class="ec-section" style="background:#fff8e6;border-top:0.5px solid #E2E1DC;border-bottom:0.5px solid #E2E1DC;">
-  <div class="ec-section-header">
-    <div>
-      <div class="ec-section-title">🎁 Gift Vouchers</div>
-      <div class="ec-section-sub">Digital vouchers delivered instantly · Valid 12 months</div>
-    </div>
-    <a href="shop.html?cat=vouchers" class="ec-view-all">View all vouchers →</a>
-  </div>
-  <div class="product-grid" style="grid-template-columns:repeat(4,1fr);">
-    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=50'">
-      <div class="product-img product-img-voucher">
-        <div class="product-img-inner">🎟️</div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Gift Voucher</div>
-        <div class="product-name">RM 50 Gift Voucher</div>
-        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
-        <div class="product-price-row">
-          <span class="product-price">RM 50</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
-      </div>
-    </div>
-    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=100'">
-      <div class="product-img product-img-voucher">
-        <div class="product-img-inner">🎫</div>
-        <div class="product-badge"><span class="badge-best">POPULAR</span></div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Gift Voucher</div>
-        <div class="product-name">RM 100 Gift Voucher</div>
-        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
-        <div class="product-price-row">
-          <span class="product-price">RM 100</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
-      </div>
-    </div>
-    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=200'">
-      <div class="product-img product-img-voucher">
-        <div class="product-img-inner">🏷️</div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Gift Voucher</div>
-        <div class="product-name">RM 200 Gift Voucher</div>
-        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
-        <div class="product-price-row">
-          <span class="product-price">RM 200</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
-      </div>
-    </div>
-    <div class="product-card" onclick="location.href='product.html?type=voucher&amount=500'">
-      <div class="product-img product-img-voucher">
-        <div class="product-img-inner">👑</div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Premium Gift</div>
-        <div class="product-name">RM 500 Premium Gift Voucher</div>
-        <div class="product-variant-hint">Digital · Any service or product · 12 months</div>
-        <div class="product-price-row">
-          <span class="product-price">RM 500</span>
-        </div>
-      </div>
-      <div class="product-footer">
-        <button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Buy Gift</button>
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img"><div class="prod-img-in">&#128293;</div></div>
+        <div class="prod-body"><div class="prod-brand">GHD</div><div class="prod-name">Heat Protection Spray 120ml</div><div class="prod-prices"><span class="prod-price">RM 68</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('GHD Heat Spray')">Add to cart</button></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Recently Viewed -->
-<section class="ec-section">
-  <div class="ec-section-header">
-    <div>
-      <div class="ec-section-title">Recently Viewed</div>
+<!-- VOUCHERS -->
+<section class="sec" id="vchsec">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye"><div class="sec-eye-line"></div>Gift</div>
+        <h2 class="sec-h2">Gift Vouchers</h2>
+        <p class="sec-sub">Redeemable at all 134 outlets for any service or product. Valid 12 months.</p>
+      </div>
     </div>
-    <a href="visit-history.html" class="ec-view-all">View history →</a>
-  </div>
-  <div class="product-grid" style="grid-template-columns:repeat(4,1fr);">
-    <div class="product-card" onclick="location.href='service-detail.html'">
-      <div class="product-img product-img-service">
-        <div class="product-img-inner">💇‍♀️</div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Hair Services</div>
-        <div class="product-name">Highlights — Balayage Technique</div>
-        <div class="product-price-row"><span class="product-price-from">from </span><span class="product-price">RM 280</span></div>
-      </div>
-      <div class="product-footer"><a href="service-detail.html" class="btn-book-now">Book</a></div>
-    </div>
-    <div class="product-card" onclick="location.href='product.html'">
-      <div class="product-img product-img-product">
-        <div class="product-img-inner">💜</div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Schwarzkopf</div>
-        <div class="product-name">BC Bonacure Color Freeze Conditioner</div>
-        <div class="product-price-row"><span class="product-price">RM 72</span><span class="product-price-orig">RM 90</span></div>
-      </div>
-      <div class="product-footer"><button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button></div>
-    </div>
-    <div class="product-card" onclick="location.href='service-detail.html'">
-      <div class="product-img" style="background:linear-gradient(135deg,#e8f5e9,#c4f0cc);">
-        <div class="product-img-inner">🌿</div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">Facial</div>
-        <div class="product-name">Deep Cleansing Facial + LED Therapy</div>
-        <div class="product-price-row"><span class="product-price-from">from </span><span class="product-price">RM 168</span></div>
-      </div>
-      <div class="product-footer"><a href="service-detail.html" class="btn-book-now">Book</a></div>
-    </div>
-    <div class="product-card" onclick="location.href='product.html'">
-      <div class="product-img product-img-product">
-        <div class="product-img-inner">✨</div>
-        <div class="product-badge"><span class="badge-new">NEW</span></div>
-      </div>
-      <div class="product-info">
-        <div class="product-brand">GHD</div>
-        <div class="product-name">Platinum+ Styler Heat Protectant Spray</div>
-        <div class="product-price-row"><span class="product-price">RM 55</span></div>
-      </div>
-      <div class="product-footer"><button class="btn-add-cart" onclick="event.stopPropagation();showToast();">Add to Cart</button></div>
+    <div class="vch-grid" id="vch-grid">
+      <div class="vch v50"><div class="vch-orb"></div><div class="vch-tag">Gift Voucher</div><div class="vch-amt">RM 50</div><div class="vch-desc">Perfect for a quick trim or nail session</div><button class="btn-vch" onclick="addCart('Voucher RM50')">Buy now &#8594;</button></div>
+      <div class="vch v100"><div class="vch-orb"></div><div class="vch-tag">Gift Voucher</div><div class="vch-amt">RM 100</div><div class="vch-desc">Covers a full haircut and styling session</div><button class="btn-vch" onclick="addCart('Voucher RM100')">Buy now &#8594;</button></div>
+      <div class="vch v200"><div class="vch-orb"></div><div class="vch-tag">Gift Voucher</div><div class="vch-amt">RM 200</div><div class="vch-desc">Ideal for a colour treatment or hair spa day</div><button class="btn-vch" onclick="addCart('Voucher RM200')">Buy now &#8594;</button></div>
+      <div class="vch v500"><div class="vch-orb"></div><div class="vch-tag" style="color:rgba(255,255,255,0.5)">Premium</div><div class="vch-amt">RM 500</div><div class="vch-desc">Full luxury treatment experience, covered</div><button class="btn-vch" onclick="addCart('Voucher RM500')">Buy now &#8594;</button></div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="ec-footer">
-  <div class="ec-footer-grid">
-    <div>
-      <div class="ec-footer-logo">Precision Salon</div>
-      <p class="ec-footer-desc">Malaysia's premier multi-outlet beauty salon chain. Professional services, premium products, delivered with precision.</p>
-      <div class="ec-footer-social">
-        <a href="#">f</a>
-        <a href="#">📸</a>
-        <a href="#">💬</a>
-        <a href="#">▶</a>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Precision Salon</div>
+        <p class="footer-desc">Malaysia&#8217;s leading multi-outlet salon network. Book online, shop products, earn loyalty points.</p>
+      </div>
+      <div>
+        <div class="f-col-h">Services</div>
+        <a class="f-a" href="service-detail.html">Haircut &amp; Style</a>
+        <a class="f-a" href="service-detail.html">Colour &amp; Balayage</a>
+        <a class="f-a" href="service-detail.html">Scalp Treatment</a>
+        <a class="f-a" href="service-detail.html">Nail Studio</a>
+      </div>
+      <div>
+        <div class="f-col-h">Account</div>
+        <a class="f-a" href="my-bookings.html">My Bookings</a>
+        <a class="f-a" href="wallet-dashboard.html">Wallet</a>
+        <a class="f-a" href="membership-loyalty.html">Membership</a>
+        <a class="f-a" href="affiliate-dashboard.html">Affiliate Hub</a>
+      </div>
+      <div>
+        <div class="f-col-h">Help</div>
+        <a class="f-a" href="#">Contact Us</a>
+        <a class="f-a" href="#">Cancellation Policy</a>
+        <a class="f-a" href="#">Privacy Policy (PDPA)</a>
+        <a class="f-a" href="#">Terms of Service</a>
       </div>
     </div>
-    <div class="ec-footer-col">
-      <div class="ec-footer-col-title">Services</div>
-      <a href="shop.html?cat=haircut">Hair Cut &amp; Style</a>
-      <a href="shop.html?cat=colour">Hair Colour</a>
-      <a href="shop.html?cat=treatment">Treatments</a>
-      <a href="shop.html?cat=nails">Nail Services</a>
-      <a href="shop.html?cat=facial">Facial &amp; Skin</a>
+    <div class="footer-bot">
+      <span>&#169; 2026 Precision Salon OS. All rights reserved.</span>
+      <div class="f-badges">
+        <span class="f-badge">SST Registered</span>
+        <span class="f-badge">LHDN e-Invoice</span>
+        <span class="f-badge">PDPA 2010</span>
+      </div>
     </div>
-    <div class="ec-footer-col">
-      <div class="ec-footer-col-title">Account</div>
-      <a href="member-profile.html">My Profile</a>
-      <a href="my-bookings.html">My Bookings</a>
-      <a href="wallet-dashboard.html">My Wallet</a>
-      <a href="vouchers-packages.html">Vouchers</a>
-      <a href="affiliate-dashboard.html">Affiliate Program</a>
-    </div>
-    <div class="ec-footer-col">
-      <div class="ec-footer-col-title">Help</div>
-      <a href="#">How to Book</a>
-      <a href="#">Cancellation Policy</a>
-      <a href="#">Delivery Info</a>
-      <a href="#">Returns Policy</a>
-      <a href="#">Contact Us</a>
-    </div>
-  </div>
-  <div class="ec-footer-bottom">
-    <span>© 2026 Precision Salon OS · Vosme International Sdn Bhd</span>
-    <span>SST Reg: W10-1808-32018008 · PDPA Compliant</span>
-    <span>🇲🇾 Serving Kuala Lumpur, Bangsar, Mont Kiara, Petaling Jaya</span>
   </div>
 </footer>
 
-<!-- Cart Toast Notification -->
-<div class="cart-toast" id="cartToast">
-  <span class="cart-toast-icon">🛒</span>
-  <div class="cart-toast-text">
-    <div class="cart-toast-title">Added to cart!</div>
-    <div class="cart-toast-sub">Cart updated · 3 items</div>
-  </div>
-  <a href="cart.html" class="cart-toast-btn">View Cart</a>
-</div>
-
-<script>
-function showToast() {
-  const t = document.getElementById('cartToast');
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
-// Active nav highlighting on scroll
-document.querySelectorAll('.ec-nav a').forEach(a => {
-  if (a.getAttribute('href') === 'home.html') a.classList.add('active');
-});
-</script>
+<div id="toast" role="status" aria-live="polite"></div>
 <script src="../assets/app.js"></script>
-<script>document.addEventListener("DOMContentLoaded",()=>Cart.updateBadges());</script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* Nav scroll */
+window.addEventListener('scroll', () =>
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 60), { passive: true });
+
+/* Hero entrance */
+gsap.timeline({ delay: .15 })
+  .to('#hp',     { opacity:1, y:0, duration:.7,  ease:'power3.out' })
+  .to('#hh',     { opacity:1, y:0, duration:.8,  ease:'power3.out' }, '-=.35')
+  .to('#hs',     { opacity:1, y:0, duration:.7,  ease:'power3.out' }, '-=.35')
+  .to('#hc',     { opacity:1, y:0, duration:.6,  ease:'power3.out' }, '-=.3')
+  .to('#hscroll',{ opacity:1,      duration:.5                     }, '-=.2');
+
+/* Stats reveal + count-up */
+gsap.to('.stat', { opacity:1, y:0, stagger:.1, duration:.7, ease:'power3.out',
+  scrollTrigger: { trigger:'#stats', start:'top 85%' } });
+
+ScrollTrigger.create({ trigger:'#stats', start:'top 80%', once:true, onEnter: () => {
+  document.querySelectorAll('.cu').forEach(el => {
+    const t = parseFloat(el.dataset.t), dec = t % 1 !== 0;
+    gsap.fromTo(el, { textContent: 0 }, {
+      textContent: t, duration: 2, ease: 'power2.out',
+      snap: { textContent: dec ? .1 : 1 },
+      onUpdate() { el.textContent = dec
+        ? parseFloat(el.textContent).toFixed(1)
+        : Math.round(parseFloat(el.textContent)); }
+    });
+  });
+}});
+
+/* Service cards entrance */
+gsap.to('#svc-grid .svc-card', { opacity:1, y:0, stagger:.1, duration:.75, ease:'power3.out',
+  scrollTrigger: { trigger:'#svc-grid', start:'top 80%' } });
+
+/* 3D tilt on mouse move */
+document.querySelectorAll('[data-tilt]').forEach(c => {
+  c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - .5;
+    const y = (e.clientY - r.top)  / r.height - .5;
+    gsap.to(c, { rotateY: x*16, rotateX: -y*16, translateZ: 18,
+      duration:.3, ease:'power2.out', transformPerspective:800, overwrite:'auto' });
+    const s = c.querySelector('.svc-shine');
+    if (s) s.style.background =
+      `radial-gradient(circle at ${(x+.5)*100}% ${(y+.5)*100}%, rgba(255,255,255,0.13) 0%, transparent 55%)`;
+  });
+  c.addEventListener('mouseleave', () =>
+    gsap.to(c, { rotateY:0, rotateX:0, translateZ:0,
+      duration:.65, ease:'elastic.out(1,.7)', overwrite:'auto' }));
+});
+
+/* Promo banners */
+gsap.to('#promo-grid .promo', { opacity:1, y:0, stagger:.12, duration:.75, ease:'power3.out',
+  scrollTrigger: { trigger:'#promo-grid', start:'top 82%' } });
+
+/* Products */
+gsap.fromTo('#prod-grid .prod-card', { opacity:0, y:40 },
+  { opacity:1, y:0, stagger:.08, duration:.65, ease:'power3.out',
+    scrollTrigger: { trigger:'#prod-grid', start:'top 82%' } });
+
+/* Vouchers */
+gsap.fromTo('#vch-grid .vch', { opacity:0, y:40, scale:.96 },
+  { opacity:1, y:0, scale:1, stagger:.1, duration:.7, ease:'power3.out',
+    scrollTrigger: { trigger:'#vch-grid', start:'top 82%' } });
+
+/* Hero parallax */
+gsap.to('#hero .hero-content', { yPercent: 18, ease:'none',
+  scrollTrigger: { trigger:'#hero', start:'top top', end:'bottom top', scrub:true } });
+gsap.to('.o1', { yPercent:-28, ease:'none',
+  scrollTrigger: { trigger:'#hero', start:'top top', end:'bottom top', scrub:1.5 } });
+gsap.to('.o2', { yPercent:-18, ease:'none',
+  scrollTrigger: { trigger:'#hero', start:'top top', end:'bottom top', scrub:2 } });
+
+/* Magnetic CTAs */
+document.querySelectorAll('.btn-hp, .btn-hs').forEach(b => {
+  b.addEventListener('mousemove', e => {
+    const r = b.getBoundingClientRect();
+    gsap.to(b, { x:(e.clientX-r.left-r.width/2)*.25, y:(e.clientY-r.top-r.height/2)*.25,
+      duration:.3, ease:'power2.out', overwrite:'auto' });
+  });
+  b.addEventListener('mouseleave', () =>
+    gsap.to(b, { x:0, y:0, duration:.5, ease:'elastic.out(1,.7)', overwrite:'auto' }));
+});
+
+/* Helpers */
+let _tt;
+function addCart(n) {
+  Cart.add(1);
+  document.getElementById('cart-count').textContent = Cart.getCount();
+  const t = document.getElementById('toast');
+  t.innerHTML = '&#128722; ' + n + ' added!';
+  t.classList.add('show');
+  clearTimeout(_tt); _tt = setTimeout(() => t.classList.remove('show'), 3000);
+}
+function goTo(u) { window.location.href = u; }
+</script>
 </body>
 </html>
