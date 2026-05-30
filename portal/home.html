@@ -3,239 +3,284 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Precision Salon — Premium Hair &amp; Beauty in Malaysia</title>
+<title>R7 Healthcare — Premium Health Supplements Malaysia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
 :root {
-  --ink: #08091a; --ink-soft: #3a3f5c; --ink-muted: #6b7194;
-  --surface: #fff; --surface-low: #f4f6ff;
-  --primary: #1a5fa8; --pv: #2d7cf0; --pglow: rgba(45,124,240,0.22);
-  --gold: #c49a3c; --gold-bg: rgba(196,154,60,0.12);
-  --border: rgba(8,9,26,0.09); --bl: rgba(255,255,255,0.11);
-  --r: 12px; --rl: 20px;
-  --eo: cubic-bezier(0.25,1,0.5,1); --ee: cubic-bezier(0.16,1,0.3,1);
+  --ink:       #0a2218;
+  --ink-soft:  #1b4533;
+  --ink-muted: #4a7c62;
+  --surface:   #ffffff;
+  --sf-low:    #f0fdf4;
+  --sf-mid:    #dcfce7;
+  --primary:   #16a34a;
+  --pv:        #22c55e;
+  --pglow:     rgba(34,197,94,0.28);
+  --gold:      #ca8a04;
+  --gold-bg:   rgba(202,138,4,0.12);
+  --border:    rgba(10,34,24,0.1);
+  --bl:        rgba(255,255,255,0.13);
+  --hero:      #060f0a;
+  --r:12px; --rl:20px;
+  --eo: cubic-bezier(0.25,1,0.5,1);
+  --ee: cubic-bezier(0.16,1,0.3,1);
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Libre Franklin', system-ui, sans-serif; background: var(--surface); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-a { color: inherit; text-decoration: none; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Libre Franklin',system-ui,sans-serif;background:var(--surface);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
 
 /* ── NAV ── */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 68px; display: flex; align-items: center; gap: 20px; padding: 0 40px; transition: background .5s var(--eo), backdrop-filter .5s, box-shadow .5s; }
-.nav.scrolled { background: rgba(7,9,22,0.84); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); box-shadow: 0 1px 0 var(--bl), 0 8px 40px rgba(0,0,0,0.35); }
-.nav-logo { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.03em; flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
-.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(.7); } }
-.nav-search { flex: 1; max-width: 420px; display: flex; align-items: center; background: rgba(255,255,255,0.08); border: 1px solid var(--bl); border-radius: 100px; padding: 0 16px 0 14px; gap: 8px; transition: background .2s, border-color .2s; }
-.nav-search:focus-within { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.28); }
-.nav-search input { flex: 1; border: none; background: transparent; color: #fff; font-size: 13px; font-family: inherit; padding: 10px 0; outline: none; }
-.nav-search input::placeholder { color: rgba(255,255,255,0.4); }
-.nav-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
-.nav-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 100px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); cursor: pointer; transition: background .2s, color .2s; white-space: nowrap; }
-.nav-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
-.nav-cart { background: var(--pv); color: #fff; font-weight: 700; position: relative; }
-.nav-cart:hover { background: #2170e0; color: #fff; }
-.nav-badge { position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); color: #000; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;gap:20px;padding:0 40px;transition:background .5s var(--eo),backdrop-filter .5s,box-shadow .5s}
+.nav.scrolled{background:rgba(6,15,10,0.86);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);box-shadow:0 1px 0 var(--bl),0 8px 40px rgba(0,0,0,0.35)}
+.nav-logo{font-size:21px;font-weight:900;color:#fff;letter-spacing:-0.03em;flex-shrink:0;display:flex;align-items:center;gap:8px}
+.nav-logo span{color:var(--pv)}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--pv);box-shadow:0 0 14px var(--pv);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.nav-search{flex:1;max-width:400px;display:flex;align-items:center;background:rgba(255,255,255,0.09);border:1px solid var(--bl);border-radius:100px;padding:0 16px 0 14px;gap:8px;transition:background .2s,border-color .2s}
+.nav-search:focus-within{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3)}
+.nav-search input{flex:1;border:none;background:transparent;color:#fff;font-size:13px;font-family:inherit;padding:10px 0;outline:none}
+.nav-search input::placeholder{color:rgba(255,255,255,0.4)}
+.nav-actions{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:100px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.75);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
+.nav-btn:hover{background:rgba(255,255,255,0.1);color:#fff}
+.nav-cart{background:var(--pv);color:#fff;font-weight:700;position:relative}
+.nav-cart:hover{background:#20b356}
+.nav-badge{position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:var(--gold);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
 
 /* ── HERO ── */
-.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: #07080f; padding: 0 24px; text-align: center; }
-.hero-mesh { position: absolute; inset: 0; background: radial-gradient(ellipse 72% 62% at 18% 18%, rgba(45,124,240,0.3) 0%, transparent 60%), radial-gradient(ellipse 52% 52% at 82% 82%, rgba(139,92,246,0.23) 0%, transparent 55%), radial-gradient(ellipse 62% 42% at 62% 8%, rgba(196,154,60,0.16) 0%, transparent 50%); animation: meshpulse 12s ease-in-out infinite alternate; }
-@keyframes meshpulse { 0% { opacity:.8; } 100% { opacity:1; } }
-.hero-grid { position: absolute; inset: 0; opacity: .05; background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
-.orbs { position: absolute; inset: 0; pointer-events: none; }
-.orb { position: absolute; border-radius: 50%; filter: blur(65px); opacity: .36; }
-.o1 { width: 420px; height: 420px; background: radial-gradient(circle, rgba(45,124,240,0.65), transparent 70%); top: -120px; left: -100px; animation: of1 16s ease-in-out infinite; }
-.o2 { width: 340px; height: 340px; background: radial-gradient(circle, rgba(139,92,246,0.55), transparent 70%); bottom: -60px; right: -80px; animation: of2 19s ease-in-out infinite; }
-.o3 { width: 220px; height: 220px; background: radial-gradient(circle, rgba(196,154,60,0.6), transparent 70%); top: 32%; right: 14%; animation: of3 12s ease-in-out infinite; }
-@keyframes of1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(45px,-35px) scale(1.06)} 66%{transform:translate(-20px,25px) scale(.95)} }
-@keyframes of2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-55px,-45px)} }
-@keyframes of3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(22px,-22px) scale(1.12)} }
-.floaters { position: absolute; inset: 0; pointer-events: none; perspective: 900px; }
-.fl { position: absolute; opacity: 0; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.45)); font-size: 42px; }
-.fl1{top:15%;left:8%;font-size:52px;animation:fa 8s 3s ease-in-out infinite}
-.fl2{top:20%;right:10%;font-size:38px;animation:fb 10s 3.5s ease-in-out infinite}
-.fl3{bottom:26%;left:11%;font-size:46px;animation:fc 9s 4s ease-in-out infinite}
-.fl4{bottom:22%;right:8%;font-size:40px;animation:fa 11s 2.5s ease-in-out infinite}
-.fl5{top:50%;left:4%;font-size:30px;animation:fb 7s 5s ease-in-out infinite}
-.fl6{top:46%;right:5%;font-size:35px;animation:fc 12s 1.5s ease-in-out infinite}
-@keyframes fa { 0%{opacity:0;transform:translateY(22px) translateZ(-20px) rotate(-5deg)} 15%{opacity:.7} 50%{transform:translateY(-12px) translateZ(12px) rotate(3deg);opacity:.8} 100%{transform:translateY(22px) translateZ(-20px) rotate(-5deg);opacity:.7} }
-@keyframes fb { 0%{opacity:0;transform:translateY(-15px) translateZ(5px) rotate(4deg)} 15%{opacity:.65} 50%{transform:translateY(16px) translateZ(-10px) rotate(-3deg);opacity:.75} 100%{transform:translateY(-15px) translateZ(5px) rotate(4deg);opacity:.65} }
-@keyframes fc { 0%{opacity:0;transform:translateY(0) translateZ(15px) rotate(-2deg)} 15%{opacity:.7} 50%{transform:translateY(-20px) translateZ(-5px) rotate(5deg);opacity:.8} 100%{transform:translateY(0) translateZ(15px) rotate(-2deg);opacity:.7} }
-.hero-content { position: relative; z-index: 2; max-width: 760px; }
-.hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid var(--bl); border-radius: 100px; padding: 6px 18px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 28px; backdrop-filter: blur(12px); opacity: 0; transform: translateY(20px); }
-.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-.hero-h1 { font-size: clamp(2.8rem,5.5vw,5.2rem); font-weight: 900; line-height: 1.04; color: #fff; letter-spacing: -0.04em; text-wrap: balance; margin-bottom: 22px; opacity: 0; transform: translateY(30px); }
-.hero-h1 em { font-style: normal; color: var(--gold); }
-.hero-sub { font-size: clamp(1rem,1.5vw,1.15rem); color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; margin: 0 auto 36px; opacity: 0; transform: translateY(20px); }
-.hero-ctas { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; opacity: 0; transform: translateY(20px); }
-.btn-hp { display: inline-flex; align-items: center; gap: 8px; background: var(--pv); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 100px; border: none; cursor: pointer; transition: transform .2s var(--eo), box-shadow .2s, background .2s; font-family: inherit; }
-.btn-hp:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 40px var(--pglow), 0 0 0 4px rgba(45,124,240,0.18); background: #2574e8; }
-.btn-hs { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.82); font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 100px; border: 1px solid var(--bl); cursor: pointer; transition: background .2s, border-color .2s, transform .2s; backdrop-filter: blur(10px); font-family: inherit; }
-.btn-hs:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
-.hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; z-index: 2; }
-.scroll-txt { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: .12em; text-transform: uppercase; }
-.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent); animation: sl 1.8s ease-in-out infinite; }
-@keyframes sl { 0%,100%{transform:scaleY(1) translateY(0);opacity:1} 50%{transform:scaleY(.5) translateY(12px);opacity:.4} }
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:var(--hero);padding:0 24px;text-align:center}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 15% 15%,rgba(34,197,94,0.26) 0%,transparent 58%),radial-gradient(ellipse 55% 55% at 85% 85%,rgba(22,163,74,0.2) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 70% 10%,rgba(202,138,4,0.14) 0%,transparent 50%);animation:mshift 14s ease-in-out infinite alternate}
+@keyframes mshift{0%{opacity:.85}100%{opacity:1}}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.orbs{position:absolute;inset:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.38}
+.o1{width:400px;height:400px;background:radial-gradient(circle,rgba(34,197,94,0.6),transparent 70%);top:-100px;left:-80px;animation:of1 16s ease-in-out infinite}
+.o2{width:320px;height:320px;background:radial-gradient(circle,rgba(16,185,129,0.5),transparent 70%);bottom:-50px;right:-70px;animation:of2 18s ease-in-out infinite}
+.o3{width:200px;height:200px;background:radial-gradient(circle,rgba(202,138,4,0.55),transparent 70%);top:35%;right:12%;animation:of3 11s ease-in-out infinite}
+@keyframes of1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-20px,20px) scale(.95)}}
+@keyframes of2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,-40px)}}
+@keyframes of3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-20px) scale(1.12)}}
+
+/* ── 3D FLOATING CAPSULES ── */
+.caps-stage{position:absolute;inset:0;pointer-events:none;perspective:1000px;transform-style:preserve-3d}
+.cap{position:absolute;border-radius:100px;transform-style:preserve-3d;filter:drop-shadow(0 10px 24px rgba(0,0,0,0.5))}
+/* Two-tone capsule: left half + right half via pseudo */
+.cap::before,.cap::after{content:'';position:absolute;top:0;bottom:0;border-radius:inherit}
+.cap::before{left:0;width:50%;border-radius:100px 0 0 100px}
+.cap::after{right:0;width:50%;border-radius:0 100px 100px 0}
+
+/* Green + white capsule */
+.cap-gw{width:88px;height:30px;background:none}
+.cap-gw::before{background:linear-gradient(160deg,#4ade80 0%,#16a34a 50%,#0d6e30 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.28),inset 2px 2px 5px rgba(255,255,255,0.22)}
+.cap-gw::after{background:linear-gradient(160deg,#f9fafb 0%,#e5e7eb 60%,#d1d5db 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.18),inset 2px 2px 5px rgba(255,255,255,0.5)}
+
+/* Yellow capsule */
+.cap-y{width:72px;height:26px;background:none}
+.cap-y::before{background:linear-gradient(160deg,#fde047 0%,#ca8a04 50%,#92400e 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.28),inset 2px 2px 5px rgba(255,255,255,0.22)}
+.cap-y::after{background:linear-gradient(160deg,#fff7ed 0%,#fef3c7 60%,#fde68a 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.15),inset 2px 2px 5px rgba(255,255,255,0.5)}
+
+/* Blue capsule */
+.cap-b{width:80px;height:28px;background:none}
+.cap-b::before{background:linear-gradient(160deg,#60a5fa 0%,#2563eb 50%,#1e3a8a 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.28),inset 2px 2px 5px rgba(255,255,255,0.22)}
+.cap-b::after{background:linear-gradient(160deg,#f0f9ff 0%,#e0f2fe 60%,#bae6fd 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.15),inset 2px 2px 5px rgba(255,255,255,0.5)}
+
+/* Orange capsule */
+.cap-o{width:66px;height:24px;background:none}
+.cap-o::before{background:linear-gradient(160deg,#fb923c 0%,#ea580c 50%,#9a3412 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.28),inset 2px 2px 5px rgba(255,255,255,0.22)}
+.cap-o::after{background:linear-gradient(160deg,#fff7ed 0%,#ffedd5 60%,#fed7aa 100%);box-shadow:inset -3px -3px 6px rgba(0,0,0,0.15),inset 2px 2px 5px rgba(255,255,255,0.5)}
+
+/* Round tablets */
+.tab{position:absolute;border-radius:50%;filter:drop-shadow(0 8px 18px rgba(0,0,0,0.5))}
+.tab-g{background:radial-gradient(circle at 35% 35%,#4ade80,#15803d 70%,#0d4a22 100%);box-shadow:inset -4px -4px 8px rgba(0,0,0,0.3),inset 3px 3px 6px rgba(255,255,255,0.2)}
+.tab-y{background:radial-gradient(circle at 35% 35%,#fde047,#ca8a04 70%,#78350f 100%);box-shadow:inset -4px -4px 8px rgba(0,0,0,0.3),inset 3px 3px 6px rgba(255,255,255,0.2)}
+
+/* Bottle shape using CSS */
+.btl{position:absolute;display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 12px 28px rgba(0,0,0,0.5))}
+.btl-neck{width:22px;height:18px;background:linear-gradient(160deg,rgba(34,197,94,0.8),rgba(16,163,74,0.9));border-radius:4px 4px 0 0;box-shadow:inset -2px -2px 6px rgba(0,0,0,0.3),inset 1px 1px 4px rgba(255,255,255,0.2)}
+.btl-body{width:44px;height:64px;background:linear-gradient(160deg,rgba(34,197,94,0.85) 0%,rgba(16,163,74,0.9) 40%,rgba(10,100,44,0.95) 100%);border-radius:6px;box-shadow:inset -4px -4px 10px rgba(0,0,0,0.3),inset 2px 2px 8px rgba(255,255,255,0.15),0 0 0 1px rgba(255,255,255,0.1)}
+.btl-label{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:34px;height:28px;background:rgba(255,255,255,0.15);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:rgba(255,255,255,0.8);letter-spacing:.04em;text-transform:uppercase}
+
+/* Floating positions + animations */
+.c1{top:14%;left:7%;transform:rotateZ(-25deg) rotateX(15deg) rotateY(20deg);animation:fc1 9s 0.5s ease-in-out infinite;opacity:0}
+.c2{top:22%;right:9%;transform:rotateZ(18deg) rotateX(-10deg) rotateY(-15deg);animation:fc2 11s 1s ease-in-out infinite;opacity:0}
+.c3{bottom:28%;left:9%;transform:rotateZ(30deg) rotateX(10deg);animation:fc3 8s 1.5s ease-in-out infinite;opacity:0}
+.c4{bottom:20%;right:7%;transform:rotateZ(-15deg) rotateX(-12deg) rotateY(10deg);animation:fc1 12s 0.8s ease-in-out infinite;opacity:0}
+.c5{top:48%;left:3%;transform:rotateZ(20deg);animation:fc2 7s 2s ease-in-out infinite;opacity:0}
+.c6{top:44%;right:3%;transform:rotateZ(-30deg) rotateX(8deg);animation:fc3 10s 1.2s ease-in-out infinite;opacity:0}
+.t1{width:36px;height:36px;top:30%;left:16%;animation:fc2 13s 2.5s ease-in-out infinite;opacity:0}
+.t2{width:28px;height:28px;bottom:35%;right:16%;animation:fc1 9s 3s ease-in-out infinite;opacity:0}
+.b1{top:18%;right:22%;transform:rotateZ(-8deg) rotateX(5deg);animation:fc3 14s 1s ease-in-out infinite;opacity:0}
+.b2{bottom:22%;left:20%;transform:rotateZ(10deg) rotateX(-5deg);animation:fc2 10s 2s ease-in-out infinite;opacity:0}
+
+@keyframes fc1{0%{opacity:0;transform:translateY(16px) rotateZ(-25deg) rotateX(15deg) rotateY(20deg)}15%{opacity:.8}50%{transform:translateY(-12px) rotateZ(-22deg) rotateX(12deg) rotateY(18deg);opacity:.9}100%{transform:translateY(16px) rotateZ(-25deg) rotateX(15deg) rotateY(20deg);opacity:.8}}
+@keyframes fc2{0%{opacity:0;transform:translateY(-18px) rotateZ(18deg) rotateX(-10deg) rotateY(-15deg)}15%{opacity:.75}50%{transform:translateY(14px) rotateZ(20deg) rotateX(-8deg) rotateY(-12deg);opacity:.85}100%{transform:translateY(-18px) rotateZ(18deg) rotateX(-10deg) rotateY(-15deg);opacity:.75}}
+@keyframes fc3{0%{opacity:0;transform:translateY(0) rotateZ(30deg) rotateX(10deg)}15%{opacity:.8}50%{transform:translateY(-18px) rotateZ(28deg) rotateX(8deg);opacity:.9}100%{transform:translateY(0) rotateZ(30deg) rotateX(10deg);opacity:.8}}
+
+/* Hero content */
+.hero-content{position:relative;z-index:2;max-width:720px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);border-radius:100px;padding:6px 18px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px;backdrop-filter:blur(12px);opacity:0;transform:translateY(20px)}
+.pill-dot{width:6px;height:6px;border-radius:50%;background:var(--pv)}
+.hero-h1{font-size:clamp(2.7rem,5.5vw,5rem);font-weight:900;line-height:1.05;color:#fff;letter-spacing:-0.04em;text-wrap:balance;margin-bottom:22px;opacity:0;transform:translateY(30px)}
+.hero-h1 em{font-style:normal;color:var(--pv)}
+.hero-sub{font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,0.55);line-height:1.7;max-width:500px;margin:0 auto 36px;opacity:0;transform:translateY(20px)}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn-hp{display:inline-flex;align-items:center;gap:8px;background:var(--pv);color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;transition:transform .2s var(--eo),box-shadow .2s,background .2s;font-family:inherit;box-shadow:0 4px 20px rgba(34,197,94,0.35)}
+.btn-hp:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 40px rgba(34,197,94,0.45),0 0 0 4px rgba(34,197,94,0.18);background:#20b356}
+.btn-hs{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.82);font-weight:600;font-size:15px;padding:14px 28px;border-radius:100px;border:1px solid var(--bl);cursor:pointer;transition:background .2s,border-color .2s,transform .2s;backdrop-filter:blur(10px);font-family:inherit}
+.btn-hs:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;z-index:2}
+.scroll-txt{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:.12em;text-transform:uppercase}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(34,197,94,0.6),transparent);animation:sl 1.8s ease-in-out infinite}
+@keyframes sl{0%,100%{transform:scaleY(1) translateY(0);opacity:1}50%{transform:scaleY(.5) translateY(12px);opacity:.4}}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--sf-low);border-bottom:1px solid var(--sf-mid);padding:16px 40px}
+.trust-bar-in{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.trust-icon{font-size:18px}
 
 /* ── STATS ── */
-.stats { background: #07080f; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 28px 40px; display: flex; justify-content: center; }
-.stat { flex: 1; max-width: 220px; text-align: center; padding: 0 32px; position: relative; opacity: 0; transform: translateY(20px); }
-.stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px; background: rgba(255,255,255,0.1); }
-.stat-n { font-size: 2.5rem; font-weight: 900; color: #fff; letter-spacing: -0.04em; line-height: 1; }
-.stat-u { color: var(--gold); }
-.stat-l { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; letter-spacing: .05em; text-transform: uppercase; }
-
-/* ── CATS ── */
-.cats { background: var(--surface-low); border-bottom: 1px solid var(--border); padding: 0 40px; overflow-x: auto; scrollbar-width: none; }
-.cats::-webkit-scrollbar { display: none; }
-.cats-in { display: flex; gap: 4px; padding: 16px 0; max-width: 1240px; margin: 0 auto; }
-.cat { display: inline-flex; align-items: center; gap: 7px; padding: 8px 18px; border-radius: 100px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; color: var(--ink-soft); background: var(--surface); cursor: pointer; white-space: nowrap; transition: all .2s var(--eo); }
-.cat:hover { border-color: var(--pv); color: var(--pv); background: #eef4ff; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(45,124,240,0.14); }
-.cat.on { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 16px rgba(26,95,168,0.3); }
+.stats{background:var(--hero);border-bottom:1px solid rgba(255,255,255,0.07);padding:28px 40px;display:flex;justify-content:center}
+.stat{flex:1;max-width:220px;text-align:center;padding:0 32px;position:relative;opacity:0;transform:translateY(20px)}
+.stat:not(:last-child)::after{content:'';position:absolute;right:0;top:10%;bottom:10%;width:1px;background:rgba(255,255,255,0.1)}
+.stat-n{font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1}
+.stat-u{color:var(--pv)}
+.stat-l{font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
 
 /* ── SECTIONS ── */
-.sec { padding: 96px 40px; }
-.sec-in { max-width: 1240px; margin: 0 auto; }
-.sec-eye { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; color: var(--pv); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
-.sec-eye-line { width: 24px; height: 1.5px; background: var(--pv); }
-.sec-h2 { font-size: clamp(1.9rem,3vw,2.9rem); font-weight: 800; color: var(--ink); letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; margin-bottom: 12px; }
-.sec-sub { font-size: 15px; color: var(--ink-muted); line-height: 1.6; max-width: 560px; }
-.sec-hdr { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
-.sec-lnk { font-size: 13px; font-weight: 700; color: var(--pv); white-space: nowrap; display: flex; align-items: center; gap: 4px; transition: gap .2s var(--eo); flex-shrink: 0; padding-bottom: 4px; }
-.sec-lnk:hover { gap: 9px; }
+.sec{padding:88px 40px}
+.sec-in{max-width:1240px;margin:0 auto}
+.sec-eye{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--primary);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.sec-eye-line{width:24px;height:2px;background:var(--primary);border-radius:2px}
+.sec-h2{font-size:clamp(1.9rem,3vw,2.8rem);font-weight:800;color:var(--ink);letter-spacing:-0.03em;line-height:1.12;text-wrap:balance;margin-bottom:12px}
+.sec-sub{font-size:15px;color:var(--ink-muted);line-height:1.6;max-width:560px}
+.sec-hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px}
+.sec-lnk{font-size:13px;font-weight:700;color:var(--primary);white-space:nowrap;display:flex;align-items:center;gap:4px;transition:gap .2s var(--eo);flex-shrink:0;padding-bottom:4px}
+.sec-lnk:hover{gap:9px}
 
-/* ── SERVICE CARDS ── */
-.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-.svc-card { position: relative; overflow: hidden; border-radius: var(--rl); background: #0c1228; cursor: pointer; transform-style: preserve-3d; transition: box-shadow .3s var(--eo); opacity: 0; transform: translateY(30px); }
-.svc-card:hover { box-shadow: 0 28px 64px rgba(0,0,0,0.42), 0 0 0 1px rgba(255,255,255,0.07); }
-.svc-glow { position: absolute; inset: 0; }
-.svc-shine { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .2s; }
-.svc-card:hover .svc-shine { opacity: 1; }
-.svc-in { position: relative; z-index: 1; padding: 28px; }
-.svc-em { font-size: 48px; margin-bottom: 20px; display: block; transition: transform .4s var(--ee); }
-.svc-card:hover .svc-em { transform: translateZ(40px) scale(1.12); }
-.svc-bdg { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
-.b-feat { background: rgba(196,154,60,0.15); color: var(--gold); border: 1px solid rgba(196,154,60,0.3); }
-.b-pop  { background: rgba(45,124,240,0.15); color: #78b4ff; border: 1px solid rgba(45,124,240,0.3); }
-.b-new  { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
-.svc-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
-.svc-desc { font-size: 13px; color: rgba(255,255,255,0.46); line-height: 1.6; margin-bottom: 20px; }
-.svc-meta { display: flex; align-items: center; justify-content: space-between; }
-.svc-from { font-size: 10px; color: rgba(255,255,255,0.36); display: block; margin-bottom: 2px; }
-.svc-price { font-size: 22px; font-weight: 800; color: #fff; }
-.svc-dur { font-size: 11px; color: rgba(255,255,255,0.38); }
-.btn-book { display: block; width: 100%; margin-top: 20px; padding: 11px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; font-size: 13px; font-weight: 700; text-align: center; cursor: pointer; transition: background .2s, border-color .2s, transform .15s; font-family: inherit; }
-.btn-book:hover { background: var(--pv); border-color: var(--pv); transform: translateY(-1px); }
+/* ── HOT SALES GRID (2 × 3) ── */
+.hot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:36px}
+.prod-card{background:var(--surface);border:1px solid rgba(22,163,74,0.12);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:transform .35s var(--ee),box-shadow .35s,border-color .3s;opacity:0;transform:translateY(36px)}
+.prod-card:hover{transform:translateY(-6px);box-shadow:0 22px 52px rgba(10,34,24,0.1);border-color:rgba(34,197,94,0.35)}
+.prod-img{aspect-ratio:1;background:var(--sf-low);display:flex;align-items:center;justify-content:center;font-size:60px;position:relative;overflow:hidden;transition:background .3s}
+.prod-card:hover .prod-img{background:var(--sf-mid)}
+.prod-img-in{transition:transform .4s var(--ee)}
+.prod-card:hover .prod-img-in{transform:scale(1.1)}
+.prod-bdg{position:absolute;top:12px;left:12px;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:.04em}
+.b-hot{background:#fef2f2;color:#dc2626}
+.b-new{background:#f0fdf4;color:#15803d}
+.b-best{background:#fefce8;color:#a16207}
+.b-lim{background:#faf5ff;color:#7c3aed}
+.prod-body{padding:18px 16px}
+.prod-brand{font-size:10px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.prod-name{font-size:14px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:6px}
+.prod-benefit{font-size:12px;color:var(--ink-muted);line-height:1.5;margin-bottom:12px}
+.prod-prices{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
+.prod-price{font-size:18px;font-weight:800;color:var(--ink)}
+.prod-orig{font-size:12px;color:#9ca3af;text-decoration:line-through}
+.prod-save{font-size:10px;background:#dcfce7;color:#15803d;border-radius:100px;padding:2px 7px;font-weight:700}
+.prod-rating{display:flex;align-items:center;gap:5px;margin-bottom:14px;font-size:12px;color:var(--ink-muted)}
+.prod-stars{color:#f59e0b;letter-spacing:1px;font-size:11px}
+.btn-atc{width:100%;padding:10px;background:var(--primary);color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;font-family:inherit}
+.btn-atc:hover{background:var(--pv);transform:scale(1.02);box-shadow:0 4px 16px rgba(34,197,94,0.35)}
 
-/* ── PROMO ── */
-.promo-wrap { padding: 0 40px 72px; }
-.promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1240px; margin: 0 auto; }
-.promo { border-radius: var(--rl); padding: 40px 36px; position: relative; overflow: hidden; min-height: 200px; display: flex; flex-direction: column; justify-content: flex-end; cursor: pointer; transition: transform .35s var(--eo), box-shadow .35s; opacity: 0; transform: translateY(20px); }
-.promo:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 28px 64px rgba(0,0,0,0.22); }
-.p-pkg { background: linear-gradient(135deg, #0f1629 0%, #1a2550 55%, #0f2040 100%); }
-.p-vch { background: linear-gradient(135deg, #1a0f08 0%, #3d2208 55%, #2a1505 100%); }
-.promo-dots { position: absolute; inset: 0; opacity: .1; background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.7) 1px, transparent 0); background-size: 28px 28px; }
-.promo-orb { position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; border-radius: 50%; transition: transform .5s var(--ee); }
-.promo:hover .promo-orb { transform: scale(1.35) translate(-22px, 22px); }
-.p-pkg .promo-orb { background: radial-gradient(circle, rgba(45,124,240,0.22), transparent 70%); }
-.p-vch .promo-orb { background: radial-gradient(circle, rgba(196,154,60,0.28), transparent 70%); }
-.promo-body { position: relative; z-index: 1; }
-.promo-tag { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
-.t-blue { background: rgba(45,124,240,0.2); color: #78b4ff; border: 1px solid rgba(45,124,240,0.3); }
-.t-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(196,154,60,0.3); }
-.promo-h { font-size: 1.65rem; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.02em; }
-.promo-p { font-size: 13px; color: rgba(255,255,255,0.47); margin-bottom: 20px; line-height: 1.55; }
-.btn-promo { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 100px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; transition: transform .2s, box-shadow .2s; font-family: inherit; }
-.btn-pb { background: var(--pv); color: #fff; }
-.btn-pb:hover { transform: translateY(-1px); box-shadow: 0 6px 22px var(--pglow); }
-.btn-pg { background: var(--gold); color: #1a0f00; }
-.btn-pg:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(196,154,60,0.35); }
+/* Load more button */
+.load-more-wrap{display:flex;justify-content:center}
+.btn-load-more{display:inline-flex;align-items:center;gap:10px;padding:13px 36px;background:var(--sf-low);border:1.5px solid rgba(22,163,74,0.25);border-radius:100px;font-size:14px;font-weight:700;color:var(--primary);cursor:pointer;transition:all .25s var(--eo);font-family:inherit}
+.btn-load-more:hover{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 6px 24px rgba(22,163,74,0.3);transform:translateY(-2px)}
+.btn-load-more .lm-icon{transition:transform .3s var(--eo)}
+.btn-load-more:hover .lm-icon{transform:rotate(180deg)}
+.btn-load-more.loading{pointer-events:none;opacity:.7}
+.btn-load-more.loading .lm-icon{animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── PRODUCTS ── */
-.prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-.prod-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; cursor: pointer; transition: transform .35s var(--ee), box-shadow .35s; opacity: 0; transform: translateY(40px); }
-.prod-card:hover { transform: translateY(-6px); box-shadow: 0 22px 52px rgba(8,9,26,0.12); border-color: transparent; }
-.prod-img { aspect-ratio: 1; background: var(--surface-low); display: flex; align-items: center; justify-content: center; font-size: 58px; position: relative; overflow: hidden; }
-.prod-img-in { transition: transform .4s var(--ee); }
-.prod-card:hover .prod-img-in { transform: scale(1.1); }
-.prod-bdg { position: absolute; top: 12px; left: 12px; padding: 3px 9px; border-radius: 100px; font-size: 10px; font-weight: 800; letter-spacing: .04em; }
-.b-sale { background: #fee2e2; color: #dc2626; }
-.b-best { background: #fef9c3; color: #a16207; }
-.prod-body { padding: 16px; }
-.prod-brand { font-size: 10px; font-weight: 700; color: var(--pv); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
-.prod-name { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 10px; }
-.prod-prices { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
-.prod-price { font-size: 18px; font-weight: 800; color: var(--ink); }
-.prod-orig { font-size: 12px; color: var(--ink-muted); text-decoration: line-through; }
-.btn-atc { width: 100%; padding: 9px; background: var(--ink); color: #fff; border: none; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s, transform .15s; font-family: inherit; }
-.btn-atc:hover { background: var(--pv); transform: scale(1.02); }
+/* ── FEATURED SINGLE ── */
+.featured-card{background:linear-gradient(135deg,#0a2218 0%,#0f3322 50%,#071812 100%);border-radius:var(--rl);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:340px;cursor:pointer;transition:box-shadow .35s;opacity:0}
+.featured-card:hover{box-shadow:0 28px 64px rgba(0,0,0,0.3)}
+.featured-left{padding:48px;display:flex;flex-direction:column;justify-content:center}
+.featured-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:100px;padding:5px 14px;font-size:10px;font-weight:800;color:var(--pv);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;width:fit-content}
+.featured-name{font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.25}
+.featured-desc{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:24px;max-width:320px}
+.featured-price-row{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.featured-price{font-size:2rem;font-weight:900;color:#fff}
+.featured-orig{font-size:14px;color:rgba(255,255,255,0.35);text-decoration:line-through}
+.featured-save-badge{background:var(--pv);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:100px}
+.btn-feat{display:inline-flex;align-items:center;gap:8px;background:var(--pv);color:#fff;font-weight:700;font-size:14px;padding:13px 26px;border-radius:100px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;font-family:inherit}
+.btn-feat:hover{background:#20b356;transform:translateY(-2px);box-shadow:0 8px 28px rgba(34,197,94,0.4)}
+.featured-right{display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden}
+.featured-bg-circle{position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.1)}
+.featured-emoji{font-size:96px;position:relative;z-index:1;animation:flt 6s ease-in-out infinite;filter:drop-shadow(0 16px 32px rgba(0,0,0,0.5))}
+@keyframes flt{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-16px) rotate(3deg)}}
 
-/* ── VOUCHERS ── */
-.vch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-.vch { border-radius: var(--rl); padding: 28px 24px; position: relative; overflow: hidden; cursor: pointer; transition: transform .35s var(--ee), box-shadow .35s; opacity: 0; transform: translateY(40px) scale(.97); }
-.vch:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 22px 52px rgba(0,0,0,0.17); }
-.v50  { background: linear-gradient(135deg, #e8f4fd, #d0e9fb); }
-.v100 { background: linear-gradient(135deg, #e0f0e8, #c6e3d0); }
-.v200 { background: linear-gradient(135deg, #fdf3e3, #f9e4c0); }
-.v500 { background: linear-gradient(135deg, #1a5fa8, #0e3d78); }
-.vch-orb { position: absolute; top: -60px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.16); transition: transform .5s var(--ee); }
-.vch:hover .vch-orb { transform: scale(1.45) translate(-20px, 20px); }
-.vch-tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; opacity: .65; }
-.vch-amt { font-size: 3.2rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
-.v50 .vch-amt, .v100 .vch-amt, .v200 .vch-amt { color: var(--ink); }
-.v500 .vch-amt { color: #fff; }
-.vch-desc { font-size: 12px; color: var(--ink-muted); margin-bottom: 20px; }
-.v500 .vch-desc { color: rgba(255,255,255,0.58); }
-.btn-vch { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; transition: transform .2s, box-shadow .2s; font-family: inherit; }
-.v50 .btn-vch, .v100 .btn-vch, .v200 .btn-vch { background: var(--ink); color: #fff; }
-.v500 .btn-vch { background: #fff; color: var(--ink); }
-.btn-vch:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(0,0,0,0.22); }
+/* ── CATEGORIES (benefits) ── */
+.benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.benefit-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:24px;text-align:center;cursor:pointer;transition:all .3s var(--eo);opacity:0;transform:translateY(20px)}
+.benefit-card:hover{border-color:rgba(34,197,94,0.4);background:var(--sf-low);transform:translateY(-4px);box-shadow:0 12px 32px rgba(22,163,74,0.1)}
+.benefit-icon{font-size:36px;margin-bottom:14px;display:block}
+.benefit-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.benefit-sub{font-size:12px;color:var(--ink-muted);line-height:1.5}
+
+/* ── PROMO BANNERS ── */
+.promo-wrap{padding:0 40px 80px}
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1240px;margin:0 auto}
+.promo{border-radius:var(--rl);padding:40px 36px;position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:transform .35s var(--eo),box-shadow .35s;opacity:0;transform:translateY(20px)}
+.promo:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 28px 64px rgba(0,0,0,0.2)}
+.p-daily{background:linear-gradient(135deg,#0a2218 0%,#0d3520 55%,#071812 100%)}
+.p-gift{background:linear-gradient(135deg,#1c1004 0%,#3b2508 55%,#271303 100%)}
+.promo-dots{position:absolute;inset:0;opacity:.09;background-image:radial-gradient(circle at 2px 2px,rgba(255,255,255,0.7) 1px,transparent 0);background-size:28px 28px}
+.promo-orb{position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;transition:transform .5s var(--ee)}
+.promo:hover .promo-orb{transform:scale(1.35) translate(-22px,22px)}
+.p-daily .promo-orb{background:radial-gradient(circle,rgba(34,197,94,0.22),transparent 70%)}
+.p-gift .promo-orb{background:radial-gradient(circle,rgba(202,138,4,0.28),transparent 70%)}
+.promo-body{position:relative;z-index:1}
+.promo-tag{display:inline-block;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.t-green{background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.25)}
+.t-gold{background:rgba(202,138,4,0.15);color:#fde047;border:1px solid rgba(202,138,4,0.25)}
+.promo-h{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.02em}
+.promo-p{font-size:13px;color:rgba(255,255,255,0.47);margin-bottom:20px;line-height:1.55}
+.btn-promo{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:inherit}
+.btn-pg{background:var(--pv);color:#fff}
+.btn-pg:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(34,197,94,0.4)}
+.btn-gy{background:var(--gold);color:#1a0f00}
+.btn-gy:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(202,138,4,0.35)}
 
 /* ── FOOTER ── */
-.footer { background: var(--ink); padding: 64px 40px 32px; color: rgba(255,255,255,0.55); }
-.footer-in { max-width: 1240px; margin: 0 auto; }
-.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-.footer-brand { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 12px; }
-.footer-desc { font-size: 13px; line-height: 1.75; max-width: 260px; }
-.f-col-h { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; }
-.f-a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); padding: 5px 0; transition: color .15s; }
-.f-a:hover { color: #fff; }
-.footer-bot { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
-.f-badges { display: flex; gap: 8px; }
-.f-badge { padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.07); font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: .04em; }
+.footer{background:var(--ink);padding:64px 40px 32px;color:rgba(255,255,255,0.55)}
+.footer-in{max-width:1240px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.03em;margin-bottom:4px}
+.footer-brand span{color:var(--pv)}
+.footer-desc{font-size:13px;line-height:1.75;max-width:260px;margin-top:10px}
+.f-col-h{font-size:11px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.f-a{display:block;font-size:14px;color:rgba(255,255,255,0.5);padding:5px 0;transition:color .15s}
+.f-a:hover{color:#fff}
+.footer-bot{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.f-badges{display:flex;gap:8px}
+.f-badge{padding:4px 10px;border-radius:6px;background:rgba(255,255,255,0.07);font-size:10px;font-weight:600;color:rgba(255,255,255,0.35);letter-spacing:.04em}
 
 /* ── TOAST ── */
-#toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); z-index: 600; padding: 13px 24px; border-radius: 100px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: transform .4s var(--ee), opacity .3s; opacity: 0; pointer-events: none; white-space: nowrap; }
-#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);z-index:600;padding:13px 24px;border-radius:100px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;box-shadow:0 8px 32px rgba(0,0,0,0.3);transition:transform .4s var(--ee),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap;border:1px solid rgba(34,197,94,0.3)}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
-/* ── DEV BACK ── */
-.dev-back { position: fixed; bottom: 20px; right: 20px; background: rgba(7,9,22,0.9); color: rgba(255,255,255,0.65); font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 7px 14px; border-radius: 8px; backdrop-filter: blur(12px); z-index: 600; border: 1px solid rgba(255,255,255,0.1); transition: color .15s; }
-.dev-back:hover { color: #fff; }
+/* Dev link */
+.dev-back{position:fixed;bottom:20px;right:20px;background:rgba(6,15,10,0.9);color:rgba(255,255,255,0.65);font-size:11px;font-family:'JetBrains Mono',monospace;padding:7px 14px;border-radius:8px;backdrop-filter:blur(12px);z-index:600;border:1px solid rgba(34,197,94,0.2);transition:color .15s}
+.dev-back:hover{color:#fff}
 
 /* ── REDUCED MOTION ── */
-@media (prefers-reduced-motion: reduce) {
-  .o1,.o2,.o3,.fl1,.fl2,.fl3,.fl4,.fl5,.fl6,.hero-mesh,.nav-dot,.scroll-line { animation: none; }
-  .fl1,.fl2,.fl3,.fl4,.fl5,.fl6 { opacity: .6; }
-  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+@media(prefers-reduced-motion:reduce){
+  .o1,.o2,.o3,.cap,.tab,.btl,.hero-mesh,.nav-dot,.scroll-line,.featured-emoji{animation:none}
+  .cap,.tab{opacity:.7}.btl{opacity:.8}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .nav { padding: 0 20px; } .nav-search { display: none; }
-  .sec { padding: 64px 20px; } .promo-wrap { padding: 0 20px 56px; }
-  .promo-grid { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .stats { padding: 24px 20px; } .cats { padding: 0 20px; }
-}
-@media (max-width: 600px) {
-  .stats { flex-direction: column; gap: 24px; } .stat::after { display: none; }
-  .footer-top { grid-template-columns: 1fr; }
-  .hero-ctas { flex-direction: column; align-items: stretch; }
-  .btn-hp, .btn-hs { justify-content: center; }
-}
+@media(max-width:1024px){.hot-grid{grid-template-columns:repeat(2,1fr)}.benefits-grid{grid-template-columns:repeat(2,1fr)}.featured-card{grid-template-columns:1fr}}
+@media(max-width:900px){.nav{padding:0 20px}.nav-search{display:none}.sec{padding:60px 20px}.promo-wrap{padding:0 20px 56px}.promo-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.stats{padding:24px 20px}}
+@media(max-width:600px){.hot-grid{grid-template-columns:1fr}.stats{flex-direction:column;gap:24px}.stat::after{display:none}.footer-top{grid-template-columns:1fr}.hero-ctas{flex-direction:column;align-items:stretch}.btn-hp,.btn-hs{justify-content:center}.trust-bar-in{gap:20px}.benefits-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -243,14 +288,14 @@ a { color: inherit; text-decoration: none; }
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a class="nav-logo" href="home.html"><div class="nav-dot"></div>Precision Salon</a>
+  <a class="nav-logo" href="home.html"><div class="nav-dot"></div>R7<span>Health</span></a>
   <div class="nav-search">
     <span style="font-size:14px;opacity:.5">&#128269;</span>
-    <input type="text" placeholder="Search services, products, brands&#8230;" aria-label="Search">
+    <input type="text" placeholder="Search supplements, vitamins, health products&#8230;" aria-label="Search">
   </div>
   <div class="nav-actions">
     <a class="nav-btn" href="shop.html">Shop</a>
-    <a class="nav-btn" href="my-bookings.html">Bookings</a>
+    <a class="nav-btn" href="my-bookings.html">My Orders</a>
     <a class="nav-btn" href="member-profile.html">Account</a>
     <a class="nav-btn nav-cart" href="cart.html">&#128722; Cart<span class="nav-badge cart-badge" id="cart-count">0</span></a>
   </div>
@@ -263,21 +308,37 @@ a { color: inherit; text-decoration: none; }
   <div class="orbs" aria-hidden="true">
     <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
   </div>
-  <div class="floaters" aria-hidden="true">
-    <div class="fl fl1">&#9988;&#65039;</div>
-    <div class="fl fl2">&#128134;</div>
-    <div class="fl fl3">&#128133;</div>
-    <div class="fl fl4">&#129326;</div>
-    <div class="fl fl5">&#10024;</div>
-    <div class="fl fl6">&#127800;</div>
+
+  <!-- 3D Floating capsules stage -->
+  <div class="caps-stage" aria-hidden="true">
+    <!-- Capsules -->
+    <div class="cap cap-gw c1"></div>
+    <div class="cap cap-y c2"></div>
+    <div class="cap cap-b c3"></div>
+    <div class="cap cap-o c4"></div>
+    <div class="cap cap-gw c5" style="width:66px;height:22px"></div>
+    <div class="cap cap-y c6" style="width:55px;height:20px"></div>
+    <!-- Round tablets -->
+    <div class="tab tab-g t1"></div>
+    <div class="tab tab-y t2"></div>
+    <!-- Supplement bottles -->
+    <div class="btl b1">
+      <div class="btl-neck"></div>
+      <div class="btl-body"><div class="btl-label">VIT C</div></div>
+    </div>
+    <div class="btl b2" style="transform:rotateZ(10deg) rotateX(-5deg) scale(0.85)">
+      <div class="btl-neck"></div>
+      <div class="btl-body" style="background:linear-gradient(160deg,rgba(251,191,36,0.85) 0%,rgba(202,138,4,0.9) 40%,rgba(120,80,4,0.95) 100%)"><div class="btl-label" style="font-size:7px">OMEGA</div></div>
+    </div>
   </div>
+
   <div class="hero-content">
-    <div class="hero-pill" id="hp"><div class="pill-dot"></div>Malaysia&#8217;s Premier Salon Network &#183; 5 States &#183; 134 Outlets</div>
-    <h1 class="hero-h1" id="hh">Look Your Best.<br><em>Feel Extraordinary.</em></h1>
-    <p class="hero-sub" id="hs">Book expert hair, skin, and nail services &#8212; or shop salon-grade products delivered to your door. All in one place.</p>
+    <div class="hero-pill" id="hp"><div class="pill-dot"></div>R7 Healthcare Malaysia &#183; 200+ Certified Supplements</div>
+    <h1 class="hero-h1" id="hh">Nourish Your Body.<br><em>Transform Your Life.</em></h1>
+    <p class="hero-sub" id="hs">Premium vitamins, collagen, probiotics and wellness supplements &#8212; science-backed, clinically tested, delivered to your door.</p>
     <div class="hero-ctas" id="hc">
-      <a class="btn-hp" href="shop.html?cat=services">&#9988;&#65039; Book a Service</a>
-      <a class="btn-hs" href="shop.html">&#128722; Browse Products</a>
+      <a class="btn-hp" href="shop.html">&#127807; Shop Supplements</a>
+      <a class="btn-hs" href="shop.html?cat=bestsellers">&#11088; View Bestsellers</a>
     </div>
   </div>
   <div class="hero-scroll" id="hscroll" aria-hidden="true">
@@ -286,213 +347,296 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-in">
+    <div class="trust-item"><span class="trust-icon">&#128203;</span>Clinically Tested</div>
+    <div class="trust-item"><span class="trust-icon">&#127807;</span>100% Natural Ingredients</div>
+    <div class="trust-item"><span class="trust-icon">&#128666;</span>Free Delivery above RM120</div>
+    <div class="trust-item"><span class="trust-icon">&#8635;</span>30-Day Money-Back Guarantee</div>
+    <div class="trust-item"><span class="trust-icon">&#128274;</span>Secure Payment</div>
+  </div>
+</div>
+
 <!-- STATS -->
 <div class="stats" id="stats">
-  <div class="stat"><div class="stat-n"><span class="cu" data-t="134">0</span><span class="stat-u">+</span></div><div class="stat-l">Outlets Nationwide</div></div>
-  <div class="stat"><div class="stat-n"><span class="cu" data-t="28">0</span><span class="stat-u">K</span></div><div class="stat-l">Registered Members</div></div>
+  <div class="stat"><div class="stat-n"><span class="cu" data-t="47">0</span><span class="stat-u">K+</span></div><div class="stat-l">Happy Customers</div></div>
+  <div class="stat"><div class="stat-n"><span class="cu" data-t="200">0</span><span class="stat-u">+</span></div><div class="stat-l">Products</div></div>
   <div class="stat"><div class="stat-n"><span class="cu" data-t="98">0</span><span class="stat-u">%</span></div><div class="stat-l">Satisfaction Rate</div></div>
   <div class="stat"><div class="stat-n"><span class="cu" data-t="4.9">0</span><span class="stat-u">&#9733;</span></div><div class="stat-l">Average Rating</div></div>
 </div>
 
-<!-- CATEGORY STRIP -->
-<div class="cats">
-  <div class="cats-in">
-    <a class="cat on" href="shop.html">&#10024; All</a>
-    <a class="cat" href="shop.html?cat=services">&#9988;&#65039; Services</a>
-    <a class="cat" href="shop.html?cat=haircare">&#128134; Hair Care</a>
-    <a class="cat" href="shop.html?cat=skincare">&#129717; Skin Care</a>
-    <a class="cat" href="shop.html?cat=nails">&#128133; Nails</a>
-    <a class="cat" href="shop.html?cat=colour">&#127912; Colour</a>
-    <a class="cat" href="shop.html?cat=tools">&#129326; Tools</a>
-    <a class="cat" href="shop.html?cat=packages">&#128230; Packages</a>
-    <a class="cat" href="shop.html?cat=vouchers">&#127873; Vouchers</a>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section class="sec" id="svcs">
+<!-- HOT SALES -->
+<section class="sec" id="hot-sec" style="background:var(--sf-low)">
   <div class="sec-in">
     <div class="sec-hdr">
       <div>
-        <div class="sec-eye"><div class="sec-eye-line"></div>Book Now</div>
-        <h2 class="sec-h2">Signature Services</h2>
-        <p class="sec-sub">Expert stylists, premium products, guaranteed results. Book your slot in seconds.</p>
+        <div class="sec-eye"><div class="sec-eye-line"></div>&#128293; Hot Sales</div>
+        <h2 class="sec-h2">Top Selling Supplements</h2>
+        <p class="sec-sub">Our most loved health products this month. Trusted by thousands of Malaysians.</p>
       </div>
-      <a class="sec-lnk" href="shop.html?cat=services">View all services &#8594;</a>
+      <a class="sec-lnk" href="shop.html">Browse all &#8594;</a>
     </div>
-    <div class="svc-grid" id="svc-grid">
 
-      <div class="svc-card" data-tilt>
-        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(45,124,240,0.25) 0%,transparent 55%)"></div>
-        <div class="svc-shine"></div>
-        <div class="svc-in">
-          <span class="svc-em">&#9988;&#65039;</span>
-          <span class="svc-bdg b-feat">Featured</span>
-          <div class="svc-name">Precision Cut + Blowdry</div>
-          <div class="svc-desc">Expert scissor technique with moisture-seal blowdry. Results that last all week.</div>
-          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 68</span></div><div class="svc-dur">&#9201; 60&#8211;90 min</div></div>
-          <a class="btn-book" href="service-detail.html">Book this service</a>
+    <!-- 2 × 3 grid -->
+    <div class="hot-grid" id="hot-grid">
+
+      <!-- Card 1 -->
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">
+          <div class="prod-img-in">&#129374;</div>
+          <span class="prod-bdg b-hot">&#128293; Hot</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">R7 Healthcare</div>
+          <div class="prod-name">Marine Collagen Peptide Powder</div>
+          <div class="prod-benefit">Skin elasticity &#183; Joint support &#183; 10g per serve</div>
+          <div class="prod-rating"><span class="prod-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 (1,284 reviews)</div>
+          <div class="prod-prices">
+            <span class="prod-price">RM 89</span>
+            <span class="prod-orig">RM 119</span>
+            <span class="prod-save">Save 25%</span>
+          </div>
+          <button class="btn-atc" onclick="event.stopPropagation();addCart('Marine Collagen Peptide')">Add to cart</button>
         </div>
       </div>
 
-      <div class="svc-card" data-tilt style="background:linear-gradient(135deg,#1a0e2e,#2d1a4a 60%,#180e2e)">
-        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(139,92,246,0.3) 0%,transparent 55%)"></div>
-        <div class="svc-shine"></div>
-        <div class="svc-in">
-          <span class="svc-em">&#127912;</span>
-          <span class="svc-bdg b-pop">Popular</span>
-          <div class="svc-name">Balayage + Toning</div>
-          <div class="svc-desc">Hand-painted highlights with professional toning for a natural, sun-kissed finish.</div>
-          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 288</span></div><div class="svc-dur">&#9201; 2.5&#8211;4 hrs</div></div>
-          <a class="btn-book" href="service-detail.html">Book this service</a>
+      <!-- Card 2 -->
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img" style="background:linear-gradient(135deg,#fefce8,#fef9c3)">
+          <div class="prod-img-in">&#127819;</div>
+          <span class="prod-bdg b-best">&#11088; Bestseller</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">VitaCore</div>
+          <div class="prod-name">Vitamin C 1000mg + Zinc Complex</div>
+          <div class="prod-benefit">Immune boost &#183; Antioxidant &#183; 60 capsules</div>
+          <div class="prod-rating"><span class="prod-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.8 (876 reviews)</div>
+          <div class="prod-prices">
+            <span class="prod-price">RM 45</span>
+            <span class="prod-orig">RM 58</span>
+            <span class="prod-save">Save 22%</span>
+          </div>
+          <button class="btn-atc" onclick="event.stopPropagation();addCart('Vitamin C + Zinc')">Add to cart</button>
         </div>
       </div>
 
-      <div class="svc-card" data-tilt style="background:linear-gradient(135deg,#0e1f1a,#143028 60%,#0e2018)">
-        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(34,197,94,0.22) 0%,transparent 55%)"></div>
-        <div class="svc-shine"></div>
-        <div class="svc-in">
-          <span class="svc-em">&#128134;</span>
-          <span class="svc-bdg b-new">New</span>
-          <div class="svc-name">Deep Scalp Treatment</div>
-          <div class="svc-desc">Therapeutic scalp massage with active serum infusion. For hair density and growth.</div>
-          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 128</span></div><div class="svc-dur">&#9201; 45 min</div></div>
-          <a class="btn-book" href="service-detail.html">Book this service</a>
+      <!-- Card 3 -->
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">
+          <div class="prod-img-in">&#129544;</div>
+          <span class="prod-bdg b-new">&#127807; Natural</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">OceanHealth</div>
+          <div class="prod-name">Omega-3 Fish Oil 1000mg</div>
+          <div class="prod-benefit">Heart health &#183; Brain support &#183; 90 soft gels</div>
+          <div class="prod-rating"><span class="prod-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 (2,105 reviews)</div>
+          <div class="prod-prices">
+            <span class="prod-price">RM 68</span>
+            <span class="prod-orig">RM 85</span>
+            <span class="prod-save">Save 20%</span>
+          </div>
+          <button class="btn-atc" onclick="event.stopPropagation();addCart('Omega-3 Fish Oil')">Add to cart</button>
         </div>
       </div>
 
-      <div class="svc-card" data-tilt style="background:linear-gradient(135deg,#1f100e,#321808 60%,#200e0e)">
-        <div class="svc-glow" style="background:radial-gradient(ellipse at 80% 20%,rgba(196,154,60,0.28) 0%,transparent 55%)"></div>
-        <div class="svc-shine"></div>
-        <div class="svc-in">
-          <span class="svc-em">&#128133;</span>
-          <span class="svc-bdg b-feat">Featured</span>
-          <div class="svc-name">Luxury Nail Studio</div>
-          <div class="svc-desc">Gel, acrylic, nail art, and manicure services with professional-grade products.</div>
-          <div class="svc-meta"><div><span class="svc-from">From</span><span class="svc-price">RM 58</span></div><div class="svc-dur">&#9201; 60 min</div></div>
-          <a class="btn-book" href="service-detail.html">Book this service</a>
+      <!-- Card 4 -->
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+          <div class="prod-img-in">&#129440;</div>
+          <span class="prod-bdg b-lim">&#127381; Limited</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">FloraLife</div>
+          <div class="prod-name">Probiotic Complex 50 Billion CFU</div>
+          <div class="prod-benefit">Gut health &#183; Digestion &#183; Immunity &#183; 30 capsules</div>
+          <div class="prod-rating"><span class="prod-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.8 (643 reviews)</div>
+          <div class="prod-prices">
+            <span class="prod-price">RM 98</span>
+            <span class="prod-orig">RM 128</span>
+            <span class="prod-save">Save 23%</span>
+          </div>
+          <button class="btn-atc" onclick="event.stopPropagation();addCart('Probiotic Complex')">Add to cart</button>
         </div>
       </div>
 
+      <!-- Card 5 -->
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">
+          <div class="prod-img-in">&#129481;</div>
+          <span class="prod-bdg b-hot">&#128293; Trending</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">R7 Healthcare</div>
+          <div class="prod-name">Magnesium Glycinate 400mg</div>
+          <div class="prod-benefit">Sleep quality &#183; Muscle recovery &#183; Stress relief &#183; 90 tabs</div>
+          <div class="prod-rating"><span class="prod-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.8 (734 reviews)</div>
+          <div class="prod-prices">
+            <span class="prod-price">RM 55</span>
+            <span class="prod-orig">RM 72</span>
+            <span class="prod-save">Save 24%</span>
+          </div>
+          <button class="btn-atc" onclick="event.stopPropagation();addCart('Magnesium Glycinate 400mg')">Add to cart</button>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="prod-card" onclick="goTo('product.html')">
+        <div class="prod-img" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">
+          <div class="prod-img-in">&#127752;</div>
+          <span class="prod-bdg b-best">&#11088; Top Rated</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">R7 Healthcare</div>
+          <div class="prod-name">Complete Daily Multivitamin 23-in-1</div>
+          <div class="prod-benefit">Full spectrum nutrition &#183; Energy &#183; Immunity &#183; 60 tablets</div>
+          <div class="prod-rating"><span class="prod-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 (2,318 reviews)</div>
+          <div class="prod-prices">
+            <span class="prod-price">RM 58</span>
+            <span class="prod-orig">RM 78</span>
+            <span class="prod-save">Save 26%</span>
+          </div>
+          <button class="btn-atc" onclick="event.stopPropagation();addCart('Daily Multivitamin 23-in-1')">Add to cart</button>
+        </div>
+      </div>
+
+    </div><!-- end hot-grid -->
+
+    <!-- Load More -->
+    <div class="load-more-wrap">
+      <button class="btn-load-more" id="load-more-btn" onclick="loadMore()">
+        <span class="lm-icon">&#8635;</span> Load More Products
+      </button>
     </div>
   </div>
 </section>
 
-<!-- PROMO -->
+<!-- FEATURED PRODUCT -->
+<section class="sec" id="feat-sec">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye"><div class="sec-eye-line"></div>Staff Pick</div>
+        <h2 class="sec-h2">Product of the Month</h2>
+      </div>
+    </div>
+    <div class="featured-card" id="feat-card" onclick="goTo('product.html')">
+      <div class="featured-left">
+        <span class="featured-tag">&#127775; #1 Bestseller 2026</span>
+        <div class="featured-name">Ultra Collagen Pro Complex<br>Marine + Hydrolysed</div>
+        <div class="featured-desc">Advanced triple-action collagen formula combining marine collagen, hyaluronic acid, and vitamin E for visible skin, joint, and hair results within 4 weeks.</div>
+        <div class="featured-price-row">
+          <span class="featured-price">RM 149</span>
+          <span class="featured-orig">RM 199</span>
+          <span class="featured-save-badge">Save 25%</span>
+        </div>
+        <button class="btn-feat" onclick="event.stopPropagation();addCart('Ultra Collagen Pro Complex')">&#128722; Add to Cart</button>
+      </div>
+      <div class="featured-right">
+        <div class="featured-bg-circle"></div>
+        <span class="featured-emoji">&#127807;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP BY GOAL -->
+<section class="sec" style="background:var(--sf-low)" id="goals-sec">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-eye"><div class="sec-eye-line"></div>Browse by Goal</div>
+        <h2 class="sec-h2">What Are You Improving?</h2>
+        <p class="sec-sub">Find the right supplements for your wellness goal.</p>
+      </div>
+    </div>
+    <div class="benefits-grid" id="benefits-grid">
+      <div class="benefit-card" onclick="goTo('shop.html?cat=immunity')">
+        <span class="benefit-icon">&#127807;</span>
+        <div class="benefit-title">Immune Support</div>
+        <div class="benefit-sub">Vitamin C, Zinc, Elderberry, Echinacea blends</div>
+      </div>
+      <div class="benefit-card" onclick="goTo('shop.html?cat=beauty')">
+        <span class="benefit-icon">&#128138;</span>
+        <div class="benefit-title">Skin &amp; Beauty</div>
+        <div class="benefit-sub">Collagen, Biotin, Hyaluronic Acid, Vitamin E</div>
+      </div>
+      <div class="benefit-card" onclick="goTo('shop.html?cat=energy')">
+        <span class="benefit-icon">&#9889;</span>
+        <div class="benefit-title">Energy &amp; Focus</div>
+        <div class="benefit-sub">B-Complex, Ashwagandha, Ginseng, CoQ10</div>
+      </div>
+      <div class="benefit-card" onclick="goTo('shop.html?cat=gut')">
+        <span class="benefit-icon">&#128138;</span>
+        <div class="benefit-title">Gut Health</div>
+        <div class="benefit-sub">Probiotics, Prebiotics, Digestive Enzymes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO BANNERS -->
 <div class="promo-wrap">
   <div class="promo-grid" id="promo-grid">
-    <div class="promo p-pkg">
+    <div class="promo p-daily">
       <div class="promo-dots"></div><div class="promo-orb"></div>
       <div class="promo-body">
-        <span class="promo-tag t-blue">Bundle &amp; Save</span>
-        <h3 class="promo-h">Service Packages</h3>
-        <p class="promo-p">Stack your appointments. Save up to 30% on monthly treatment bundles.</p>
-        <a class="btn-promo btn-pb" href="shop.html?cat=packages">Explore packages &#8594;</a>
+        <span class="promo-tag t-green">Daily Wellness</span>
+        <h3 class="promo-h">Build Your Daily Stack</h3>
+        <p class="promo-p">Bundle your morning routine &#8212; save up to 30% when you combine 3 or more supplements.</p>
+        <a class="btn-promo btn-pg" href="shop.html?cat=bundles">Build my stack &#8594;</a>
       </div>
     </div>
-    <div class="promo p-vch">
+    <div class="promo p-gift">
       <div class="promo-dots"></div><div class="promo-orb"></div>
       <div class="promo-body">
-        <span class="promo-tag t-gold">Gift Someone</span>
-        <h3 class="promo-h">Gift Vouchers</h3>
-        <p class="promo-p">Give the gift of a great hair day. Available in RM50 to RM500 denominations.</p>
-        <a class="btn-promo btn-pg" href="shop.html?cat=vouchers">Shop vouchers &#8594;</a>
+        <span class="promo-tag t-gold">Gift of Health</span>
+        <h3 class="promo-h">Wellness Gift Cards</h3>
+        <p class="promo-p">Give the gift of better health. Available in RM50 to RM500. Redeemable on all products.</p>
+        <a class="btn-promo btn-gy" href="shop.html?cat=vouchers">Shop gift cards &#8594;</a>
       </div>
     </div>
   </div>
 </div>
-
-<!-- PRODUCTS -->
-<section class="sec" style="background:var(--surface-low)" id="prods">
-  <div class="sec-in">
-    <div class="sec-hdr">
-      <div>
-        <div class="sec-eye"><div class="sec-eye-line"></div>Shop</div>
-        <h2 class="sec-h2">Bestselling Products</h2>
-        <p class="sec-sub">Salon-grade hair and skin care, delivered to your door. Used by our stylists, available for you.</p>
-      </div>
-      <a class="sec-lnk" href="shop.html?cat=haircare">View all products &#8594;</a>
-    </div>
-    <div class="prod-grid" id="prod-grid">
-      <div class="prod-card" onclick="goTo('product.html')">
-        <div class="prod-img"><div class="prod-img-in">&#128134;</div><span class="prod-bdg b-best">Bestseller</span></div>
-        <div class="prod-body"><div class="prod-brand">Moroccanoil</div><div class="prod-name">Treatment Oil &#8212; Argan Repair &amp; Shine</div><div class="prod-prices"><span class="prod-price">RM 89</span><span class="prod-orig">RM 115</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Moroccanoil Treatment Oil')">Add to cart</button></div>
-      </div>
-      <div class="prod-card" onclick="goTo('product.html')">
-        <div class="prod-img"><div class="prod-img-in">&#129717;</div><span class="prod-bdg b-sale">-20%</span></div>
-        <div class="prod-body"><div class="prod-brand">Kerastase</div><div class="prod-name">Elixir Ultime Hair Oil 100ml</div><div class="prod-prices"><span class="prod-price">RM 118</span><span class="prod-orig">RM 148</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Kerastase Elixir Ultime')">Add to cart</button></div>
-      </div>
-      <div class="prod-card" onclick="goTo('product.html')">
-        <div class="prod-img"><div class="prod-img-in">&#10024;</div></div>
-        <div class="prod-body"><div class="prod-brand">Wella Professionals</div><div class="prod-name">Oil Reflections Luminous Serum 30ml</div><div class="prod-prices"><span class="prod-price">RM 72</span><span class="prod-orig">RM 85</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Wella Oil Reflections')">Add to cart</button></div>
-      </div>
-      <div class="prod-card" onclick="goTo('product.html')">
-        <div class="prod-img"><div class="prod-img-in">&#128139;</div><span class="prod-bdg b-best">Top Rated</span></div>
-        <div class="prod-body"><div class="prod-brand">Moroccanoil</div><div class="prod-name">Hydrating Mask 250ml</div><div class="prod-prices"><span class="prod-price">RM 105</span><span class="prod-orig">RM 128</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('Moroccanoil Hydrating Mask')">Add to cart</button></div>
-      </div>
-      <div class="prod-card" onclick="goTo('product.html')">
-        <div class="prod-img"><div class="prod-img-in">&#128293;</div></div>
-        <div class="prod-body"><div class="prod-brand">GHD</div><div class="prod-name">Heat Protection Spray 120ml</div><div class="prod-prices"><span class="prod-price">RM 68</span></div><button class="btn-atc" onclick="event.stopPropagation();addCart('GHD Heat Spray')">Add to cart</button></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VOUCHERS -->
-<section class="sec" id="vchsec">
-  <div class="sec-in">
-    <div class="sec-hdr">
-      <div>
-        <div class="sec-eye"><div class="sec-eye-line"></div>Gift</div>
-        <h2 class="sec-h2">Gift Vouchers</h2>
-        <p class="sec-sub">Redeemable at all 134 outlets for any service or product. Valid 12 months.</p>
-      </div>
-    </div>
-    <div class="vch-grid" id="vch-grid">
-      <div class="vch v50"><div class="vch-orb"></div><div class="vch-tag">Gift Voucher</div><div class="vch-amt">RM 50</div><div class="vch-desc">Perfect for a quick trim or nail session</div><button class="btn-vch" onclick="addCart('Voucher RM50')">Buy now &#8594;</button></div>
-      <div class="vch v100"><div class="vch-orb"></div><div class="vch-tag">Gift Voucher</div><div class="vch-amt">RM 100</div><div class="vch-desc">Covers a full haircut and styling session</div><button class="btn-vch" onclick="addCart('Voucher RM100')">Buy now &#8594;</button></div>
-      <div class="vch v200"><div class="vch-orb"></div><div class="vch-tag">Gift Voucher</div><div class="vch-amt">RM 200</div><div class="vch-desc">Ideal for a colour treatment or hair spa day</div><button class="btn-vch" onclick="addCart('Voucher RM200')">Buy now &#8594;</button></div>
-      <div class="vch v500"><div class="vch-orb"></div><div class="vch-tag" style="color:rgba(255,255,255,0.5)">Premium</div><div class="vch-amt">RM 500</div><div class="vch-desc">Full luxury treatment experience, covered</div><button class="btn-vch" onclick="addCart('Voucher RM500')">Buy now &#8594;</button></div>
-    </div>
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-in">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">Precision Salon</div>
-        <p class="footer-desc">Malaysia&#8217;s leading multi-outlet salon network. Book online, shop products, earn loyalty points.</p>
+        <div class="footer-brand">R7<span>Healthcare</span></div>
+        <p class="footer-desc">Malaysia&#8217;s trusted health supplement brand. Science-backed, quality-tested, results-driven wellness for everyone.</p>
       </div>
       <div>
-        <div class="f-col-h">Services</div>
-        <a class="f-a" href="service-detail.html">Haircut &amp; Style</a>
-        <a class="f-a" href="service-detail.html">Colour &amp; Balayage</a>
-        <a class="f-a" href="service-detail.html">Scalp Treatment</a>
-        <a class="f-a" href="service-detail.html">Nail Studio</a>
+        <div class="f-col-h">Products</div>
+        <a class="f-a" href="shop.html?cat=collagen">Collagen</a>
+        <a class="f-a" href="shop.html?cat=vitamins">Vitamins</a>
+        <a class="f-a" href="shop.html?cat=probiotics">Probiotics</a>
+        <a class="f-a" href="shop.html?cat=omega">Omega-3</a>
       </div>
       <div>
         <div class="f-col-h">Account</div>
-        <a class="f-a" href="my-bookings.html">My Bookings</a>
+        <a class="f-a" href="my-bookings.html">My Orders</a>
         <a class="f-a" href="wallet-dashboard.html">Wallet</a>
         <a class="f-a" href="membership-loyalty.html">Membership</a>
-        <a class="f-a" href="affiliate-dashboard.html">Affiliate Hub</a>
+        <a class="f-a" href="member-profile.html">Profile</a>
       </div>
       <div>
         <div class="f-col-h">Help</div>
         <a class="f-a" href="#">Contact Us</a>
-        <a class="f-a" href="#">Cancellation Policy</a>
+        <a class="f-a" href="#">Return Policy</a>
         <a class="f-a" href="#">Privacy Policy (PDPA)</a>
         <a class="f-a" href="#">Terms of Service</a>
       </div>
     </div>
     <div class="footer-bot">
-      <span>&#169; 2026 Precision Salon OS. All rights reserved.</span>
+      <span>&#169; 2026 R7 Healthcare Sdn Bhd. All rights reserved.</span>
       <div class="f-badges">
-        <span class="f-badge">SST Registered</span>
-        <span class="f-badge">LHDN e-Invoice</span>
+        <span class="f-badge">KKM Registered</span>
+        <span class="f-badge">SST Compliant</span>
         <span class="f-badge">PDPA 2010</span>
+        <span class="f-badge">GMP Certified</span>
       </div>
     </div>
   </div>
@@ -518,7 +662,6 @@ gsap.timeline({ delay: .15 })
 /* Stats reveal + count-up */
 gsap.to('.stat', { opacity:1, y:0, stagger:.1, duration:.7, ease:'power3.out',
   scrollTrigger: { trigger:'#stats', start:'top 85%' } });
-
 ScrollTrigger.create({ trigger:'#stats', start:'top 80%', once:true, onEnter: () => {
   document.querySelectorAll('.cu').forEach(el => {
     const t = parseFloat(el.dataset.t), dec = t % 1 !== 0;
@@ -532,44 +675,25 @@ ScrollTrigger.create({ trigger:'#stats', start:'top 80%', once:true, onEnter: ()
   });
 }});
 
-/* Service cards entrance */
-gsap.to('#svc-grid .svc-card', { opacity:1, y:0, stagger:.1, duration:.75, ease:'power3.out',
-  scrollTrigger: { trigger:'#svc-grid', start:'top 80%' } });
+/* Hot Sales grid */
+gsap.to('#hot-grid .prod-card', { opacity:1, y:0, stagger:.08, duration:.7, ease:'power3.out',
+  scrollTrigger: { trigger:'#hot-grid', start:'top 82%' } });
 
-/* 3D tilt on mouse move */
-document.querySelectorAll('[data-tilt]').forEach(c => {
-  c.addEventListener('mousemove', e => {
-    const r = c.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width  - .5;
-    const y = (e.clientY - r.top)  / r.height - .5;
-    gsap.to(c, { rotateY: x*16, rotateX: -y*16, translateZ: 18,
-      duration:.3, ease:'power2.out', transformPerspective:800, overwrite:'auto' });
-    const s = c.querySelector('.svc-shine');
-    if (s) s.style.background =
-      `radial-gradient(circle at ${(x+.5)*100}% ${(y+.5)*100}%, rgba(255,255,255,0.13) 0%, transparent 55%)`;
-  });
-  c.addEventListener('mouseleave', () =>
-    gsap.to(c, { rotateY:0, rotateX:0, translateZ:0,
-      duration:.65, ease:'elastic.out(1,.7)', overwrite:'auto' }));
-});
+/* Featured card */
+gsap.to('#feat-card', { opacity:1, duration:.8, ease:'power3.out',
+  scrollTrigger: { trigger:'#feat-card', start:'top 82%' } });
 
-/* Promo banners */
+/* Benefits */
+gsap.to('#benefits-grid .benefit-card', { opacity:1, y:0, stagger:.1, duration:.65, ease:'power3.out',
+  scrollTrigger: { trigger:'#benefits-grid', start:'top 82%' } });
+
+/* Promo */
 gsap.to('#promo-grid .promo', { opacity:1, y:0, stagger:.12, duration:.75, ease:'power3.out',
   scrollTrigger: { trigger:'#promo-grid', start:'top 82%' } });
 
-/* Products */
-gsap.fromTo('#prod-grid .prod-card', { opacity:0, y:40 },
-  { opacity:1, y:0, stagger:.08, duration:.65, ease:'power3.out',
-    scrollTrigger: { trigger:'#prod-grid', start:'top 82%' } });
-
-/* Vouchers */
-gsap.fromTo('#vch-grid .vch', { opacity:0, y:40, scale:.96 },
-  { opacity:1, y:0, scale:1, stagger:.1, duration:.7, ease:'power3.out',
-    scrollTrigger: { trigger:'#vch-grid', start:'top 82%' } });
-
 /* Hero parallax */
 gsap.to('#hero .hero-content', { yPercent: 18, ease:'none',
-  scrollTrigger: { trigger:'#hero', start:'top top', end:'bottom top', scrub:true } });
+  scrollTrigger: { trigger:'#hero', start:'top top', end:'bottom top', scrub: true } });
 gsap.to('.o1', { yPercent:-28, ease:'none',
   scrollTrigger: { trigger:'#hero', start:'top top', end:'bottom top', scrub:1.5 } });
 gsap.to('.o2', { yPercent:-18, ease:'none',
@@ -586,13 +710,64 @@ document.querySelectorAll('.btn-hp, .btn-hs').forEach(b => {
     gsap.to(b, { x:0, y:0, duration:.5, ease:'elastic.out(1,.7)', overwrite:'auto' }));
 });
 
+/* Load more simulation */
+let loadPage = 1;
+function loadMore() {
+  const btn = document.getElementById('load-more-btn');
+  btn.classList.add('loading');
+  btn.innerHTML = '<span class="lm-icon">&#8635;</span> Loading&#8230;';
+
+  setTimeout(() => {
+    loadPage++;
+    const grid = document.getElementById('hot-grid');
+    const extras = [
+      { icon:'&#127823;', bg:'linear-gradient(135deg,#fff1f2,#ffe4e6)', brand:'ImmunePro', name:'Elderberry + Vitamin D3', benefit:'Immune defence &#183; Antiviral &#183; 60 gummies', price:'RM 62', orig:'RM 78', bdg:'b-new', bdgTxt:'&#127807; Organic', stars:'4.8', reviews:'312' },
+      { icon:'&#129481;', bg:'linear-gradient(135deg,#f0fdf4,#dcfce7)', brand:'ZenBalance', name:'Magnesium Glycinate 400mg', benefit:'Sleep quality &#183; Muscle recovery &#183; 90 tabs', price:'RM 55', orig:'RM 72', bdg:'b-best', bdgTxt:'&#11088; Popular', stars:'4.9', reviews:'541' },
+      { icon:'&#127856;', bg:'linear-gradient(135deg,#fef2f2,#fee2e2)', brand:'CoreFit', name:'Whey Protein Isolate 1kg', benefit:'Muscle growth &#183; Recovery &#183; Chocolate flavour', price:'RM 145', orig:'RM 185', bdg:'b-hot', bdgTxt:'&#128293; Hot', stars:'4.8', reviews:'893' }
+    ];
+
+    extras.forEach((p, i) => {
+      const div = document.createElement('div');
+      div.className = 'prod-card';
+      div.style.opacity = '0';
+      div.style.transform = 'translateY(36px)';
+      div.onclick = () => goTo('product.html');
+      div.innerHTML = `
+        <div class="prod-img" style="background:${p.bg}">
+          <div class="prod-img-in">${p.icon}</div>
+          <span class="prod-bdg ${p.bdg}">${p.bdgTxt}</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">${p.brand}</div>
+          <div class="prod-name">${p.name}</div>
+          <div class="prod-benefit">${p.benefit}</div>
+          <div class="prod-rating"><span class="prod-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> ${p.stars} (${p.reviews} reviews)</div>
+          <div class="prod-prices"><span class="prod-price">${p.price}</span><span class="prod-orig">${p.orig}</span></div>
+          <button class="btn-atc" onclick="event.stopPropagation();addCart('${p.name}')">Add to cart</button>
+        </div>`;
+      grid.appendChild(div);
+      gsap.to(div, { opacity:1, y:0, duration:.6, ease:'power3.out', delay: i * .1 });
+    });
+
+    btn.classList.remove('loading');
+    if (loadPage >= 3) {
+      btn.innerHTML = '&#10003; All products loaded';
+      btn.disabled = true;
+      btn.style.opacity = '.5';
+      btn.style.cursor = 'default';
+    } else {
+      btn.innerHTML = '<span class="lm-icon">&#8635;</span> Load More Products';
+    }
+  }, 900);
+}
+
 /* Helpers */
 let _tt;
 function addCart(n) {
   Cart.add(1);
   document.getElementById('cart-count').textContent = Cart.getCount();
   const t = document.getElementById('toast');
-  t.innerHTML = '&#128722; ' + n + ' added!';
+  t.innerHTML = '&#127807; ' + n + ' added to cart!';
   t.classList.add('show');
   clearTimeout(_tt); _tt = setTimeout(() => t.classList.remove('show'), 3000);
 }
